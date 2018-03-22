@@ -1,0 +1,8 @@
+#!/bin/bash
+
+coregen -b /dev/stdin <<EOM
+NEWPROJECT .
+SETPROJECT .
+EOM
+coregen -p . -b block_mem_1x786432.xco
+coregen -p . -b block_mem_1x98304.xco
