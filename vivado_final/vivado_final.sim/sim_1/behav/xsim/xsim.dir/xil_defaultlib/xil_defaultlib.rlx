@@ -1,0 +1,8 @@
+0.6
+2017.4
+Jan 30 2018
+15:48:17
+C:/sp18_team69/hardware/src/riscv_core/Opcode.vh,1522798279,verilog,,,,,,,,,,,,
+C:/sp18_team69/hardware/src/riscv_core/reg_file.v,1522829278,verilog,,C:/sp18_team69/vivado_final/vivado_final.srcs/sim_1/imports/testbenches/reg_file_testbench.v,,reg_file,,,../../../../../hardware/src;../../../../../hardware/src/riscv_core,,,,,
+C:/sp18_team69/vivado_final/vivado_final.sim/sim_1/behav/xsim/glbl.v,1513215259,verilog,,,,glbl,,,,,,,,
+C:/sp18_team69/vivado_final/vivado_final.srcs/sim_1/imports/testbenches/reg_file_testbench.v,1522830408,verilog,,,C:/sp18_team69/hardware/src/riscv_core/Opcode.vh,reg_file_testbench,,,../../../../../hardware/src;../../../../../hardware/src/riscv_core,,,,,

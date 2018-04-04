@@ -1,0 +1,4 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/sp18_team69/hardware/src/riscv_core/reg_file.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module reg_file
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/sp18_team69/vivado_final/vivado_final.srcs/sim_1/imports/testbenches/reg_file_testbench.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module reg_file_testbench
