@@ -11,10 +11,8 @@ module ALU (
 );
 
     reg [31:0] result_reg;
-    reg [1:0] cmp_reg;
-    
     assign result = result_reg;
-    assign cmp = cmp_reg;
+    
     always @(*) begin
         case (fnc3)
         `FNC_ADD_SUB: begin

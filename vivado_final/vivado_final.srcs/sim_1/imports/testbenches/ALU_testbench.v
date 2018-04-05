@@ -20,7 +20,7 @@ module ALU_testbench();
     
     wire [31:0] result;
     
-    reg [32:0] result_REF;
+    reg [31:0] result_REF;
     // instantiate ALU module
     ALU alu(
         .ina(ina),
