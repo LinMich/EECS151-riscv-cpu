@@ -122,14 +122,3 @@ module reg_file_testbench();
         $finish();
     end
 endmodule 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    

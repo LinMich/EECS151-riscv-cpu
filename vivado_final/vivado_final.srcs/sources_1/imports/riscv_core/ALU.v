@@ -7,7 +7,6 @@ module ALU (
     input [2:0] fnc3,
     input fnc1,
     
-    output [1:0] cmp,
     output [31:0] result
 );
 
@@ -41,10 +40,6 @@ module ALU (
         default: result_reg = 0;
         endcase
         
-        // handle comparison
-        if (ina < inb) cmp_reg = 2'b00;
-        else if (ina == inb) cmp_reg = 2'b01;
-        else cmp_reg = 2'b10;
     end
 
 endmodule
