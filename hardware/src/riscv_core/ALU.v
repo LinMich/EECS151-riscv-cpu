@@ -1,4 +1,4 @@
-`include "Opcode.vh"
+
 
 module ALU (
     input [31:0] ina,
@@ -10,7 +10,7 @@ module ALU (
     output [1:0] cmp,
     output [31:0] result
 );
-
+`include "Opcode.vh"
     always @(*) begin
         case(fnc3):
         FNC_ADD_SUB: begin
