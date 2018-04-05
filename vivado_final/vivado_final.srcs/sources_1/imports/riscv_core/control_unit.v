@@ -81,7 +81,7 @@ module control_unit (
             b_jmp_target_reg = 1'b0;
             wb_select_reg = 2'bxx;
             brjmp_jalr_reg = 1'b0;
-            take_brjmpjalr_inc_reg = (take_branch) ? 1'b1 : 1'b0;
+            take_brjmpjalr_inc_reg = (should_branch) ? 1'b1 : 1'b0;
             alu_func3_reg = 3'bxxx;
             alu_func1_reg = 1'bx;
         end
