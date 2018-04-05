@@ -33,7 +33,7 @@ module ALU (
         `FNC_AND: result_reg = ina & inb;
         `FNC_SRL_SRA: begin
             if (fnc1 == `FNC2_SRL) result_reg = ina >> inb[4:0];
-            else result_reg = ina >>> inb[4:0];
+            else result_reg = $signed(ina) >>> inb[4:0];
         end
         default: result_reg = 0;
         endcase
