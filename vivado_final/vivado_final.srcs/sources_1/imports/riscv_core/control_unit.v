@@ -11,8 +11,8 @@ module control_unit (
     output brjmp_jalr, // selects whether pc should increment by 4, jump. or jalr
     output take_brjmpjalr_inc, // selects whether to use input from brjmp_jalr or pc+4 for new PC
     output [2:0] alu_func3, // forwards alu func 3
-    output alu_func1 // forwards alu func 1
-    
+    output alu_func1, // forwards alu func 1
+    output reg_we
 );
 
     reg [1:0] op1_sel_reg;
@@ -23,6 +23,7 @@ module control_unit (
     reg take_brjmpjalr_inc_reg;
     reg [2:0] alu_func3_reg;
     reg alu_func1_reg;
+    reg reg_we_reg;
 
     assign op1_sel = op1_sel_reg;
     assign op2_sel = op2_sel_reg;
@@ -32,6 +33,7 @@ module control_unit (
     assign take_brjmpjalr_inc = take_brjmpjalr_inc_reg;
     assign alu_func3 = alu_func3_reg;
     assign alu_func1 = alu_func1_reg;
+    assign reg_we = reg_we_reg; // TODO: implement this signal
 
     always @(*) begin
         case (instruction[6:0])
