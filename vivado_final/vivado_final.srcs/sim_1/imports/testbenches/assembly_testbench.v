@@ -50,15 +50,203 @@ module assembly_testbench();
         rst = 0;
 
         // Your processor should begin executing the code in /software/assembly_tests/start.s
-
-        // Test ADD
+        
+        // Test U-type: 
+        // Test LUI
         wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
-        check_reg(1, 32'd300, 1);               // Verify that x1 contains 300
+        check_reg(1, 32'd2, 1);               // Verify that x1 contains 2      
+        
+        // Test AUIPC
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd2, 1);               // Verify that x1 contains 2      
+        
+               
+               
+               
+        // Test J-type: 
+        // Test JAL
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd2, 1);               // Verify that x1 contains 2
+                
+                
+                
+                
+        // Test I-type: 
+        // Test JALR
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd0, 1);               // Verify that x1 contains 0
+        
+        // Test LB
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'hC0000001, 1);               // Verify that x1 contains 0xC0000001
+        
+        // Test LH
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd4, 1);               // Verify that x1 contains 4
+        
+        // Test LW
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd2, 1);               // Verify that x1 contains 2
+        
+        // Test LBU
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'hC0000001, 1);               // Verify that x1 contains 0xC0000001
+        
+        // Test LHU
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd4, 1);               // Verify that x1 contains 4
+        
+        // Test ADDI
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, -32'sd1, 1);               // Verify that x1 contains -1
+        
+        // Test SLTI
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd1, 1);               // Verify that x1 contains 1
+        
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd0, 1);               // Verify that x1 contains 0
+              
+        // Test SLTIU
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd0, 1);               // Verify that x1 contains 0
 
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd1, 1);               // Verify that x1 contains 1
+                
+        // Test XORI
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd2046, 1);               // Verify that x1 contains 2046
+        
+        // Test ANDI
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd1, 1);               // Verify that x1 contains 1
+        
+        // Test SLLI
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd4, 1);               // Verify that x1 contains 4
+        
+        // Test SRLI
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd2, 1);               // Verify that x1 contains 2
+        
+        // Test SRAI
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'hC0000001, 1);               // Verify that x1 contains 0xC0000001
+        
+        
+        
+                
+        // Test B-type:    
         // Test BEQ
         wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
         check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
         check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+        
+        // Test BNE
+        wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
+        check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
+        check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+        
+        // Test BLT
+        wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
+        check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
+        check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+        
+        // Test BGE
+        wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
+        check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
+        check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+
+        // Test BLTU
+        wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
+        check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
+        check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+
+        // Test BGEU
+        wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
+        check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
+        check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+
+
+        // Test S-type:    
+        // Test SB
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd300, 1);               // Verify that x1 contains 300
+        
+        // Test SH
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd300, 1);               // Verify that x1 contains 300
+        
+        // Test SW
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd300, 1);               // Verify that x1 contains 300
+        
+
+ 
+
+
+
+
+        // Test R-type:    
+        // Test ADD
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd300, 1);               // Verify that x1 contains 300
+        
+        // Test SUB
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd100, 1);               // Verify that x1 contains 100
+        
+        // Test SLL
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd4, 1);               // Verify that x1 contains 4
+        
+        // Test SLT
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd1, 1);               // Verify that x1 contains 1
+        
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd0, 1);               // Verify that x1 contains 0
+        
+        // Test SLTU
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd0, 1);               // Verify that x1 contains 0
+        
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd1, 1);               // Verify that x1 contains 1
+              
+        // Test XOR
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd6, 1);               // Verify that x1 contains 6
+        
+        // Test SRL
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd2, 1);               // Verify that x1 contains 2
+        
+        // Test SRA
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'hC0000001, 1);               // Verify that x1 contains 0xC0000001
+        
+        // Test OR
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd384, 1);               // Verify that x1 contains 384
+        
+        // Test AND
+        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
+        check_reg(1, 32'd2046, 1);               // Verify that x1 contains 2046
+        
+        
+
+
+
+
+
+
+
+
+
+
+
 
         $display("ALL ASSEMBLY TESTS PASSED");
         $finish();

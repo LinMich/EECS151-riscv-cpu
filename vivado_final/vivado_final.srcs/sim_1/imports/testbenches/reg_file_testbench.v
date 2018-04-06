@@ -48,8 +48,10 @@ module reg_file_testbench();
         
         if (rd1 == 0) 
             $display("PASS: rd1 reads %b", rd1);
-        else 
+        else begin
             $display("FAIL: rd1 reads %b", rd1);
+            $finish();
+        end
      
         // Test 2: Other registers are updated on the same cycle that a write occurs 
         // (i.e. the value read on the cycle following the positive edge of the write should be the new value).

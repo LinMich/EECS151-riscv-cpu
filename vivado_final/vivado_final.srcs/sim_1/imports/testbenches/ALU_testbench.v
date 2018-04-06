@@ -40,8 +40,10 @@ module ALU_testbench();
     input reg[4*8:0] type;
         if (result == result_REF)
             $display("PASS %s: \tA: 0x%h, B: 0x%h, result: 0x%h, result_REF: 0x%h", type, A, B, result, result_REF);
-        else
+        else begin
             $display("FAIL %s: \tA: 0x%h, B: 0x%h, result: 0x%h, result_REF: 0x%h", type, A, B, result, result_REF);
+            $finish();
+        end
     endtask
     initial begin
         // reset all parts

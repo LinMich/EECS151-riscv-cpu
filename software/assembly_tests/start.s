@@ -10,20 +10,291 @@ _start:
 # x11 = argument 2 register
 # x20 = flag register
 
-# Test ADD
+# Test U-type:
+# Test LUI 
+li x10, 100		# Load argument 1 (rs1)
+li x11, 200		# Load argument 2 (rs2)
+lui x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 300
+
+# Test AUIPC 
+li x10, 200		# Load argument 1 (rs1)
+li x11, 100		# Load argument 2 (rs2)
+auipc x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 100
+
+
+
+
+
+# Test J-type:
+# Test JAL 
+li x10, 100		# Load argument 1 (rs1)
+li x11, 200		# Load argument 2 (rs2)
+jal x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 300
+
+
+
+
+
+
+# Test I-type:
+# Test JALR 
+li x10, 5		# Load argument 1 (rs1)
+jalr x0, x10, 0	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 0
+
+# Test LB 
+li x10, 200		# Load argument 1 (rs1)
+lb x1, x10, 0x0	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 100
+
+# Test LH 
+li x10, 100		# Load argument 1 (rs1)
+lh x1, x10, 0x0	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 300
+
+# Test LW 
+li x10, 200		# Load argument 1 (rs1)
+li x11, 100		# Load argument 2 (rs2)
+lw x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 100
+			
+# Test LBU 
+li x10, 2		# Load argument 1 (rs1)
+lbu x1, x10, 0x1	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 4
+			
+# Test LHU 
+li x10, 4		# Load argument 1 (rs1)
+lhu x1, x10, 0x1	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 2
+
+# Test ADDI 
+li x10, 2047		# Load argument 1 (rs1)
+addi x1, x10, 0x1	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains -1
+
+# Test SLTI 
+li x10, 0x800		# Load argument 1 (rs1)
+slti x1, x10, 0x7FF	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 1
+
+li x10, 0x7FF		# Load argument 1 (rs1)
+slti x1, x10, 0x800	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 0
+
+# Test SLTIU 
+li x10, 0x800		# Load argument 1 (rs1)
+sltiu x1, x10, 0x7FF	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 0
+
+li x10, 0x7FF		# Load argument 1 (rs1)
+sltiu x1, x10, 0x800	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 1	
+
+# Test XORI 
+li x10, 2047		# Load argument 1 (rs1)
+xori x1, x10, 1	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 2046
+			
+# Test ANDI 
+li x10, 2047		# Load argument 1 (rs1)
+andi x1, x10, 0x1	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 1
+
+# Test SLLI 
+li x10, 2		# Load argument 1 (rs1)
+slli x1, x10, 0x1	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 4
+			
+# Test SRLI 
+li x10, 4		# Load argument 1 (rs1)
+srli x1, x10, 0x1	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 2
+
+# Test SRAI 
+li x10, 0X80000001		# Load argument 1 (rs1)
+srai x1, x10, 1	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 0xC0000001
+
+
+
+
+# Test B-type:
+# Test BEQ 
+li x10, 100		# Load argument 1 (rs1)
+li x11, 200		# Load argument 2 (rs2)
+beq x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 300
+
+# Test BNE 
+li x10, 200		# Load argument 1 (rs1)
+li x11, 100		# Load argument 2 (rs2)
+bne x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 100
+
+# Test BLT 
+li x10, 100		# Load argument 1 (rs1)
+li x11, 200		# Load argument 2 (rs2)
+blt x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 300
+
+# Test BGE 
+li x10, 200		# Load argument 1 (rs1)
+li x11, 100		# Load argument 2 (rs2)
+bge x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 100
+			
+# Test BLTU 
+li x10, 2		# Load argument 1 (rs1)
+bltu x1, x10, 0x1	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 4
+			
+# Test BGEU 
+li x10, 4		# Load argument 1 (rs1)
+bgeu x1, x10, 0x1	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 2
+
+
+
+
+
+# Test S-type:
+# Test SB 
+li x10, 100		# Load argument 1 (rs1)
+li x11, 200		# Load argument 2 (rs2)
+sb x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 300
+
+# Test SH 
+li x10, 200		# Load argument 1 (rs1)
+li x11, 100		# Load argument 2 (rs2)
+sh x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 100
+
+# Test SW 
+li x10, 100		# Load argument 1 (rs1)
+li x11, 200		# Load argument 2 (rs2)
+sw x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 300
+
+
+
+
+
+# Test R-type:
+# Test ADD 
 li x10, 100		# Load argument 1 (rs1)
 li x11, 200		# Load argument 2 (rs2)
 add x1, x10, x11	# Execute the instruction being tested
 li x20, 1		# Set the flag register to stop execution and inspect the result register
 			# Now we check that x1 contains 300
 
-# Test BEQ
-li x2, 100		# Set an initial value of x2
-beq x0, x0, branch1	# This branch should succeed and jump to branch1
-li x2, 123		# This shouldn't execute, but if it does x2 becomes an undesirable value
-branch1: li x1, 500	# x1 now contains 500
-li x20, 2		# Set the flag register
-			# Now we check that x1 contains 500 and x2 contains 100
+# Test SUB 
+li x10, 200		# Load argument 1 (rs1)
+li x11, 100		# Load argument 2 (rs2)
+sub x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 100
+
+# Test SLL 
+li x10, 2		# Load argument 1 (rs1)
+li x11, 1		# Load argument 2 (rs2)
+sll x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 4
+
+# Test SLT 
+li x10, 0x80000000		# Load argument 1 (rs1)
+li x11, 0x7FFFFFFF		# Load argument 2 (rs2)
+slt x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 1
+
+li x10, 0x7FFFFFFF		# Load argument 1 (rs1)
+li x11, 0x80000000		# Load argument 2 (rs2)
+slt x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 0
+
+# Test SLTU 
+li x10, 0x80000000		# Load argument 1 (rs1)
+li x11, 0x7FFFFFFF		# Load argument 2 (rs2)
+slt x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 0
+
+li x10, 0x7FFFFFFF		# Load argument 1 (rs1)
+li x11, 0x80000000		# Load argument 2 (rs2)
+slt x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 1
+
+# Test XOR 
+li x10, 2		# Load argument 1 (rs1)
+li x11, 4		# Load argument 2 (rs2)
+xor x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 6
+
+# Test SRL 
+li x10, 4		# Load argument 1 (rs1)
+li x11, 1		# Load argument 2 (rs2)
+srl x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 2
+
+# Test SRA 
+li x10, 0X80000001		# Load argument 1 (rs1)
+li x11, 1		# Load argument 2 (rs2)
+sra x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 0xC0000001
+
+# Test OR 
+li x10, 128		# Load argument 1 (rs1)
+li x11, 256		# Load argument 2 (rs2)
+or x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 384
+
+# Test AND 
+li x10, 2047		# Load argument 1 (rs1)
+li x11, 2046		# Load argument 2 (rs2)
+and x1, x10, x11	# Execute the instruction being tested
+li x20, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 2046
+
 
 Done: j Done
 
