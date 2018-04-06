@@ -46,6 +46,7 @@ module control_unit (
             take_brjmpjalr_inc_reg = 1'b0;
             alu_func3_reg = 3'bxxx;
             alu_func1_reg = 1'bx;
+            reg_we_reg = 1'b1;
         end
         `OPC_AUIPC: begin
             op1_sel_reg = 2'b00;
@@ -56,6 +57,7 @@ module control_unit (
             take_brjmpjalr_inc_reg = 1'b0;
             alu_func3_reg = `FNC_ADD_SUB;
             alu_func1_reg = `FNC2_ADD;
+            reg_we_reg = 1'b1;
         end
         `OPC_JAL: begin
             op1_sel_reg = 2'bxx;
@@ -66,6 +68,7 @@ module control_unit (
             take_brjmpjalr_inc_reg = 1'b1;
             alu_func3_reg = 3'bxxx;
             alu_func1_reg = 1'bx;
+            reg_we_reg = 1'b1;
         end
         `OPC_JALR: begin
             op1_sel_reg = 2'b01;
@@ -76,6 +79,7 @@ module control_unit (
             take_brjmpjalr_inc_reg = 1'b1;
             alu_func3_reg = `FNC_ADD_SUB;
             alu_func1_reg = `FNC2_ADD;
+            reg_we_reg = 1'b1;
         end
         `OPC_BRANCH: begin
             op1_sel_reg = 2'bxx;
@@ -86,6 +90,7 @@ module control_unit (
             take_brjmpjalr_inc_reg = (should_branch) ? 1'b1 : 1'b0;
             alu_func3_reg = 3'bxxx;
             alu_func1_reg = 1'bx;
+            reg_we_reg = 1'b0;
         end
         `OPC_STORE: begin
             op1_sel_reg = 2'b01;
@@ -96,6 +101,7 @@ module control_unit (
             take_brjmpjalr_inc_reg = 1'b0;
             alu_func3_reg = `FNC_ADD_SUB;
             alu_func1_reg = `FNC2_ADD;
+            reg_we_reg = 1'b0;
         end
         `OPC_LOAD: begin
             op1_sel_reg = 2'b01;
@@ -106,6 +112,7 @@ module control_unit (
             take_brjmpjalr_inc_reg = 1'b0;
             alu_func3_reg = `FNC_ADD_SUB;
             alu_func1_reg = `FNC2_ADD;
+            reg_we_reg = 1'b1;
         end
         `OPC_ARI_RTYPE: begin
             op1_sel_reg = 2'b01;
@@ -116,6 +123,7 @@ module control_unit (
             take_brjmpjalr_inc_reg = 1'b0;
             alu_func3_reg = instruction[14:12];
             alu_func1_reg = instruction[30];
+            reg_we_reg = 1'b1;
         end
         `OPC_ARI_ITYPE: begin
             op1_sel_reg = 2'b01;
@@ -125,7 +133,8 @@ module control_unit (
             brjmp_jalr_reg = 2'bxx;
             take_brjmpjalr_inc_reg = 1'b0;
             alu_func3_reg = instruction[14:12];
-            alu_func1_reg = (instruction[14:12] == `FNC_SRL_SRA) ? instruction[30] : 1'b0; // always 0 except for right shifts 
+            alu_func1_reg = (instruction[14:12] == `FNC_SRL_SRA) ? instruction[30] : 1'b0; // always 0 except for right shifts
+            reg_we_reg = 1'b1;
         end
         default: begin
             op1_sel_reg = 2'bxx;
@@ -136,6 +145,7 @@ module control_unit (
             take_brjmpjalr_inc_reg = 1'bx;
             alu_func3_reg = 3'bxxx;
             alu_func1_reg = 1'bx;
+            reg_we_reg = 1'b1;
         end        
         endcase
     end
