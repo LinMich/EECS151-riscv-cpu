@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1522989405">
-  <File Type="VDS-TIMING-PB" Name="ALU_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="ALU_timing_summary_synth.rpt"/>
+  <File Type="RDS-RDS" Name="ALU.vds"/>
   <File Type="RDS-DCP" Name="ALU.dcp"/>
   <File Type="PA-TCL" Name="ALU.tcl"/>
   <File Type="REPORTS-TCL" Name="ALU_reports.tcl"/>
-  <File Type="RDS-RDS" Name="ALU.vds"/>
-  <File Type="RDS-PROPCONSTRS" Name="ALU_drc_synth.rpt"/>
-  <File Type="RDS-UTIL" Name="ALU_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="ALU_utilization_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/imports/riscv_core/Opcode.vh">
@@ -210,7 +205,7 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2017"/>
     <Step Id="synth_design"/>
   </Strategy>
+  <BlockFileSet Type="BlockSrcs" Name="dmem_blk_ram"/>
   <BlockFileSet Type="BlockSrcs" Name="bios_mem"/>
   <BlockFileSet Type="BlockSrcs" Name="imem_blk_ram"/>
-  <BlockFileSet Type="BlockSrcs" Name="dmem_blk_ram"/>
 </GenRun>

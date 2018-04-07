@@ -9,11 +9,6 @@ module Riscv151 #(
     output FPGA_SERIAL_TX
 );
 
-    // Instantiate your memories here
-    // You should tie the ena, enb inputs of your memories to 1'b1
-    // They are just like power switches for your block RAMs
-
-
     /* REGISTERS AND WIRES */
     reg [31:0] pc_reg;
     
@@ -81,6 +76,29 @@ module Riscv151 #(
     wire [31:0] mwb_dat_mem_to_reader;
     reg [31:0] mwb_data_mem_reader_out; // might not even need this... pretty sure we do
     reg [31:0] mwb_regfile_input_data;
+    
+    // Instantiate your memories here
+    // You should tie the ena, enb inputs of your memories to 1'b1
+    // They are just like power switches for your block RAMs
+    bios_mem BIOS (
+        .ena(1'b1),
+        .enb(1'b1),
+        .clka(clk),  
+        .clkb(clk),  
+        .addra(pc_reg[15:2]),     //12-bit, from I stage
+        .douta(fd_inst_reg),           //32-bit, to mux to I stage (instruction)
+        .addrb(12'bx),       //12-bit, from datapath
+        .doutb(12'bx)          //32-bit, to mux to M stage ("dataout from mem")   
+    );
+    
+    dmem_blk_ram d_mem (
+        .clka(clk),
+        .ena(1'b1),
+        .wea(mwb_wed_reg),
+        .addra(mwb_aluout_reg[15:2]),
+        .dina(mwb_memwrdat_reg),
+        .douta(mwb_dat_mem_to_reader)
+    );
 
     
     // Construct your datapath, add as many modules as you want
@@ -96,7 +114,7 @@ module Riscv151 #(
         .rs1(ex_rs1_reg),
         .rs2(ex_rs2_reg),
         .fnc(ex_inst_reg[14:12]),
-        .should_branch(ex_br_ctl_to_ctl) //output
+        .should_br(ex_br_ctl_to_ctl) //output
     );
     
     control_unit controller (

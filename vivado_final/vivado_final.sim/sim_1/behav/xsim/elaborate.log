@@ -1,14 +1,13 @@
 Vivado Simulator 2017.4
 Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
-Running: C:/Xilinx/Vivado/2017.4/bin/unwrapped/win64.o/xelab.exe -wto dbd10fecf0de4dce99bcb9cd80cc23cf --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot ALU_testbench_behav xil_defaultlib.ALU_testbench xil_defaultlib.glbl -log elaborate.log 
-Using 2 slave threads.
+Running: /opt/Xilinx/Vivado/current/bin/unwrapped/lnx64.o/xelab -wto dbd10fecf0de4dce99bcb9cd80cc23cf --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot assembly_testbench_behav xil_defaultlib.assembly_testbench xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
 Starting static elaboration
-Completed static elaboration
-Starting simulation data flow analysis
-WARNING: [XSIM 43-4099] "C:/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/ALU.v" Line 3. Module ALU doesn't have a timescale but at least one module in design has a timescale.
-Completed simulation data flow analysis
-Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.ALU
-Compiling module xil_defaultlib.ALU_testbench
-Compiling module xil_defaultlib.glbl
-Built simulation snapshot ALU_testbench_behav
+ERROR: [VRFC 10-426] cannot find port should_branch on this module [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/Riscv151.v:117]
+ERROR: [VRFC 10-2063] Module <control_unit> not found while processing module instance <controller> [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/Riscv151.v:120]
+ERROR: [VRFC 10-2063] Module <instruction_decoder> not found while processing module instance <decoder> [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/Riscv151.v:134]
+ERROR: [VRFC 10-2063] Module <reg_file> not found while processing module instance <reggie> [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/Riscv151.v:146]
+ERROR: [VRFC 10-2063] Module <mem_control> not found while processing module instance <memory_controller> [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/Riscv151.v:157]
+ERROR: [VRFC 10-2063] Module <mem_read_decoder> not found while processing module instance <datamem_read_decoder> [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/Riscv151.v:167]
+ERROR: [VRFC 10-2063] Module <uart> not found while processing module instance <on_chip_uart> [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/Riscv151.v:233]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
