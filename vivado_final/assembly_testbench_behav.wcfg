@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="assembly_testbench_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="assembly_testbench" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="425425000fs"></ZoomStartTime>
+      <ZoomEndTime time="1537032144fs"></ZoomEndTime>
+      <Cursor1Time time="810000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="142"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="44" />
+   <wvobject type="logic" fp_name="/assembly_testbench/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/assembly_testbench/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/pc_reg">
+      <obj_property name="ElementShortName">pc_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/fd_rs1_to_regf">
+      <obj_property name="ElementShortName">fd_rs1_to_regf[4:0]</obj_property>
+      <obj_property name="ObjectShortName">fd_rs1_to_regf[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/fd_rs2_to_regf">
+      <obj_property name="ElementShortName">fd_rs2_to_regf[4:0]</obj_property>
+      <obj_property name="ObjectShortName">fd_rs2_to_regf[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/fd_u_reg">
+      <obj_property name="ElementShortName">fd_u_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fd_u_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/fd_i_reg">
+      <obj_property name="ElementShortName">fd_i_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fd_i_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/fd_rs2_reg">
+      <obj_property name="ElementShortName">fd_rs2_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fd_rs2_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/fd_rs1_reg">
+      <obj_property name="ElementShortName">fd_rs1_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fd_rs1_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/fd_inst_reg">
+      <obj_property name="ElementShortName">fd_inst_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">fd_inst_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/fd_rd_reg">
+      <obj_property name="ElementShortName">fd_rd_reg[4:0]</obj_property>
+      <obj_property name="ObjectShortName">fd_rd_reg[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_u_reg">
+      <obj_property name="ElementShortName">ex_u_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_u_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_i_reg">
+      <obj_property name="ElementShortName">ex_i_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_i_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_rs2_reg">
+      <obj_property name="ElementShortName">ex_rs2_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_rs2_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_rs1_reg">
+      <obj_property name="ElementShortName">ex_rs1_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_rs1_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_inst_reg">
+      <obj_property name="ElementShortName">ex_inst_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_inst_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_rd_reg">
+      <obj_property name="ElementShortName">ex_rd_reg[4:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_rd_reg[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_pc_reg">
+      <obj_property name="ElementShortName">ex_pc_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_pc_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_alu_mux_1">
+      <obj_property name="ElementShortName">ex_alu_mux_1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_alu_mux_1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_alu_mux_2">
+      <obj_property name="ElementShortName">ex_alu_mux_2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_alu_mux_2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_op1">
+      <obj_property name="ElementShortName">ex_op1[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_op1[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_op2">
+      <obj_property name="ElementShortName">ex_op2[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_op2[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_aluout_reg">
+      <obj_property name="ElementShortName">ex_aluout_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_aluout_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_fnc3_reg">
+      <obj_property name="ElementShortName">ex_fnc3_reg[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_fnc3_reg[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/assembly_testbench/CPU/ex_fnc1">
+      <obj_property name="ElementShortName">ex_fnc1</obj_property>
+      <obj_property name="ObjectShortName">ex_fnc1</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_wbsel_reg">
+      <obj_property name="ElementShortName">ex_wbsel_reg[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_wbsel_reg[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/assembly_testbench/CPU/ex_regwe_reg">
+      <obj_property name="ElementShortName">ex_regwe_reg</obj_property>
+      <obj_property name="ObjectShortName">ex_regwe_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_fwd_rs1">
+      <obj_property name="ElementShortName">ex_fwd_rs1[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_fwd_rs1[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_fwd_rs2">
+      <obj_property name="ElementShortName">ex_fwd_rs2[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_fwd_rs2[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/mwb_aluout_reg">
+      <obj_property name="ElementShortName">mwb_aluout_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mwb_aluout_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/mwb_fnc3_reg">
+      <obj_property name="ElementShortName">mwb_fnc3_reg[2:0]</obj_property>
+      <obj_property name="ObjectShortName">mwb_fnc3_reg[2:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/mwb_wbsel_reg">
+      <obj_property name="ElementShortName">mwb_wbsel_reg[1:0]</obj_property>
+      <obj_property name="ObjectShortName">mwb_wbsel_reg[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/assembly_testbench/CPU/mwb_regwe_reg">
+      <obj_property name="ElementShortName">mwb_regwe_reg</obj_property>
+      <obj_property name="ObjectShortName">mwb_regwe_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/mwb_rd_reg">
+      <obj_property name="ElementShortName">mwb_rd_reg[4:0]</obj_property>
+      <obj_property name="ObjectShortName">mwb_rd_reg[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/mwb_u_reg">
+      <obj_property name="ElementShortName">mwb_u_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mwb_u_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/mwb_opcode_reg">
+      <obj_property name="ElementShortName">mwb_opcode_reg[6:0]</obj_property>
+      <obj_property name="ObjectShortName">mwb_opcode_reg[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/mwb_regfile_input_data">
+      <obj_property name="ElementShortName">mwb_regfile_input_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mwb_regfile_input_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/hazard_unit/alu_in_rs1">
+      <obj_property name="ElementShortName">alu_in_rs1[4:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_in_rs1[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/hazard_unit/alu_in_rs2">
+      <obj_property name="ElementShortName">alu_in_rs2[4:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_in_rs2[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/hazard_unit/prev_rd">
+      <obj_property name="ElementShortName">prev_rd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">prev_rd[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/hazard_unit/prev_opcode">
+      <obj_property name="ElementShortName">prev_opcode[6:0]</obj_property>
+      <obj_property name="ObjectShortName">prev_opcode[6:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/hazard_unit/fwd_rs1">
+      <obj_property name="ElementShortName">fwd_rs1[1:0]</obj_property>
+      <obj_property name="ObjectShortName">fwd_rs1[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/hazard_unit/fwd_rs2">
+      <obj_property name="ElementShortName">fwd_rs2[1:0]</obj_property>
+      <obj_property name="ObjectShortName">fwd_rs2[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/reggie/register">
+      <obj_property name="ElementShortName">register[31:0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">register[31:0][31:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+</wave_config>

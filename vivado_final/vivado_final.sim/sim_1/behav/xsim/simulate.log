@@ -1,0 +1,13 @@
+Vivado Simulator 2017.4
+Time resolution is 1 ps
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module assembly_testbench.CPU.BIOS.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+beginning!
+ Block Memory Generator module loading initial data...
+ Block Memory Generator data initialization complete.
+Block Memory Generator module assembly_testbench.CPU.BIOS.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+beginning!
+PASS - test    1, got:       2048 for reg  2
+FAIL - test    1, got:          2, expected:          1 for reg  1
+$finish called at time : 1430 ns : File "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sim_1/imports/testbenches/assembly_testbench.v" Line 31

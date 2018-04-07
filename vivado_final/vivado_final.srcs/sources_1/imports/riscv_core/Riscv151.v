@@ -136,7 +136,7 @@ module Riscv151 #(
         .j_sext(ex_j_reg),
         .b_sext(ex_b_reg),
         .s_sext(ex_s_reg),
-        .u_sext(ex_u_reg),
+        .u_imm(ex_u_reg),
         .i_sext(ex_i_reg),
         .rs1(fd_rs1_to_regf),
         .rs2(fd_rs2_to_regf),
@@ -230,19 +230,19 @@ module Riscv151 #(
     end
 
     // On-chip UART
-    uart #(
-        .CLOCK_FREQ(CPU_CLOCK_FREQ)
-    ) on_chip_uart (
-        .clk(clk),
-        .reset(rst),
-        .data_in(),
-        .data_in_valid(),
-        .data_out_ready(),
-        .serial_in(FPGA_SERIAL_RX),
+//    uart #(
+//        .CLOCK_FREQ(CPU_CLOCK_FREQ)
+//    ) on_chip_uart (
+//        .clk(clk),
+//        .reset(rst),
+//        .data_in(),
+//        .data_in_valid(),
+//        .data_out_ready(),
+//        .serial_in(FPGA_SERIAL_RX),
 
-        .data_in_ready(),
-        .data_out(),
-        .data_out_valid(),
-        .serial_out(FPGA_SERIAL_TX)
-    );
+//        .data_in_ready(),
+//        .data_out(),
+//        .data_out_valid(),
+//        .serial_out(FPGA_SERIAL_TX)
+//    );
 endmodule

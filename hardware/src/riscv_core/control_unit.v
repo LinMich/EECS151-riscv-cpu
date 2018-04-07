@@ -145,7 +145,7 @@ module control_unit (
             take_brjmpjalr_inc_reg = 1'bx;
             alu_func3_reg = 3'bxxx;
             alu_func1_reg = 1'bx;
-            reg_we_reg = 1'b1;
+            reg_we_reg = 1'bx;
         end        
         endcase
     end
