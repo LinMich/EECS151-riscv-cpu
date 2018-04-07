@@ -36,6 +36,8 @@ module Riscv151 #(
     reg [31:0] ex_i_reg;
     reg [31:0] ex_rs2_reg;
     reg [31:0] ex_rs1_reg;
+    reg [31:0] ex_rs1_after_fwd_reg;
+    reg [31:0] ex_rs2_after_fwd_reg;
     reg [31:0] ex_inst_reg;
     reg [4:0] ex_rd_reg;
     reg [31:0] ex_pc_reg;
@@ -115,8 +117,8 @@ module Riscv151 #(
     );
     
     branch_control branch_controller (
-        .rs1(ex_rs1_reg),
-        .rs2(ex_rs2_reg),
+        .rs1(ex_rs1_after_fwd_reg),
+        .rs2(ex_rs2_after_fwd_reg),
         .fnc(ex_inst_reg[14:12]),
         .should_br(ex_br_ctl_to_ctl) //output
     );
@@ -162,7 +164,7 @@ module Riscv151 #(
         .opcode(ex_inst_reg[6:0]),
         .fnc(ex_fnc3_reg),
         .addr(ex_aluout_reg),
-        .write_data(ex_rs1_reg),
+        .write_data(ex_rs1_after_fwd_reg),
         .fmt_wr_data(ex_memwrdat_reg), //output
         .we_data(ex_wed_reg), //output
         .we_inst(ex_wei_reg) //ouput
@@ -195,6 +197,8 @@ module Riscv151 #(
             ex_i_reg <= 0;
             ex_rs2_reg <= 0;
             ex_rs1_reg <= 0;
+            ex_rs1_after_fwd_reg <= 0;
+            ex_rs2_after_fwd_reg <= 0;
             ex_inst_reg <= 0;
             ex_rd_reg <= 0;
             ex_pc_reg <= 0;
@@ -231,8 +235,8 @@ module Riscv151 #(
             ex_u_reg <= fd_u_reg;
             ex_i_reg <= fd_i_reg;
             ex_rd_reg <= fd_rd_reg;
-            //ex_rs1_reg <= fd_rs1_reg;
-            //ex_rs2_reg <= fd_rs2_reg;
+            ex_rs1_reg <= fd_rs1_reg;
+            ex_rs2_reg <= fd_rs2_reg;
             ex_inst_reg <= fd_inst_reg;
             ex_pc_reg <= pc_reg;
         
@@ -260,10 +264,30 @@ module Riscv151 #(
         default: mwb_regfile_input_data = 32'bx;
         endcase
         
+//        ex_rs1_after_fwd_reg = ex_rs1_reg;
+//        ex_rs2_after_fwd_reg = ex_rs2_reg;
+        
+        // handles data forwarding to input a of ALU
+        case (ex_fwd_rs1)
+        2'b00: ex_rs1_after_fwd_reg = ex_rs1_reg;
+        2'b01: ex_rs1_after_fwd_reg = mwb_u_reg;
+        2'b10: ex_rs1_after_fwd_reg = mwb_aluout_reg;
+        2'b11: ex_rs1_after_fwd_reg = mwb_data_mem_reader_out;
+        endcase
+
+        // handles data forwarding to input b of ALU
+        case (ex_fwd_rs2)
+        2'b00: ex_rs2_after_fwd_reg = ex_rs2_reg;
+        2'b01: ex_rs2_after_fwd_reg = mwb_u_reg;
+        2'b10: ex_rs2_after_fwd_reg = mwb_aluout_reg;
+        2'b11: ex_rs2_after_fwd_reg = mwb_data_mem_reader_out;
+        endcase
+
+        
         // input a to ALU
         case (ex_op1)
         2'b00: ex_alu_mux_1 = ex_u_reg;
-        2'b01: ex_alu_mux_1 = ex_rs1_reg;
+        2'b01: ex_alu_mux_1 = ex_rs1_after_fwd_reg;
         default: ex_alu_mux_1 = 32'bx;
         endcase
         
@@ -272,24 +296,8 @@ module Riscv151 #(
         2'b00: ex_alu_mux_2 = ex_pc_reg;
         2'b01: ex_alu_mux_2 = ex_s_reg;
         2'b10: ex_alu_mux_2 = ex_i_reg;
-        2'b11: ex_alu_mux_2 = ex_rs2_reg;
+        2'b11: ex_alu_mux_2 = ex_rs2_after_fwd_reg;
         default: ex_alu_mux_2 = 32'bx;
-        endcase
-        
-        // handles data forwarding to input a of ALU
-        case (ex_fwd_rs1)
-        2'b00: ex_rs1_reg = fd_rs1_reg;
-        2'b01: ex_rs1_reg = mwb_u_reg;
-        2'b10: ex_rs1_reg = mwb_aluout_reg;
-        2'b11: ex_rs1_reg = mwb_data_mem_reader_out;
-        endcase
-        
-        // handles data forwarding to input b of ALU
-        case (ex_fwd_rs2)
-        2'b00: ex_rs2_reg = fd_rs2_reg;
-        2'b01: ex_rs2_reg = mwb_u_reg;
-        2'b10: ex_rs2_reg = mwb_aluout_reg;
-        2'b11: ex_rs2_reg = mwb_data_mem_reader_out;
         endcase
     end
 

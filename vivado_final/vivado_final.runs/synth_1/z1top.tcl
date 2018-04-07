@@ -29,10 +29,12 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
+add_files /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/software/assembly_tests/assembly_tests.coe
 read_verilog {
   /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/Opcode.vh
   /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/util.vh
   /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Opcode.vh
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/src/util.vh
 }
 read_verilog -library xil_defaultlib {
   /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/ALU.v
@@ -55,6 +57,26 @@ read_verilog -library xil_defaultlib {
   /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/Riscv151.v
   /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/audio/i2s_controller.v
   /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/reg_file.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/ALU.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/instruction_decoder.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/hazard_unit.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/control_unit.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/mem_read_decoder.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/fifo.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/audio/tone_generator.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/reg_file.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/button_parser.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/synchronizer.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/mem_control.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/async_fifo.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/edge_detector.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart_transmitter.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart_receiver.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/src/z1top.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/branch_control.v
+  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/debouncer.v
 }
 read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram.xci
 set_property used_in_implementation false [get_files -all /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram_ooc.xdc]
@@ -77,10 +99,10 @@ read_xdc /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z
 set_property used_in_implementation false [get_files /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc]
 
 
-synth_design -top ALU -part xc7z020clg400-1
+synth_design -top z1top -part xc7z020clg400-1
 
 
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef ALU.dcp
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file ALU_utilization_synth.rpt -pb ALU_utilization_synth.pb"
+write_checkpoint -force -noxdef z1top.dcp
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file z1top_utilization_synth.rpt -pb z1top_utilization_synth.pb"

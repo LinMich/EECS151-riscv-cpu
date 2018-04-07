@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="425425000fs"></ZoomStartTime>
-      <ZoomEndTime time="1537032144fs"></ZoomEndTime>
-      <Cursor1Time time="810000000fs"></Cursor1Time>
+      <ZoomStartTime time="429844270358fs"></ZoomStartTime>
+      <ZoomEndTime time="430043265929fs"></ZoomEndTime>
+      <Cursor1Time time="430010100000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="142"></ValueColumnWidth>
+      <ValueColumnWidth column_width="138"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="44" />
+   <WVObjectSize size="46" />
    <wvobject type="logic" fp_name="/assembly_testbench/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -195,6 +195,13 @@
    <wvobject type="array" fp_name="/assembly_testbench/CPU/reggie/register">
       <obj_property name="ElementShortName">register[31:0][31:0]</obj_property>
       <obj_property name="ObjectShortName">register[31:0][31:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_rs1_after_fwd_reg">
+      <obj_property name="ElementShortName">ex_rs1_after_fwd_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_rs1_after_fwd_reg[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/assembly_testbench/CPU/ex_rs2_after_fwd_reg">
+      <obj_property name="ElementShortName">ex_rs2_after_fwd_reg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_rs2_after_fwd_reg[31:0]</obj_property>
    </wvobject>
 </wave_config>

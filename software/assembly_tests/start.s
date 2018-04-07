@@ -90,65 +90,65 @@ li x20, 1		# Set the flag register to stop execution and inspect the result regi
 			# Now we check that x1 contains 2048
 
 # Test SLTI
-# li x20, 0 
+li x20, 0 
 li x10, 2050		# Load argument 1 (rs1)
 slti x1, x10, 2046	# Execute the instruction being tested
 li x21, 1		# Set the flag register to stop execution and inspect the result register
 			# Now we check that x1 contains 1
 
-# li x20, 0
-li x10, 0x7ff		# Load argument 1 (rs1)
-slti x1, x10, 0x7ff	# Execute the instruction being tested
-li x22, 1		# Set the flag register to stop execution and inspect the result register
-			# Now we check that x1 contains 0
+# # li x20, 0
+# li x10, 0x7ff		# Load argument 1 (rs1)
+# slti x1, x10, 0x7ff	# Execute the instruction being tested
+# li x22, 1		# Set the flag register to stop execution and inspect the result register
+# 			# Now we check that x1 contains 0
 
-# Test SLTIU
-# li x20, 0 
-li x10, 0b111111111111		# Load argument 1 (rs1)
-sltiu x1, x10, 0b000000000000	# Execute the instruction being tested
-li x23, 1		# Set the flag register to stop execution and inspect the result register
-			# Now we check that x1 contains 0
+# # Test SLTIU
+# # li x20, 0 
+# li x10, 0b111111111111		# Load argument 1 (rs1)
+# sltiu x1, x10, 0b000000000000	# Execute the instruction being tested
+# li x23, 1		# Set the flag register to stop execution and inspect the result register
+# 			# Now we check that x1 contains 0
 
-# li x20, 0
-li x10, 0b000000000000		# Load argument 1 (rs1)
-sltiu x1, x10, 0b000000000001	# Execute the instruction being tested
-li x24, 1		# Set the flag register to stop execution and inspect the result register
-			# Now we check that x1 contains 1	
+# # li x20, 0
+# li x10, 0b000000000000		# Load argument 1 (rs1)
+# sltiu x1, x10, 0b000000000001	# Execute the instruction being tested
+# li x24, 1		# Set the flag register to stop execution and inspect the result register
+# 			# Now we check that x1 contains 1	
 
-# Test XORI
-# li x20, 0 
-li x10, 2047		# Load argument 1 (rs1)
-xori x1, x10, 1	# Execute the instruction being tested
-li x25, 1		# Set the flag register to stop execution and inspect the result register
-# 			# Now we check that x1 contains 2046
+# # Test XORI
+# # li x20, 0 
+# li x10, 2047		# Load argument 1 (rs1)
+# xori x1, x10, 1	# Execute the instruction being tested
+# li x25, 1		# Set the flag register to stop execution and inspect the result register
+# # 			# Now we check that x1 contains 2046
 			
-# # Test ANDI 
-# li x20, 0
-li x10, 2047		# Load argument 1 (rs1)
-andi x1, x10, 0x1	# Execute the instruction being tested
-li x26, 1		# Set the flag register to stop execution and inspect the result register
-# 			# Now we check that x1 contains 1
+# # # Test ANDI 
+# # li x20, 0
+# li x10, 2047		# Load argument 1 (rs1)
+# andi x1, x10, 0x1	# Execute the instruction being tested
+# li x26, 1		# Set the flag register to stop execution and inspect the result register
+# # 			# Now we check that x1 contains 1
 
-# # Test SLLI
-# li x20, 0 
-li x10, 2		# Load argument 1 (rs1)
-slli x1, x10, 0x1	# Execute the instruction being tested
-li x27, 1		# Set the flag register to stop execution and inspect the result register
-# 			# Now we check that x1 contains 4
+# # # Test SLLI
+# # li x20, 0 
+# li x10, 2		# Load argument 1 (rs1)
+# slli x1, x10, 0x1	# Execute the instruction being tested
+# li x27, 1		# Set the flag register to stop execution and inspect the result register
+# # 			# Now we check that x1 contains 4
 			
-# # Test SRLI
-# li x20, 0 
-li x10, 4		# Load argument 1 (rs1)
-srli x1, x10, 0x1	# Execute the instruction being tested
-li x28, 1		# Set the flag register to stop execution and inspect the result register
-# 			# Now we check that x1 contains 2
+# # # Test SRLI
+# # li x20, 0 
+# li x10, 4		# Load argument 1 (rs1)
+# srli x1, x10, 0x1	# Execute the instruction being tested
+# li x28, 1		# Set the flag register to stop execution and inspect the result register
+# # 			# Now we check that x1 contains 2
 
-# # Test SRAI 
-# li x20, 0
-li x10, 0X80000001		# Load argument 1 (rs1)
-srai x1, x10, 1	# Execute the instruction being tested
-li x29, 1		# Set the flag register to stop execution and inspect the result register
-# 			# Now we check that x1 contains 0xC0000001
+# # # Test SRAI 
+# # li x20, 0
+# li x10, 0X80000001		# Load argument 1 (rs1)
+# srai x1, x10, 1	# Execute the instruction being tested
+# li x29, 1		# Set the flag register to stop execution and inspect the result register
+# # 			# Now we check that x1 contains 0xC0000001
 
 
 

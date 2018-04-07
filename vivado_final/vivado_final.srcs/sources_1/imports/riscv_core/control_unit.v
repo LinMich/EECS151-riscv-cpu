@@ -137,15 +137,15 @@ module control_unit (
             reg_we_reg = 1'b1;
         end
         default: begin
-            op1_sel_reg = 2'bxx;
-            op2_sel_reg = 2'bxx;
-            b_jmp_target_reg = 1'bx;
-            wb_select_reg = 2'bxx;
-            brjmp_jalr_reg = 2'bxx;
-            take_brjmpjalr_inc_reg = 1'bx;
-            alu_func3_reg = 3'bxxx;
-            alu_func1_reg = 1'bx;
-            reg_we_reg = 1'b1;
+            op1_sel_reg = 2'b00;
+            op2_sel_reg = 2'b00;
+            b_jmp_target_reg = 1'b0;
+            wb_select_reg = 2'b00;
+            brjmp_jalr_reg = 2'b00;
+            take_brjmpjalr_inc_reg = 1'b0;
+            alu_func3_reg = 3'b000;
+            alu_func1_reg = 1'b0;
+            reg_we_reg = 1'b0;
         end        
         endcase
     end

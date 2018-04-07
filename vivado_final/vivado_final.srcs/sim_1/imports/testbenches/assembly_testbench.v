@@ -7,7 +7,7 @@
 module assembly_testbench();
     reg clk, rst;
     parameter CPU_CLOCK_PERIOD = 20;
-    parameter CPU_CLOCK_FREQ = 50_000_000;
+    parameter CPU_CLOCK_FREQ = 10_000_000;
 
     initial clk = 0;
     always #(CPU_CLOCK_PERIOD/2) clk <= ~clk;
@@ -47,7 +47,7 @@ module assembly_testbench();
 
         // Reset the CPU
         rst = 1;
-        repeat (30) @(posedge clk);             // Hold reset for 30 cycles
+        repeat (15) @(posedge clk);             // Hold reset for 30 cycles
         rst = 0;
 
         $display("beginning!");
