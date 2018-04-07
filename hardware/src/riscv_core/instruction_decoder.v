@@ -48,7 +48,7 @@ module instruction_decoder(
         i_pass = { {20{instruction[31]}}, instruction[31:20] };
         rs1_pass = instruction[19:15];
         rs2_pass = instruction[24:20];
-        rd = instruction[11:7];
+        rd_pass = instruction[11:7];
     end
 
 endmodule
