@@ -61,7 +61,7 @@ module assembly_testbench();
         
         // Test AUIPC
         wait_for_reg_to_equal(17, 32'd1);       // Run the simulation until the flag is set to 1
-        check_reg(1, 32'h4000100c, 1);               // Verify that x1 contains 2      
+        check_reg(1, 32'h40001008, 1);               // Verify that x1 contains 2      
         // NOT SURE WHETHER THIS IS SUPPOSED TO BE PC OF INSTRUCTION OR CURRENT PC VAL.
         
                

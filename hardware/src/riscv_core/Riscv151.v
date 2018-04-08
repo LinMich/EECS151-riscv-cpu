@@ -25,8 +25,9 @@ module Riscv151 #(
     wire [31:0] fd_i_reg;
     wire [31:0] fd_rs2_reg;
     wire [31:0] fd_rs1_reg;
-    wire [31:0] fd_inst_reg;
+    reg [31:0] fd_inst_reg;
     wire [4:0] fd_rd_reg;
+    wire [31:0] fd_bios_read_reg;
     
     // execute stage inputs
     reg [31:0] ex_j_reg;
@@ -66,8 +67,8 @@ module Riscv151 #(
     wire [2:0] ex_fnc3_reg;
     wire [1:0] ex_wbsel_reg;
     wire ex_regwe_reg;
-    wire [1:0] ex_fwd_rs1;
-    wire [1:0] ex_fwd_rs2;
+    wire [2:0] ex_fwd_rs1;
+    wire [2:0] ex_fwd_rs2;
     
     // mem/writeback stage inputs
     reg [31:0] mwb_aluout_reg;
@@ -86,7 +87,10 @@ module Riscv151 #(
     wire [31:0] mwb_data_mem_reader_out; // might not even need this... pretty sure we do
     reg [31:0] mwb_regfile_input_data;
     
-
+    // weird limbo signals that are delayed from MEM/WB
+    reg [31:0] older_regfile_in_data;
+    reg [4:0] older_mwb_rd;
+    reg older_regwe;
     
     
     //--------------------------------------------------------------
@@ -220,11 +224,6 @@ module Riscv151 #(
     
     
     //--------------------------------------------------------------
-    
-    
-    
-
-
 
     // Instantiate your memories here
     // You should tie the ena, enb inputs of your memories to 1'b1
@@ -235,7 +234,7 @@ module Riscv151 #(
         .clka(clk),  
         .clkb(clk),  
         .addra(pc_reg[13:2]),     //12-bit, from I stage
-        .douta(fd_inst_reg),           //32-bit, to mux to I stage (instruction)
+        .douta(fd_bios_read_reg),           //32-bit, to mux to I stage (instruction)
         .addrb(),       //12-bit, from datapath
         .doutb()          //32-bit, to mux to M stage ("dataout from mem")   
     );
@@ -323,8 +322,10 @@ module Riscv151 #(
     haz_unit hazard_unit (
         .alu_in_rs1(ex_inst_reg[19:15]),
         .alu_in_rs2(ex_inst_reg[24:20]),
-        .prev_rd(mwb_rd_reg),
-        .prev_opcode(mwb_opcode_reg),
+        .old_rd(mwb_rd_reg),
+        .older_rd(older_mwb_rd),
+        .older_regwe(older_regwe),
+        .old_opcode(mwb_opcode_reg),
         .fwd_rs1(ex_fwd_rs1), //output
         .fwd_rs2(ex_fwd_rs2) //output
     );
@@ -332,6 +333,8 @@ module Riscv151 #(
     always @(posedge clk) begin
         if (rst) begin
             pc_reg <= 'h40000000; // interprets as 32 bits
+            
+            fd_inst_reg <= 0;
             
             ex_j_reg <= 0;
             ex_b_reg <= 0;
@@ -362,10 +365,14 @@ module Riscv151 #(
             mwb_opcode_reg <= 0;
             
             mwb_regfile_input_data <= 0;
+            
+            older_regfile_in_data <= 0;
+            older_mwb_rd <= 0;
+            older_regwe <= 0;
         end
         else begin
             if (ex_take_or_inc) begin
-                if (!ex_brjmp_jalr) pc_reg <= ex_aluout_reg;
+                if (ex_brjmp_jalr) pc_reg <= ex_aluout_reg;
                 else pc_reg <= (ex_b_jmp_targ) ? (ex_pc_reg + ex_j_reg) : (ex_pc_reg + ex_b_reg);
             end
             else pc_reg <= pc_reg + 4;
@@ -394,6 +401,13 @@ module Riscv151 #(
             mwb_rd_reg <= ex_rd_reg;
             mwb_u_reg <= ex_u_reg;
             mwb_opcode_reg <= ex_inst_reg[6:0];
+            
+	    // MWB to OLDER
+            older_regfile_in_data <= mwb_regfile_input_data;
+            older_mwb_rd <= mwb_rd_reg;
+            older_regwe <= mwb_regwe_reg;
+
+
 
             mwb_reset_counters <= ex_reset_counters;
             mwb_use_cycle_counter_reg_data <= ex_use_cycle_counter_reg_data;
@@ -406,9 +420,12 @@ module Riscv151 #(
     end
     
     always @(*) begin
+        if (ex_take_or_inc) fd_inst_reg = 'h00000000;
+        else fd_inst_reg = fd_bios_read_reg;
+    
         // input to regfile writing.
         case (mwb_wbsel_reg)
-        2'b00: mwb_regfile_input_data = ex_pc_reg;
+        2'b00: mwb_regfile_input_data = ex_pc_reg - 4;
         2'b01: mwb_regfile_input_data = mwb_aluout_reg;
         2'b10: mwb_regfile_input_data = mwb_regfile_input_data_mux_out;
         2'b11: mwb_regfile_input_data = mwb_u_reg;
@@ -420,18 +437,22 @@ module Riscv151 #(
         
         // handles data forwarding to input a of ALU
         case (ex_fwd_rs1)
-        2'b00: ex_rs1_after_fwd_reg = ex_rs1_reg;
-        2'b01: ex_rs1_after_fwd_reg = mwb_u_reg;
-        2'b10: ex_rs1_after_fwd_reg = mwb_aluout_reg;
-        2'b11: ex_rs1_after_fwd_reg = mwb_data_mem_reader_out;
+        3'b000: ex_rs1_after_fwd_reg = ex_rs1_reg;
+        3'b001: ex_rs1_after_fwd_reg = mwb_u_reg;
+        3'b010: ex_rs1_after_fwd_reg = mwb_aluout_reg;
+        3'b011: ex_rs1_after_fwd_reg = mwb_data_mem_reader_out;
+        3'b100: ex_rs1_after_fwd_reg = older_regfile_in_data;
+        default: ex_rs1_after_fwd_reg = ex_rs1_reg;
         endcase
 
         // handles data forwarding to input b of ALU
         case (ex_fwd_rs2)
-        2'b00: ex_rs2_after_fwd_reg = ex_rs2_reg;
-        2'b01: ex_rs2_after_fwd_reg = mwb_u_reg;
-        2'b10: ex_rs2_after_fwd_reg = mwb_aluout_reg;
-        2'b11: ex_rs2_after_fwd_reg = mwb_data_mem_reader_out;
+        3'b000: ex_rs2_after_fwd_reg = ex_rs2_reg;
+        3'b001: ex_rs2_after_fwd_reg = mwb_u_reg;
+        3'b010: ex_rs2_after_fwd_reg = mwb_aluout_reg;
+        3'b011: ex_rs2_after_fwd_reg = mwb_data_mem_reader_out;
+        3'b100: ex_rs2_after_fwd_reg = older_regfile_in_data;
+        default: ex_rs2_after_fwd_reg = ex_rs2_reg;
         endcase
 
         
@@ -444,7 +465,7 @@ module Riscv151 #(
         
         // input b to ALU
         case (ex_op2)
-        2'b00: ex_alu_mux_2 = ex_pc_reg;
+        2'b00: ex_alu_mux_2 = ex_pc_reg - 4;
         2'b01: ex_alu_mux_2 = ex_s_reg;
         2'b10: ex_alu_mux_2 = ex_i_reg;
         2'b11: ex_alu_mux_2 = ex_rs2_after_fwd_reg;
