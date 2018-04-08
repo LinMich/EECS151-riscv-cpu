@@ -92,6 +92,8 @@ module Riscv151 #(
     reg [4:0] older_mwb_rd;
     reg older_regwe;
     
+    // misc
+    reg [31:0] sum_for_jalr;
     
     //--------------------------------------------------------------
     
@@ -369,10 +371,12 @@ module Riscv151 #(
             older_regfile_in_data <= 0;
             older_mwb_rd <= 0;
             older_regwe <= 0;
+            
+            sum_for_jalr <= 0;
         end
         else begin
             if (ex_take_or_inc) begin
-                if (ex_brjmp_jalr) pc_reg <= ex_aluout_reg;
+                if (ex_brjmp_jalr) pc_reg <= ((ex_pc_reg) + ex_aluout_reg); // jalr
                 else pc_reg <= (ex_b_jmp_targ) ? (ex_pc_reg + ex_j_reg) : (ex_pc_reg + ex_b_reg);
             end
             else pc_reg <= pc_reg + 4;
@@ -422,6 +426,8 @@ module Riscv151 #(
     always @(*) begin
         if (ex_take_or_inc) fd_inst_reg = 'h00000000;
         else fd_inst_reg = fd_bios_read_reg;
+        
+        sum_for_jalr = ((ex_pc_reg - 4) + ex_aluout_reg);
     
         // input to regfile writing.
         case (mwb_wbsel_reg)
