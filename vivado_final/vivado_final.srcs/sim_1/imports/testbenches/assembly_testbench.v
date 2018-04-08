@@ -78,7 +78,7 @@ module assembly_testbench();
         // Test I-type: 
         // Test JALR
         wait_for_reg_to_equal(19, 32'd1);       // Run the simulation until the flag is set to 1
-        check_reg(1, 32'd0, 1);               // Verify that x1 contains 0
+        check_reg(11, 32'd10, 1);               // Verify that x11 contains 10
         
 //        // Test LB
 //        wait_for_reg_to_equal(20, 32'd1);       // Run the simulation until the flag is set to 1
@@ -141,36 +141,30 @@ module assembly_testbench();
         
         
                 
-//        // Test B-type:    
-//        // Test BEQ
-//        wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
-//        check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
-//        check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+        // Test B-type:    
+        // Test BEQ
+        wait_for_reg_to_equal(13, 32'd1);       // Run the simulation until the flag is set to 2
+        check_reg(1, 32'd6, 1);               // Verify that x1 contains 500
         
-//        // Test BNE
-//        wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
-//        check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
-//        check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+        // Test BNE
+        wait_for_reg_to_equal(14, 32'd1);       // Run the simulation until the flag is set to 2
+        check_reg(1, 32'd3, 1);               // Verify that x1 contains 500
         
-//        // Test BLT
-//        wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
-//        check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
-//        check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+        // Test BLT
+        wait_for_reg_to_equal(15, 32'd1);       // Run the simulation until the flag is set to 2
+        check_reg(1, 32'd5, 1);               // Verify that x1 contains 500
         
-//        // Test BGE
-//        wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
-//        check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
-//        check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+        // Test BGE
+        wait_for_reg_to_equal(16, 32'd1);       // Run the simulation until the flag is set to 2
+        check_reg(1, 32'd7, 1);               // Verify that x1 contains 500
 
-//        // Test BLTU
-//        wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
-//        check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
-//        check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+        // Test BLTU
+        wait_for_reg_to_equal(17, 32'd1);       // Run the simulation until the flag is set to 2
+        check_reg(1, 32'd3, 1);               // Verify that x1 contains 500
 
-//        // Test BGEU
-//        wait_for_reg_to_equal(20, 32'd2);       // Run the simulation until the flag is set to 2
-//        check_reg(1, 32'd500, 2);               // Verify that x1 contains 500
-//        check_reg(2, 32'd100, 3);               // Verify that x2 contains 100
+        // Test BGEU
+        wait_for_reg_to_equal(18, 32'd1);       // Run the simulation until the flag is set to 2
+        check_reg(1, 32'd5, 1);               // Verify that x1 contains 500
 
 
 //        // Test S-type:    

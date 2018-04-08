@@ -37,10 +37,14 @@ li x18, 1
 
 # Test I-type:
 # Test JALR 
-li x10, 5		# Load argument 1 (rs1)
-jalr x0, x10, 0	# Execute the instruction being tested
+li x10, 4		# Load argument 1 (rs1)
+jalr x1, x10, 8	# Execute the instruction being tested
+li x11, 8
 li x19, 1		# Set the flag register to stop execution and inspect the result register
 			# Now we check that x1 contains 0
+li x11, 9
+li x11, 10
+li x19, 1
 
 # Test LB 
 #li x10, 200		# Load argument 1 (rs1)
@@ -143,46 +147,82 @@ li x29, 1		# Set the flag register to stop execution and inspect the result regi
 
 
 
-# # Test B-type:
-# # Test BEQ 
-# li x10, 100		# Load argument 1 (rs1)
-# li x11, 200		# Load argument 2 (rs2)
-# beq x1, x10, x11	# Execute the instruction being tested
-# li x20, 1		# Set the flag register to stop execution and inspect the result register
-# 			# Now we check that x1 contains 300
+# Test B-type:
+# Test BEQ
+li x13, 0 
+li x10, 100		# Load argument 1 (rs1)
+li x11, 200		# Load argument 2 (rs2)
+beq x10, x11, BeqBad	# Execute the instruction being tested
+li x1, 6
+li x13, 1		# Set the flag register to stop execution and inspect the result register
 
-# # Test BNE 
-# li x10, 200		# Load argument 1 (rs1)
-# li x11, 100		# Load argument 2 (rs2)
-# bne x1, x10, x11	# Execute the instruction being tested
-# li x20, 1		# Set the flag register to stop execution and inspect the result register
-# 			# Now we check that x1 contains 100
+BeqBad:
+li x1, 7			# Now we check that x1 contains 7
+li x13, 1
 
-# # Test BLT 
-# li x10, 100		# Load argument 1 (rs1)
-# li x11, 200		# Load argument 2 (rs2)
-# blt x1, x10, x11	# Execute the instruction being tested
-# li x20, 1		# Set the flag register to stop execution and inspect the result register
-# 			# Now we check that x1 contains 300
+# Test BNE
+li x14, 0 
+li x10, 200		# Load argument 1 (rs1)
+li x11, 100		# Load argument 2 (rs2)
+bne x10, x11, BneGood	# Execute the instruction being tested
+li x1, 2
+li x14, 1		# Set the flag register to stop execution and inspect the result register
+			# Now we check that x1 contains 100
+BneGood:
+li x1, 3
+li x14, 1
 
-# # Test BGE 
-# li x10, 200		# Load argument 1 (rs1)
-# li x11, 100		# Load argument 2 (rs2)
-# bge x1, x10, x11	# Execute the instruction being tested
-# li x20, 1		# Set the flag register to stop execution and inspect the result register
-# 			# Now we check that x1 contains 100
+# Test BLT 
+li x15, 0 
+li x10, 100		# Load argument 1 (rs1)
+li x11, 200		# Load argument 2 (rs2)
+blt x10, x11, BltGood	# Execute the instruction being tested
+li x1, 4
+li x15, 1		# Set the flag register to stop execution and inspect the result register
+
+BltGood:
+li x1, 5
+li x15, 1
+			# Now we check that x1 contains 300
+
+# Test BGE 
+li x16, 0 
+li x10, 200		# Load argument 1 (rs1)
+li x11, -100		# Load argument 2 (rs2)
+bge x10, x11, BgeGood	# Execute the instruction being tested
+li x1, 6
+li x16, 1		# Set the flag register to stop execution and inspect the result register
+
+BgeGood:
+li x1, 7
+li x16, 1
+			# Now we check that x1 contains 100
 			
-# # Test BLTU 
-# li x10, 2		# Load argument 1 (rs1)
-# bltu x1, x10, 0x1	# Execute the instruction being tested
-# li x20, 1		# Set the flag register to stop execution and inspect the result register
-# 			# Now we check that x1 contains 4
+# Test BLTU 
+li x17, 0 
+li x10, 2		# Load argument 1 (rs1)
+li x11, -2
+bltu x10, x11, BltuGood	# Execute the instruction being tested
+li x1, 2
+li x17, 1		# Set the flag register to stop execution and inspect the result register
+
+BltuGood:
+li x1, 3
+li x17, 1
+			# Now we check that x1 contains 4
 			
-# # Test BGEU 
-# li x10, 4		# Load argument 1 (rs1)
-# bgeu x1, x10, 0x1	# Execute the instruction being tested
-# li x20, 1		# Set the flag register to stop execution and inspect the result register
-# 			# Now we check that x1 contains 2
+# Test BGEU 
+li x18, 0 
+li x10, -4		# Load argument 1 (rs1)
+li x11, 4
+bgeu x10, x11, BgeuGood	# Execute the instruction being tested
+li x1, 4
+li x18, 1		# Set the flag register to stop execution and inspect the result register
+
+BgeuGood:
+li x1, 5
+li x18, 1
+			# Now we check that x1 contains 2
 
 
 
