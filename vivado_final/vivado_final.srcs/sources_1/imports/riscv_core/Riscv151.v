@@ -218,7 +218,7 @@ module Riscv151 #(
         end
         else begin
             if (ex_take_or_inc) begin
-                if (!ex_brjmp_jalr) pc_reg <= ex_aluout_reg;
+                if (ex_brjmp_jalr) pc_reg <= ex_aluout_reg; // jalr
                 else pc_reg <= (ex_b_jmp_targ) ? (ex_pc_reg + ex_j_reg) : (ex_pc_reg + ex_b_reg);
             end
             else pc_reg <= pc_reg + 4;
