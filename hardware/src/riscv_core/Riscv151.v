@@ -53,7 +53,10 @@ module Riscv151 #(
     wire ex_fnc1;
     wire ex_brjmp_jalr;
     wire ex_b_jmp_targ;  
-    
+
+    wire [6:0] ex_opcode;
+    assign ex_opcode = ex_inst_reg[6:0];
+
     // execute stage outputs
     // rd carries through from input reg
     wire [31:0] ex_aluout_reg;
@@ -83,6 +86,146 @@ module Riscv151 #(
     wire [31:0] mwb_data_mem_reader_out; // might not even need this... pretty sure we do
     reg [31:0] mwb_regfile_input_data;
     
+
+    
+    
+    //--------------------------------------------------------------
+    
+    // Memory-mapped IO UART
+    reg [31:0] cycle_counter;
+    reg [31:0] instr_counter;
+    
+    
+    reg ex_reset_counters;
+    reg ex_use_cycle_counter_reg_data;
+    reg ex_use_instr_counter_reg_data;
+    reg ex_UART_transmitter_write;
+    reg ex_UART_control_read;
+    reg ex_UART_receiver_data;
+    wire ex_MemtoReg;
+    assign ex_MemtoReg = ex_opcode == `OPC_LOAD;
+    
+    
+    reg mwb_reset_counters;
+    reg mwb_use_cycle_counter_reg_data;
+    reg mwb_use_instr_counter_reg_data;
+    reg mwb_UART_control_read;
+    reg mwb_UART_receiver_data;
+    reg mwb_MemtoReg;
+    reg[31:0] mwb_regfile_input_data_mux_out;
+    
+    
+    
+    wire stall;
+    assign stall = ex_take_or_inc;
+
+    // UART 
+    wire UART_data_out;
+    wire UART_data_in_ready;
+    wire UART_data_out_valid;
+    
+
+
+    always @ (posedge clk) begin
+        if (rst || mwb_reset_counters) begin
+            instr_counter <= 0;
+        end else if (!stall) begin
+            instr_counter <= instr_counter + 1;
+        end
+
+        if (rst || mwb_reset_counters) begin
+            cycle_counter <= 0;
+        end else begin
+            cycle_counter <= cycle_counter + 1;
+        end
+    end 
+    
+    always @(*) begin
+        ex_UART_transmitter_write = 1'b0;
+        ex_reset_counters = 1'b0;
+        
+        ex_UART_control_read = 1'b0;
+        ex_UART_receiver_data = 1'b0;
+        ex_use_cycle_counter_reg_data = 1'b0;
+        ex_use_instr_counter_reg_data = 1'b0;
+        
+        if (ex_opcode == `OPC_STORE) begin
+            if (ex_aluout_reg == 32'h80000008) begin
+                // UART transmitter data write
+                ex_UART_transmitter_write = 1'b1;
+            end       
+            else if (ex_aluout_reg == 32'h80000018) begin
+                ex_reset_counters = 1'b1;
+            end
+                
+        end
+        else if (ex_opcode == `OPC_LOAD) begin
+            if (ex_aluout_reg == 32'h80000000) begin
+                // UART control read
+                ex_UART_control_read = 1'b1;
+            end
+            else if (ex_aluout_reg == 32'h80000004) begin
+                // UART receiver data
+                ex_UART_receiver_data = 1'b1;
+            end
+            else if (ex_aluout_reg == 32'h80000010) begin
+                ex_use_cycle_counter_reg_data = 1'b1;
+            end
+            else if (ex_aluout_reg == 32'h80000014) begin
+                ex_use_instr_counter_reg_data = 1'b1;
+            end
+        end
+    end
+    
+    always @(*) begin
+        if(mwb_MemtoReg) begin
+            if (mwb_use_cycle_counter_reg_data) begin
+                mwb_regfile_input_data_mux_out = cycle_counter;
+            end
+            else if (mwb_use_instr_counter_reg_data) begin
+                mwb_regfile_input_data_mux_out = instr_counter;
+            end
+            else if (mwb_UART_control_read) begin
+                mwb_regfile_input_data_mux_out = {30'd0, UART_data_out_valid, UART_data_in_ready};
+            end
+            else if (mwb_UART_receiver_data) begin
+                mwb_regfile_input_data_mux_out = {24'd0, UART_data_out};
+            end
+            else begin
+                mwb_regfile_input_data_mux_out = mwb_data_mem_reader_out;
+            end
+        end
+        else begin
+            // need something here?
+        end
+    end  
+    
+    
+    // On-chip UART
+    uart #(
+        .CLOCK_FREQ(CPU_CLOCK_FREQ)
+    ) on_chip_uart (
+        .clk(clk),
+        .reset(rst),
+        .data_in(), //NEEDS CONNECTING
+        .data_in_valid(ex_UART_transmitter_write && !stall),
+        .data_out_ready(mwb_UART_receiver_data && !stall),
+        .serial_in(FPGA_SERIAL_RX),
+
+        .data_in_ready(UART_data_in_ready),
+        .data_out(UART_data_out),
+        .data_out_valid(UART_data_out_valid),
+        .serial_out(FPGA_SERIAL_TX)
+    );
+    
+    
+    //--------------------------------------------------------------
+    
+    
+    
+
+
+
     // Instantiate your memories here
     // You should tie the ena, enb inputs of your memories to 1'b1
     // They are just like power switches for your block RAMs
@@ -251,6 +394,14 @@ module Riscv151 #(
             mwb_rd_reg <= ex_rd_reg;
             mwb_u_reg <= ex_u_reg;
             mwb_opcode_reg <= ex_inst_reg[6:0];
+
+            mwb_reset_counters <= ex_reset_counters;
+            mwb_use_cycle_counter_reg_data <= ex_use_cycle_counter_reg_data;
+            mwb_use_instr_counter_reg_data <= ex_use_instr_counter_reg_data;
+            mwb_UART_control_read <= ex_UART_control_read;
+            mwb_UART_receiver_data <= ex_UART_receiver_data;
+            
+            mwb_MemtoReg <= ex_MemtoReg;
         end
     end
     
@@ -259,7 +410,7 @@ module Riscv151 #(
         case (mwb_wbsel_reg)
         2'b00: mwb_regfile_input_data = ex_pc_reg;
         2'b01: mwb_regfile_input_data = mwb_aluout_reg;
-        2'b10: mwb_regfile_input_data = mwb_data_mem_reader_out;
+        2'b10: mwb_regfile_input_data = mwb_regfile_input_data_mux_out;
         2'b11: mwb_regfile_input_data = mwb_u_reg;
         default: mwb_regfile_input_data = 32'bx;
         endcase
@@ -301,20 +452,4 @@ module Riscv151 #(
         endcase
     end
 
-    // On-chip UART
-//    uart #(
-//        .CLOCK_FREQ(CPU_CLOCK_FREQ)
-//    ) on_chip_uart (
-//        .clk(clk),
-//        .reset(rst),
-//        .data_in(),
-//        .data_in_valid(),
-//        .data_out_ready(),
-//        .serial_in(FPGA_SERIAL_RX),
-
-//        .data_in_ready(),
-//        .data_out(),
-//        .data_out_valid(),
-//        .serial_out(FPGA_SERIAL_TX)
-//    );
 endmodule
