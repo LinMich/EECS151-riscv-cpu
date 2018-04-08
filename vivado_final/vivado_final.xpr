@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="35" Path="/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.xpr">
+<Project Version="7" Minor="35" Path="/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="dbd10fecf0de4dce99bcb9cd80cc23cf"/>
@@ -134,7 +134,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../hardware/src/z1top.v">
+      <File Path="$PPRDIR/../hardware/src/riscv_core/Riscv151.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -209,15 +209,6 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/imports/riscv_core/Riscv151.v">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../hardware/src/riscv_core/Riscv151.v"/>
-          <Attr Name="ImportTime" Val="1522890461"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/imports/audio/i2s_controller.v">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PPRDIR/../hardware/src/audio/i2s_controller.v"/>
@@ -235,13 +226,6 @@
         </FileInfo>
       </File>
       <File Path="$PPRDIR/../hardware/src/riscv_core/ALU.v">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../hardware/src/riscv_core/Riscv151.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -596,9 +580,7 @@
     </Run>
     <Run Id="bios_mem_synth_1" Type="Ft3:Synth" SrcSet="bios_mem" Part="xc7z020clg400-1" ConstrsSet="bios_mem" Description="Vivado Synthesis Defaults" WriteIncrSynthDcp="false" Dir="$PRUNDIR/bios_mem_synth_1" IncludeInArchive="true">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2017">
-          <Desc>Vivado Synthesis Defaults</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2017"/>
         <Step Id="synth_design"/>
       </Strategy>
       <GeneratedRun Dir="$PRUNDIR" File="gen_run.xml"/>
@@ -655,9 +637,7 @@
     </Run>
     <Run Id="bios_mem_impl_1" Type="Ft2:EntireDesign" Part="xc7z020clg400-1" ConstrsSet="bios_mem" Description="Default settings for Implementation." WriteIncrSynthDcp="false" SynthRun="bios_mem_synth_1" IncludeInArchive="false">
       <Strategy Version="1" Minor="2">
-        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2017">
-          <Desc>Default settings for Implementation.</Desc>
-        </StratHandle>
+        <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2017"/>
         <Step Id="init_design"/>
         <Step Id="opt_design"/>
         <Step Id="power_opt_design"/>
