@@ -213,7 +213,7 @@ module Riscv151 #(
     ) on_chip_uart (
         .clk(clk),
         .reset(rst),
-        .data_in(), //NEEDS CONNECTING
+        .data_in(mwb_regfile_input_data[7:0]), //NEEDS MODIFYING
         .data_in_valid(ex_UART_transmitter_write && !stall),
         .data_out_ready(mwb_UART_receiver_data && !stall),
         .serial_in(FPGA_SERIAL_RX),
