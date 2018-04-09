@@ -83,7 +83,7 @@ module Riscv151 #(
     reg [6:0] mwb_opcode_reg;
     
     // mem/writeback stage wires
-    wire [31:0] mwb_dat_mem_to_reader;
+    wire [31:0] mwb_data_out_dmem;
     wire [31:0] mwb_data_mem_reader_out; // might not even need this... pretty sure we do
     reg [31:0] mwb_regfile_input_data;
     
@@ -92,8 +92,6 @@ module Riscv151 #(
     reg [4:0] older_mwb_rd;
     reg older_regwe;
     
-    // misc
-    reg [31:0] sum_for_jalr;
     
     //--------------------------------------------------------------
     
@@ -224,6 +222,13 @@ module Riscv151 #(
         .serial_out(FPGA_SERIAL_TX)
     );
     
+    wire [31:0] mwb_data_out_bios;
+    reg [31:0] mwb_data_out_mem;
+    
+
+    wire [31:0] fd_imem_read_reg;
+    reg[31:0] fd_use_instr_or_bios_mem;
+    
     
     //--------------------------------------------------------------
 
@@ -238,7 +243,7 @@ module Riscv151 #(
         .addra(pc_reg[13:2]),     //12-bit, from I stage
         .douta(fd_bios_read_reg),           //32-bit, to mux to I stage (instruction)
         .addrb(),       //12-bit, from datapath
-        .doutb()          //32-bit, to mux to M stage ("dataout from mem")   
+        .doutb(mwb_data_out_bios)          //32-bit, to mux to M stage ("dataout from mem")   
     );
     
     dmem_blk_ram d_mem (
@@ -247,7 +252,7 @@ module Riscv151 #(
         .wea(mwb_wed_reg),
         .addra(mwb_aluout_reg[15:2]),
         .dina(mwb_memwrdat_reg),
-        .douta(mwb_dat_mem_to_reader)
+        .douta(mwb_data_out_dmem)
     );
 
     
@@ -317,7 +322,7 @@ module Riscv151 #(
     mem_read_decoder datamem_read_decoder (
         .fnc(mwb_fnc3_reg),
         .wanted_bytes(mwb_wed_reg),
-        .raw_data(mwb_dat_mem_to_reader),
+        .raw_data(mwb_data_out_mem),
         .data(mwb_data_mem_reader_out) //output
     );
     
@@ -331,6 +336,19 @@ module Riscv151 #(
         .fwd_rs1(ex_fwd_rs1), //output
         .fwd_rs2(ex_fwd_rs2) //output
     );
+    
+    
+    imem_blk_ram IMEM (
+        .clka(clk),  
+        .ena(1'b1),
+        .wea(ex_wei_reg),
+        .addra(mwb_aluout_reg[15:2]),
+        .dina(mwb_memwrdat_reg),
+        .clkb(1'b1),
+        .addrb(pc_reg[15:2]),
+        .doutb(fd_imem_read_reg)          //32-bit, to mux to M stage ("dataout from instr mem")   
+    );    
+    
     
     always @(posedge clk) begin
         if (rst) begin
@@ -372,11 +390,22 @@ module Riscv151 #(
             older_mwb_rd <= 0;
             older_regwe <= 0;
             
-            sum_for_jalr <= 0;
+            
+            
+            
+            
+            mwb_reset_counters <= 0;
+            mwb_use_cycle_counter_reg_data <= 0;
+            mwb_use_instr_counter_reg_data <= 0;
+            mwb_UART_control_read <= 0;
+            mwb_UART_receiver_data <= 0;
+            
+            mwb_MemtoReg <= 0;
+
         end
         else begin
             if (ex_take_or_inc) begin
-                if (ex_brjmp_jalr) pc_reg <= ((ex_pc_reg) + ex_aluout_reg); // jalr
+                if (ex_brjmp_jalr) pc_reg <= ex_aluout_reg;
                 else pc_reg <= (ex_b_jmp_targ) ? (ex_pc_reg + ex_j_reg) : (ex_pc_reg + ex_b_reg);
             end
             else pc_reg <= pc_reg + 4;
@@ -420,14 +449,15 @@ module Riscv151 #(
             mwb_UART_receiver_data <= ex_UART_receiver_data;
             
             mwb_MemtoReg <= ex_MemtoReg;
+
         end
     end
     
     always @(*) begin
-        if (ex_take_or_inc) fd_inst_reg = 'h00000000;
-        else fd_inst_reg = fd_bios_read_reg;
-        
-        sum_for_jalr = ((ex_pc_reg - 4) + ex_aluout_reg);
+        if (ex_take_or_inc) 
+            fd_inst_reg = 'h00000000;
+        else 
+            fd_inst_reg = fd_use_instr_or_bios_mem;
     
         // input to regfile writing.
         case (mwb_wbsel_reg)
@@ -477,6 +507,31 @@ module Riscv151 #(
         2'b11: ex_alu_mux_2 = ex_rs2_after_fwd_reg;
         default: ex_alu_mux_2 = 32'bx;
         endcase
+        
+        
+        
+        
+        
+        
+        
+        
+        // select which memory to use (either imem or bios) for the instr decoder
+        case (pc_reg[31:28])
+        4'b0001: fd_use_instr_or_bios_mem = fd_imem_read_reg;
+        4'b0100: fd_use_instr_or_bios_mem = fd_bios_read_reg;
+        default: fd_use_instr_or_bios_mem = 32'bx;
+        endcase
+        
+
+        // select which memory to use (either bios or dmem) for the data decoder
+        case (ex_aluout_reg[31:28])
+        4'b00x1: mwb_data_out_mem = mwb_data_out_dmem;
+        4'b0100: mwb_data_out_mem = mwb_data_out_bios;
+        default: mwb_data_out_mem = 32'bx;
+        endcase
+          
+        
+        
     end
 
 endmodule
