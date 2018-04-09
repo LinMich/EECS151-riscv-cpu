@@ -128,7 +128,8 @@ module Riscv151 #(
     wire UART_data_in_ready;
     wire UART_data_out_valid;
     
-
+    wire [31:0] forward_rs2_or_reg_wd;
+    assign forward_rs2_or_reg_wd = (ex_fwd_rs2) ? mwb_regfile_input_data_mux_out : ex_rs2_after_fwd_reg;
 
     always @ (posedge clk) begin
         if (rst || mwb_reset_counters) begin
@@ -211,7 +212,7 @@ module Riscv151 #(
     ) on_chip_uart (
         .clk(clk),
         .reset(rst),
-        .data_in(mwb_regfile_input_data[7:0]), //NEEDS MODIFYING
+        .data_in(forward_rs2_or_reg_wd[7:0]), //NEEDS MODIFYING ex_rs1_after_fwd_reg mwb_regfile_input_data[7:0]
         .data_in_valid(ex_UART_transmitter_write && !stall),
         .data_out_ready(mwb_UART_receiver_data && !stall),
         .serial_in(FPGA_SERIAL_RX),
