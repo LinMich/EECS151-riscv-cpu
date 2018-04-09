@@ -7,13 +7,17 @@ module synchronizer #(parameter width = 1) (
     // This module takes in a vector of 1-bit asynchronous (from different clock domain or not clocked) signals
     // and should output a vector of 1-bit synchronous signals that are synchronized to the input clk
 
-    // Remove this line once you create your synchronizer
-    //assign sync_signal = 0;
-    reg [width-1:0] sync1;
-    reg [width-1:0] sync2;
-    assign sync_signal = sync2;
-    always @ (posedge clk) begin
-        sync1 <= async_signal;
-        sync2 <= sync1;
+    reg [width-1:0] s1;
+    reg [width-1:0] s2;
+    
+    initial begin
+        s1 = 0;
+        s2 = 0;
+    end
+    
+    assign sync_signal = s2;
+    always @(posedge clk) begin
+        s1 <= async_signal;
+        s2 <= s1;
     end
 endmodule
