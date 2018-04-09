@@ -110,7 +110,7 @@ module control_unit (
             alu_func3_reg = `FNC_ADD_SUB;
             alu_func1_reg = `FNC2_ADD;
             reg_we_reg = 1'b0;
-            load_funct_reg = 3'b000;
+            load_funct_reg = instruction[14:12];
         end
         `OPC_LOAD: begin
             op1_sel_reg = 2'b01;
