@@ -3,42 +3,36 @@
 module haz_unit (
     input [4:0] alu_in_rs1,
     input [4:0] alu_in_rs2,
-    input [4:0] prev_rd,
-    input [6:0] prev_opcode,
+    input [4:0] old_rd,
+    input [4:0] older_rd,
+    input older_regwe,
+    input [6:0] old_opcode,
     
-    output [1:0] fwd_rs1,
-    output [1:0] fwd_rs2
+    output [2:0] fwd_rs1,
+    output [2:0] fwd_rs2
 );
 
-    reg [1:0] fwd_rs1_pass;
-    reg [1:0] fwd_rs2_pass;
+    reg [2:0] fwd_rs1_pass;
+    reg [2:0] fwd_rs2_pass;
     
     assign fwd_rs1 = fwd_rs1_pass;
     assign fwd_rs2 = fwd_rs2_pass;
     
     always @(*) begin
-        if (alu_in_rs1 == prev_rd) begin
-            fwd_rs2_pass = 2'b00;
-            if (prev_opcode == `OPC_LUI) fwd_rs1_pass = 2'b01;
-            else if (prev_opcode == `OPC_STORE) fwd_rs1_pass = 2'b11;
-            else fwd_rs1_pass = 2'b10;
-        end 
-        else if (alu_in_rs2 == prev_rd) begin
-            fwd_rs1_pass = 0;
-            if (prev_opcode == `OPC_LUI) fwd_rs2_pass = 2'b01;
-            else if (prev_opcode == `OPC_STORE) fwd_rs2_pass = 2'b11;
-            else fwd_rs2_pass = 2'b10;
-        end 
-        else begin
-            fwd_rs1_pass = 0;
-            fwd_rs2_pass = 0;
-        end
+        if (alu_in_rs1 == old_rd) begin
+            if (old_opcode == `OPC_LUI) fwd_rs1_pass = 3'b001;
+            else if (old_opcode == `OPC_STORE) fwd_rs1_pass = 3'b011;
+            else fwd_rs1_pass = 3'b010;
+        end else if (alu_in_rs1 == older_rd && older_regwe) fwd_rs1_pass = 3'b100; // forward bc the regfile is sync write
+        else fwd_rs1_pass = 3'b000;
         
-        // used for selecting whether to forward the output of the prev
-        // cycle's ALU, imm for LUI inst, or result of load from memory
-//        if (prev_opcode == `OPC_LUI) lui_alu_load_pass = 2'b10;
-//        else if (prev_opcode == `OPC_STORE) lui_alu_load_pass = 2'b01;
-//        else lui_alu_load_pass = 2'b00;
+        if (alu_in_rs2 == old_rd) begin
+            if (old_opcode == `OPC_LUI) fwd_rs2_pass = 3'b001;
+            else if (old_opcode == `OPC_STORE) fwd_rs2_pass = 3'b011;
+            else fwd_rs2_pass = 3'b010;
+        end else if (alu_in_rs2 == older_rd && older_regwe) fwd_rs2_pass = 3'b100; // forward bc the regfile is sync write
+        else fwd_rs2_pass = 3'b000;
+     
     end
 
 endmodule

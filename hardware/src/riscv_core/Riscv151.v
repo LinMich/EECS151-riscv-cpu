@@ -11,6 +11,7 @@ module Riscv151 #(
 
     /* REGISTERS AND WIRES */
     reg [31:0] pc_reg;
+    reg [31:0] fwd_pc;
     
     // fetch/decode wires
     //wire [31:0] fd_inst;
@@ -69,6 +70,7 @@ module Riscv151 #(
     wire ex_regwe_reg;
     wire [2:0] ex_fwd_rs1;
     wire [2:0] ex_fwd_rs2;
+    wire [2:0] ex_load_funct;
     
     // mem/writeback stage inputs
     reg [31:0] mwb_aluout_reg;
@@ -81,6 +83,7 @@ module Riscv151 #(
     reg [4:0] mwb_rd_reg;
     reg [31:0] mwb_u_reg;
     reg [6:0] mwb_opcode_reg;
+    reg [2:0] mwb_load_funct;
     
     // mem/writeback stage wires
     wire [31:0] mwb_dat_mem_to_reader;
@@ -235,7 +238,7 @@ module Riscv151 #(
         .enb(1'b1),
         .clka(clk),  
         .clkb(clk),  
-        .addra(pc_reg[13:2]),     //12-bit, from I stage
+        .addra(fwd_pc[13:2]),     //12-bit, from I stage
         .douta(fd_bios_read_reg),           //32-bit, to mux to I stage (instruction)
         .addrb(),       //12-bit, from datapath
         .doutb()          //32-bit, to mux to M stage ("dataout from mem")   
@@ -244,9 +247,9 @@ module Riscv151 #(
     dmem_blk_ram d_mem (
         .clka(clk),
         .ena(1'b1),
-        .wea(mwb_wed_reg),
-        .addra(mwb_aluout_reg[15:2]),
-        .dina(mwb_memwrdat_reg),
+        .wea(ex_wed_reg),
+        .addra(ex_aluout_reg[15:2]),
+        .dina(ex_memwrdat_reg),
         .douta(mwb_dat_mem_to_reader)
     );
 
@@ -278,7 +281,8 @@ module Riscv151 #(
         .take_brjmpjalr_inc(ex_take_or_inc),
         .alu_func3(ex_fnc3_reg),
         .alu_func1(ex_fnc1),
-        .reg_we(ex_regwe_reg)
+        .reg_we(ex_regwe_reg),
+        .load_funct(ex_load_funct)
     );
     
     instruction_decoder decoder (
@@ -308,14 +312,14 @@ module Riscv151 #(
         .opcode(ex_inst_reg[6:0]),
         .fnc(ex_fnc3_reg),
         .addr(ex_aluout_reg),
-        .write_data(ex_rs1_after_fwd_reg),
+        .write_data(ex_rs2_after_fwd_reg),
         .fmt_wr_data(ex_memwrdat_reg), //output
         .we_data(ex_wed_reg), //output
         .we_inst(ex_wei_reg) //ouput
     );
     
     mem_read_decoder datamem_read_decoder (
-        .fnc(mwb_fnc3_reg),
+        .fnc(mwb_load_funct),
         .wanted_bytes(mwb_wed_reg),
         .raw_data(mwb_dat_mem_to_reader),
         .data(mwb_data_mem_reader_out) //output
@@ -334,7 +338,8 @@ module Riscv151 #(
     
     always @(posedge clk) begin
         if (rst) begin
-            pc_reg <= 'h40000000; // interprets as 32 bits
+            pc_reg <= 'h3ffffffc; // interprets as 32 bits // hacky boi
+            fwd_pc <= 'h40000000;
             
             fd_inst_reg <= 0;
             
@@ -365,6 +370,7 @@ module Riscv151 #(
             mwb_rd_reg <= 0;
             mwb_u_reg <= 0;
             mwb_opcode_reg <= 0;
+            mwb_load_funct <= 0;
             
             mwb_regfile_input_data <= 0;
             
@@ -375,12 +381,13 @@ module Riscv151 #(
             sum_for_jalr <= 0;
         end
         else begin
-            if (ex_take_or_inc) begin
-                if (ex_brjmp_jalr) pc_reg <= ((ex_pc_reg) + ex_aluout_reg); // jalr
-                else pc_reg <= (ex_b_jmp_targ) ? (ex_pc_reg + ex_j_reg) : (ex_pc_reg + ex_b_reg);
-            end
-            else pc_reg <= pc_reg + 4;
+//            if (ex_take_or_inc) begin
+//                if (ex_brjmp_jalr) pc_reg <= ((ex_pc_reg - 4) + ex_aluout_reg); // jalr
+//                else pc_reg <= (ex_b_jmp_targ) ? (ex_pc_reg + ex_j_reg) : (ex_pc_reg + ex_b_reg);
+//            end
+//            else pc_reg <= pc_reg + 4;
             // end PC logic section
+            pc_reg <= fwd_pc;
         
             // FD to EX
             ex_j_reg <= fd_j_reg;
@@ -405,6 +412,7 @@ module Riscv151 #(
             mwb_rd_reg <= ex_rd_reg;
             mwb_u_reg <= ex_u_reg;
             mwb_opcode_reg <= ex_inst_reg[6:0];
+            mwb_load_funct <= ex_load_funct;
             
 	    // MWB to OLDER
             older_regfile_in_data <= mwb_regfile_input_data;
@@ -428,10 +436,18 @@ module Riscv151 #(
         else fd_inst_reg = fd_bios_read_reg;
         
         sum_for_jalr = ((ex_pc_reg - 4) + ex_aluout_reg);
+        
+        // fwd_pc logic
+        if (ex_take_or_inc) begin
+            if (ex_brjmp_jalr) fwd_pc = ((ex_pc_reg) + ex_aluout_reg); // jalr
+            else fwd_pc = (ex_b_jmp_targ) ? (ex_pc_reg + ex_j_reg) : (ex_pc_reg + ex_b_reg);
+        end
+        else fwd_pc = pc_reg + 4;
+                    // end PC logic section
     
         // input to regfile writing.
         case (mwb_wbsel_reg)
-        2'b00: mwb_regfile_input_data = ex_pc_reg - 4;
+        2'b00: mwb_regfile_input_data = ex_pc_reg;
         2'b01: mwb_regfile_input_data = mwb_aluout_reg;
         2'b10: mwb_regfile_input_data = mwb_regfile_input_data_mux_out;
         2'b11: mwb_regfile_input_data = mwb_u_reg;
@@ -471,7 +487,7 @@ module Riscv151 #(
         
         // input b to ALU
         case (ex_op2)
-        2'b00: ex_alu_mux_2 = ex_pc_reg - 4;
+        2'b00: ex_alu_mux_2 = ex_pc_reg;
         2'b01: ex_alu_mux_2 = ex_s_reg;
         2'b10: ex_alu_mux_2 = ex_i_reg;
         2'b11: ex_alu_mux_2 = ex_rs2_after_fwd_reg;
