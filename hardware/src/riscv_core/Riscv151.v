@@ -136,7 +136,7 @@ module Riscv151 #(
 //    wire [31:0] forward_rs2_or_reg_wd;
 //    assign forward_rs2_or_reg_wd = (ex_fwd_rs2) ? mwb_regfile_input_data_mux_out : ex_rs2_after_fwd_reg;
 
-    // logic for resetting the counters
+    // logic for resetting the counter
     always @ (posedge clk) begin
         if (rst || ex_reset_counters) begin
             instr_counter <= 0;
@@ -189,7 +189,7 @@ module Riscv151 #(
     end
     
     always @(*) begin
-        if(ex_MemtoReg) begin
+        if(mwb_MemtoReg) begin
             if (mwb_use_cycle_counter_reg_data) begin
                 mwb_regfile_input_data_mux_out = cycle_counter;
             end
@@ -218,9 +218,9 @@ module Riscv151 #(
     ) on_chip_uart (
         .clk(clk),
         .reset(rst),
-        .data_in(ex_rs2_after_fwd_reg[7:0]), //NEEDS MODIFYING ex_rs1_after_fwd_reg mwb_regfile_input_data[7:0]
-        .data_in_valid(ex_UART_transmitter_write && !stall),
-        .data_out_ready(mwb_UART_receiver_data && !stall),
+        .data_in(ex_memwrdat_reg[7:0]), //NEEDS MODIFYING ex_rs1_after_fwd_reg mwb_regfile_input_data[7:0]
+        .data_in_valid(ex_UART_transmitter_write),
+        .data_out_ready(ex_UART_receiver_data),
         .serial_in(FPGA_SERIAL_RX),
 
         .data_in_ready(UART_data_in_ready),
