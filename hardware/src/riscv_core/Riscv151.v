@@ -26,7 +26,7 @@ module Riscv151 #(
     wire [31:0] fd_i_reg;
     wire [31:0] fd_rs2_reg;
     wire [31:0] fd_rs1_reg;
-    reg [31:0] fd_inst_reg;
+    wire [31:0] fd_inst_reg;
     wire [4:0] fd_rd_reg;
     wire [31:0] fd_bios_read_reg;
     
@@ -74,7 +74,7 @@ module Riscv151 #(
     
     // mem/writeback stage inputs
     reg [31:0] mwb_aluout_reg;
-    reg [31:0] mwb_memwrdat_reg;
+//    reg [31:0] mwb_memwrdat_reg;
     reg [3:0] mwb_wed_reg;
     reg [3:0] mwb_wei_reg; 
     reg [2:0] mwb_fnc3_reg;
@@ -205,10 +205,19 @@ module Riscv151 #(
     
     wire [7:0] mwb_uart_read_data;
     
+    wire [31:0] mwb_data_out_bios;
+    reg [31:0] mwb_data_out_mem;
+    
+
+    wire [31:0] fd_imem_read_reg;
+    reg[31:0] fd_use_instr_or_bios_mem;
+    
+    assign fd_inst_reg = (ex_take_or_inc) ? 'h00000000 : fd_use_instr_or_bios_mem;
+    
     UART_controller uart_controller (
         .instruction(ex_inst_reg),
         .address(ex_aluout_reg), // from ALU out
-        .raw_write_data(ex_rs2_after_fwd_reg), // from forwarded rs2
+        .raw_write_data(ex_rs2_after_fwd_reg), // from forwarded rs2 //SOMETHINGS WRONG HERE
             
         // signals from UART for passing control signals
         .data_out_valid(ex_uart_data_out_valid),
@@ -259,15 +268,9 @@ module Riscv151 #(
         end
         else begin
                 // need something here?
+                mwb_regfile_input_data_mux_out = 32'b0;
         end
     end
-    
-    wire [31:0] mwb_data_out_bios;
-    reg [31:0] mwb_data_out_mem;
-    
-
-    wire [31:0] fd_imem_read_reg;
-    reg[31:0] fd_use_instr_or_bios_mem;
     
     
     //--------------------------------------------------------------
@@ -280,7 +283,7 @@ module Riscv151 #(
         .enb(1'b1),
         .clka(clk),  
         .clkb(clk),  
-        .addra(fwd_pc[13:2]),     //12-bit, from I stage
+        .addra(fwd_pc[13:2]),     //12-bit, from I stage //SOMETHINGS WRONG HERE
         .douta(fd_bios_read_reg),           //32-bit, to mux to I stage (instruction)
         .addrb(ex_aluout_reg[13:2]),       //12-bit, from datapath
         .doutb(mwb_data_out_bios)          //32-bit, to mux to M stage ("dataout from mem")   
@@ -309,8 +312,8 @@ module Riscv151 #(
     
     // Construct your datapath, add as many modules as you want
     ALU alu (
-        .ina(ex_alu_mux_1),
-        .inb(ex_alu_mux_2),
+        .ina(ex_alu_mux_1), //SOMETHINGS WRONG HERE
+        .inb(ex_alu_mux_2), //SOMETHINGS WRONG HERE
         .fnc3(ex_fnc3_reg),
         .fnc1(ex_fnc1),
         .result(ex_aluout_reg) //output
@@ -395,9 +398,9 @@ module Riscv151 #(
     always @(posedge clk) begin
         if (rst) begin
             pc_reg <= 'h3ffffffc; // hacky boi
-            fwd_pc <= 'h40000000;
+//            fwd_pc <= 'h40000000;
             
-            fd_inst_reg <= 0;
+//            fd_inst_reg <= 0;
             
             ex_j_reg <= 0;
             ex_b_reg <= 0;
@@ -406,17 +409,17 @@ module Riscv151 #(
             ex_i_reg <= 0;
             ex_rs2_reg <= 0;
             ex_rs1_reg <= 0;
-            ex_rs1_after_fwd_reg <= 0;
-            ex_rs2_after_fwd_reg <= 0;
+//            ex_rs1_after_fwd_reg <= 0;
+//            ex_rs2_after_fwd_reg <= 0;
             ex_inst_reg <= 0;
             ex_rd_reg <= 0;
             ex_pc_reg <= 0;
             
-            ex_alu_mux_1 <= 0;
-            ex_alu_mux_2 <= 0;
+//            ex_alu_mux_1 <= 0;
+//            ex_alu_mux_2 <= 0;
             
             mwb_aluout_reg <= 0;
-            mwb_memwrdat_reg <= 0;
+//            mwb_memwrdat_reg <= 0;
             mwb_wed_reg <= 0;
             mwb_wei_reg <= 0; 
             mwb_fnc3_reg <= 0;
@@ -464,7 +467,7 @@ module Riscv151 #(
         
             // EX to MWB
             mwb_aluout_reg <= ex_aluout_reg;
-            mwb_memwrdat_reg <= ex_memwrdat_reg;
+//            mwb_memwrdat_reg <= ex_memwrdat_reg;
             mwb_wed_reg <= ex_wed_reg;
             mwb_wei_reg <= ex_wei_reg; 
             mwb_fnc3_reg <= ex_fnc3_reg;
@@ -504,9 +507,9 @@ module Riscv151 #(
        endcase
     
         // MUXing in NOP for JAL, JALR, and taken branches
-        if (ex_take_or_inc) 
-            fd_inst_reg = 'h00000000;
-        else fd_inst_reg = fd_use_instr_or_bios_mem;
+//        if (ex_take_or_inc) 
+//            fd_inst_reg = 'h00000000;
+//        else fd_inst_reg = fd_use_instr_or_bios_mem;
 //            fd_inst_reg = fd_use_instr_or_bios_mem;
 //            fd_inst_reg = fd_bios_read_reg
         
