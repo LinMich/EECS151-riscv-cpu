@@ -244,18 +244,32 @@ _start:
 # 			# Now we check that x1 contains 100
 
 # Test SW 
-li x9, 200
-li x10, 268435456		# Load argument 1 (rs1)		# Load argument 2 (rs2)
-sw x9, 120(x10)	# Execute the instruction being tested
-lw x16, 120(x10)	# Execute the instruction being tested
-li x11, 200
-add x2, x11, x16
-li x19, 1		# Set the flag register to stop execution and inspect the result register
-			# Now we check that x1 contains 300
+# li x8, 0x10000000
+# li x10, 0x00100293		# load the instruction for addi x5, x0, 1
+# li x11, 0x20000000		# address for instruction memory
+# sw x10, 0(x11)	# write the instruction to imem
+# jalr x0, x8, 0	# jump to imem
 
+# reseting the counters
+li x11, 0x80000018
+sw x0, 0(x11)
+li x5, 1
 
+# reading the cycle counter
+addi x0, x0, 0
+addi x0, x0, 0
+li x12, 0x80000010
+lw x1, 0(x12)
+li x6, 1
 
+jal x0, Next
+li x7, 1
 
+Next:
+# reading instruction counter
+li x13, 0x80000014
+lw x2, 0(x13)
+li x7, 1
 
 # # Test R-type:
 # # Test ADD 

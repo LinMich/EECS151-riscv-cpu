@@ -133,17 +133,18 @@ module Riscv151 #(
     wire UART_data_in_ready;
     wire UART_data_out_valid;
     
-    wire [31:0] forward_rs2_or_reg_wd;
-    assign forward_rs2_or_reg_wd = (ex_fwd_rs2) ? mwb_regfile_input_data_mux_out : ex_rs2_after_fwd_reg;
+//    wire [31:0] forward_rs2_or_reg_wd;
+//    assign forward_rs2_or_reg_wd = (ex_fwd_rs2) ? mwb_regfile_input_data_mux_out : ex_rs2_after_fwd_reg;
 
+    // logic for resetting the counters
     always @ (posedge clk) begin
-        if (rst || mwb_reset_counters) begin
+        if (rst || ex_reset_counters) begin
             instr_counter <= 0;
         end else if (!stall) begin
             instr_counter <= instr_counter + 1;
-        end
+        end else instr_counter <= instr_counter; // might have broken things
 
-        if (rst || mwb_reset_counters) begin
+        if (rst || ex_reset_counters) begin
             cycle_counter <= 0;
         end else begin
             cycle_counter <= cycle_counter + 1;
@@ -188,7 +189,7 @@ module Riscv151 #(
     end
     
     always @(*) begin
-        if(mwb_MemtoReg) begin
+        if(ex_MemtoReg) begin
             if (mwb_use_cycle_counter_reg_data) begin
                 mwb_regfile_input_data_mux_out = cycle_counter;
             end
@@ -217,7 +218,7 @@ module Riscv151 #(
     ) on_chip_uart (
         .clk(clk),
         .reset(rst),
-        .data_in(forward_rs2_or_reg_wd[7:0]), //NEEDS MODIFYING ex_rs1_after_fwd_reg mwb_regfile_input_data[7:0]
+        .data_in(ex_rs2_after_fwd_reg[7:0]), //NEEDS MODIFYING ex_rs1_after_fwd_reg mwb_regfile_input_data[7:0]
         .data_in_valid(ex_UART_transmitter_write && !stall),
         .data_out_ready(mwb_UART_receiver_data && !stall),
         .serial_in(FPGA_SERIAL_RX),
@@ -268,7 +269,7 @@ module Riscv151 #(
         .addra(ex_aluout_reg[15:2]),
         .dina(ex_memwrdat_reg),
         .clkb(clk),
-        .addrb(pc_reg[15:2]),
+        .addrb(fwd_pc[15:2]),
         .doutb(fd_imem_read_reg)          //32-bit, to mux to M stage ("dataout from instr mem")   
     ); 
 
@@ -331,6 +332,7 @@ module Riscv151 #(
         .opcode(ex_inst_reg[6:0]),
         .fnc(ex_load_funct),
         .addr(ex_aluout_reg),
+        .pc(ex_pc_reg),
         .write_data(ex_rs2_after_fwd_reg),
         .fmt_wr_data(ex_memwrdat_reg), //output
         .we_data(ex_wed_reg), //output
@@ -452,15 +454,23 @@ module Riscv151 #(
     end
     
     always @(*) begin
+       // select which memory to use (either imem or bios) for the instr decoder READING IN FD
+       case (pc_reg[31:28])
+       4'b0001: fd_use_instr_or_bios_mem = fd_imem_read_reg;
+       4'b0100: fd_use_instr_or_bios_mem = fd_bios_read_reg;
+       default: fd_use_instr_or_bios_mem = 32'bx;
+       endcase
+    
         // MUXing in NOP for JAL, JALR, and taken branches
         if (ex_take_or_inc) 
             fd_inst_reg = 'h00000000;
-        else fd_inst_reg = fd_bios_read_reg;
+        else fd_inst_reg = fd_use_instr_or_bios_mem;
 //            fd_inst_reg = fd_use_instr_or_bios_mem;
+//            fd_inst_reg = fd_bios_read_reg
         
         // fwd_pc logic
         if (ex_take_or_inc) begin
-            if (ex_brjmp_jalr) fwd_pc = ((ex_pc_reg) + ex_aluout_reg); // jalr
+            if (ex_brjmp_jalr) fwd_pc = {ex_aluout_reg[31:1], 1'b0}; // jalr
             else fwd_pc = (ex_b_jmp_targ) ? (ex_pc_reg + ex_j_reg) : (ex_pc_reg + ex_b_reg); // jal and branch
         end
         else fwd_pc = pc_reg + 4;
@@ -476,12 +486,7 @@ module Riscv151 #(
         default: mwb_regfile_input_data = 32'bx;
         endcase
         
-        // select which memory to use (either imem or bios) for the instr decoder READING IN FD
-        case (pc_reg[31:28])
-        4'b0001: fd_use_instr_or_bios_mem = fd_imem_read_reg;
-        4'b0100: fd_use_instr_or_bios_mem = fd_bios_read_reg;
-        default: fd_use_instr_or_bios_mem = 32'bx;
-        endcase
+   
 
         // select which memory to use (either bios or dmem) for the data decoder READING IN MWB
         case (mwb_aluout_reg[31:28])

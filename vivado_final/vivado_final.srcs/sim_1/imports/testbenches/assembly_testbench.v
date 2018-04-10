@@ -177,12 +177,18 @@ module assembly_testbench();
 //        check_reg(1, 32'd300, 1);               // Verify that x1 contains 300
         
         // Test SW
-        wait_for_reg_to_equal(19, 32'd1);       // Run the simulation until the flag is set to 1
-        check_reg(2, 32'd400, 1);               // Verify that x1 contains 300
+//        wait_for_reg_to_equal(5, 32'd1);       // Run the simulation until the flag is set to 1
+//        check_reg(0, 32'd0, 1);               // Verify that x1 contains 300
         
 
- 
-
+        wait_for_reg_to_equal(5, 32'd1);
+        check_reg(0, 32'd0, 1);
+        
+        wait_for_reg_to_equal(6, 32'd1);
+        check_reg(0, 32'd0, 1);
+        
+        wait_for_reg_to_equal(7, 32'd1); 
+        check_reg(0, 32'd0, 1);
 
 
 
