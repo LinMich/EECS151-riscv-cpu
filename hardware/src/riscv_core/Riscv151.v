@@ -195,6 +195,7 @@ module Riscv151 #(
     
     wire ex_uart_data_in_valid;
     wire ex_uart_data_out_ready;
+    reg mwb_uart_data_out_ready;
     
     wire [31:0] ex_uart_write_data;
     reg [31:0] mwb_uart_write_data;
@@ -249,7 +250,7 @@ module Riscv151 #(
             else if (mwb_data_write_ctrl_sig) begin//
                 mwb_regfile_input_data_mux_out = mwb_uart_write_data;
             end
-            else if (mwb_uart_data_in_valid) begin//
+            else if (mwb_uart_data_out_ready) begin//
                 mwb_regfile_input_data_mux_out = {24'd0, mwb_uart_read_data};
             end
             else begin
@@ -373,7 +374,7 @@ module Riscv151 #(
     
     mem_read_decoder datamem_read_decoder (
         .fnc(mwb_load_funct),
-        .wanted_bytes(mwb_wed_reg),
+        .wanted_bytes(mwb_aluout_reg[1:0]),
         .raw_data(mwb_data_out_mem),
         .data(mwb_data_mem_reader_out) //output
     );
@@ -393,8 +394,10 @@ module Riscv151 #(
     
     always @(posedge clk) begin
         if (rst) begin
-            pc_reg <= 'h3ffffffc; // hacky boi
-            fwd_pc <= 'h40000000;
+//            pc_reg <= 'h3ffffffc; // hacky boi
+//            fwd_pc <= 'h40000000;
+            pc_reg <= 'h0ffffffc; // hacky boi
+            fwd_pc <= 'h10000000;
             
             fd_inst_reg <= 0;
             
@@ -442,6 +445,7 @@ module Riscv151 #(
 //            mwb_UART_receiver_data <= 0;
             mwb_uart_data_in_valid <= 0;
             mwb_data_write_ctrl_sig <= 0;
+            mwb_uart_data_out_ready <= 0;
             
             mwb_MemtoReg <= 0;
         end else begin
@@ -475,6 +479,7 @@ module Riscv151 #(
             mwb_uart_write_data <= ex_uart_write_data;
             mwb_uart_data_in_valid <= ex_uart_data_in_valid;
             mwb_data_write_ctrl_sig <= ex_data_write_ctrl_sig;
+            mwb_uart_data_out_ready <= ex_uart_data_out_ready;
             
 	        // MWB to OLDER
             older_regfile_in_data <= mwb_regfile_input_data;
@@ -540,7 +545,7 @@ module Riscv151 #(
         3'b000: ex_rs1_after_fwd_reg = ex_rs1_reg;
         3'b001: ex_rs1_after_fwd_reg = mwb_u_reg;
         3'b010: ex_rs1_after_fwd_reg = mwb_aluout_reg;
-        3'b011: ex_rs1_after_fwd_reg = mwb_data_out_mem; //mwb_data_out_mem
+        3'b011: ex_rs1_after_fwd_reg = mwb_regfile_input_data; //mwb_data_out_mem
         3'b100: ex_rs1_after_fwd_reg = older_regfile_in_data;
         default: ex_rs1_after_fwd_reg = ex_rs1_reg;
         endcase
@@ -550,7 +555,7 @@ module Riscv151 #(
         3'b000: ex_rs2_after_fwd_reg = ex_rs2_reg;
         3'b001: ex_rs2_after_fwd_reg = mwb_u_reg;
         3'b010: ex_rs2_after_fwd_reg = mwb_aluout_reg;
-        3'b011: ex_rs2_after_fwd_reg = mwb_data_out_mem; //mwb_data_mem_reader_out
+        3'b011: ex_rs2_after_fwd_reg = mwb_regfile_input_data; //mwb_data_mem_reader_out
         3'b100: ex_rs2_after_fwd_reg = older_regfile_in_data;
         default: ex_rs2_after_fwd_reg = ex_rs2_reg;
         endcase

@@ -11,15 +11,20 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="1509030100fs"></ZoomStartTime>
-      <ZoomEndTime time="1549609811fs"></ZoomEndTime>
-      <Cursor1Time time="83350100000fs"></Cursor1Time>
+      <ZoomStartTime time="87931237504fs"></ZoomStartTime>
+      <ZoomEndTime time="88097580067fs"></ZoomEndTime>
+      <Cursor1Time time="88010000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="252"></NameColumnWidth>
-      <ValueColumnWidth column_width="99"></ValueColumnWidth>
+      <ValueColumnWidth column_width="95"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="132" />
+   <WVObjectSize size="143" />
+   <wave_markers>
+      <marker label="" time="1170000000" />
+      <marker label="" time="87990000000" />
+      <marker label="" time="88170677000" />
+   </wave_markers>
    <wvobject type="logic" fp_name="/echo_testbench/CPU/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -95,6 +100,7 @@
    <wvobject type="array" fp_name="/echo_testbench/CPU/ex_j_reg">
       <obj_property name="ElementShortName">ex_j_reg[31:0]</obj_property>
       <obj_property name="ObjectShortName">ex_j_reg[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/echo_testbench/CPU/ex_b_reg">
       <obj_property name="ElementShortName">ex_b_reg[31:0]</obj_property>
@@ -139,6 +145,7 @@
    <wvobject type="array" fp_name="/echo_testbench/CPU/ex_pc_reg">
       <obj_property name="ElementShortName">ex_pc_reg[31:0]</obj_property>
       <obj_property name="ObjectShortName">ex_pc_reg[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/echo_testbench/CPU/ex_alu_mux_1">
       <obj_property name="ElementShortName">ex_alu_mux_1[31:0]</obj_property>
@@ -388,6 +395,10 @@
       <obj_property name="ElementShortName">mwb_uart_read_data[7:0]</obj_property>
       <obj_property name="ObjectShortName">mwb_uart_read_data[7:0]</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/CPU/mwb_regfile_input_data">
+      <obj_property name="ElementShortName">mwb_regfile_input_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mwb_regfile_input_data[31:0]</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="/echo_testbench/CPU/mwb_data_out_bios">
       <obj_property name="ElementShortName">mwb_data_out_bios[31:0]</obj_property>
       <obj_property name="ObjectShortName">mwb_data_out_bios[31:0]</obj_property>
@@ -547,5 +558,46 @@
    <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/CLOCK_COUNTER_WIDTH">
       <obj_property name="ElementShortName">CLOCK_COUNTER_WIDTH[31:0]</obj_property>
       <obj_property name="ObjectShortName">CLOCK_COUNTER_WIDTH[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/CPU/uart_controller/instruction">
+      <obj_property name="ElementShortName">instruction[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instruction[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/CPU/uart_controller/address">
+      <obj_property name="ElementShortName">address[31:0]</obj_property>
+      <obj_property name="ObjectShortName">address[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/CPU/uart_controller/raw_write_data">
+      <obj_property name="ElementShortName">raw_write_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">raw_write_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/CPU/uart_controller/data_out_valid">
+      <obj_property name="ElementShortName">data_out_valid</obj_property>
+      <obj_property name="ObjectShortName">data_out_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/CPU/uart_controller/data_in_ready">
+      <obj_property name="ElementShortName">data_in_ready</obj_property>
+      <obj_property name="ObjectShortName">data_in_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/CPU/uart_controller/data_in_valid">
+      <obj_property name="ElementShortName">data_in_valid</obj_property>
+      <obj_property name="ObjectShortName">data_in_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/CPU/uart_controller/data_out_ready">
+      <obj_property name="ElementShortName">data_out_ready</obj_property>
+      <obj_property name="ObjectShortName">data_out_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/CPU/uart_controller/data_write_ctrl_sig">
+      <obj_property name="ElementShortName">data_write_ctrl_sig</obj_property>
+      <obj_property name="ObjectShortName">data_write_ctrl_sig</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/CPU/uart_controller/formatted_write_data">
+      <obj_property name="ElementShortName">formatted_write_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">formatted_write_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/CPU/reggie/register">
+      <obj_property name="ElementShortName">register[31:0][31:0]</obj_property>
+      <obj_property name="ObjectShortName">register[31:0][31:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>

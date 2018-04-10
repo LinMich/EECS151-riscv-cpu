@@ -49,12 +49,12 @@ module mem_control (
                 2'b10: begin
                     we_data_reg = (addr[28] == 1) ? 4'b0110 : 4'b0000;
                     we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0110 : 4'b0000;
-                    fmt_wr_data_reg = {{8{1'b0}}, write_data[23:8], {8{1'b0}}};
+                    fmt_wr_data_reg = {{8{1'b0}}, write_data[15:0], {8{1'b0}}};
                 end
                 2'b11: begin
                     we_data_reg = (addr[28] == 1) ? 4'b1100 : 4'b0000;
                     we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1100 : 4'b0000;
-                    fmt_wr_data_reg = {write_data[31:16], {16{1'b0}}};
+                    fmt_wr_data_reg = {write_data[15:0], {16{1'b0}}};
                 end
                 default: begin
                     we_data_reg = 4'bxxxx;
@@ -73,17 +73,17 @@ module mem_control (
                 2'b01: begin
                     we_data_reg = (addr[28] == 1) ? 4'b0010 : 4'b0000;
                     we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0010 : 4'b0000;
-                    fmt_wr_data_reg = {{16{1'b0}}, write_data[15:8], {8{1'b0}}};
+                    fmt_wr_data_reg = {{16{1'b0}}, write_data[7:0], {8{1'b0}}};
                 end
                 2'b10: begin
                     we_data_reg = (addr[28] == 1) ? 4'b0100 : 4'b0000;
                     we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0100 : 4'b0000;
-                    fmt_wr_data_reg = {{8{1'b0}}, write_data[23:16], {16{1'b0}}};
+                    fmt_wr_data_reg = {{8{1'b0}}, write_data[7:0], {16{1'b0}}};
                 end
                 2'b11: begin
                     we_data_reg = (addr[28] == 1) ? 4'b1000 : 4'b0000;
                     we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1000 : 4'b0000;
-                    fmt_wr_data_reg = {write_data[31:24], {24{1'b0}}};
+                    fmt_wr_data_reg = {write_data[7:0], {24{1'b0}}};
                 end
                 default: begin
                     we_data_reg = 4'bxxxx;
