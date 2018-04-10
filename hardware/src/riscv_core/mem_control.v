@@ -95,9 +95,9 @@ module mem_control (
             endcase
         end
         default: begin
-            we_data_reg = 4'bxxxx;
-            we_inst_reg = 4'bxxxx;
-            fmt_wr_data_reg = 32'bx;
+            we_data_reg = 4'b0000;
+            we_inst_reg = 4'b0000;
+            fmt_wr_data_reg = 32'b0;
         end
         endcase
     end

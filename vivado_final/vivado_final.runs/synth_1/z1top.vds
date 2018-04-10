@@ -1,0 +1,1164 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Tue Apr 10 01:38:20 2018
+# Process ID: 27255
+# Current directory: /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1
+# Command line: vivado -log z1top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source z1top.tcl
+# Log file: /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/z1top.vds
+# Journal file: /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source z1top.tcl -notrace
+Command: synth_design -top z1top -part xc7z020clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 27351 
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module ALU [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/ALU.v:3]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module Riscv151 [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:1]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module instruction_decoder [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/instruction_decoder.v:1]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module control_unit [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/control_unit.v:3]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module fifo [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/fifo.v:3]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module reg_file [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/reg_file.v:1]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module button_parser [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/button_parser.v:4]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module async_fifo [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/async_fifo.v:3]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module uart [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart.v:1]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module uart_receiver [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart_receiver.v:3]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module z1top [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/src/z1top.v:1]
+CRITICAL WARNING: [Synth 8-2490] overwriting previous definition of module branch_control [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/branch_control.v:3]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 1381.684 ; gain = 98.219 ; free physical = 728 ; free virtual = 10037
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'z1top' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/src/z1top.v:1]
+	Parameter SYSTEM_CLOCK_FREQ bound to: 125000000 - type: integer 
+	Parameter CPU_CLOCK_FREQ bound to: 50000000 - type: integer 
+	Parameter B_SAMPLE_COUNT_MAX bound to: 25000 - type: integer 
+	Parameter B_PULSE_COUNT_MAX bound to: 150 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'button_parser' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/button_parser.v:4]
+	Parameter width bound to: 4 - type: integer 
+	Parameter sample_count_max bound to: 25000 - type: integer 
+	Parameter pulse_count_max bound to: 150 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'synchronizer' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/synchronizer.v:1]
+	Parameter width bound to: 4 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'synchronizer' (1#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/synchronizer.v:1]
+INFO: [Synth 8-638] synthesizing module 'debouncer' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:3]
+	Parameter width bound to: 4 - type: integer 
+	Parameter sample_count_max bound to: 25000 - type: integer 
+	Parameter pulse_count_max bound to: 150 - type: integer 
+	Parameter wrapping_counter_width bound to: 15 - type: integer 
+	Parameter saturating_counter_width bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'debouncer' (2#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:3]
+INFO: [Synth 8-638] synthesizing module 'edge_detector' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/edge_detector.v:1]
+	Parameter width bound to: 4 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'edge_detector' (3#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/edge_detector.v:1]
+INFO: [Synth 8-256] done synthesizing module 'button_parser' (4#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/button_parser.v:4]
+INFO: [Synth 8-638] synthesizing module 'IBUFG' [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:19892]
+	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
+	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
+	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
+	Parameter IOSTANDARD bound to: DEFAULT - type: string 
+INFO: [Synth 8-256] done synthesizing module 'IBUFG' (5#1) [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:19892]
+INFO: [Synth 8-638] synthesizing module 'BUFG' [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'BUFG' (6#1) [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-638] synthesizing module 'PLLE2_ADV' [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:40051]
+	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
+	Parameter CLKFBOUT_MULT bound to: 34 - type: integer 
+	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKIN1_PERIOD bound to: 8.000000 - type: float 
+	Parameter CLKIN2_PERIOD bound to: 0.000000 - type: float 
+	Parameter CLKOUT0_DIVIDE bound to: 17 - type: integer 
+	Parameter CLKOUT0_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT0_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT1_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT1_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT1_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT2_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT2_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT2_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT3_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT3_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT3_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT4_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT4_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT4_PHASE bound to: 0.000000 - type: float 
+	Parameter CLKOUT5_DIVIDE bound to: 1 - type: integer 
+	Parameter CLKOUT5_DUTY_CYCLE bound to: 0.500000 - type: float 
+	Parameter CLKOUT5_PHASE bound to: 0.000000 - type: float 
+	Parameter COMPENSATION bound to: ZHOLD - type: string 
+	Parameter DIVCLK_DIVIDE bound to: 5 - type: integer 
+	Parameter IS_CLKINSEL_INVERTED bound to: 1'b0 
+	Parameter IS_PWRDWN_INVERTED bound to: 1'b0 
+	Parameter IS_RST_INVERTED bound to: 1'b0 
+	Parameter REF_JITTER1 bound to: 0.010000 - type: float 
+	Parameter REF_JITTER2 bound to: 0.010000 - type: float 
+	Parameter STARTUP_WAIT bound to: FALSE - type: string 
+INFO: [Synth 8-256] done synthesizing module 'PLLE2_ADV' (7#1) [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:40051]
+WARNING: [Synth 8-350] instance 'plle2_adv_inst' of module 'PLLE2_ADV' requires 21 connections, but only 9 given [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/src/z1top.v:102]
+INFO: [Synth 8-638] synthesizing module 'Riscv151' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:1]
+	Parameter CPU_CLOCK_FREQ bound to: 50000000 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'UART_controller' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/UART_controller.v:5]
+INFO: [Synth 8-256] done synthesizing module 'UART_controller' (8#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/UART_controller.v:5]
+INFO: [Synth 8-638] synthesizing module 'uart' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart.v:1]
+	Parameter CLOCK_FREQ bound to: 50000000 - type: integer 
+	Parameter BAUD_RATE bound to: 115200 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* iob = "true" *) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart.v:26]
+INFO: [Synth 8-638] synthesizing module 'uart_transmitter' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:3]
+	Parameter CLOCK_FREQ bound to: 50000000 - type: integer 
+	Parameter BAUD_RATE bound to: 115200 - type: integer 
+	Parameter SYMBOL_EDGE_TIME bound to: 434 - type: integer 
+	Parameter CLOCK_COUNTER_WIDTH bound to: 9 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'uart_transmitter' (9#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:3]
+INFO: [Synth 8-638] synthesizing module 'uart_receiver' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart_receiver.v:3]
+	Parameter CLOCK_FREQ bound to: 50000000 - type: integer 
+	Parameter BAUD_RATE bound to: 115200 - type: integer 
+	Parameter SYMBOL_EDGE_TIME bound to: 434 - type: integer 
+	Parameter SAMPLE_TIME bound to: 217 - type: integer 
+	Parameter CLOCK_COUNTER_WIDTH bound to: 9 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'uart_receiver' (10#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart_receiver.v:3]
+INFO: [Synth 8-256] done synthesizing module 'uart' (11#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart.v:1]
+INFO: [Synth 8-638] synthesizing module 'bios_mem' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/realtime/bios_mem_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'bios_mem' (12#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/realtime/bios_mem_stub.v:6]
+INFO: [Synth 8-638] synthesizing module 'dmem_blk_ram' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/realtime/dmem_blk_ram_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'dmem_blk_ram' (13#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/realtime/dmem_blk_ram_stub.v:6]
+INFO: [Synth 8-638] synthesizing module 'imem_blk_ram' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/realtime/imem_blk_ram_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'imem_blk_ram' (14#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/realtime/imem_blk_ram_stub.v:6]
+INFO: [Synth 8-638] synthesizing module 'ALU' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/ALU.v:3]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/ALU.v:17]
+INFO: [Synth 8-256] done synthesizing module 'ALU' (15#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/ALU.v:3]
+INFO: [Synth 8-638] synthesizing module 'branch_control' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/branch_control.v:3]
+INFO: [Synth 8-256] done synthesizing module 'branch_control' (16#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/branch_control.v:3]
+INFO: [Synth 8-638] synthesizing module 'control_unit' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/control_unit.v:3]
+INFO: [Synth 8-256] done synthesizing module 'control_unit' (17#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/control_unit.v:3]
+INFO: [Synth 8-638] synthesizing module 'instruction_decoder' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/instruction_decoder.v:1]
+INFO: [Synth 8-256] done synthesizing module 'instruction_decoder' (18#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/instruction_decoder.v:1]
+INFO: [Synth 8-638] synthesizing module 'reg_file' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/reg_file.v:1]
+INFO: [Synth 8-5534] Detected attribute (* ram_style = "distributed" *) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/reg_file.v:8]
+INFO: [Synth 8-256] done synthesizing module 'reg_file' (19#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/reg_file.v:1]
+INFO: [Synth 8-638] synthesizing module 'mem_control' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_control.v:3]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_control.v:38]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_control.v:67]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_control.v:31]
+INFO: [Synth 8-256] done synthesizing module 'mem_control' (20#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_control.v:3]
+INFO: [Synth 8-638] synthesizing module 'mem_read_decoder' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:3]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:18]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:27]
+WARNING: [Synth 8-151] case item 4'b1000 is unreachable [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:41]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:36]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:46]
+INFO: [Synth 8-256] done synthesizing module 'mem_read_decoder' (21#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:3]
+INFO: [Synth 8-638] synthesizing module 'haz_unit' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/hazard_unit.v:3]
+INFO: [Synth 8-256] done synthesizing module 'haz_unit' (22#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/hazard_unit.v:3]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:523]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:569]
+WARNING: [Synth 8-6014] Unused sequential element mwb_memwrdat_reg_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:419]
+WARNING: [Synth 8-6014] Unused sequential element mwb_wed_reg_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:420]
+WARNING: [Synth 8-6014] Unused sequential element mwb_wei_reg_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:421]
+WARNING: [Synth 8-6014] Unused sequential element mwb_fnc3_reg_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:422]
+WARNING: [Synth 8-6014] Unused sequential element mwb_reset_counters_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:439]
+WARNING: [Synth 8-6014] Unused sequential element mwb_uart_data_in_valid_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:444]
+INFO: [Synth 8-256] done synthesizing module 'Riscv151' (23#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:1]
+WARNING: [Synth 8-3848] Net MCLK in module/entity z1top does not have driver. [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/src/z1top.v:29]
+WARNING: [Synth 8-3848] Net SCLK in module/entity z1top does not have driver. [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/src/z1top.v:31]
+INFO: [Synth 8-256] done synthesizing module 'z1top' (24#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/src/z1top.v:1]
+WARNING: [Synth 8-3917] design z1top has port LRCK driven by constant 1
+WARNING: [Synth 8-3917] design z1top has port SDIN driven by constant 1
+WARNING: [Synth 8-3917] design z1top has port AUDIO_PWM driven by constant 0
+WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[6]
+WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[5]
+WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[4]
+WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[3]
+WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[2]
+WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[1]
+WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[0]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[31]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[30]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[27]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[26]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[25]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[24]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[23]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[22]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[21]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[20]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[19]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[18]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[17]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[16]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[15]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[14]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[13]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[12]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[11]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[10]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[9]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[8]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[7]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[6]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[5]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[4]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[3]
+WARNING: [Synth 8-3331] design mem_control has unconnected port addr[2]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[31]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[29]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[28]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[27]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[26]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[25]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[24]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[23]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[22]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[21]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[20]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[19]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[18]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[17]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[16]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[15]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[14]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[13]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[12]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[11]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[10]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[9]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[8]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[7]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[6]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[5]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[4]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[3]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[2]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[1]
+WARNING: [Synth 8-3331] design mem_control has unconnected port pc[0]
+WARNING: [Synth 8-3331] design instruction_decoder has unconnected port instruction[6]
+WARNING: [Synth 8-3331] design instruction_decoder has unconnected port instruction[5]
+WARNING: [Synth 8-3331] design instruction_decoder has unconnected port instruction[4]
+WARNING: [Synth 8-3331] design instruction_decoder has unconnected port instruction[3]
+WARNING: [Synth 8-3331] design instruction_decoder has unconnected port instruction[2]
+WARNING: [Synth 8-3331] design instruction_decoder has unconnected port instruction[1]
+WARNING: [Synth 8-3331] design instruction_decoder has unconnected port instruction[0]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[31]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[29]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[28]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[27]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[26]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[25]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[24]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[23]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[22]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[21]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[20]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[19]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[18]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[17]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[16]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[15]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[11]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[10]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[9]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[8]
+WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[7]
+WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[31]
+WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[30]
+WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[29]
+WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[28]
+WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[27]
+WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[26]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1414.059 ; gain = 130.594 ; free physical = 742 ; free virtual = 10052
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:12 . Memory (MB): peak = 1414.059 ; gain = 130.594 ; free physical = 744 ; free virtual = 10054
+---------------------------------------------------------------------------------
+INFO: [Netlist 29-17] Analyzing 2 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/dcp3/imem_blk_ram_in_context.xdc] for cell 'CPU/IMEM'
+Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/dcp3/imem_blk_ram_in_context.xdc] for cell 'CPU/IMEM'
+Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/dcp4/dmem_blk_ram_in_context.xdc] for cell 'CPU/d_mem'
+Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/dcp4/dmem_blk_ram_in_context.xdc] for cell 'CPU/d_mem'
+Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/dcp5/bios_mem_in_context.xdc] for cell 'CPU/BIOS'
+Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-27255-c125m-19.EECS.Berkeley.EDU/dcp5/bios_mem_in_context.xdc] for cell 'CPU/BIOS'
+Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc]
+Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/z1top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/z1top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IBUFG => IBUF: 1 instances
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 1775.922 ; gain = 0.004 ; free physical = 426 ; free virtual = 9736
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:31 ; elapsed = 00:01:12 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 547 ; free virtual = 9857
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:31 ; elapsed = 00:01:12 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 547 ; free virtual = 9857
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for CPU/BIOS. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for CPU/IMEM. (constraint file  auto generated constraint, line ).
+Applied set_property DONT_TOUCH = true for CPU/d_mem. (constraint file  auto generated constraint, line ).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:01:12 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 549 ; free virtual = 9859
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-6014] Unused sequential element wrapping_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:48]
+WARNING: [Synth 8-6014] Unused sequential element sat_count[0].saturating_counter_reg[0] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:34]
+WARNING: [Synth 8-6014] Unused sequential element sat_count[1].saturating_counter_reg[1] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:34]
+WARNING: [Synth 8-6014] Unused sequential element sat_count[2].saturating_counter_reg[2] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:34]
+WARNING: [Synth 8-6014] Unused sequential element sat_count[3].saturating_counter_reg[3] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:34]
+WARNING: [Synth 8-6014] Unused sequential element clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:33]
+WARNING: [Synth 8-6014] Unused sequential element clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart_receiver.v:34]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/ALU.v:14]
+INFO: [Synth 8-5587] ROM size for "op1_sel_reg" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "op2_sel_reg" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "b_jmp_target_reg" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "wb_select_reg" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "brjmp_jalr_reg" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "reg_we_reg" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5544] ROM "we_data_reg" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:516]
+INFO: [Synth 8-5545] ROM "ex_reset_counters" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "ex_use_cycle_counter_reg_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "ex_use_cycle_counter_reg_data" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "ex_use_instr_counter_reg_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element instr_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:142]
+WARNING: [Synth 8-6014] Unused sequential element cycle_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:148]
+INFO: [Synth 8-5545] ROM "ex_reset_counters" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "ex_use_cycle_counter_reg_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "ex_use_cycle_counter_reg_data" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "ex_use_instr_counter_reg_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "sig" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-327] inferring latch for variable 'fmt_wr_data_reg_reg' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_control.v:19]
+WARNING: [Synth 8-327] inferring latch for variable 'we_data_reg_reg' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_control.v:20]
+WARNING: [Synth 8-327] inferring latch for variable 'we_inst_reg_reg' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_control.v:21]
+WARNING: [Synth 8-327] inferring latch for variable 'mwb_regfile_input_data_mux_out_reg' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:245]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:32 ; elapsed = 00:01:13 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 538 ; free virtual = 9848
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 1     
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input      9 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 4     
+	   2 Input      4 Bit       Adders := 2     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 22    
+	               10 Bit    Registers := 2     
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 4     
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 3     
+	                4 Bit    Registers := 4     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 20    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 18    
+	   4 Input     32 Bit        Muxes := 8     
+	   3 Input     32 Bit        Muxes := 1     
+	   4 Input     16 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 2     
+	   4 Input      8 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 4     
+	   5 Input      4 Bit        Muxes := 4     
+	   4 Input      4 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 5     
+	  10 Input      3 Bit        Muxes := 2     
+	   3 Input      3 Bit        Muxes := 2     
+	  10 Input      2 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 5     
+	   3 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 18    
+	  10 Input      1 Bit        Muxes := 6     
+	   3 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module z1top 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module synchronizer 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 2     
+Module debouncer 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 4     
++---Registers : 
+	                8 Bit    Registers := 4     
+	                1 Bit    Registers := 1     
+Module edge_detector 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 8     
+Module UART_controller 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+Module uart_transmitter 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               10 Bit    Registers := 1     
+	                9 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     10 Bit        Muxes := 2     
+	   3 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 2     
+Module uart_receiver 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	               10 Bit    Registers := 1     
+	                9 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module uart 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
+Module ALU 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input     32 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+Module control_unit 
+Detailed RTL Component Info : 
++---Muxes : 
+	  10 Input      3 Bit        Muxes := 2     
+	  10 Input      2 Bit        Muxes := 2     
+	  10 Input      1 Bit        Muxes := 6     
+	   2 Input      1 Bit        Muxes := 1     
+Module reg_file 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 2     
+Module mem_control 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 3     
+	   2 Input     32 Bit        Muxes := 1     
+	   5 Input      4 Bit        Muxes := 4     
+	   4 Input      4 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 5     
+	   3 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+Module mem_read_decoder 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input     32 Bit        Muxes := 2     
+	   4 Input     16 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 1     
+Module haz_unit 
+Detailed RTL Component Info : 
++---Muxes : 
+	   3 Input      3 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+Module Riscv151 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 21    
+	                7 Bit    Registers := 1     
+	                5 Bit    Registers := 3     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 10    
+	   3 Input     32 Bit        Muxes := 1     
+	   4 Input     32 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 8     
+	   3 Input      1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-6014] Unused sequential element uatransmit/clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:33]
+WARNING: [Synth 8-6014] Unused sequential element uareceive/clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart_receiver.v:34]
+INFO: [Synth 8-5587] ROM size for "controller/op1_sel_reg" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5587] ROM size for "controller/op2_sel_reg" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "controller/b_jmp_target_reg" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "controller/wb_select_reg" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "controller/brjmp_jalr_reg" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5587] ROM size for "controller/reg_we_reg" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5545] ROM "ex_reset_counters" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "ex_use_cycle_counter_reg_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "ex_use_instr_counter_reg_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element cycle_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:148]
+WARNING: [Synth 8-6014] Unused sequential element instr_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:142]
+INFO: [Synth 8-5545] ROM "counter" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "sig" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/wrapping_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:48]
+WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/sat_count[0].saturating_counter_reg[0] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:34]
+WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/sat_count[1].saturating_counter_reg[1] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:34]
+WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/sat_count[2].saturating_counter_reg[2] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:34]
+WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/sat_count[3].saturating_counter_reg[3] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:34]
+WARNING: [Synth 8-3917] design z1top has port LRCK driven by constant 1
+WARNING: [Synth 8-3917] design z1top has port SDIN driven by constant 1
+WARNING: [Synth 8-3917] design z1top has port AUDIO_PWM driven by constant 0
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[31]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[31]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[29]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[29]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[30]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[30]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[0]' (FDR) to 'CPU/mwb_uart_write_data_reg[8]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[0]' (FDR) to 'CPU/mwb_uart_write_data_reg[8]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[1]' (FDR) to 'CPU/ex_u_reg_reg[21]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[1]' (FDR) to 'CPU/ex_rd_reg_reg[1]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[2]' (FDR) to 'CPU/ex_u_reg_reg[22]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[2]' (FDR) to 'CPU/ex_rd_reg_reg[2]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[3]' (FDR) to 'CPU/ex_u_reg_reg[23]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[3]' (FDR) to 'CPU/ex_rd_reg_reg[3]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[4]' (FDR) to 'CPU/ex_u_reg_reg[24]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[4]' (FDR) to 'CPU/ex_rd_reg_reg[4]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[5]' (FDR) to 'CPU/ex_s_reg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[5]' (FDR) to 'CPU/ex_s_reg_reg[5]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[6]' (FDR) to 'CPU/ex_s_reg_reg[6]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[6]' (FDR) to 'CPU/ex_s_reg_reg[6]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[7]' (FDR) to 'CPU/ex_s_reg_reg[7]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[7]' (FDR) to 'CPU/ex_s_reg_reg[7]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[8]' (FDR) to 'CPU/ex_s_reg_reg[8]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[8]' (FDR) to 'CPU/ex_s_reg_reg[8]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[9]' (FDR) to 'CPU/ex_s_reg_reg[9]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[9]' (FDR) to 'CPU/ex_s_reg_reg[9]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[10]' (FDR) to 'CPU/ex_s_reg_reg[10]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[10]' (FDR) to 'CPU/ex_s_reg_reg[10]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[11]' (FDR) to 'CPU/ex_u_reg_reg[20]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[11]' (FDR) to 'CPU/ex_rd_reg_reg[0]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[12]' (FDR) to 'CPU/ex_u_reg_reg[12]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[12]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[13]' (FDR) to 'CPU/ex_u_reg_reg[13]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[13]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[14]' (FDR) to 'CPU/ex_u_reg_reg[14]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[14]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[15]' (FDR) to 'CPU/ex_u_reg_reg[15]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[15]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[16]' (FDR) to 'CPU/ex_u_reg_reg[16]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[16]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[17]' (FDR) to 'CPU/ex_u_reg_reg[17]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[17]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[18]' (FDR) to 'CPU/ex_u_reg_reg[18]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[18]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[19]' (FDR) to 'CPU/ex_u_reg_reg[19]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[19]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[20]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[20]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[21]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[21]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[22]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[22]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[23]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[23]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[24]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[24]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[25]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[25]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[26]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[26]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[27]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[27]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[28]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[28]' (FDR) to 'CPU/ex_s_reg_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[8]' (FDR) to 'CPU/mwb_uart_write_data_reg[9]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[9]' (FDR) to 'CPU/mwb_uart_write_data_reg[10]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[10]' (FDR) to 'CPU/mwb_uart_write_data_reg[11]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[11]' (FDR) to 'CPU/mwb_uart_write_data_reg[12]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[12]' (FDR) to 'CPU/mwb_uart_write_data_reg[13]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[13]' (FDR) to 'CPU/mwb_uart_write_data_reg[14]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[14]' (FDR) to 'CPU/mwb_uart_write_data_reg[15]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[15]' (FDR) to 'CPU/mwb_uart_write_data_reg[16]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[16]' (FDR) to 'CPU/mwb_uart_write_data_reg[17]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[17]' (FDR) to 'CPU/mwb_uart_write_data_reg[18]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[18]' (FDR) to 'CPU/mwb_uart_write_data_reg[19]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[19]' (FDR) to 'CPU/mwb_uart_write_data_reg[20]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[20]' (FDR) to 'CPU/mwb_uart_write_data_reg[21]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[21]' (FDR) to 'CPU/mwb_uart_write_data_reg[22]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[22]' (FDR) to 'CPU/mwb_uart_write_data_reg[23]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[23]' (FDR) to 'CPU/mwb_uart_write_data_reg[24]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[24]' (FDR) to 'CPU/mwb_uart_write_data_reg[25]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[25]' (FDR) to 'CPU/mwb_uart_write_data_reg[26]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[26]' (FDR) to 'CPU/mwb_uart_write_data_reg[27]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[27]' (FDR) to 'CPU/mwb_uart_write_data_reg[28]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[28]' (FDR) to 'CPU/mwb_uart_write_data_reg[29]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[29]' (FDR) to 'CPU/mwb_uart_write_data_reg[30]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[30]' (FDR) to 'CPU/mwb_uart_write_data_reg[31]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_uart_write_data_reg[31]' (FDR) to 'CPU/ex_u_reg_reg[0]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[3]' (FDR) to 'CPU/ex_s_reg_reg[3]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[4]' (FDR) to 'CPU/ex_s_reg_reg[4]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[0]' (FDR) to 'CPU/ex_s_reg_reg[0]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[1]' (FDR) to 'CPU/ex_s_reg_reg[1]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[2]' (FDR) to 'CPU/ex_s_reg_reg[2]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_u_reg_reg[0]' (FDR) to 'CPU/ex_u_reg_reg[1]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_i_reg_reg[0]' (FDR) to 'CPU/ex_u_reg_reg[20]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_u_reg_reg[0]' (FDR) to 'CPU/mwb_u_reg_reg[1]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_i_reg_reg[1]' (FDR) to 'CPU/ex_u_reg_reg[21]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_u_reg_reg[1]' (FDR) to 'CPU/ex_u_reg_reg[2]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_i_reg_reg[2]' (FDR) to 'CPU/ex_u_reg_reg[22]'
+INFO: [Synth 8-3886] merging instance 'CPU/mwb_u_reg_reg[2]' (FDR) to 'CPU/mwb_u_reg_reg[1]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/\ex_u_reg_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/on_chip_uart/\uatransmit/tx_shift_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/memory_controller/\we_inst_reg_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/on_chip_uart/\uatransmit/tx_shift_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/on_chip_uart/\uatransmit/tx_shift_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/on_chip_uart/\uatransmit/tx_shift_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/on_chip_uart/\uatransmit/tx_shift_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/on_chip_uart/\uatransmit/tx_shift_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/on_chip_uart/\uatransmit/tx_shift_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/on_chip_uart/\uatransmit/tx_shift_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/on_chip_uart/\uatransmit/tx_shift_reg[1] )
+WARNING: [Synth 8-3332] Sequential element (uareceive/clock_counter_reg[8]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/clock_counter_reg[7]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/clock_counter_reg[6]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/clock_counter_reg[5]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/clock_counter_reg[4]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/clock_counter_reg[3]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/clock_counter_reg[2]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/clock_counter_reg[1]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/clock_counter_reg[0]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/bit_counter_reg[3]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/bit_counter_reg[2]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/bit_counter_reg[1]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/bit_counter_reg[0]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (serial_in_reg_reg) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/rx_shift_reg[9]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/rx_shift_reg[8]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/rx_shift_reg[7]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/rx_shift_reg[6]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/rx_shift_reg[5]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/rx_shift_reg[4]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/rx_shift_reg[3]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/rx_shift_reg[2]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/rx_shift_reg[1]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/rx_shift_reg[0]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uareceive/has_byte_reg) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (uatransmit/tx_shift_reg[1]) is unused and will be removed from module uart.
+WARNING: [Synth 8-3332] Sequential element (we_inst_reg_reg[3]) is unused and will be removed from module mem_control.
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[31]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[31]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[29]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[29]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[28]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[28]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[27]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[27]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[26]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[26]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[25]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[25]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[24]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[24]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[23]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[23]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[22]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[22]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[21]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[21]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[20]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[20]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[19]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[19]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[18]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[18]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[17]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[17]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[16]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[16]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[15]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[15]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[14]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[14]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[13]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[13]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[12]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[12]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[11]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[11]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[10]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[10]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[9]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[9]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[8]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[8]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[7]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[7]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[6]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[6]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[5]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[5]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[4]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[4]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[3]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[3]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[2]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[2]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[1]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[1]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fwd_pc_reg[0]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/fwd_pc_reg[0]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:283]
+WARNING: [Synth 8-3332] Sequential element (fd_inst_reg_reg[21]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (fd_inst_reg_reg[8]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[31]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[30]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[29]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[28]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[27]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[26]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[25]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[24]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[23]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[22]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[21]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[20]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[19]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[18]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[17]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[16]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[15]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[14]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[13]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[12]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[11]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[10]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[9]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[8]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[7]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[6]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[5]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[4]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[3]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[2]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[1]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (mwb_regfile_input_data_reg[0]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (ex_rs2_after_fwd_reg_reg[31]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[31]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+WARNING: [Synth 8-3332] Sequential element (ex_rs2_after_fwd_reg_reg[30]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[30]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+WARNING: [Synth 8-3332] Sequential element (ex_rs2_after_fwd_reg_reg[29]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[29]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+WARNING: [Synth 8-3332] Sequential element (ex_rs2_after_fwd_reg_reg[28]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[28]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+WARNING: [Synth 8-3332] Sequential element (ex_rs2_after_fwd_reg_reg[27]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[27]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+WARNING: [Synth 8-3332] Sequential element (ex_rs2_after_fwd_reg_reg[26]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[26]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+WARNING: [Synth 8-3332] Sequential element (ex_rs2_after_fwd_reg_reg[25]) is unused and will be removed from module Riscv151.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[25]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+WARNING: [Synth 8-3332] Sequential element (ex_rs2_after_fwd_reg_reg[24]) is unused and will be removed from module Riscv151.
+INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[24]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[23]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[22]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[21]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[20]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[19]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[18]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[17]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[16]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[15]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[14]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 1st driver pin 'CPU/ex_rs2_after_fwd_reg_reg[13]/Q' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-3352] multi-driven net Q with 2nd driver pin 'GND' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+INFO: [Common 17-14] Message 'Synth 8-3352' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:211]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:312]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:313]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:313]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:313]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:313]
+CRITICAL WARNING: [Synth 8-5559] multi-driven net Q is connected to constant driver, other driver is ignored [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:313]
+INFO: [Common 17-14] Message 'Synth 8-5559' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:01:15 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 527 ; free virtual = 9837
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:43 ; elapsed = 00:01:30 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 399 ; free virtual = 9709
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:43 ; elapsed = 00:01:30 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 399 ; free virtual = 9709
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:43 ; elapsed = 00:01:31 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 398 ; free virtual = 9708
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:44 ; elapsed = 00:01:31 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 395 ; free virtual = 9705
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:44 ; elapsed = 00:01:31 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 395 ; free virtual = 9705
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:44 ; elapsed = 00:01:31 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 393 ; free virtual = 9703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:44 ; elapsed = 00:01:31 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 393 ; free virtual = 9703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:01:31 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 393 ; free virtual = 9703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:44 ; elapsed = 00:01:31 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 393 ; free virtual = 9703
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |bios_mem      |         1|
+|2     |dmem_blk_ram  |         1|
+|3     |imem_blk_ram  |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+-------------+------+
+|      |Cell         |Count |
++------+-------------+------+
+|1     |bios_mem     |     1|
+|2     |dmem_blk_ram |     1|
+|3     |imem_blk_ram |     1|
+|4     |BUFG         |     2|
+|5     |CARRY4       |    12|
+|6     |LUT1         |     5|
+|7     |LUT2         |     4|
+|8     |LUT3         |     8|
+|9     |LUT4         |    15|
+|10    |LUT5         |    13|
+|11    |LUT6         |     7|
+|12    |PLLE2_ADV    |     1|
+|13    |FDRE         |    75|
+|14    |FDSE         |     1|
+|15    |IBUF         |     1|
+|16    |IBUFG        |     1|
+|17    |OBUF         |    10|
+|18    |OBUFT        |     2|
++------+-------------+------+
+
+Report Instance Areas: 
++------+-------------------------+-----------------+------+
+|      |Instance                 |Module           |Cells |
++------+-------------------------+-----------------+------+
+|1     |top                      |                 |   285|
+|2     |  CPU                    |Riscv151         |   164|
+|3     |    on_chip_uart         |uart             |    36|
+|4     |      uatransmit         |uart_transmitter |    35|
+|5     |  b_parser               |button_parser    |    52|
+|6     |    button_debouncer     |debouncer        |    45|
+|7     |    button_edge_detector |edge_detector    |     4|
+|8     |    button_synchronizer  |synchronizer     |     3|
++------+-------------------------+-----------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:44 ; elapsed = 00:01:31 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 392 ; free virtual = 9702
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 477 critical warnings and 780 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:41 . Memory (MB): peak = 1775.922 ; gain = 130.594 ; free physical = 453 ; free virtual = 9763
+Synthesis Optimization Complete : Time (s): cpu = 00:00:44 ; elapsed = 00:01:31 . Memory (MB): peak = 1775.922 ; gain = 492.457 ; free physical = 461 ; free virtual = 9771
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 15 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1 instances were transformed.
+  IBUFG => IBUF: 1 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+220 Infos, 252 Warnings, 212 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:46 ; elapsed = 00:01:34 . Memory (MB): peak = 1775.922 ; gain = 517.281 ; free physical = 445 ; free virtual = 9755
+INFO: [Common 17-1381] The checkpoint '/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/z1top.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file z1top_utilization_synth.rpt -pb z1top_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.10 . Memory (MB): peak = 1805.996 ; gain = 0.000 ; free physical = 445 ; free virtual = 9755
+INFO: [Common 17-206] Exiting Vivado at Tue Apr 10 01:40:08 2018...

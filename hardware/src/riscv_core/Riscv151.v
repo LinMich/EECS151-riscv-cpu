@@ -282,7 +282,7 @@ module Riscv151 #(
         .clkb(clk),  
         .addra(fwd_pc[13:2]),     //12-bit, from I stage
         .douta(fd_bios_read_reg),           //32-bit, to mux to I stage (instruction)
-        .addrb(ex_aluout_reg[15:2]),       //12-bit, from datapath
+        .addrb(ex_aluout_reg[13:2]),       //12-bit, from datapath
         .doutb(mwb_data_out_bios)          //32-bit, to mux to M stage ("dataout from mem")   
     );
     
@@ -394,10 +394,8 @@ module Riscv151 #(
     
     always @(posedge clk) begin
         if (rst) begin
-//            pc_reg <= 'h3ffffffc; // hacky boi
-//            fwd_pc <= 'h40000000;
-            pc_reg <= 'h0ffffffc; // hacky boi
-            fwd_pc <= 'h10000000;
+            pc_reg <= 'h3ffffffc; // hacky boi
+            fwd_pc <= 'h40000000;
             
             fd_inst_reg <= 0;
             
@@ -502,7 +500,7 @@ module Riscv151 #(
        case (pc_reg[31:28])
        4'b0001: fd_use_instr_or_bios_mem = fd_imem_read_reg;
        4'b0100: fd_use_instr_or_bios_mem = fd_bios_read_reg;
-       default: fd_use_instr_or_bios_mem = 32'bx;
+       default: fd_use_instr_or_bios_mem = 32'b0;
        endcase
     
         // MUXing in NOP for JAL, JALR, and taken branches
@@ -527,7 +525,7 @@ module Riscv151 #(
         2'b01: mwb_regfile_input_data = mwb_aluout_reg;
         2'b10: mwb_regfile_input_data = mwb_regfile_input_data_mux_out;
         2'b11: mwb_regfile_input_data = mwb_u_reg;
-        default: mwb_regfile_input_data = 32'bx;
+        default: mwb_regfile_input_data = 32'b0;
         endcase
         
    
@@ -537,7 +535,7 @@ module Riscv151 #(
         4'b0001: mwb_data_out_mem = mwb_data_out_dmem;
         4'b0011: mwb_data_out_mem = mwb_data_out_dmem;
         4'b0100: mwb_data_out_mem = mwb_data_out_bios;
-        default: mwb_data_out_mem = 32'bx;
+        default: mwb_data_out_mem = 32'b0;
         endcase
         
         // handles data forwarding to input a of ALU
@@ -564,7 +562,7 @@ module Riscv151 #(
         case (ex_op1)
         2'b00: ex_alu_mux_1 = ex_u_reg;
         2'b01: ex_alu_mux_1 = ex_rs1_after_fwd_reg;
-        default: ex_alu_mux_1 = 32'bx;
+        default: ex_alu_mux_1 = 32'b0;
         endcase
         
         // input b to ALU
@@ -573,7 +571,7 @@ module Riscv151 #(
         2'b01: ex_alu_mux_2 = ex_s_reg;
         2'b10: ex_alu_mux_2 = ex_i_reg;
         2'b11: ex_alu_mux_2 = ex_rs2_after_fwd_reg;
-        default: ex_alu_mux_2 = 32'bx;
+        default: ex_alu_mux_2 = 32'b0;
         endcase  
     end
 

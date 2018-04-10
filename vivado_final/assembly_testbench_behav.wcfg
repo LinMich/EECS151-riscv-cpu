@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="87931237504fs"></ZoomStartTime>
-      <ZoomEndTime time="88097580067fs"></ZoomEndTime>
-      <Cursor1Time time="88010000000fs"></Cursor1Time>
+      <ZoomStartTime time="2289420000fs"></ZoomStartTime>
+      <ZoomEndTime time="2542820001fs"></ZoomEndTime>
+      <Cursor1Time time="14000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="252"></NameColumnWidth>
-      <ValueColumnWidth column_width="95"></ValueColumnWidth>
+      <ValueColumnWidth column_width="91"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="143" />
    <wave_markers>
@@ -526,6 +526,7 @@
    <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/rx_shift">
       <obj_property name="ElementShortName">rx_shift[9:0]</obj_property>
       <obj_property name="ObjectShortName">rx_shift[9:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/bit_counter">
       <obj_property name="ElementShortName">bit_counter[3:0]</obj_property>
@@ -598,6 +599,5 @@
    <wvobject type="array" fp_name="/echo_testbench/CPU/reggie/register">
       <obj_property name="ElementShortName">register[31:0][31:0]</obj_property>
       <obj_property name="ObjectShortName">register[31:0][31:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
 </wave_config>

@@ -61,16 +61,12 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151
 INFO: [VRFC 10-311] analyzing module fifo
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/control_unit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module control_unit
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/hazard_unit.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module hazard_unit
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/instruction_decoder.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module instruction_decoder
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/branch_control.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module branch_control
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/Riscv151.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module Riscv151
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/audio/i2s_controller.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module i2s_controller
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/reg_file.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module reg_file
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/ALU.v" into library xil_defaultlib
@@ -81,7 +77,7 @@ INFO: [VRFC 10-311] analyzing module Riscv151
 WARNING: [VRFC 10-1195] overwriting previous definition of module Riscv151 [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:1]
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/instruction_decoder.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module instruction_decoder
-WARNING: [VRFC 10-1195] overwriting previous definition of module instruction_decoder [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/instruction_decoder.v:1]
+WARNING: [VRFC 10-2421] module instruction_decoder is previously defined, ignoring this definition [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/instruction_decoder.v:1]
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/hazard_unit.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module haz_unit
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/control_unit.v" into library xil_defaultlib
@@ -92,7 +88,7 @@ INFO: [VRFC 10-311] analyzing module mem_read_decoder
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/fifo.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module fifo
 WARNING: [VRFC 10-2421] module fifo is previously defined, ignoring this definition [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/fifo.v:3]
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/audio/tone_generator.v" into library xil_defaultlib
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/tone_generator.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module tone_generator
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/reg_file.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module reg_file
@@ -110,9 +106,6 @@ WARNING: [VRFC 10-2421] module async_fifo is previously defined, ignoring this d
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module uart
 WARNING: [VRFC 10-2421] module uart is previously defined, ignoring this definition [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart.v:1]
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/edge_detector.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module edge_detector
-WARNING: [VRFC 10-1195] overwriting previous definition of module edge_detector [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/edge_detector.v:1]
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_transmitter.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module uart_transmitter
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/io_circuits/uart_receiver.v" into library xil_defaultlib
@@ -129,6 +122,8 @@ INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151
 INFO: [VRFC 10-311] analyzing module debouncer
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/UART_controller.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module UART_controller
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module i2s_controller
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sim_1/imports/testbenches/ALU_testbench.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module ALU_testbench
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sim_1/imports/testbenches/assembly_testbench.v" into library xil_defaultlib

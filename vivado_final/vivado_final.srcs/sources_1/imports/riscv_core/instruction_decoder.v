@@ -41,7 +41,7 @@ module instruction_decoder(
     assign rd = rd_pass;
     
     always @(*) begin
-        j_pass = { {9{instruction[31]}}, instruction[31], instruction[19:12], instruction[20], instruction[30:21], 1'b0 };
+        j_pass = { {11{instruction[31]}}, instruction[31], instruction[19:12], instruction[20], instruction[30:21], 1'b0 };
         b_pass = { {19{instruction[31]}}, instruction[31], instruction[7], instruction[30:25], instruction[11:8], 1'b0 };
         s_pass = { {20{instruction[31]}}, instruction[31:25], instruction[11:7] };
         u_pass = instruction[31:12] << 12;

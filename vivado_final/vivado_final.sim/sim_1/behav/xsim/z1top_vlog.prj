@@ -1,0 +1,56 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../vivado_final.srcs/sources_1/imports/riscv_core" --include "../../../../../hardware/src" --include "../../../../../hardware/src/riscv_core" --include "../../../../vivado_final.srcs/sources_1/imports/src" \
+"../../../../../hardware/src/memories/imem_blk_ram/sim/imem_blk_ram.v" \
+"../../../../../hardware/src/memories/dmem_blk_ram/dmem_blk_ram_sim_netlist.v" \
+"../../../../../hardware/src/memories/bios_mem/sim/bios_mem.v" \
+"../../../../vivado_final.srcs/sources_1/imports/riscv_core/ALU.v" \
+"../../../../../hardware/src/io_circuits/button_parser.v" \
+"../../../../../hardware/src/io_circuits/edge_detector.v" \
+"../../../../../hardware/src/io_circuits/uart.v" \
+"../../../../../hardware/src/io_circuits/uart_receiver.v" \
+"../../../../../hardware/src/z1top.v" \
+"../../../../../hardware/src/io_circuits/async_fifo.v" \
+"../../../../../hardware/src/io_circuits/fifo.v" \
+"../../../../vivado_final.srcs/sources_1/imports/riscv_core/control_unit.v" \
+"../../../../vivado_final.srcs/sources_1/imports/riscv_core/hazard_unit.v" \
+"../../../../vivado_final.srcs/sources_1/imports/riscv_core/instruction_decoder.v" \
+"../../../../../hardware/src/riscv_core/branch_control.v" \
+"../../../../vivado_final.srcs/sources_1/imports/riscv_core/Riscv151.v" \
+"../../../../vivado_final.srcs/sources_1/imports/audio/i2s_controller.v" \
+"../../../../../hardware/src/riscv_core/reg_file.v" \
+"../../../../../hardware/src/riscv_core/ALU.v" \
+"../../../../../hardware/src/riscv_core/Riscv151.v" \
+"../../../../../hardware/src/riscv_core/instruction_decoder.v" \
+"../../../../../hardware/src/riscv_core/hazard_unit.v" \
+"../../../../../hardware/src/riscv_core/control_unit.v" \
+"../../../../../hardware/src/riscv_core/mem_read_decoder.v" \
+"../../../../vivado_final.srcs/sources_1/imports/io_circuits/fifo.v" \
+"../../../../vivado_final.srcs/sources_1/imports/audio/tone_generator.v" \
+"../../../../vivado_final.srcs/sources_1/imports/riscv_core/reg_file.v" \
+"../../../../vivado_final.srcs/sources_1/imports/io_circuits/button_parser.v" \
+"../../../../../hardware/src/io_circuits/synchronizer.v" \
+"../../../../../hardware/src/riscv_core/mem_control.v" \
+"../../../../vivado_final.srcs/sources_1/imports/io_circuits/async_fifo.v" \
+"../../../../vivado_final.srcs/sources_1/imports/io_circuits/uart.v" \
+"../../../../vivado_final.srcs/sources_1/imports/io_circuits/edge_detector.v" \
+"../../../../../hardware/src/io_circuits/uart_transmitter.v" \
+"../../../../vivado_final.srcs/sources_1/imports/io_circuits/uart_receiver.v" \
+"../../../../vivado_final.srcs/sources_1/imports/src/z1top.v" \
+"../../../../vivado_final.srcs/sources_1/imports/riscv_core/branch_control.v" \
+"../../../../../hardware/src/io_circuits/debouncer.v" \
+"../../../../../hardware/src/riscv_core/UART_controller.v" \
+"../../../../vivado_final.srcs/sim_1/imports/testbenches/ALU_testbench.v" \
+"../../../../vivado_final.srcs/sim_1/imports/testbenches/assembly_testbench.v" \
+"../../../../vivado_final.srcs/sim_1/imports/testbenches/bios_mem_testbench.v" \
+"../../../../vivado_final.srcs/sim_1/imports/testbenches/echo_integration_testbench.v" \
+"../../../../vivado_final.srcs/sim_1/imports/testbenches/echo_testbench.v" \
+"../../../../vivado_final.srcs/sim_1/imports/testbenches/fifo_testbench.v" \
+"../../../../vivado_final.srcs/sim_1/imports/testbenches/i2s_controller_testbench.v" \
+"../../../../vivado_final.srcs/sim_1/imports/testbenches/reg_file_testbench.v" \
+"../../../../../hardware/src/testbenches/control_testbench.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

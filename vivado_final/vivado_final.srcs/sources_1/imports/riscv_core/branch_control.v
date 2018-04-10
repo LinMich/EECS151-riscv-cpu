@@ -20,7 +20,7 @@ module branch_control (
         `FNC_BGE: should_br_pass = ($signed(rs2) < $signed(rs1));
         `FNC_BLTU: should_br_pass = (rs1 < rs2);
         `FNC_BGEU: should_br_pass = (rs2 < rs1);
-        default: should_br_pass = 1'bx;
+        default: should_br_pass = 1'b0;
         endcase
     end
 
