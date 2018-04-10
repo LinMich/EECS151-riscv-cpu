@@ -179,6 +179,8 @@ INFO: [VRFC 10-311] analyzing module branch_control
 WARNING: [VRFC 10-2421] module branch_control is previously defined, ignoring this definition [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/imports/riscv_core/branch_control.v:3]
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module debouncer
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/UART_controller.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module UART_controller
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sim_1/imports/testbenches/ALU_testbench.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module ALU_testbench
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sim_1/imports/testbenches/assembly_testbench.v" into library xil_defaultlib

@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="981029470fs"></ZoomStartTime>
-      <ZoomEndTime time="1146871765fs"></ZoomEndTime>
-      <Cursor1Time time="1050000000fs"></Cursor1Time>
+      <ZoomStartTime time="1509030100fs"></ZoomStartTime>
+      <ZoomEndTime time="1549609811fs"></ZoomEndTime>
+      <Cursor1Time time="83350100000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="62"></ValueColumnWidth>
+      <NameColumnWidth column_width="252"></NameColumnWidth>
+      <ValueColumnWidth column_width="99"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="93" />
+   <WVObjectSize size="132" />
    <wvobject type="logic" fp_name="/echo_testbench/CPU/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -316,10 +316,6 @@
       <obj_property name="ElementShortName">ex_UART_transmitter_write</obj_property>
       <obj_property name="ObjectShortName">ex_UART_transmitter_write</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/echo_testbench/CPU/ex_UART_control_read">
-      <obj_property name="ElementShortName">ex_UART_control_read</obj_property>
-      <obj_property name="ObjectShortName">ex_UART_control_read</obj_property>
-   </wvobject>
    <wvobject type="logic" fp_name="/echo_testbench/CPU/ex_UART_receiver_data">
       <obj_property name="ElementShortName">ex_UART_receiver_data</obj_property>
       <obj_property name="ObjectShortName">ex_UART_receiver_data</obj_property>
@@ -339,14 +335,6 @@
    <wvobject type="logic" fp_name="/echo_testbench/CPU/mwb_use_instr_counter_reg_data">
       <obj_property name="ElementShortName">mwb_use_instr_counter_reg_data</obj_property>
       <obj_property name="ObjectShortName">mwb_use_instr_counter_reg_data</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/echo_testbench/CPU/mwb_UART_control_read">
-      <obj_property name="ElementShortName">mwb_UART_control_read</obj_property>
-      <obj_property name="ObjectShortName">mwb_UART_control_read</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/echo_testbench/CPU/mwb_UART_receiver_data">
-      <obj_property name="ElementShortName">mwb_UART_receiver_data</obj_property>
-      <obj_property name="ObjectShortName">mwb_UART_receiver_data</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/echo_testbench/CPU/mwb_MemtoReg">
       <obj_property name="ElementShortName">mwb_MemtoReg</obj_property>
@@ -372,6 +360,34 @@
       <obj_property name="ElementShortName">UART_data_out_valid</obj_property>
       <obj_property name="ObjectShortName">UART_data_out_valid</obj_property>
    </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/CPU/ex_uart_data_out_valid">
+      <obj_property name="ElementShortName">ex_uart_data_out_valid</obj_property>
+      <obj_property name="ObjectShortName">ex_uart_data_out_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/CPU/ex_uart_data_in_ready">
+      <obj_property name="ElementShortName">ex_uart_data_in_ready</obj_property>
+      <obj_property name="ObjectShortName">ex_uart_data_in_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/CPU/ex_uart_data_in_valid">
+      <obj_property name="ElementShortName">ex_uart_data_in_valid</obj_property>
+      <obj_property name="ObjectShortName">ex_uart_data_in_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/CPU/ex_uart_data_out_ready">
+      <obj_property name="ElementShortName">ex_uart_data_out_ready</obj_property>
+      <obj_property name="ObjectShortName">ex_uart_data_out_ready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/CPU/ex_uart_write_data">
+      <obj_property name="ElementShortName">ex_uart_write_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ex_uart_write_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/CPU/mwb_uart_write_data">
+      <obj_property name="ElementShortName">mwb_uart_write_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mwb_uart_write_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/CPU/mwb_uart_read_data">
+      <obj_property name="ElementShortName">mwb_uart_read_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">mwb_uart_read_data[7:0]</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="/echo_testbench/CPU/mwb_data_out_bios">
       <obj_property name="ElementShortName">mwb_data_out_bios[31:0]</obj_property>
       <obj_property name="ObjectShortName">mwb_data_out_bios[31:0]</obj_property>
@@ -391,5 +407,145 @@
    <wvobject type="array" fp_name="/echo_testbench/CPU/CPU_CLOCK_FREQ">
       <obj_property name="ElementShortName">CPU_CLOCK_FREQ[31:0]</obj_property>
       <obj_property name="ObjectShortName">CPU_CLOCK_FREQ[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uatransmit/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uatransmit/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uatransmit/data_in">
+      <obj_property name="ElementShortName">data_in[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_in[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uatransmit/data_in_valid">
+      <obj_property name="ElementShortName">data_in_valid</obj_property>
+      <obj_property name="ObjectShortName">data_in_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uatransmit/data_in_ready">
+      <obj_property name="ElementShortName">data_in_ready</obj_property>
+      <obj_property name="ObjectShortName">data_in_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uatransmit/serial_out">
+      <obj_property name="ElementShortName">serial_out</obj_property>
+      <obj_property name="ObjectShortName">serial_out</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uatransmit/tx_running">
+      <obj_property name="ElementShortName">tx_running</obj_property>
+      <obj_property name="ObjectShortName">tx_running</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uatransmit/symbol_edge">
+      <obj_property name="ElementShortName">symbol_edge</obj_property>
+      <obj_property name="ObjectShortName">symbol_edge</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uatransmit/start">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uatransmit/tx_shift">
+      <obj_property name="ElementShortName">tx_shift[9:0]</obj_property>
+      <obj_property name="ObjectShortName">tx_shift[9:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uatransmit/bit_counter">
+      <obj_property name="ElementShortName">bit_counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">bit_counter[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uatransmit/clock_counter">
+      <obj_property name="ElementShortName">clock_counter[8:0]</obj_property>
+      <obj_property name="ObjectShortName">clock_counter[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uatransmit/CLOCK_FREQ">
+      <obj_property name="ElementShortName">CLOCK_FREQ[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CLOCK_FREQ[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uatransmit/BAUD_RATE">
+      <obj_property name="ElementShortName">BAUD_RATE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">BAUD_RATE[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uatransmit/SYMBOL_EDGE_TIME">
+      <obj_property name="ElementShortName">SYMBOL_EDGE_TIME[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SYMBOL_EDGE_TIME[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uatransmit/CLOCK_COUNTER_WIDTH">
+      <obj_property name="ElementShortName">CLOCK_COUNTER_WIDTH[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CLOCK_COUNTER_WIDTH[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uareceive/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uareceive/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/data_out">
+      <obj_property name="ElementShortName">data_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data_out[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uareceive/data_out_valid">
+      <obj_property name="ElementShortName">data_out_valid</obj_property>
+      <obj_property name="ObjectShortName">data_out_valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uareceive/data_out_ready">
+      <obj_property name="ElementShortName">data_out_ready</obj_property>
+      <obj_property name="ObjectShortName">data_out_ready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uareceive/serial_in">
+      <obj_property name="ElementShortName">serial_in</obj_property>
+      <obj_property name="ObjectShortName">serial_in</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uareceive/symbol_edge">
+      <obj_property name="ElementShortName">symbol_edge</obj_property>
+      <obj_property name="ObjectShortName">symbol_edge</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uareceive/sample">
+      <obj_property name="ElementShortName">sample</obj_property>
+      <obj_property name="ObjectShortName">sample</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uareceive/start">
+      <obj_property name="ElementShortName">start</obj_property>
+      <obj_property name="ObjectShortName">start</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uareceive/rx_running">
+      <obj_property name="ElementShortName">rx_running</obj_property>
+      <obj_property name="ObjectShortName">rx_running</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/rx_shift">
+      <obj_property name="ElementShortName">rx_shift[9:0]</obj_property>
+      <obj_property name="ObjectShortName">rx_shift[9:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/bit_counter">
+      <obj_property name="ElementShortName">bit_counter[3:0]</obj_property>
+      <obj_property name="ObjectShortName">bit_counter[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/clock_counter">
+      <obj_property name="ElementShortName">clock_counter[8:0]</obj_property>
+      <obj_property name="ObjectShortName">clock_counter[8:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/echo_testbench/off_chip_uart/uareceive/has_byte">
+      <obj_property name="ElementShortName">has_byte</obj_property>
+      <obj_property name="ObjectShortName">has_byte</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/CLOCK_FREQ">
+      <obj_property name="ElementShortName">CLOCK_FREQ[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CLOCK_FREQ[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/BAUD_RATE">
+      <obj_property name="ElementShortName">BAUD_RATE[31:0]</obj_property>
+      <obj_property name="ObjectShortName">BAUD_RATE[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/SYMBOL_EDGE_TIME">
+      <obj_property name="ElementShortName">SYMBOL_EDGE_TIME[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SYMBOL_EDGE_TIME[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/SAMPLE_TIME">
+      <obj_property name="ElementShortName">SAMPLE_TIME[31:0]</obj_property>
+      <obj_property name="ObjectShortName">SAMPLE_TIME[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/echo_testbench/off_chip_uart/uareceive/CLOCK_COUNTER_WIDTH">
+      <obj_property name="ElementShortName">CLOCK_COUNTER_WIDTH[31:0]</obj_property>
+      <obj_property name="ObjectShortName">CLOCK_COUNTER_WIDTH[31:0]</obj_property>
    </wvobject>
 </wave_config>

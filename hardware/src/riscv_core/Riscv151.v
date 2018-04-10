@@ -118,8 +118,8 @@ module Riscv151 #(
     reg mwb_reset_counters;
     reg mwb_use_cycle_counter_reg_data;
     reg mwb_use_instr_counter_reg_data;
-    reg mwb_UART_control_read;
-    reg mwb_UART_receiver_data;
+//    reg mwb_UART_control_read;
+//    reg mwb_UART_receiver_data;
     reg mwb_MemtoReg;
     reg[31:0] mwb_regfile_input_data_mux_out;
     
@@ -161,25 +161,25 @@ module Riscv151 #(
         ex_use_instr_counter_reg_data = 1'b0;
         
         if (ex_opcode == `OPC_STORE) begin
-            if (ex_aluout_reg == 32'h80000008) begin
-                // UART transmitter data write
-                ex_UART_transmitter_write = 1'b1;
-            end       
-            else if (ex_aluout_reg == 32'h80000018) begin
+//            if (ex_aluout_reg == 32'h80000008) begin
+//                // UART transmitter data write
+//                ex_UART_transmitter_write = 1'b1;
+//            end       
+            if (ex_aluout_reg == 32'h80000018) begin
                 ex_reset_counters = 1'b1;
             end
                 
         end
         else if (ex_opcode == `OPC_LOAD) begin
-            if (ex_aluout_reg == 32'h80000000) begin
-                // UART control read
-                ex_UART_control_read = 1'b1;
-            end
-            else if (ex_aluout_reg == 32'h80000004) begin
-                // UART receiver data
-                ex_UART_receiver_data = 1'b1;
-            end
-            else if (ex_aluout_reg == 32'h80000010) begin
+//            if (ex_aluout_reg == 32'h80000000) begin
+//                // UART control read
+//                ex_UART_control_read = 1'b1;
+//            end
+//            else if (ex_aluout_reg == 32'h80000004) begin
+//                // UART receiver data
+//                ex_UART_receiver_data = 1'b1;
+//            end
+            if (ex_aluout_reg == 32'h80000010) begin
                 ex_use_cycle_counter_reg_data = 1'b1;
             end
             else if (ex_aluout_reg == 32'h80000014) begin
@@ -187,6 +187,56 @@ module Riscv151 #(
             end
         end
     end
+    
+    
+    
+    wire ex_uart_data_out_valid;
+    wire ex_uart_data_in_ready;
+    
+    wire ex_uart_data_in_valid;
+    wire ex_uart_data_out_ready;
+    
+    wire [31:0] ex_uart_write_data;
+    reg [31:0] mwb_uart_write_data;
+    reg mwb_uart_data_in_valid;
+    wire ex_data_write_ctrl_sig;
+    reg mwb_data_write_ctrl_sig;
+    
+    wire [7:0] mwb_uart_read_data;
+    
+    UART_controller uart_controller (
+        .instruction(ex_inst_reg),
+        .address(ex_aluout_reg), // from ALU out
+        .raw_write_data(ex_rs2_after_fwd_reg), // from forwarded rs2
+            
+        // signals from UART for passing control signals
+        .data_out_valid(ex_uart_data_out_valid),
+        .data_in_ready(ex_uart_data_in_ready),
+            
+        // signals for telling UART to transmit data being sent to it or read data from it
+        .data_in_valid(ex_uart_data_in_valid),
+        .data_out_ready(ex_uart_data_out_ready),
+        .data_write_ctrl_sig(ex_data_write_ctrl_sig),
+            
+        .formatted_write_data(ex_uart_write_data)
+    );
+    
+    // On-chip UART
+    uart #(
+        .CLOCK_FREQ(CPU_CLOCK_FREQ)
+    ) on_chip_uart (
+        .clk(clk),
+        .reset(rst),
+        .data_in(ex_uart_write_data[7:0]), //NEEDS MODIFYING ex_rs1_after_fwd_reg mwb_regfile_input_data[7:0]
+        .data_in_valid(ex_uart_data_in_valid),
+        .data_out_ready(ex_uart_data_out_ready), // ready to receive data
+        .serial_in(FPGA_SERIAL_RX),
+
+        .data_in_ready(ex_uart_data_in_ready),
+        .data_out(mwb_uart_read_data),
+        .data_out_valid(ex_uart_data_out_valid),
+        .serial_out(FPGA_SERIAL_TX)
+    );
     
     always @(*) begin
         if(mwb_MemtoReg) begin
@@ -196,38 +246,20 @@ module Riscv151 #(
             else if (mwb_use_instr_counter_reg_data) begin
                 mwb_regfile_input_data_mux_out = instr_counter;
             end
-            else if (mwb_UART_control_read) begin
-                mwb_regfile_input_data_mux_out = {30'd0, UART_data_out_valid, UART_data_in_ready};
+            else if (mwb_data_write_ctrl_sig) begin//
+                mwb_regfile_input_data_mux_out = mwb_uart_write_data;
             end
-            else if (mwb_UART_receiver_data) begin
-                mwb_regfile_input_data_mux_out = {24'd0, UART_data_out};
+            else if (mwb_uart_data_in_valid) begin//
+                mwb_regfile_input_data_mux_out = {24'd0, mwb_uart_read_data};
             end
             else begin
                 mwb_regfile_input_data_mux_out = mwb_data_mem_reader_out;
             end
         end
         else begin
-            // need something here?
+                // need something here?
         end
-    end  
-    
-    
-    // On-chip UART
-    uart #(
-        .CLOCK_FREQ(CPU_CLOCK_FREQ)
-    ) on_chip_uart (
-        .clk(clk),
-        .reset(rst),
-        .data_in(ex_memwrdat_reg[7:0]), //NEEDS MODIFYING ex_rs1_after_fwd_reg mwb_regfile_input_data[7:0]
-        .data_in_valid(ex_UART_transmitter_write),
-        .data_out_ready(ex_UART_receiver_data),
-        .serial_in(FPGA_SERIAL_RX),
-
-        .data_in_ready(UART_data_in_ready),
-        .data_out(UART_data_out),
-        .data_out_valid(UART_data_out_valid),
-        .serial_out(FPGA_SERIAL_TX)
-    );
+    end
     
     wire [31:0] mwb_data_out_bios;
     reg [31:0] mwb_data_out_mem;
@@ -401,11 +433,15 @@ module Riscv151 #(
             older_mwb_rd <= 0;
             older_regwe <= 0;
             
+            mwb_uart_write_data <= 0;
+            
             mwb_reset_counters <= 0;
             mwb_use_cycle_counter_reg_data <= 0;
             mwb_use_instr_counter_reg_data <= 0;
-            mwb_UART_control_read <= 0;
-            mwb_UART_receiver_data <= 0;
+//            mwb_UART_control_read <= 0;
+//            mwb_UART_receiver_data <= 0;
+            mwb_uart_data_in_valid <= 0;
+            mwb_data_write_ctrl_sig <= 0;
             
             mwb_MemtoReg <= 0;
         end else begin
@@ -436,6 +472,9 @@ module Riscv151 #(
             mwb_u_reg <= ex_u_reg;
             mwb_opcode_reg <= ex_inst_reg[6:0];
             mwb_load_funct <= ex_load_funct;
+            mwb_uart_write_data <= ex_uart_write_data;
+            mwb_uart_data_in_valid <= ex_uart_data_in_valid;
+            mwb_data_write_ctrl_sig <= ex_data_write_ctrl_sig;
             
 	        // MWB to OLDER
             older_regfile_in_data <= mwb_regfile_input_data;
@@ -446,8 +485,8 @@ module Riscv151 #(
             mwb_reset_counters <= ex_reset_counters;
             mwb_use_cycle_counter_reg_data <= ex_use_cycle_counter_reg_data;
             mwb_use_instr_counter_reg_data <= ex_use_instr_counter_reg_data;
-            mwb_UART_control_read <= ex_UART_control_read;
-            mwb_UART_receiver_data <= ex_UART_receiver_data;
+//            mwb_UART_control_read <= ex_UART_control_read;
+//            mwb_UART_receiver_data <= ex_uart_data_out_ready;
             
             mwb_MemtoReg <= ex_MemtoReg;
         end

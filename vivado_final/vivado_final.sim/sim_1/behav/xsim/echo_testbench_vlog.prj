@@ -40,6 +40,7 @@ verilog xil_defaultlib  --include "../../../../vivado_final.srcs/sources_1/impor
 "../../../../vivado_final.srcs/sources_1/imports/src/z1top.v" \
 "../../../../vivado_final.srcs/sources_1/imports/riscv_core/branch_control.v" \
 "../../../../../hardware/src/io_circuits/debouncer.v" \
+"../../../../../hardware/src/riscv_core/UART_controller.v" \
 "../../../../vivado_final.srcs/sim_1/imports/testbenches/ALU_testbench.v" \
 "../../../../vivado_final.srcs/sim_1/imports/testbenches/assembly_testbench.v" \
 "../../../../vivado_final.srcs/sim_1/imports/testbenches/bios_mem_testbench.v" \
