@@ -5,19 +5,19 @@ module synchronizer #(parameter width = 1) (
 );
     // Create your 2 flip-flop synchronizer here
     // This module takes in a vector of 1-bit asynchronous (from different clock domain or not clocked) signals
-    // and should output a vector of 1-bit synchronous signals that are synchronized to the input clk
-
-    reg [width-1:0] s1;
-    reg [width-1:0] s2;
+    reg [width-1:0] middle;
+    reg [width-1:0] ender;
     
     initial begin
-        s1 = 0;
-        s2 = 0;
+        middle = 0;
+        ender = 0;
     end
     
-    assign sync_signal = s2;
     always @(posedge clk) begin
-        s1 <= async_signal;
-        s2 <= s1;
+        middle <= async_signal;
+        ender <= middle;
     end
+    
+    // and should output a vector of 1-bit synchronous signals that are synchronized to the input clk
+    assign sync_signal = ender;
 endmodule

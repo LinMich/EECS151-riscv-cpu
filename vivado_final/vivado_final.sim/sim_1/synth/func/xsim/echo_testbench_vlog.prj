@@ -1,0 +1,15 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../hardware/src" --include "../../../../../../hardware/src/riscv_core" \
+"echo_testbench_func_synth.v" \
+"../../../../../../hardware/src/testbenches/control_testbench.v" \
+"../../../../../../hardware/src/testbenches/echo_testbench.v" \
+"../../../../../../hardware/src/testbenches/echo_integration_testbench.v" \
+"../../../../../../hardware/src/testbenches/ALU_testbench.v" \
+"../../../../../../hardware/src/testbenches/assembly_testbench.v" \
+"../../../../../../hardware/src/testbenches/bios_mem_testbench.v" \
+"../../../../../../hardware/src/testbenches/fifo_testbench.v" \
+"../../../../../../hardware/src/testbenches/i2s_controller_testbench.v" \
+"../../../../../../hardware/src/testbenches/reg_file_testbench.v" \
+
+# Do not sort compile order
+nosort

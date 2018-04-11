@@ -11,47 +11,57 @@ module debouncer #(
     input [width-1:0] glitchy_signal,
     output [width-1:0] debounced_signal
 );
-
     // Create your debouncer circuit here
     // This module takes in a vector of 1-bit synchronized, but possibly glitchy signals
     // and should output a vector of 1-bit signals that hold high when their respective counter saturates
-
-    reg [saturating_counter_width-1:0] saturating_counter [width-1:0]; 
-    reg [wrapping_counter_width-1:0] wrapping_counter;
-    reg sample_pulse_out;
-
+    reg [wrapping_counter_width-1:0] sample_counter;
+    reg pulse;
+    
     initial begin
-        wrapping_counter = 0;
-        sample_pulse_out = 0;
+        sample_counter = 0;
+        pulse = 0;
+    end
+    
+    // sample pulse generator
+    always @(posedge clk) begin
+        if (sample_counter == sample_count_max) begin
+            sample_counter <= 0;
+            pulse <= 1;
+        end else begin
+            sample_counter <= sample_counter + 1;
+            pulse <= 0;
+        end
+    end
+    
+    // saturating counter
+    reg [saturating_counter_width-1:0] pulse_counter [width-1:0];
+    //reg [width-1:0] output_passthrough;
+    
+    integer k;
+    initial begin
+        //output_passthrough = 0;
+        for (k = 0; k < width; k = k + 1) begin
+            pulse_counter[k] = 0;
+        end
     end
     
     genvar i;
     generate
-        for (i = 0; i < width; i = i + 1) begin:sat_count
-            initial begin
-                saturating_counter[i] = 0;
+        for (i = 0; i < width; i = i + 1) begin:SATURATOR_LOOP
+            always @(posedge clk) begin
+                if (glitchy_signal[i] == 0)
+                    pulse_counter[i] <= 0;
+                else if (pulse && glitchy_signal[i] == 1 && pulse_counter[i] < pulse_count_max)
+                    pulse_counter[i] <= pulse_counter[i] + 1;
+                else pulse_counter[i] <= pulse_counter[i];
+                //output_passthrough[i] <= (pulse_counter[i] == pulse_count_max);
             end
-            assign debounced_signal[i] = saturating_counter[i] == pulse_count_max;
-            always @ (posedge clk) begin
-                // Insert synchronous Verilog here
-                if (!glitchy_signal[i]) begin
-                    saturating_counter[i] <= 0;
-                end
-                else if (sample_pulse_out && glitchy_signal[i] && saturating_counter[i] < pulse_count_max) begin
-                    saturating_counter[i] <= saturating_counter[i] + 1;
-                end
-            end
+            
+            assign debounced_signal[i] = (pulse_counter[i] == pulse_count_max);
         end
-    endgenerate   
+    endgenerate
+    
 
-    always @(posedge clk) begin
-        if (wrapping_counter < sample_count_max) begin
-            wrapping_counter <= wrapping_counter + 1;
-            sample_pulse_out <= 0;
-        end
-        else begin
-            wrapping_counter <= 0;
-            sample_pulse_out <= 1;
-        end
-    end  
+    // Remove this line once you create your synchronizer
+    //assign debounced_signal = output_passthrough;
 endmodule

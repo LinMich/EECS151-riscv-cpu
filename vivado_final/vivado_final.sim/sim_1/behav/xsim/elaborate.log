@@ -1,6 +1,6 @@
 Vivado Simulator 2017.4
 Copyright 1986-1999, 2001-2016 Xilinx, Inc. All Rights Reserved.
-Running: /opt/Xilinx/Vivado/current/bin/unwrapped/lnx64.o/xelab -wto dbd10fecf0de4dce99bcb9cd80cc23cf --incr --debug typical --relax --mt 8 -L blk_mem_gen_v8_4_1 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot echo_testbench_behav xil_defaultlib.echo_testbench xil_defaultlib.glbl -log elaborate.log 
+Running: /opt/Xilinx/Vivado/current/bin/unwrapped/lnx64.o/xelab -wto dbd10fecf0de4dce99bcb9cd80cc23cf --incr --debug typical --relax --mt 8 -L xil_defaultlib -L blk_mem_gen_v8_4_1 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot echo_testbench_behav xil_defaultlib.echo_testbench xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 WARNING: [VRFC 10-1783] select index 62 into current_contents is out of bounds [/wrk/2017.4/nightly/2017_12_15_2086221/packages/customer/vivado/data/ip/xilinx/blk_mem_gen_v8_4/simulation/blk_mem_gen_v8_4.v:2420]
