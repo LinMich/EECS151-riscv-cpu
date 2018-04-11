@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="imem_blk_ram_synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1523428133">
+  <File Type="VDS-TIMING-PB" Name="imem_blk_ram_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="imem_blk_ram_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="imem_blk_ram.dcp"/>
+  <File Type="REPORTS-TCL" Name="imem_blk_ram_reports.tcl"/>
+  <File Type="PA-TCL" Name="imem_blk_ram.tcl"/>
+  <File Type="RDS-RDS" Name="imem_blk_ram.vds"/>
+  <File Type="RDS-PROPCONSTRS" Name="imem_blk_ram_drc_synth.rpt"/>
+  <File Type="RDS-UTIL" Name="imem_blk_ram_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="imem_blk_ram_utilization_synth.pb"/>
+  <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/imem_blk_ram">
+    <File Path="$PPRDIR/../hardware/src/memories/imem_blk_ram/imem_blk_ram.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="imem_blk_ram"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/imem_blk_ram">
+    <File Path="$PPRDIR/../hardware/src/memories/imem_blk_ram/imem_blk_ram.xci">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TopModule" Val="imem_blk_ram"/>
+      <Option Name="UseBlackboxStub" Val="1"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2017">
+      <Desc>Vivado Synthesis Defaults</Desc>
+    </StratHandle>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>

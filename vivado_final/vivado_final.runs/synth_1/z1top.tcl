@@ -34,6 +34,7 @@ set_property ip_output_repo /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/
 set_property ip_cache_permissions {read write} [current_project]
 add_files /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/software/assembly_tests/assembly_tests.coe
 add_files /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/software/echo/echo.coe
+add_files /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/software/bios151v3/bios151v3.coe
 read_verilog {
   /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/util.vh
   /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Opcode.vh
@@ -62,14 +63,14 @@ read_verilog -library xil_defaultlib {
   /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/UART_controller.v
   /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v
 }
-read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram.xci
-set_property used_in_implementation false [get_files -all /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram_ooc.xdc]
-
 read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/dmem_blk_ram/dmem_blk_ram.xci
 set_property used_in_implementation false [get_files -all /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/dmem_blk_ram/dmem_blk_ram_ooc.xdc]
 
 read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/bios_mem/bios_mem.xci
 set_property used_in_implementation false [get_files -all /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/bios_mem/bios_mem_ooc.xdc]
+
+read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram.xci
+set_property used_in_implementation false [get_files -all /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram_ooc.xdc]
 
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
@@ -82,8 +83,6 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 read_xdc /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc
 set_property used_in_implementation false [get_files /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc]
 
-read_xdc dont_touch.xdc
-set_property used_in_implementation false [get_files dont_touch.xdc]
 
 synth_design -top z1top -part xc7z020clg400-1
 

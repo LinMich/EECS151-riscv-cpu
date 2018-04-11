@@ -2,8 +2,8 @@
 # Vivado v2017.4 (64-bit)
 # SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
 # IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
-# Start of session at: Thu Apr  5 21:36:47 2018
-# Process ID: 31798
+# Start of session at: Tue Apr 10 23:27:58 2018
+# Process ID: 7875
 # Current directory: /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/dmem_blk_ram_synth_1
 # Command line: vivado -log dmem_blk_ram.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source dmem_blk_ram.tcl
 # Log file: /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/dmem_blk_ram_synth_1/dmem_blk_ram.vds
@@ -15,9 +15,9 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 31893 
+INFO: Helper process launched with PID 7961 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:33 . Memory (MB): peak = 1369.406 ; gain = 85.941 ; free physical = 9500 ; free virtual = 17410
+Starting RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:34 . Memory (MB): peak = 1370.410 ; gain = 86.941 ; free physical = 833 ; free virtual = 5469
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'dmem_blk_ram' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/dmem_blk_ram/synth/dmem_blk_ram.vhd:70]
 	Parameter C_FAMILY bound to: zynq - type: string 
@@ -35,8 +35,8 @@ INFO: [Synth 8-638] synthesizing module 'dmem_blk_ram' [/home/cc/eecs151/sp18/cl
 	Parameter C_BYTE_SIZE bound to: 8 - type: integer 
 	Parameter C_ALGORITHM bound to: 1 - type: integer 
 	Parameter C_PRIM_TYPE bound to: 1 - type: integer 
-	Parameter C_LOAD_INIT_FILE bound to: 0 - type: integer 
-	Parameter C_INIT_FILE_NAME bound to: no_coe_file_loaded - type: string 
+	Parameter C_LOAD_INIT_FILE bound to: 1 - type: integer 
+	Parameter C_INIT_FILE_NAME bound to: dmem_blk_ram.mif - type: string 
 	Parameter C_INIT_FILE bound to: dmem_blk_ram.mem - type: string 
 	Parameter C_USE_DEFAULT_DATA bound to: 0 - type: integer 
 	Parameter C_DEFAULT_DATA bound to: 0 - type: string 
@@ -197,7 +197,7 @@ WARNING: [Synth 8-3331] design blk_mem_gen_mux has unconnected port ADDR_IN[6]
 WARNING: [Synth 8-3331] design blk_mem_gen_mux has unconnected port ADDR_IN[5]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:01:55 ; elapsed = 00:02:33 . Memory (MB): peak = 1573.676 ; gain = 290.211 ; free physical = 9431 ; free virtual = 17342
+Finished RTL Elaboration : Time (s): cpu = 00:02:30 ; elapsed = 00:03:19 . Memory (MB): peak = 1611.555 ; gain = 328.086 ; free physical = 443 ; free virtual = 4848
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -207,7 +207,7 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:01:56 ; elapsed = 00:02:34 . Memory (MB): peak = 1573.676 ; gain = 290.211 ; free physical = 9424 ; free virtual = 17335
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:02:30 ; elapsed = 00:03:19 . Memory (MB): peak = 1611.555 ; gain = 328.086 ; free physical = 448 ; free virtual = 4852
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 16 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -225,26 +225,26 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1747.703 ; gain = 0.004 ; free physical = 8992 ; free virtual = 16903
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1758.582 ; gain = 0.004 ; free physical = 682 ; free virtual = 5086
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:02:20 ; elapsed = 00:03:40 . Memory (MB): peak = 1747.703 ; gain = 464.238 ; free physical = 9057 ; free virtual = 16968
+Finished Constraint Validation : Time (s): cpu = 00:02:55 ; elapsed = 00:04:30 . Memory (MB): peak = 1758.582 ; gain = 475.113 ; free physical = 797 ; free virtual = 5201
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:02:20 ; elapsed = 00:03:40 . Memory (MB): peak = 1747.703 ; gain = 464.238 ; free physical = 9057 ; free virtual = 16968
+Finished Loading Part and Timing Information : Time (s): cpu = 00:02:55 ; elapsed = 00:04:30 . Memory (MB): peak = 1758.582 ; gain = 475.113 ; free physical = 797 ; free virtual = 5201
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 Applied set_property DONT_TOUCH = true for U0. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/dmem_blk_ram_synth_1/dont_touch.xdc, line 9).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:02:20 ; elapsed = 00:03:40 . Memory (MB): peak = 1747.703 ; gain = 464.238 ; free physical = 9059 ; free virtual = 16970
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:02:55 ; elapsed = 00:04:30 . Memory (MB): peak = 1758.582 ; gain = 475.113 ; free physical = 799 ; free virtual = 5203
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:02:21 ; elapsed = 00:03:40 . Memory (MB): peak = 1747.703 ; gain = 464.238 ; free physical = 9042 ; free virtual = 16953
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:02:56 ; elapsed = 00:04:31 . Memory (MB): peak = 1758.582 ; gain = 475.113 ; free physical = 789 ; free virtual = 5194
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -296,7 +296,7 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-3332] Sequential element (inst_blk_mem_gen/gnbram.gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_a.A/no_softecc_sel_reg.ce_pri.sel_pipe_reg[0]) is unused and will be removed from module blk_mem_gen_v8_4_1.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:21 ; elapsed = 00:03:41 . Memory (MB): peak = 1747.703 ; gain = 464.238 ; free physical = 9033 ; free virtual = 16944
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:56 ; elapsed = 00:04:31 . Memory (MB): peak = 1758.582 ; gain = 475.113 ; free physical = 783 ; free virtual = 5188
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -308,13 +308,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:02:30 ; elapsed = 00:03:58 . Memory (MB): peak = 1747.703 ; gain = 464.238 ; free physical = 8837 ; free virtual = 16749
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:05 ; elapsed = 00:04:48 . Memory (MB): peak = 1758.582 ; gain = 475.113 ; free physical = 642 ; free virtual = 5046
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:02:30 ; elapsed = 00:03:58 . Memory (MB): peak = 1747.703 ; gain = 464.238 ; free physical = 8836 ; free virtual = 16748
+Finished Timing Optimization : Time (s): cpu = 00:03:05 ; elapsed = 00:04:48 . Memory (MB): peak = 1758.582 ; gain = 475.113 ; free physical = 640 ; free virtual = 5045
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -326,7 +326,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:02:31 ; elapsed = 00:03:58 . Memory (MB): peak = 1758.734 ; gain = 475.270 ; free physical = 8836 ; free virtual = 16749
+Finished Technology Mapping : Time (s): cpu = 00:03:05 ; elapsed = 00:04:48 . Memory (MB): peak = 1772.613 ; gain = 489.145 ; free physical = 640 ; free virtual = 5044
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -350,7 +350,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:31 ; elapsed = 00:03:59 . Memory (MB): peak = 1758.738 ; gain = 475.273 ; free physical = 8834 ; free virtual = 16746
+Finished IO Insertion : Time (s): cpu = 00:03:06 ; elapsed = 00:04:49 . Memory (MB): peak = 1772.617 ; gain = 489.148 ; free physical = 638 ; free virtual = 5043
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -363,7 +363,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:31 ; elapsed = 00:03:59 . Memory (MB): peak = 1758.738 ; gain = 475.273 ; free physical = 8834 ; free virtual = 16746
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:06 ; elapsed = 00:04:49 . Memory (MB): peak = 1772.617 ; gain = 489.148 ; free physical = 638 ; free virtual = 5043
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -375,25 +375,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:31 ; elapsed = 00:03:59 . Memory (MB): peak = 1758.738 ; gain = 475.273 ; free physical = 8833 ; free virtual = 16746
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:06 ; elapsed = 00:04:49 . Memory (MB): peak = 1772.617 ; gain = 489.148 ; free physical = 638 ; free virtual = 5043
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:31 ; elapsed = 00:03:59 . Memory (MB): peak = 1758.738 ; gain = 475.273 ; free physical = 8833 ; free virtual = 16746
+Finished Renaming Generated Ports : Time (s): cpu = 00:03:06 ; elapsed = 00:04:49 . Memory (MB): peak = 1772.617 ; gain = 489.148 ; free physical = 638 ; free virtual = 5043
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:31 ; elapsed = 00:03:59 . Memory (MB): peak = 1758.738 ; gain = 475.273 ; free physical = 8833 ; free virtual = 16746
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:06 ; elapsed = 00:04:49 . Memory (MB): peak = 1772.617 ; gain = 489.148 ; free physical = 638 ; free virtual = 5043
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:31 ; elapsed = 00:03:59 . Memory (MB): peak = 1758.738 ; gain = 475.273 ; free physical = 8833 ; free virtual = 16746
+Finished Renaming Generated Nets : Time (s): cpu = 00:03:06 ; elapsed = 00:04:49 . Memory (MB): peak = 1772.617 ; gain = 489.148 ; free physical = 638 ; free virtual = 5043
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -406,64 +406,68 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+---------+------+
-|      |Cell     |Count |
-+------+---------+------+
-|1     |LUT3     |     6|
-|2     |LUT6     |    32|
-|3     |RAMB36E1 |    16|
-|4     |FDRE     |     2|
-+------+---------+------+
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |LUT3       |     6|
+|2     |LUT6       |    32|
+|3     |RAMB36E1   |     1|
+|4     |RAMB36E1_1 |    12|
+|5     |RAMB36E1_2 |     1|
+|6     |RAMB36E1_3 |     1|
+|7     |RAMB36E1_4 |     1|
+|8     |FDRE       |     2|
++------+-----------+------+
 
 Report Instance Areas: 
-+------+---------------------------------------------+------------------------------------------+------+
-|      |Instance                                     |Module                                    |Cells |
-+------+---------------------------------------------+------------------------------------------+------+
-|1     |top                                          |                                          |    56|
-|2     |  U0                                         |blk_mem_gen_v8_4_1                        |    56|
-|3     |    inst_blk_mem_gen                         |blk_mem_gen_v8_4_1_synth                  |    56|
-|4     |      \gnbram.gnativebmg.native_blk_mem_gen  |blk_mem_gen_top                           |    56|
-|5     |        \valid.cstr                          |blk_mem_gen_generic_cstr                  |    56|
-|6     |          \has_mux_a.A                       |blk_mem_gen_mux                           |    36|
-|7     |          \ramloop[0].ram.r                  |blk_mem_gen_prim_width                    |     1|
-|8     |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper                  |     1|
-|9     |          \ramloop[10].ram.r                 |blk_mem_gen_prim_width__parameterized9    |     2|
-|10    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized9  |     2|
-|11    |          \ramloop[11].ram.r                 |blk_mem_gen_prim_width__parameterized10   |     1|
-|12    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized10 |     1|
-|13    |          \ramloop[12].ram.r                 |blk_mem_gen_prim_width__parameterized11   |     1|
-|14    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized11 |     1|
-|15    |          \ramloop[13].ram.r                 |blk_mem_gen_prim_width__parameterized12   |     1|
-|16    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized12 |     1|
-|17    |          \ramloop[14].ram.r                 |blk_mem_gen_prim_width__parameterized13   |     1|
-|18    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized13 |     1|
-|19    |          \ramloop[15].ram.r                 |blk_mem_gen_prim_width__parameterized14   |     2|
-|20    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized14 |     2|
-|21    |          \ramloop[1].ram.r                  |blk_mem_gen_prim_width__parameterized0    |     1|
-|22    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized0  |     1|
-|23    |          \ramloop[2].ram.r                  |blk_mem_gen_prim_width__parameterized1    |     1|
-|24    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized1  |     1|
-|25    |          \ramloop[3].ram.r                  |blk_mem_gen_prim_width__parameterized2    |     1|
-|26    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized2  |     1|
-|27    |          \ramloop[4].ram.r                  |blk_mem_gen_prim_width__parameterized3    |     1|
-|28    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized3  |     1|
-|29    |          \ramloop[5].ram.r                  |blk_mem_gen_prim_width__parameterized4    |     1|
-|30    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized4  |     1|
-|31    |          \ramloop[6].ram.r                  |blk_mem_gen_prim_width__parameterized5    |     1|
-|32    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized5  |     1|
-|33    |          \ramloop[7].ram.r                  |blk_mem_gen_prim_width__parameterized6    |     1|
-|34    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized6  |     1|
-|35    |          \ramloop[8].ram.r                  |blk_mem_gen_prim_width__parameterized7    |     2|
-|36    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized7  |     2|
-|37    |          \ramloop[9].ram.r                  |blk_mem_gen_prim_width__parameterized8    |     2|
-|38    |            \prim_noinit.ram                 |blk_mem_gen_prim_wrapper__parameterized8  |     2|
-+------+---------------------------------------------+------------------------------------------+------+
++------+---------------------------------------------+-----------------------------------------------+------+
+|      |Instance                                     |Module                                         |Cells |
++------+---------------------------------------------+-----------------------------------------------+------+
+|1     |top                                          |                                               |    56|
+|2     |  U0                                         |blk_mem_gen_v8_4_1                             |    56|
+|3     |    inst_blk_mem_gen                         |blk_mem_gen_v8_4_1_synth                       |    56|
+|4     |      \gnbram.gnativebmg.native_blk_mem_gen  |blk_mem_gen_top                                |    56|
+|5     |        \valid.cstr                          |blk_mem_gen_generic_cstr                       |    56|
+|6     |          \has_mux_a.A                       |blk_mem_gen_mux                                |    36|
+|7     |          \ramloop[0].ram.r                  |blk_mem_gen_prim_width                         |     1|
+|8     |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init                  |     1|
+|9     |          \ramloop[10].ram.r                 |blk_mem_gen_prim_width__parameterized9         |     2|
+|10    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized9  |     2|
+|11    |          \ramloop[11].ram.r                 |blk_mem_gen_prim_width__parameterized10        |     1|
+|12    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized10 |     1|
+|13    |          \ramloop[12].ram.r                 |blk_mem_gen_prim_width__parameterized11        |     1|
+|14    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized11 |     1|
+|15    |          \ramloop[13].ram.r                 |blk_mem_gen_prim_width__parameterized12        |     1|
+|16    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized12 |     1|
+|17    |          \ramloop[14].ram.r                 |blk_mem_gen_prim_width__parameterized13        |     1|
+|18    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized13 |     1|
+|19    |          \ramloop[15].ram.r                 |blk_mem_gen_prim_width__parameterized14        |     2|
+|20    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized14 |     2|
+|21    |          \ramloop[1].ram.r                  |blk_mem_gen_prim_width__parameterized0         |     1|
+|22    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized0  |     1|
+|23    |          \ramloop[2].ram.r                  |blk_mem_gen_prim_width__parameterized1         |     1|
+|24    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized1  |     1|
+|25    |          \ramloop[3].ram.r                  |blk_mem_gen_prim_width__parameterized2         |     1|
+|26    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized2  |     1|
+|27    |          \ramloop[4].ram.r                  |blk_mem_gen_prim_width__parameterized3         |     1|
+|28    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized3  |     1|
+|29    |          \ramloop[5].ram.r                  |blk_mem_gen_prim_width__parameterized4         |     1|
+|30    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized4  |     1|
+|31    |          \ramloop[6].ram.r                  |blk_mem_gen_prim_width__parameterized5         |     1|
+|32    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized5  |     1|
+|33    |          \ramloop[7].ram.r                  |blk_mem_gen_prim_width__parameterized6         |     1|
+|34    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized6  |     1|
+|35    |          \ramloop[8].ram.r                  |blk_mem_gen_prim_width__parameterized7         |     2|
+|36    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized7  |     2|
+|37    |          \ramloop[9].ram.r                  |blk_mem_gen_prim_width__parameterized8         |     2|
+|38    |            \prim_init.ram                   |blk_mem_gen_prim_wrapper_init__parameterized8  |     2|
++------+---------------------------------------------+-----------------------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:31 ; elapsed = 00:03:59 . Memory (MB): peak = 1758.738 ; gain = 475.273 ; free physical = 8833 ; free virtual = 16746
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:06 ; elapsed = 00:04:49 . Memory (MB): peak = 1772.617 ; gain = 489.148 ; free physical = 638 ; free virtual = 5043
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 206 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:02:16 ; elapsed = 00:03:04 . Memory (MB): peak = 1758.738 ; gain = 301.246 ; free physical = 8902 ; free virtual = 16815
-Synthesis Optimization Complete : Time (s): cpu = 00:02:32 ; elapsed = 00:03:59 . Memory (MB): peak = 1758.742 ; gain = 475.273 ; free physical = 8911 ; free virtual = 16823
+Synthesis Optimization Runtime : Time (s): cpu = 00:02:49 ; elapsed = 00:03:48 . Memory (MB): peak = 1772.617 ; gain = 342.121 ; free physical = 694 ; free virtual = 5099
+Synthesis Optimization Complete : Time (s): cpu = 00:03:06 ; elapsed = 00:04:49 . Memory (MB): peak = 1772.621 ; gain = 489.148 ; free physical = 702 ; free virtual = 5107
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 16 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -475,11 +479,11 @@ No Unisim elements were transformed.
 INFO: [Common 17-83] Releasing license: Synthesis
 18 Infos, 100 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:34 ; elapsed = 00:04:01 . Memory (MB): peak = 1768.742 ; gain = 510.102 ; free physical = 9418 ; free virtual = 17330
+synth_design: Time (s): cpu = 00:03:08 ; elapsed = 00:04:50 . Memory (MB): peak = 1782.621 ; gain = 523.977 ; free physical = 687 ; free virtual = 5092
 INFO: [Common 17-1381] The checkpoint '/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/dmem_blk_ram_synth_1/dmem_blk_ram.dcp' has been generated.
 INFO: [Coretcl 2-1482] Added synthesis output to IP cache for IP /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/dmem_blk_ram/dmem_blk_ram.xci
 INFO: [Coretcl 2-1174] Renamed 37 cell refs.
 INFO: [Common 17-1381] The checkpoint '/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/dmem_blk_ram_synth_1/dmem_blk_ram.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file dmem_blk_ram_utilization_synth.rpt -pb dmem_blk_ram_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.15 . Memory (MB): peak = 1798.816 ; gain = 0.000 ; free physical = 9423 ; free virtual = 17336
-INFO: [Common 17-206] Exiting Vivado at Thu Apr  5 21:41:04 2018...
+report_utilization: Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.12 . Memory (MB): peak = 1812.695 ; gain = 0.000 ; free physical = 685 ; free virtual = 5091
+INFO: [Common 17-206] Exiting Vivado at Tue Apr 10 23:33:05 2018...

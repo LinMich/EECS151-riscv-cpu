@@ -77,9 +77,9 @@ set rc [catch {
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES XPM_MEMORY [current_project]
   add_files -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/z1top.dcp
-  read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram.xci
   read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/dmem_blk_ram/dmem_blk_ram.xci
   read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/bios_mem/bios_mem.xci
+  read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram.xci
   read_xdc /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc
   link_design -top z1top -part xc7z020clg400-1
   close_msg_db -file init_design.pb
