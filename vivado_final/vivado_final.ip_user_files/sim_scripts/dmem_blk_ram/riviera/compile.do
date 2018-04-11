@@ -10,7 +10,7 @@ vmap xpm riviera/xpm
 vmap blk_mem_gen_v8_4_1 riviera/blk_mem_gen_v8_4_1
 
 vlog -work xil_defaultlib  -sv2k12 \
-"/opt/Xilinx/Vivado/current/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
+"/opt/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv" \
 
 vcom -work xpm -93 \
 "/opt/Xilinx/Vivado/2017.4/data/ip/xpm/xpm_VCOMP.vhd" \

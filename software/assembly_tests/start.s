@@ -250,26 +250,36 @@ _start:
 # sw x10, 0(x11)	# write the instruction to imem
 # jalr x0, x8, 0	# jump to imem
 
-# reseting the counters
-li x11, 0x80000018
-sw x0, 0(x11)
-li x5, 1
+# # reseting the counters
+# li x11, 0x80000018
+# sw x0, 0(x11)
+# li x5, 1
 
-# reading the cycle counter
-addi x0, x0, 0
-addi x0, x0, 0
-li x12, 0x80000010
-lw x1, 0(x12)
-li x6, 1
+# # reading the cycle counter
+# addi x0, x0, 0
+# addi x0, x0, 0
+# li x12, 0x80000010
+# lw x1, 0(x12)
+# li x6, 1
 
-jal x0, Next
-li x7, 1
+# jal x0, Next
+# li x7, 1
 
-Next:
-# reading instruction counter
-li x13, 0x80000014
-lw x2, 0(x13)
-li x7, 1
+# Next:
+# # reading instruction counter
+# li x13, 0x80000014
+# lw x2, 0(x13)
+# li x7, 1
+
+li x11, 0x10000000
+li x12, 0xcafef00d
+sw x12, 0(x11)
+
+
+lw x13, 0(x11)
+li x30, 1
+li x20, 0
+
 
 # # Test R-type:
 # # Test ADD 

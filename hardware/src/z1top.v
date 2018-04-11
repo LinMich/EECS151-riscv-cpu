@@ -20,7 +20,7 @@ module z1top # (
     input [2:0] BUTTONS,        // Momentary push-buttons.
     input [1:0] SWITCHES,       // Slide switches
     output [5:0] LEDS,          // Board LEDs.
-    output [7:0] PMOD_LEDS,
+
     // UART connections
     input FPGA_SERIAL_RX,
     output FPGA_SERIAL_TX,
@@ -48,7 +48,7 @@ module z1top # (
     //// Clocking
     wire user_clk_g, cpu_clk, cpu_clk_g, cpu_clk_pll_lock;
     wire cpu_clk_pll_fb_out, cpu_clk_pll_fb_in;
-    wire [31:0]  pc;
+        
     reg [31:0] counter;
     reg sig;
     always @(posedge cpu_clk_g) begin
@@ -58,23 +58,19 @@ module z1top # (
       end
       else counter <= counter + 1;
     end
-//    assign LEDS[5] = sig;
-//    assign LEDS[4] = cpu_clk_pll_lock;
-    assign LEDS[5] = cpu_clk_g;
-//    assign LEDS[2:0] = counter[26:24];
-    assign LEDS[4:1] = pc[31:28];
-    assign PMOD_LEDS[7:1] = pc[14:8];
+    assign LEDS[5] = sig;
+    assign LEDS[4] = cpu_clk_pll_lock;
+    assign LEDS[3] = cpu_clk_g;
+    assign LEDS[2:0] = counter[26:24];
 
-    
     //// Resets
     // The global system reset is asserted when the RESET button is
     // pressed by the user or when the PLL isn't locked
     wire [2:0] clean_buttons;
     wire reset_button, reset;
     assign reset = reset_button || ~cpu_clk_pll_lock;
-    assign PMOD_LEDS[0] = reset;
-    assign LEDS[0] = RESET;
-        //// User IO
+
+    //// User IO
     button_parser #(
         .width(4),
         .sample_count_max(B_SAMPLE_COUNT_MAX),
@@ -124,9 +120,8 @@ module z1top # (
         .CPU_CLOCK_FREQ(CPU_CLOCK_FREQ)
     ) CPU(
         .clk(cpu_clk_g),
-        .rst(RESET),
+        .rst(reset),
         .FPGA_SERIAL_RX(FPGA_SERIAL_RX),
-        .FPGA_SERIAL_TX(FPGA_SERIAL_TX),
-        .pc(pc)
+        .FPGA_SERIAL_TX(FPGA_SERIAL_TX)
     );
 endmodule

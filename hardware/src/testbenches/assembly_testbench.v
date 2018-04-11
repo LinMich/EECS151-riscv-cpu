@@ -181,14 +181,14 @@ module assembly_testbench();
 //        check_reg(0, 32'd0, 1);               // Verify that x1 contains 300
         
 
-        wait_for_reg_to_equal(5, 32'd1);
-        check_reg(0, 32'd0, 1);
+        wait_for_reg_to_equal(30, 32'd1);
+        check_reg(13, 32'hcafef00d, 1);
         
-        wait_for_reg_to_equal(6, 32'd1);
-        check_reg(0, 32'd0, 1);
+//        wait_for_reg_to_equal(6, 32'd1);
+//        check_reg(, 32'd0, 1);
         
-        wait_for_reg_to_equal(7, 32'd1); 
-        check_reg(0, 32'd0, 1);
+//        wait_for_reg_to_equal(7, 32'd1); 
+//        check_reg(0, 32'd0, 1);
 
 
 

@@ -1,12 +1,18 @@
 <?xml version="1.0"?>
 <Runs Version="1" Minor="0">
-	<Run Id="imem_blk_ram_synth_1" LaunchDir="/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/imem_blk_ram_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
-	<Run Id="dmem_blk_ram_synth_1" LaunchDir="/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/dmem_blk_ram_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
-	<Run Id="bios_mem_synth_1" LaunchDir="/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/bios_mem_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
-	<Run Id="synth_1" LaunchDir="/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
-		<Parent Id="imem_blk_ram_synth_1"/>
+	<Run Id="dmem_blk_ram_synth_1" LaunchDir="/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/dmem_blk_ram_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bios_mem_synth_1" LaunchDir="/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/bios_mem_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="imem_blk_ram_synth_1" LaunchDir="/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/imem_blk_ram_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
 		<Parent Id="dmem_blk_ram_synth_1"/>
 		<Parent Id="bios_mem_synth_1"/>
+		<Parent Id="imem_blk_ram_synth_1"/>
+	</Run>
+	<Run Id="impl_1" LaunchDir="/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+		<Parent Id="synth_1"/>
+		<Parent Id="dmem_blk_ram_synth_1"/>
+		<Parent Id="bios_mem_synth_1"/>
+		<Parent Id="imem_blk_ram_synth_1"/>
 	</Run>
 </Runs>
 
