@@ -20,6 +20,7 @@ module z1top # (
     input [2:0] BUTTONS,        // Momentary push-buttons.
     input [1:0] SWITCHES,       // Slide switches
     output [5:0] LEDS,          // Board LEDs.
+    output [7:0] PMOD_LEDS,
 
     // UART connections
     input FPGA_SERIAL_RX,
@@ -51,6 +52,7 @@ module z1top # (
         
     reg [31:0] counter;
     reg sig;
+    wire [31:0] pc;
     always @(posedge cpu_clk_g) begin
       if (counter == CPU_CLOCK_FREQ - 1) begin
         counter <= 32'b0;
@@ -62,6 +64,8 @@ module z1top # (
     assign LEDS[4] = cpu_clk_pll_lock;
     assign LEDS[3] = cpu_clk_g;
     assign LEDS[2:0] = counter[26:24];
+    
+    assign PMOD_LEDS[7:1] = pc[31:25];
 
     //// Resets
     // The global system reset is asserted when the RESET button is
@@ -70,6 +74,7 @@ module z1top # (
     wire reset_button, reset;
     assign reset = reset_button || ~cpu_clk_pll_lock;
 
+    assign PMOD_LEDS[0] = reset;
     //// User IO
     button_parser #(
         .width(4),
@@ -122,6 +127,7 @@ module z1top # (
         .clk(cpu_clk_g),
         .rst(reset),
         .FPGA_SERIAL_RX(FPGA_SERIAL_RX),
-        .FPGA_SERIAL_TX(FPGA_SERIAL_TX)
+        .FPGA_SERIAL_TX(FPGA_SERIAL_TX),
+        .pc(pc)
     );
 endmodule
