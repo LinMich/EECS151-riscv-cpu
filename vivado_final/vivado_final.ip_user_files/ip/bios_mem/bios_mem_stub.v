@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
-// Date        : Wed Apr 11 00:27:49 2018
-// Host        : c125m-21.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
-// Command     : write_verilog -force -mode synth_stub -rename_top bios_mem -prefix
-//               bios_mem_ bios_mem_stub.v
+// Date        : Wed Apr 11 18:22:07 2018
+// Host        : c125m-20.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
+// Command     : write_verilog -force -mode synth_stub
+//               /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/bios_mem/bios_mem_stub.v
 // Design      : bios_mem
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z020clg400-1

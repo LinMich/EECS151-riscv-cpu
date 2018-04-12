@@ -84,6 +84,7 @@ module Riscv151 #(
     reg [31:0] mwb_u_reg;
     reg [6:0] mwb_opcode_reg;
     reg [2:0] mwb_load_funct;
+    reg [31:0] mwb_pc_reg;
     
     // mem/writeback stage wires
     wire [31:0] mwb_data_out_dmem;
@@ -179,6 +180,7 @@ module Riscv151 #(
     
     wire [31:0] ex_uart_write_data;
     reg [31:0] mwb_uart_write_data;
+    wire [7:0] ex_actual_uart_write_data;
     wire ex_data_write_ctrl_sig;
     reg mwb_data_write_ctrl_sig;
     
@@ -207,7 +209,8 @@ module Riscv151 #(
         .data_out_ready(ex_uart_data_out_ready),
         .data_write_ctrl_sig(ex_data_write_ctrl_sig),
             
-        .formatted_write_data(ex_uart_write_data)
+        .formatted_write_data(ex_uart_write_data),
+        .uart_write_data(ex_actual_uart_write_data)
     );
     
     // On-chip UART
@@ -216,7 +219,7 @@ module Riscv151 #(
     ) on_chip_uart (
         .clk(clk),
         .reset(rst),
-        .data_in(ex_uart_write_data[7:0]), //NEEDS MODIFYING ex_rs1_after_fwd_reg mwb_regfile_input_data[7:0]
+        .data_in(ex_actual_uart_write_data), //NEEDS MODIFYING ex_rs1_after_fwd_reg mwb_regfile_input_data[7:0]
         .data_in_valid(ex_uart_data_in_valid),
         .data_out_ready(ex_uart_data_out_ready), // ready to receive data
         .serial_in(FPGA_SERIAL_RX),
@@ -376,6 +379,7 @@ module Riscv151 #(
             mwb_u_reg <= 0;
             mwb_opcode_reg <= 0;
             mwb_load_funct <= 0;
+            mwb_pc_reg <= 0;
             
 
             
@@ -419,6 +423,7 @@ module Riscv151 #(
             mwb_uart_write_data <= ex_uart_write_data;
             mwb_data_write_ctrl_sig <= ex_data_write_ctrl_sig;
             mwb_uart_data_out_ready <= ex_uart_data_out_ready;
+            mwb_pc_reg <= ex_pc_reg;
             
 	        // MWB to OLDER
             older_regfile_in_data <= mwb_regfile_input_data;
@@ -470,7 +475,7 @@ module Riscv151 #(
     
         // input to regfile write data
         case (mwb_wbsel_reg)
-        2'b00: mwb_regfile_input_data = ex_pc_reg;
+        2'b00: mwb_regfile_input_data = mwb_pc_reg + 4; // ex_pc_reg
         2'b01: mwb_regfile_input_data = mwb_aluout_reg;
         2'b10: mwb_regfile_input_data = mwb_regfile_input_data_mux_out;
         2'b11: mwb_regfile_input_data = mwb_u_reg;

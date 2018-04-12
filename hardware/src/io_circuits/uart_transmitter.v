@@ -13,64 +13,48 @@ module uart_transmitter #(
 
     output serial_out
 );
-    // See diagram in the lab guide
+
     localparam  SYMBOL_EDGE_TIME    =   CLOCK_FREQ / BAUD_RATE;
     localparam  CLOCK_COUNTER_WIDTH =   `log2(SYMBOL_EDGE_TIME);
-    
-    wire tx_running;  
-    wire symbol_edge;
-    wire start; 
-    
-    reg [9:0] tx_shift;
-    reg [3:0] bit_counter;
-    reg [CLOCK_COUNTER_WIDTH-1:0] clock_counter;
+    localparam  IDLE = 0;
+    localparam  START = 1;
+    localparam  STOP = 10;
 
+    reg [9:0] to_send;
+    reg [CLOCK_COUNTER_WIDTH:0] clock_ctr;
+    reg [3:0] state;
 
-    //--|Signal Assignments|------------------------------------------------------
+    assign data_in_ready = state == IDLE;
+    assign serial_out = state == IDLE ? 1 : to_send[state-1];
 
-    assign serial_out = tx_shift[0];
-    assign data_in_ready = !tx_running;
-    assign symbol_edge = clock_counter == (SYMBOL_EDGE_TIME - 1);
-    
-    // Goes high when it is time to start transmitting a new character
-    assign start = data_in_valid;
-
-    // Goes high while we are transmitting a character
-    assign tx_running = bit_counter != 0;
-    
-    //--|Counters|----------------------------------------------------------------
-
-    // Counts cycles until a single symbol is done  
-    always @ (posedge clk) begin
-        clock_counter <= (start || reset || symbol_edge) ? 0 : clock_counter + 1;
-    end
-    
-    // Counts up to 10 bits for every character
-    always @ (posedge clk) begin
-        if (reset) begin
-            bit_counter <= 0;
-        end 
-        else if (start) 
-            bit_counter <= 1;
-        else if (symbol_edge && tx_running) begin
-            if (bit_counter == 10) 
-                bit_counter <= 0;
-            else
-                bit_counter <= bit_counter + 1;
-        end
-        
-    end 
-    
-    //--|Shift Register|----------------------------------------------------------
     always @(posedge clk) begin
-        if (reset || !tx_running) begin
-            tx_shift <= 10'b1;
+        if (reset) begin
+            state <= IDLE;
         end
-        if (start) begin
-            tx_shift <= {1'b1, data_in[7:0], 1'b0};
+        else if (state == IDLE && (data_in_valid && data_in_ready)) begin
+            state <= START;
         end
-        else if (symbol_edge && tx_running && bit_counter < 10)
-            tx_shift <= tx_shift >> 1;
-    end     
-    
+        else if (state != IDLE) begin
+            state <= clock_ctr == SYMBOL_EDGE_TIME ? (state == STOP ? IDLE : state+1) : state;
+        end
+    end
+
+    always @(posedge clk) begin
+        if (reset) begin
+            to_send <= 0;
+        end
+        else if (data_in_valid && data_in_ready) begin
+            to_send <= {1'b1, data_in, 1'b0};
+        end
+    end
+
+    always @(posedge clk) begin
+        if (reset || (data_in_valid && data_in_ready) || (clock_ctr == SYMBOL_EDGE_TIME)) begin
+            clock_ctr <= 0;
+        end
+        else begin
+            clock_ctr <= clock_ctr + 1;
+        end
+    end
+
 endmodule

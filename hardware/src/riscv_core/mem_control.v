@@ -22,11 +22,11 @@ module mem_control (
     
     always @(*) begin
         case (opcode)
-        `OPC_LUI: begin
-            we_data_reg = (addr[28] == 1) ? 4'b1111 : 4'b0000;
-            we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1111 : 4'b0000;
-            fmt_wr_data_reg = write_data;
-        end
+//        `OPC_LUI: begin
+//            we_data_reg = (addr[28] == 1) ? 4'b1111 : 4'b0000;
+//            we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1111 : 4'b0000;
+//            fmt_wr_data_reg = write_data;
+//        end
         `OPC_STORE: begin
             case (fnc)
             `FNC_SW: begin // handle store word
