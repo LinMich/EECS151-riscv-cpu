@@ -65,13 +65,13 @@ int main(void) {
       // FYDP: LED_CONTROL = next_sample;
       I2S_DATA = next_sample;
       TONE_GEN_TONE_INPUT = tone_period << 4;
-      // uwrite_int8s("Sent high.\n");
+      // FYDP: uwrite_int8s("Sent high.\n");
     }
     else if (counter >= (tone_period >> 1)) {
       while(I2S_FULL);
       next_sample = sample_table[(volume << 1) + 1];
       I2S_DATA = next_sample;
-      // uwrite_int8s("Sent low.\n");
+      // FYDP: uwrite_int8s("Sent low.\n");
     }
     counter++;
     if (counter >= tone_period) {
