@@ -12,9 +12,8 @@
 #define TONE_GEN_OUTPUT_ENABLE (*((volatile uint32_t*)0x80000034))
 #define TONE_GEN_TONE_INPUT (*((volatile uint32_t*)0x80000038))
 
-#define AC97_FULL (*((volatile uint32_t*)0x80000040) & 0x01)
-#define AC97_DATA (*((volatile uint32_t*)0x80000044))
-#define AC97_VOLUME (*((volatile uint32_t*)0x80000048))
+#define I2S_FULL (*((volatile uint32_t*)0x80000040) & 0x01)
+#define I2S_DATA (*((volatile uint32_t*)0x80000044))
 
 // I2C Controller MMIO - reading
 #define I2C_CONTROLLER_READY (*((volatile uint32_t*)0x80000100) & 0x1)
