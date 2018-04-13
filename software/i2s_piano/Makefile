@@ -1,5 +1,5 @@
 # Master Makefile dependencies
-TARGET := ac97_integration_tb
-INCLUDE_LIB := false
+TARGET := i2s_piano
+INCLUDE_LIB := true
 
 include ../Makefile.gcc.in

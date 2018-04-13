@@ -4,7 +4,22 @@
 #include "ascii.h"
 #include "memory_map.h"
 
+#define FRAMEBUFFER_BASE 0x90000000
 #define BUFFER_LEN 128
+
+void store_pixel(uint8_t color, int x, int y) {
+   (*((volatile uint8_t*)(FRAMEBUFFER_BASE + (y << 10) + x))) = color & 0x1;
+}
+
+void fill(uint8_t color) {
+    int x;
+    int y;
+    for (x = 0; x < 1024; x++) {
+        for (y = 0; y < 768; y++) {
+            store_pixel(color, x, y);
+        }
+    }
+}
 
 /**** HARDWARE FUNCTIONS ****/
 
@@ -12,8 +27,8 @@ extern volatile unsigned int
     uart_control,
     uart_rx,
     uart_tx,
-    ac97_full,
-    ac97_sample;
+    i2s_full,
+    i2s_sample;
 
 /**** OSCILLATOR ROUTINES ****/
 
@@ -91,6 +106,7 @@ static void osc_cycle(struct osc_state *os) {
 #define OS_COUNT (4)
 
 int main() {
+    fill(1);
 	struct osc_state oss[OS_COUNT];
     for (struct osc_state *os = &oss[0]; os < &oss[OS_COUNT]; os++)
         osc_reset(os, 0, 0, 1, 0);
@@ -155,11 +171,28 @@ int main() {
 
     struct osc_state *cur_os = &oss[0];
     int next_sample = 0;
+
+    // Visualization
+    int x = 0;
+    uint8_t decimation = 0;
+    uint8_t decimation_level = 30;
+    uint16_t y_coordinates[1024];
+
     int8_t buffer[BUFFER_LEN];
+
     while (1) {
-       AC97_VOLUME = DIP_SWITCHES & 0xF; 
-       if (uart_control & 0x02) {
-            int c = uart_rx;
+        if (!GPIO_FIFO_EMPTY) {
+            uint32_t button_state = GPIO_FIFO_DATA;
+            if (button_state & 0x1) { // BUTTONS[0]
+                  decimation_level = decimation_level == 0 ? 0 : decimation_level - 1;
+            } else if (button_state & 0x2) { // BUTTONS[1]
+                  decimation_level++;
+            } else if (button_state & 0x4) { // BUTTONS[2]
+                  decimation_level = 30;
+            }
+        }
+        if (uart_control & 0x02) {
+            int c = uart_rx; // you have to assert data_out_ready at the SAME cycle that you fetch data_out
             if (c == '`') {
                 return 0;
             }
@@ -171,8 +204,19 @@ int main() {
                     cur_os = &oss[0];
             }
         }
-        if (!ac97_full) {
-            ac97_sample = next_sample;
+        if (!i2s_full) {
+            i2s_sample = next_sample;
+
+            // Visualization
+            decimation = decimation + 1;
+            if (decimation > decimation_level) {              
+                x = x >= 1023 ? 0 : x + 1;
+                store_pixel(1, x, y_coordinates[x]);
+                y_coordinates[x] = (next_sample >> 10) + 384;
+                store_pixel(0, x, y_coordinates[x]);                             
+                decimation = 0;
+            }
+
             next_sample = 0;
             for (struct osc_state *os = &oss[0]; os < &oss[OS_COUNT]; os++) {
                 next_sample += os->vsin;
