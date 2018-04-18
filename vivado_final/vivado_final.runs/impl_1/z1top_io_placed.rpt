@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
-| Date                      : Tue Apr 17 22:46:14 2018
-| Host                      : c125m-17.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
+| Date                      : Wed Apr 18 16:47:33 2018
+| Host                      : c125m-25.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
 | Command                   : report_io -file z1top_io_placed.rpt
 | Design                    : z1top
 | Device                    : xc7z020
@@ -25,7 +25,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|            28 |
+|            29 |
 +---------------+
 
 
@@ -351,7 +351,7 @@ Table of Contents
 | T14        |                | High Range | IO_L5P_T0_34            | User IO     |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | T15        |                | High Range | IO_L5N_T0_34            | User IO     |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | T16        |                | High Range | IO_L9P_T1_DQS_34        | User IO     |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
-| T17        |                | High Range | IO_L20P_T3_34           | User IO     |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
+| T17        | aud_sd         | High Range | IO_L20P_T3_34           | OUTPUT      | LVCMOS33    |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | T18        |                | High Range | VCCO_34                 | VCCO        |             |      34 |            |      |                     |                      |    3.30 |            |           |          |      |                  |              |                   |              |
 | T19        |                | High Range | IO_25_34                | User IO     |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | T20        |                | High Range | IO_L15P_T2_DQS_34       | User IO     |             |      34 |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
@@ -432,7 +432,7 @@ Table of Contents
 | Y15        |                |            | GND                     | GND         |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
 | Y16        | SCLK           | High Range | IO_L7P_T1_34            | TRISTATE    | LVCMOS33    |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | Y17        | SDIN           | High Range | IO_L7N_T1_34            | OUTPUT      | LVCMOS33    |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
-| Y18        | MCLK           | High Range | IO_L17P_T2_34           | TRISTATE    | LVCMOS33    |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| Y18        | MCLK           | High Range | IO_L17P_T2_34           | OUTPUT      | LVCMOS33    |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | Y19        | LRCK           | High Range | IO_L17N_T2_34           | OUTPUT      | LVCMOS33    |      34 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | Y20        |                | High Range | VCCO_34                 | VCCO        |             |      34 |            |      |                     |                      |    3.30 |            |           |          |      |                  |              |                   |              |
 +------------+----------------+------------+-------------------------+-------------+-------------+---------+------------+------+---------------------+----------------------+---------+------------+-----------+----------+------+------------------+--------------+-------------------+--------------+

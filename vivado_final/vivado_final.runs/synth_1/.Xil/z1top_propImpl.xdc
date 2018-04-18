@@ -1,4 +1,4 @@
-set_property SRC_FILE_INFO {cfile:/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/PYNQ-Z1_C.xdc rfile:../../../../hardware/src/PYNQ-Z1_C.xdc id:1} [current_design]
+set_property SRC_FILE_INFO {cfile:/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc rfile:../../../../hardware/src/PYNQ-Z1_C.xdc id:1} [current_design]
 set_property src_info {type:XDC file:1 line:7 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN H16   IOSTANDARD LVCMOS33 } [get_ports { USER_CLK }]; #IO_L13P_T2_MRCC_35 Sch=sysclk
 set_property src_info {type:XDC file:1 line:12 export:INPUT save:INPUT read:READ} [current_design]
@@ -55,3 +55,5 @@ set_property src_info {type:XDC file:1 line:73 export:INPUT save:INPUT read:READ
 set_property -dict { PACKAGE_PIN W13   IOSTANDARD LVCMOS33 } [get_ports { PMOD_LEDS[7] }]; #IO_L4N_T0_34 Sch=jb_n[4]
 set_property src_info {type:XDC file:1 line:87 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN R18   IOSTANDARD LVCMOS33 } [get_ports { AUDIO_PWM }]; #IO_L20N_T3_34 Sch=aud_pwm
+set_property src_info {type:XDC file:1 line:88 export:INPUT save:INPUT read:READ} [current_design]
+set_property -dict { PACKAGE_PIN T17   IOSTANDARD LVCMOS33 } [get_ports { aud_sd }]; #IO_L20P_T3_34 Sch=aud_sd

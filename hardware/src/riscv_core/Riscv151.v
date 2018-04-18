@@ -13,7 +13,10 @@ module Riscv151 #(
     input [1:0] SWITCHES,
     
     output [5:0] LEDS,          // Board LEDs.
-    output [7:0] PMOD_LEDS
+    output [7:0] PMOD_LEDS,
+    
+    output tone_output_enable,
+    output [23:0] tone_switch_period
 );
 
     /* REGISTERS AND WIRES */
@@ -260,6 +263,18 @@ module Riscv151 #(
     assign LEDS = LEDS_reg;
     assign PMOD_LEDS = PMOD_LEDS_reg;
     
+    reg tone_output_enable_reg;
+    reg [23:0] tone_switch_period_reg;
+    
+    assign tone_output_enable = tone_output_enable_reg;
+    assign tone_switch_period = tone_switch_period_reg;
+    
+    initial begin
+        PMOD_LEDS_reg = 0;
+        LEDS_reg = 0;
+        tone_output_enable_reg = 0;
+        tone_switch_period_reg = 24'h555;
+    end
     
     fifo #(
         .data_width(8),
@@ -276,10 +291,7 @@ module Riscv151 #(
         .dout(fifo_dout),
         .empty(ex_fifo_empty)
     );   
-    initial begin
-        PMOD_LEDS_reg = 0;
-        LEDS_reg = 0;
-    end
+
     always @(posedge clk) begin
 
         if (|BUTTONS && !fifo_full) begin
@@ -290,12 +302,30 @@ module Riscv151 #(
             fifo_wr_en <= 0;
         end
         
+        // store to LEDS
         if (ex_opcode == `OPC_STORE && ex_aluout_reg == 32'h80000030) begin   
             LEDS_reg <= ex_rs2_after_fwd_reg[5:0];
             PMOD_LEDS_reg <= ex_rs2_after_fwd_reg[15:8];
         end else begin
             LEDS_reg <= LEDS_reg;
             PMOD_LEDS_reg <= PMOD_LEDS_reg;
+        end
+        
+        // store to tone generator
+        if (ex_opcode == `OPC_STORE) begin
+            if (ex_aluout_reg == 32'h80000034) begin
+                tone_output_enable_reg <= ex_rs2_after_fwd_reg[0];
+                tone_switch_period_reg <= tone_switch_period_reg;
+            end else if (ex_aluout_reg == 32'h80000038) begin
+                tone_switch_period_reg <= ex_rs2_after_fwd_reg[23:0];
+                tone_output_enable_reg <= tone_output_enable_reg;
+            end else begin
+                tone_output_enable_reg <= tone_output_enable_reg;
+                tone_switch_period_reg <= tone_switch_period_reg;
+            end
+        end else begin
+            tone_output_enable_reg <= tone_output_enable_reg;
+            tone_switch_period_reg <= tone_switch_period_reg;
         end
     end
     
@@ -581,13 +611,13 @@ module Riscv151 #(
                 mwb_regfile_input_data_mux_out = mwb_uart_write_data;
             end else if (mwb_uart_data_out_ready) begin//
                 mwb_regfile_input_data_mux_out = {24'd0, mwb_uart_read_data};
-            end /* else if (mwb_GPIO_FIFO_empty) begin
+            end else if (mwb_GPIO_FIFO_empty) begin
                 mwb_regfile_input_data_mux_out = {31'b0, ex_fifo_empty};
             end else if (mwb_GPIO_FIFO_read_data) begin//
                 mwb_regfile_input_data_mux_out = {28'b0, fifo_dout[3:0]};
             end else if (mwb_switches_read) begin//
                 mwb_regfile_input_data_mux_out = {30'd0, SWITCHES}; 
-            end */ else begin
+            end else begin
                 mwb_regfile_input_data_mux_out = mwb_data_mem_reader_out;
             end
         end else begin

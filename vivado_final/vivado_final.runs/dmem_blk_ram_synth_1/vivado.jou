@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.4 (64-bit)
+# SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+# IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+# Start of session at: Wed Apr 18 14:52:48 2018
+# Process ID: 24916
+# Current directory: /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/dmem_blk_ram_synth_1
+# Command line: vivado -log dmem_blk_ram.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source dmem_blk_ram.tcl
+# Log file: /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/dmem_blk_ram_synth_1/dmem_blk_ram.vds
+# Journal file: /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/dmem_blk_ram_synth_1/vivado.jou
+#-----------------------------------------------------------
+source dmem_blk_ram.tcl -notrace

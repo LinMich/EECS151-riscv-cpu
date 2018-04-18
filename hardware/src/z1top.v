@@ -26,6 +26,7 @@ module z1top # (
     input [1:0] SWITCHES,       // Slide switches
     output [5:0] LEDS,          // Board LEDs.
     output [7:0] PMOD_LEDS,
+    output aud_sd,
 
 
   // UART connections
@@ -45,13 +46,14 @@ module z1top # (
 );
 
     // Remove these lines when implementing checkpoint 3.
-    assign MLCK = 1'b1;
+    assign MCLK = 1'b1;
     assign LRCK = 1'b1;
     assign SDIN = 1'b1;
     assign SDIN = 1'b1;
 
     // Remove these lines when implementing checkpoint 2.
-    assign AUDIO_PWM = 1'b0;
+//    assign AUDIO_PWM = 1'b0;
+    assign aud_sd = 1'b1;
 
     //// Clocking
     wire user_clk_g, cpu_clk, cpu_clk_g, cpu_clk_pll_lock;
@@ -129,10 +131,18 @@ module z1top # (
       .out({reset_button, clean_buttons})
   );
 
-
+  wire tone_output_enable;
+  wire [23:0] tone_switch_period;
   // -------------------------------------------------------------------------
   // Tone generator
   // -------------------------------------------------------------------------
+  tone_generator tony (
+      .clk(cpu_clk_g),
+      .rst(reset_button),
+      .output_enable(tone_output_enable && BUTTONS[0]), // from CPU
+      .tone_switch_period(tone_switch_period), // 24 bits from CPU
+      .square_wave_out(AUDIO_PWM) // output
+  );
 
   // Maybe some wires?
 
@@ -159,10 +169,11 @@ module z1top # (
     .SWITCHES(SWITCHES),
     // GPIO LEDS?
     .LEDS(LEDS),          // Board LEDs.
-    .PMOD_LEDS(PMOD_LEDS)
+    .PMOD_LEDS(PMOD_LEDS),
 
     // Tone generator hookups?
- 
+    .tone_output_enable(tone_output_enable),
+    .tone_switch_period(tone_switch_period)
     // I2S hookups?
   );
 endmodule
