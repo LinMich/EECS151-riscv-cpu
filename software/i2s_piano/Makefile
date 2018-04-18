@@ -1,5 +1,5 @@
 # Master Makefile dependencies
-TARGET := dvi_controller_testbench
-INCLUDE_LIB := false 
+TARGET := i2s_piano
+INCLUDE_LIB := true
 
 include ../Makefile.gcc.in

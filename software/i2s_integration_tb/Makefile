@@ -1,5 +1,5 @@
 # Master Makefile dependencies
-TARGET := ac97_basic_test
-INCLUDE_LIB := true
+TARGET := i2s_integration_tb
+INCLUDE_LIB := false
 
 include ../Makefile.gcc.in
