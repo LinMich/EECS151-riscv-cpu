@@ -60,12 +60,12 @@ module z1top # (
       end
       else counter <= counter + 1;
     end
-    assign LEDS[5] = sig;
-    assign LEDS[4] = cpu_clk_pll_lock;
-    assign LEDS[3] = cpu_clk_g;
-    assign LEDS[2:0] = counter[26:24];
+//    assign LEDS[5] = sig;
+//    assign LEDS[4] = cpu_clk_pll_lock;
+//    assign LEDS[3] = cpu_clk_g;
+//    assign LEDS[2:0] = counter[26:24];
     
-    assign PMOD_LEDS[7:1] = pc[31:25];
+//    assign PMOD_LEDS[7:1] = pc[31:25];
 
     //// Resets
     // The global system reset is asserted when the RESET button is
@@ -74,7 +74,7 @@ module z1top # (
     wire reset_button, reset;
     assign reset = reset_button || ~cpu_clk_pll_lock;
 
-    assign PMOD_LEDS[0] = reset;
+//    assign PMOD_LEDS[0] = reset;
     //// User IO
     button_parser #(
         .width(4),
@@ -128,6 +128,10 @@ module z1top # (
         .rst(reset),
         .FPGA_SERIAL_RX(FPGA_SERIAL_RX),
         .FPGA_SERIAL_TX(FPGA_SERIAL_TX),
+        .BUTTONS({reset_button, clean_buttons}),
+        .SWITCHES(SWITCHES),
+        .LEDS(LEDS),          // Board LEDs.
+        .PMOD_LEDS(PMOD_LEDS),
         .pc(pc)
     );
 endmodule
