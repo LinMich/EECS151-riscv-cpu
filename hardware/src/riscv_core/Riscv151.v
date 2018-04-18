@@ -13,16 +13,12 @@ module Riscv151 #(
     input [1:0] SWITCHES,
     
     output [5:0] LEDS,          // Board LEDs.
-    output [7:0] PMOD_LEDS,
-    
-    output [31:0] pc
+    output [7:0] PMOD_LEDS
 );
 
     /* REGISTERS AND WIRES */
     reg [31:0] pc_reg;
     reg [31:0] fwd_pc;
-    
-    assign pc = pc_reg;
    
     // fetch/decode wires
     //wire [31:0] fd_inst;
@@ -265,7 +261,6 @@ module Riscv151 #(
     assign PMOD_LEDS = PMOD_LEDS_reg;
     
     
-    
     fifo #(
         .data_width(8),
         .fifo_depth(32)
@@ -281,38 +276,62 @@ module Riscv151 #(
         .dout(fifo_dout),
         .empty(ex_fifo_empty)
     );   
-    
+    initial begin
+        PMOD_LEDS_reg = 0;
+        LEDS_reg = 0;
+    end
     always @(posedge clk) begin
-        fifo_wr_en <= 0;
+
         if (|BUTTONS && !fifo_full) begin
             fifo_write_data <= {4'b0, BUTTONS};
             fifo_wr_en <= 1;
+        end 
+        else begin
+            fifo_wr_en <= 0;
         end
-            
+        
+        if (ex_opcode == `OPC_STORE && ex_aluout_reg == 32'h80000030) begin   
+            LEDS_reg <= ex_rs2_after_fwd_reg[5:0];
+            PMOD_LEDS_reg <= ex_rs2_after_fwd_reg[15:8];
+        end else begin
+            LEDS_reg <= LEDS_reg;
+            PMOD_LEDS_reg <= PMOD_LEDS_reg;
+        end
     end
     
     always @(*) begin
-        ex_GPIO_FIFO_empty = 1'b0;
-        ex_GPIO_FIFO_read_data = 1'b0;
-        ex_switches_read = 1'b0;
-        ex_LEDS_read = 1'b0;
-        
-        if (ex_opcode == `OPC_STORE) begin   
-            if (ex_aluout_reg == 32'h80000030) begin
-               LEDS_reg = ex_rs2_after_fwd_reg[5:0];
-               PMOD_LEDS_reg = ex_rs2_after_fwd_reg[15:8];
-            end
-        end        
-        else if (ex_opcode == `OPC_LOAD) begin
+//        ex_GPIO_FIFO_empty = 1'b0;
+//        ex_GPIO_FIFO_read_data = 1'b0;
+//        ex_switches_read = 1'b0;
+
+               
+        if (ex_opcode == `OPC_LOAD) begin
             if (ex_aluout_reg == 32'h80000020) begin
                 ex_GPIO_FIFO_empty = 1'b1;
+//                ex_GPIO_FIFO_empty = 1'b0;
+                ex_GPIO_FIFO_read_data = 1'b0;
+                ex_switches_read = 1'b0;
             end
             else if (ex_aluout_reg == 32'h80000024) begin
                 ex_GPIO_FIFO_read_data = 1'b1;
+                ex_GPIO_FIFO_empty = 1'b0;
+//                        ex_GPIO_FIFO_read_data = 1'b0;
+                ex_switches_read = 1'b0;
             end
             else if (ex_aluout_reg == 32'h80000028) begin
                 ex_switches_read = 1'b1;
+                ex_GPIO_FIFO_empty = 1'b0;
+                ex_GPIO_FIFO_read_data = 1'b0;
+//                        ex_switches_read = 1'b0;
+            end else begin
+                ex_GPIO_FIFO_empty = 1'b0;
+                ex_GPIO_FIFO_read_data = 1'b0;
+                ex_switches_read = 1'b0;
             end
+        end else begin
+            ex_GPIO_FIFO_empty = 1'b0;
+            ex_GPIO_FIFO_read_data = 1'b0;
+            ex_switches_read = 1'b0;
         end
     end
     
@@ -487,8 +506,6 @@ module Riscv151 #(
             mwb_GPIO_FIFO_read_data <= 0;
             mwb_switches_read <= 0;
             
-            fifo_write_data <= 0;
-            
             mwb_MemtoReg <= 0;
         end else begin
             // PC logic section
@@ -564,13 +581,13 @@ module Riscv151 #(
                 mwb_regfile_input_data_mux_out = mwb_uart_write_data;
             end else if (mwb_uart_data_out_ready) begin//
                 mwb_regfile_input_data_mux_out = {24'd0, mwb_uart_read_data};
-            end else if (mwb_GPIO_FIFO_empty) begin
+            end /* else if (mwb_GPIO_FIFO_empty) begin
                 mwb_regfile_input_data_mux_out = {31'b0, ex_fifo_empty};
             end else if (mwb_GPIO_FIFO_read_data) begin//
                 mwb_regfile_input_data_mux_out = {28'b0, fifo_dout[3:0]};
             end else if (mwb_switches_read) begin//
                 mwb_regfile_input_data_mux_out = {30'd0, SWITCHES}; 
-            end else begin
+            end */ else begin
                 mwb_regfile_input_data_mux_out = mwb_data_mem_reader_out;
             end
         end else begin
