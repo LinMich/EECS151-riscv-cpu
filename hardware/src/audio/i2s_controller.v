@@ -11,8 +11,8 @@ module i2s_controller #(
   input sys_clk,            // Source clock, from which others are derived
 
   input [BIT_DEPTH-1:0] pcm_data,
-  input [1:0] pcm_data_valid,
-  output [1:0] pcm_data_ready,
+  input pcm_data_valid,
+  output pcm_data_ready,
 
   // I2S control signals
   output mclk,              // Master clock for the I2S chip
@@ -48,7 +48,7 @@ module i2s_controller #(
     reg [BIT_DEPTH_WIDTH:0] bit_counter;
     reg [BIT_DEPTH_WIDTH:0] data_counter;
     reg sdin_passer;
-    reg [1:0] data_ready_passer;
+    reg data_ready_passer;
     reg left;
     
     initial begin
@@ -112,25 +112,24 @@ module i2s_controller #(
     always @(negedge sclk_passer) begin
         if (sys_reset) begin
             bit_counter <= 0;
-            data_ready_passer <= 2'b00;
+            data_ready_passer <= 1'b0;
+            left <= 1;
         end
         
         if (lrck_counter == 2'd0) begin
             bit_counter <= 0;
-            data_ready_passer <=2'b00;
+            data_ready_passer <= 1'b0;
             left <= !left;
-        end
+        end else bit_counter <= bit_counter + 1;
         
-        if (bit_counter == 2'd0 && left) data_ready_passer <= 2'b10;
-        else if (bit_counter == 2'd0 && !left) data_ready_passer <= 2'b01;
-        else data_ready_passer <= 2'b00;
+        if (bit_counter == 1'b0 && left) data_ready_passer <= 1'b1;
+        // else if (bit_counter == 2'd0 && !left) data_ready_passer <= 2'b01;
+        else data_ready_passer <= 1'b0;
         
-        bit_counter <= bit_counter + 1;
-        
-        if (left && pcm_data_valid[1]) begin
-            sdin_passer <= pcm_data[BIT_DEPTH-bit_counter];
-        end else if (!left && pcm_data_valid[0]) begin
+        if (pcm_data_valid) begin
             sdin_passer <= pcm_data[BIT_DEPTH-1-bit_counter];
+        // end else if (!left && pcm_data_valid[0]) begin
+            // sdin_passer <= pcm_data[BIT_DEPTH-1-bit_counter];
         end
     end
 
