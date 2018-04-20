@@ -2,23 +2,29 @@ Vivado Simulator 2017.4
 Time resolution is 1 ps
  Block Memory Generator module loading initial data...
  Block Memory Generator data initialization complete.
-Block Memory Generator module assembly_testbench.CPU.BIOS.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-Block Memory Generator module assembly_testbench.CPU.d_mem.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module i2s_integration_testbench.top.CPU.BIOS.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Stopped at time : 0 fs : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 53
+Stopped at time : 0 fs : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram_sim_netlist.v" Line 6198
+Stopped at time : 0 fs : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram_sim_netlist.v" Line 6199
+Stopped at time : 164 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 164 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 4612 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 4612 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 5252 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 5252 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 5892 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 5892 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 6532 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 6532 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 7172 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 7172 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 7812 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 7812 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
+Stopped at time : 8452 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
  Block Memory Generator module loading initial data...
  Block Memory Generator data initialization complete.
-Block Memory Generator module assembly_testbench.CPU.IMEM.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-beginning!
-PASS - test    1, got: 3405705229 for reg 13
-ALL ASSEMBLY TESTS PASSED
-$finish called at time : 470 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/assembly_testbench.v" Line 260
+Block Memory Generator module i2s_integration_testbench.top.CPU.BIOS.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Stopped at time : 164 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/i2s_integration_testbench.v" Line 61
  Block Memory Generator module loading initial data...
  Block Memory Generator data initialization complete.
-Block Memory Generator module assembly_testbench.CPU.BIOS.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-Block Memory Generator module assembly_testbench.CPU.d_mem.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
- Block Memory Generator module loading initial data...
- Block Memory Generator data initialization complete.
-Block Memory Generator module assembly_testbench.CPU.IMEM.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-beginning!
-PASS - test    1, got: 3405705229 for reg 13
-ALL ASSEMBLY TESTS PASSED
-$finish called at time : 470 ns : File "/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/testbenches/assembly_testbench.v" Line 260
+Block Memory Generator module i2s_integration_testbench.top.CPU.BIOS.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.

@@ -120,11 +120,18 @@ module i2s_controller #(
             bit_counter <= 0;
             data_ready_passer <= 1'b0;
             left <= !left;
-        end else bit_counter <= bit_counter + 1;
+        end 
+        else begin
+            bit_counter <= bit_counter + 1;
+        end
         
-        if (bit_counter == 1'b0 && left) data_ready_passer <= 1'b1;
+        if (bit_counter == 1'b0 && left) begin
+            data_ready_passer <= 1'b1;
+        end
         // else if (bit_counter == 2'd0 && !left) data_ready_passer <= 2'b01;
-        else data_ready_passer <= 1'b0;
+        else begin
+            data_ready_passer <= 1'b0;
+        end
         
         if (pcm_data_valid) begin
             sdin_passer <= pcm_data[BIT_DEPTH-1-bit_counter];

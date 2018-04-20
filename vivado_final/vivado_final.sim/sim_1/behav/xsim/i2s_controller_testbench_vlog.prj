@@ -1,0 +1,42 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../hardware/src" --include "../../../../../hardware/src/riscv_core" \
+"../../../../../hardware/src/memories/imem_blk_ram/imem_blk_ram_sim_netlist.v" \
+"../../../../../hardware/src/memories/dmem_blk_ram/dmem_blk_ram_sim_netlist.v" \
+"../../../../../hardware/src/io_circuits/button_parser.v" \
+"../../../../../hardware/src/io_circuits/edge_detector.v" \
+"../../../../../hardware/src/io_circuits/uart.v" \
+"../../../../../hardware/src/io_circuits/uart_receiver.v" \
+"../../../../../hardware/src/z1top.v" \
+"../../../../../hardware/src/io_circuits/async_fifo.v" \
+"../../../../../hardware/src/io_circuits/fifo.v" \
+"../../../../../hardware/src/riscv_core/branch_control.v" \
+"../../../../../hardware/src/riscv_core/reg_file.v" \
+"../../../../../hardware/src/riscv_core/ALU.v" \
+"../../../../../hardware/src/riscv_core/Riscv151.v" \
+"../../../../../hardware/src/riscv_core/instruction_decoder.v" \
+"../../../../../hardware/src/riscv_core/hazard_unit.v" \
+"../../../../../hardware/src/riscv_core/control_unit.v" \
+"../../../../../hardware/src/riscv_core/mem_read_decoder.v" \
+"../../../../../hardware/src/audio/tone_generator.v" \
+"../../../../../hardware/src/io_circuits/synchronizer.v" \
+"../../../../../hardware/src/riscv_core/mem_control.v" \
+"../../../../../hardware/src/io_circuits/uart_transmitter.v" \
+"../../../../../hardware/src/io_circuits/debouncer.v" \
+"../../../../../hardware/src/riscv_core/UART_controller.v" \
+"../../../../../hardware/src/audio/i2s_controller.v" \
+"../../../../../hardware/src/memories/bios_mem/sim/bios_mem.v" \
+"../../../../../hardware/src/testbenches/control_testbench.v" \
+"../../../../../hardware/src/testbenches/echo_testbench.v" \
+"../../../../../hardware/src/testbenches/echo_integration_testbench.v" \
+"../../../../../hardware/src/testbenches/ALU_testbench.v" \
+"../../../../../hardware/src/testbenches/assembly_testbench.v" \
+"../../../../../hardware/src/testbenches/bios_mem_testbench.v" \
+"../../../../../hardware/src/testbenches/fifo_testbench.v" \
+"../../../../../hardware/src/testbenches/i2s_controller_testbench.v" \
+"../../../../../hardware/src/testbenches/reg_file_testbench.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

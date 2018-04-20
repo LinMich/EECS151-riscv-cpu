@@ -8,7 +8,7 @@
 // I2S controller FIFO. The program transmits PCM samples -50, -49, -48, ...,
 // 0, 1, 2, ..., 48, 49, 50. You should inspect the waveform and verify that
 // the I2S controller receives each sample in order.
-module i2s_controller_testbench();
+module i2s_integration_testbench();
   parameter SYSTEM_CLK_PERIOD = 8;
   parameter SYSTEM_CLK_FREQ = 125_000_000;
   
@@ -36,7 +36,7 @@ module i2s_controller_testbench();
   ) top (
     .USER_CLK(system_clock),
     .RESET(system_reset),
-    .BUTTONS(4'b0),
+    .BUTTONS(3'b0),
     .SWITCHES(2'b0),
     .LEDS(leds),
     .FPGA_SERIAL_RX(1'b1),

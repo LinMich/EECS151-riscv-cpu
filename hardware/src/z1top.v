@@ -25,7 +25,7 @@ module z1top # (
     input [2:0] BUTTONS,        // Momentary push-buttons.
     input [1:0] SWITCHES,       // Slide switches
     output [5:0] LEDS,          // Board LEDs.
-    output [7:0] PMOD_LEDS,
+//    output [7:0] PMOD_LEDS,
     output aud_sd,
 
 
@@ -46,10 +46,10 @@ module z1top # (
 );
 
     // Remove these lines when implementing checkpoint 3.
-    assign MCLK = 1'b1;
-    assign LRCK = 1'b1;
-    assign SDIN = 1'b1;
-    assign SDIN = 1'b1;
+//    assign MCLK = 1'b1;
+//    assign LRCK = 1'b1;
+//    assign SDIN = 1'b1;
+//    assign SDIN = 1'b1;
 
     // Remove these lines when implementing checkpoint 2.
 //    assign AUDIO_PWM = 1'b0;
@@ -144,18 +144,61 @@ module z1top # (
       .square_wave_out(AUDIO_PWM) // output
   );
 
-  // Maybe some wires?
 
   // -------------------------------------------------------------------------
   // I2S controller
   // -------------------------------------------------------------------------
   //
-
+    
+    wire [BIT_DEPTH-1:0] dout_to_pcm_data;
+    wire pcm_data_ready_to_rd_en;
+    wire async_fifo_empty;
+    
+    i2s_controller #(.BIT_DEPTH(BIT_DEPTH)
+    ) connor (
+        .sys_reset(reset),
+        .sys_clk(cpu_clk_g),            // Source clock, from which others are derived
+      
+        .pcm_data(dout_to_pcm_data),
+        .pcm_data_valid(!async_fifo_empty),
+        .pcm_data_ready(pcm_data_ready_to_rd_en),
+      
+        // I2S control signals
+        .mclk(MCLK),              // Master clock for the I2S chip
+        .sclk(SCLK),
+        .lrck(LRCK),              // Left-right clock, which determines which channel each audio datum is sent to.
+        .sdin(SDIN)  
+     );
+  // -------------------------------------------------------------------------
+ // async FIFO
+ // -------------------------------------------------------------------------
+ //  
+ 
+    wire [BIT_DEPTH-1:0] async_fifo_din;
+    wire async_fifo_wr_en;
+    wire async_fifo_full;
+    
+    async_fifo #(.data_width(BIT_DEPTH)
+    ) async_FIFO (
+     .wr_clk(cpu_clk_g), 
+     .rd_clk(SCLK),
+     // Write side
+     .wr_en(async_fifo_wr_en),
+     .din(async_fifo_din),
+     .full(async_fifo_full),
+     // Read side
+     .rd_en(pcm_data_ready_to_rd_en),
+     .dout(dout_to_pcm_data),
+     .empty(async_fifo_empty)
+    );   
+  
+  
   // For the clock, use user_clk_g.
 
   // Your RISC-V 151 CPU
   Riscv151 #(
-    .CPU_CLOCK_FREQ(CPU_CLOCK_FREQ)
+    .CPU_CLOCK_FREQ(CPU_CLOCK_FREQ),
+    .BIT_DEPTH(BIT_DEPTH)
   ) CPU (
     .clk(cpu_clk_g),
     .rst(reset),
@@ -169,12 +212,15 @@ module z1top # (
     .SWITCHES(SWITCHES),
     // GPIO LEDS?
     .LEDS(LEDS),          // Board LEDs.
-    .PMOD_LEDS(PMOD_LEDS),
+    .PMOD_LEDS(),
 
     // Tone generator hookups?
     .tone_output_enable(tone_output_enable),
-    .tone_switch_period(tone_switch_period)
-    // I2S hookups?
+    .tone_switch_period(tone_switch_period),
+    // I2S/ASYNC FIFO hookups?
+    .async_fifo_din(async_fifo_din),
+    .async_fifo_wr_en(async_fifo_wr_en),
+    .async_fifo_full(async_fifo_full)
   );
 endmodule
 
