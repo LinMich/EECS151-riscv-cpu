@@ -88,12 +88,68 @@ static void osc_cycle(struct osc_state *os) {
 
 /**** PROGRAM ROUTINES ****/
 
+
 #define OS_COUNT (4)
 
 int main() {
   struct osc_state oss[OS_COUNT];
   for (struct osc_state *os = &oss[0]; os < &oss[OS_COUNT]; os++)
   osc_reset(os, 0, 0, 1, 0);
+  
+  static const int tone_map[128] = {
+      [35] = 26517,
+      [37] = 22298,
+      [38] = 17698,
+      [44] = 63067,
+      [50] = 59527,
+      [51] = 53033,
+      [53] = 44595,
+      [54] = 39730,
+      [55] = 35395,
+      [60] = 126134,
+      [64] = 29764,
+      [66] = 168369,
+      [67] = 200226,
+      [68] = 212132,
+      [69] = 25028,
+      [71] = 178381,
+      [72] = 158920,
+      [73] = 15767,
+      [74] = 141581,
+      [77] = 133635,
+      [78] = 150000,
+      [81] = 31534,
+      [82] = 23624,
+      [83] = 238110,
+      [84] = 21046,
+      [85] = 16704,
+      [86] = 188988,
+      [87] = 28093,
+      [88] = 224746,
+      [89] = 18750,
+      [90] = 252269,
+      [94] = 19865,
+      [98] = 84185,
+      [99] = 100113,
+      [100] = 106066,
+      [101] = 50056,
+      [103] = 89191,
+      [104] = 79460,
+      [105] = 31534,
+      [106] = 70791,
+      [109] = 66817,
+      [110] = 75000,
+      [113] = 63067,
+      [114] = 47247,
+      [115] = 119055,
+      [116] = 42186,
+      [117] = 33409,
+      [118] = 94494,
+      [119] = 56186,
+      [120] = 112373,
+      [121] = 37500,
+      [122] = 126134,
+  };
 
   static const short ffs[128] = {
     ['Z'] = 70,
@@ -152,24 +208,33 @@ int main() {
     ['U'] = 1030,
     ['I'] = 1088,
   };
-
+  TONE_GEN_OUTPUT_ENABLE = 1;
   struct osc_state *cur_os = &oss[0];
   int next_sample = 0;
   int8_t buffer[BUFFER_LEN];
+  int32_t orig_magnitude = 0x55554;
+  int32_t magnitude = 0;
+  uint32_t counter = 0;
+  uint32_t tone_period = 0;
+  int loops_per_decay = 0;
   while (1) {
     if (uart_control & 0x02) {
       int c = uart_rx;
-      if (c == '`') {
-        return 0;
-      }
+      tone_period = tone_map[c];
+      TONE_GEN_TONE_INPUT = tone_period;
       short ff = ffs[c];
+      magnitude = orig_magnitude;
+      counter = 0;
+      loops_per_decay = 0;
+      /*
       if (ff) {
         osc_reset(cur_os, ff, 0x60000, 48, 6);
         cur_os++;
         if (cur_os == &oss[OS_COUNT])
           cur_os = &oss[0];
-      }
+      }*/
     }
+    /*
     if (!i2s_full) {
       i2s_sample = next_sample;
       next_sample = 0;
@@ -181,11 +246,34 @@ int main() {
       // i2s_basic_test for an example.
       //
       // Bound samples to (signed) 24-bit.
-      if (next_sample >= 0x800000) {
+      if (next_sample >= 0x7FFFFF) {
         next_sample = 0x7FFFFF;
-      } else if (next_sample < -0x800000) {
-        next_sample = -0x800000;
+      } else if (next_sample < -0x7FFFFE) {
+        next_sample = -0x7FFFFE;
       }
+    }
+    */
+    
+    if (counter < (tone_period >> 10)) {
+      while(I2S_FULL);
+      // FYDP: LED_CONTROL = next_sample;
+      I2S_DATA = 1 * magnitude;
+      // FYDP: uwrite_int8s("Sent high.\n");
+    }
+    else if (counter >= (tone_period >> 10)) {
+      while(I2S_FULL);
+      I2S_DATA = -1 * magnitude;
+      // FYDP: uwrite_int8s("Sent low.\n");
+    }
+    counter++;
+    if (counter >= tone_period >> 9) {
+      counter = 0;
+      loops_per_decay ++;
+    }
+    if (loops_per_decay > 100)
+    {
+      magnitude = magnitude >> 1;
+      loops_per_decay = 0;
     }
   }
 }

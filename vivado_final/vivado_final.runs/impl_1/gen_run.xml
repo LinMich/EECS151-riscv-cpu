@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg400-1" LaunchTime="1524186348">
+<GenRun Id="impl_1" LaunchPart="xc7z020clg400-1" LaunchTime="1524190434">
   <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
   <File Type="BG-DRC" Name="z1top.drc"/>
   <File Type="BG-BGN" Name="z1top.bgn"/>
@@ -253,6 +253,12 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/../software/i2s_integration_tb/i2s_integration_tb.coe">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../hardware/src/memories/bios_mem/bios_mem.xci">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -279,7 +285,9 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2017"/>
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2017">
+      <Desc>Default settings for Implementation.</Desc>
+    </StratHandle>
     <Step Id="init_design"/>
     <Step Id="opt_design"/>
     <Step Id="power_opt_design"/>
@@ -290,6 +298,6 @@
     <Step Id="post_route_phys_opt_design"/>
     <Step Id="write_bitstream"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="dmem_blk_ram"/>
   <BlockFileSet Type="BlockSrcs" Name="imem_blk_ram"/>
+  <BlockFileSet Type="BlockSrcs" Name="dmem_blk_ram"/>
 </GenRun>

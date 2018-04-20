@@ -178,10 +178,11 @@ module z1top # (
     wire async_fifo_wr_en;
     wire async_fifo_full;
     
-    async_fifo #(.data_width(BIT_DEPTH)
+    async_fifo #(
+     .data_width(BIT_DEPTH)
     ) async_FIFO (
      .wr_clk(cpu_clk_g), 
-     .rd_clk(SCLK),
+     .rd_clk(cpu_clk_g),
      // Write side
      .wr_en(async_fifo_wr_en),
      .din(async_fifo_din),
