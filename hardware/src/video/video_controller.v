@@ -68,11 +68,18 @@ module video_controller # (
 );
   //// YOUR DVI CONTROLLER GOES HERE
   //
+  
+  localparam H_COUNTER_WIDTH = `log2(H_WHOLE_LINE);
+  localparam V_COUNTER_WIDTH = `log2(V_WHOLE_FRAME);
+  
   reg [RAM_ADDR_BITS-1:0] framebuffer_addr_reg;
   reg [23:0] hdmi_data_reg;
   reg hdmi_de_reg;
   reg hdmi_h_reg;
   reg hdmi_v_reg;
+  
+  reg [H_COUNTER_WIDTH-1:0] h_counter;
+  reg [V_COUNTER_WIDTH-1:0] v_counter;
   
   // You can assign hdmi_de, hdmi_v, hdmi_h, framebuffer_addr.
   assign framebuffer_addr = framebuffer_addr_reg;
@@ -84,4 +91,63 @@ module video_controller # (
   // You can change the listed signals above to be regs or wires if needed.
   //
   // You CAN ONLY use the 'clk' input to drive synchronous logic.
+  always @(posedge clk) begin
+    if (rst) begin
+        framebuffer_addr_reg <= 0;
+        hdmi_data_reg <= 0;
+        hdmi_de_reg <= 0;
+        hdmi_h_reg <= 1;
+        hdmi_v_reg <= 1;
+    end 
+    else if (v_counter < V_SYNC_PULSE) begin
+        hdmi_v_reg <= 0;
+    end 
+    else if (v_counter > V_SYNC_PULSE && v_counter < (V_SYNC_PULSE + V_BACK_PORCH)) begin
+        hdmi_v_reg <= 1;
+    end
+    else if (v_counter > (V_SYNC_PULSE + V_BACK_PORCH) && v_counter < (V_SYNC_PULSE + V_BACK_PORCH + V_VISIBLE_AREA)) begin
+        if (h_counter < H_SYNC_PULSE) begin
+            hdmi_h_reg <= 0;
+        end 
+        else if (h_counter > H_SYNC_PULSE && h_counter < (H_SYNC_PULSE + H_BACK_PORCH)) begin
+            hdmi_h_reg <= 1;
+        end
+        else if (h_counter > (H_SYNC_PULSE + H_BACK_PORCH) && h_counter < (H_SYNC_PULSE + H_BACK_PORCH + H_VISIBLE_AREA)) begin
+            hdmi_de_reg <= 1;
+            hdmi_data_reg <= framebuffer_data;
+            framebuffer_addr_reg <= 32'h90000000 + ((v_counter - (V_SYNC_PULSE + V_BACK_PORCH)) << 10) + (h_counter - (H_SYNC_PULSE + H_BACK_PORCH));
+        end
+        else if (h_counter > (H_SYNC_PULSE + H_BACK_PORCH + H_VISIBLE_AREA) && h_counter < H_WHOLE_LINE) begin
+            hdmi_de_reg <= 0;
+        end
+    end
+    else begin
+        framebuffer_addr_reg <= 0;
+        hdmi_data_reg <= 0;
+        hdmi_de_reg <= 0;
+        hdmi_h_reg <= 1;
+        hdmi_v_reg <= 1;
+    end
+
+    if (rst) begin
+        h_counter <= 0;
+    end
+    else if (h_counter < H_WHOLE_LINE) begin
+        h_counter <= h_counter + 1;
+    end
+    else begin
+        h_counter <= 0;
+    end
+    
+    if (rst) begin
+        v_counter <= 0;
+    end
+    else if (v_counter < V_WHOLE_FRAME) begin
+        v_counter <= v_counter + 1;
+    end
+    else begin
+        v_counter <= 0;
+    end
+  end
+  
 endmodule
