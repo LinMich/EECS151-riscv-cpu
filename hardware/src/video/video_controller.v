@@ -68,7 +68,18 @@ module video_controller # (
 );
   //// YOUR DVI CONTROLLER GOES HERE
   //
+  reg [RAM_ADDR_BITS-1:0] framebuffer_addr_reg;
+  reg [23:0] hdmi_data_reg;
+  reg hdmi_de_reg;
+  reg hdmi_h_reg;
+  reg hdmi_v_reg;
+  
   // You can assign hdmi_de, hdmi_v, hdmi_h, framebuffer_addr.
+  assign framebuffer_addr = framebuffer_addr_reg;
+  assign hdmi_data = hdmi_data_reg;
+  assign hdmi_de = hdmi_de_reg;
+  assign hdmi_h = hdmi_h_reg;
+  assign hdmi_v = hdmi_v_reg;
   //
   // You can change the listed signals above to be regs or wires if needed.
   //
