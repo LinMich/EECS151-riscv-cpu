@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="imem_blk_ram_synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1524189036">
-  <File Type="VDS-TIMING-PB" Name="imem_blk_ram_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="imem_blk_ram_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="imem_blk_ram.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="imem_blk_ram_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="imem_blk_ram_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="imem_blk_ram_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="imem_blk_ram.vds"/>
-  <File Type="REPORTS-TCL" Name="imem_blk_ram_reports.tcl"/>
   <File Type="PA-TCL" Name="imem_blk_ram.tcl"/>
+  <File Type="REPORTS-TCL" Name="imem_blk_ram_reports.tcl"/>
+  <File Type="RDS-RDS" Name="imem_blk_ram.vds"/>
+  <File Type="RDS-DCP" Name="imem_blk_ram.dcp"/>
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/imem_blk_ram">
     <File Path="$PPRDIR/../hardware/src/memories/imem_blk_ram/imem_blk_ram.xci">
       <FileInfo>
