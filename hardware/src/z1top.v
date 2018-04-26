@@ -312,6 +312,8 @@ module z1top # (
   wire video_reset = reset || HDMI_TX_HPDN;
   wire [23:0] rgb;
   wire vde, hsync, vsync;
+  wire framebuffer_data;
+  wire [31:0] framebuffer_addr;
 
   rgb2dvi_0 hdmi_out (
     .TMDS_Clk_p(HDMI_TX_CLK_P),
@@ -327,6 +329,29 @@ module z1top # (
   );
 
   // TODO: Your video controller.
+  video_controller vinny (
+    .clk(pixel_clk_g),
+    .rst(video_reset),
+    .framebuffer_addr(framebuffer_addr),
+    .framebuffer_data({31'b0, framebuffer_data}),
+    .hdmi_data(rgb),
+    .hdmi_v(vsync),
+    .hdmi_h(hsync),
+    .hdmi_de(vde)
+  );
+  
+  frame_buffer_1_786432 frame_buffer (
+    //arbiter
+    .arb_we(),
+    .arb_clk(cpu_clk_g),
+    .arb_din(),
+    .arb_addr(), // 19:0
+    
+    //video
+    .vga_clk(pixel_clk_g),
+    .vga_addr(framebuffer_addr[19:0]), // 19:0
+    .vga_dout(framebuffer_data) // output
+  );
 
   // Insert the rest of your code here: I/O, audio, CPU...
 

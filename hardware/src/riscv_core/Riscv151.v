@@ -21,7 +21,12 @@ module Riscv151 #(
     
     output [BIT_DEPTH-1:0] async_fifo_din,
     output async_fifo_wr_en,
-    input async_fifo_full
+    input async_fifo_full,
+    
+    // framebuffer stuff
+    output fb_we,
+    output [19:0] fb_addr,
+    output fb_data
 );
 
     /* REGISTERS AND WIRES */
@@ -181,7 +186,6 @@ module Riscv151 #(
     end
     
     
-    
     wire ex_uart_data_out_valid;
     wire ex_uart_data_in_ready;
     
@@ -199,7 +203,6 @@ module Riscv151 #(
     
     wire [31:0] mwb_data_out_bios;
     reg [31:0] mwb_data_out_mem;
-    
 
     wire [31:0] fd_imem_read_reg;
     reg[31:0] fd_use_instr_or_bios_mem;
@@ -395,8 +398,28 @@ module Riscv151 #(
         end
     end
     
+    // -------------------------------------------------------------
+    // Framebuffer control
+    // -------------------------------------------------------------
+    //
+    reg fb_we_reg;
+    reg [19:0] fb_addr_reg;
+    reg fb_data_reg;
+    assign fb_we = fb_we_reg;
+    assign fb_addr = fb_addr_reg;
+    assign fb_data = fb_data_reg;
       
-    
+    always @(posedge clk) begin
+        if (ex_opcode == `OPC_STORE && ex_aluout_reg[31:24] == 8'h90) begin
+            fb_we_reg <= 1'b1;
+            fb_addr_reg <= ex_aluout_reg[19:0];
+            fb_data_reg <= ex_rs2_after_fwd_reg[0];
+        end else begin
+            fb_we_reg <= 1'b0;
+            fb_addr_reg <= 19'b0;
+            fb_data_reg <= 1'b0;
+        end
+    end
     
     //--------------------------------------------------------------
 
