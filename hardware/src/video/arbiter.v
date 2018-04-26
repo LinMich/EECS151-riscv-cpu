@@ -10,8 +10,8 @@
  */
 
 module arbiter#(
-    parameter mem_width = 32,
-    parameter mem_depth = 32, 
+    parameter mem_width = 1,
+    parameter mem_depth = 786432,
     parameter mem_addr_width = `log2(mem_depth)
 )(
     input           CPU_wr_en,

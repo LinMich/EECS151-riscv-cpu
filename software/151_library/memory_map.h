@@ -25,3 +25,12 @@
 #define I2C_WRITE_DATA (*((volatile uint32_t*)0x8000010C))
 #define I2C_SLAVE_ADDR (*((volatile uint32_t*)0x80000110))
 #define I2C_CONTROLLER_FIRE (*((volatile uint32_t*)0x80000114))
+
+// HDMI Signals
+#define X0_WRITE (*((volatile uint32_t*)0x80010000))
+#define X1_WRITE (*((volatile uint32_t*)0x80010004))
+#define Y0_WRITE (*((volatile uint32_t*)0x80010008))
+#define Y1_WRITE (*((volatile uint32_t*)0x8001000c))
+#define COLOR_WRITE (*((volatile uint32_t*)0x80010010))
+#define FIRE_WRITE (*((volatile uint32_t*)0x80010014))
+

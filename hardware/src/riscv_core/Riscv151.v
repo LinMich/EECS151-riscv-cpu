@@ -26,7 +26,16 @@ module Riscv151 #(
     // framebuffer stuff
     output fb_we,
     output [19:0] fb_addr,
-    output fb_data
+    output fb_data,
+
+    // MMIO for HDMI stuff
+    output [9:0] x0,
+    output [9:0] x1,
+    output [9:0] y0,
+    output [9:0] y1,
+    output color,
+    output HDMI_RX_VALID,
+    input HDMI_RX_READY
 );
 
     /* REGISTERS AND WIRES */
@@ -169,11 +178,11 @@ module Riscv151 #(
         ex_use_cycle_counter_reg_data = 1'b0;
         ex_use_instr_counter_reg_data = 1'b0;
         
-        if (ex_opcode == `OPC_STORE) begin   
+        if (ex_opcode == `OPC_STORE) begin
             if (ex_aluout_reg == 32'h80000018) begin
                 ex_reset_counters = 1'b1;
             end
-                
+
         end
         else if (ex_opcode == `OPC_LOAD) begin
             if (ex_aluout_reg == 32'h80000010) begin
@@ -419,6 +428,62 @@ module Riscv151 #(
             fb_addr_reg <= 19'b0;
             fb_data_reg <= 1'b0;
         end
+    end
+
+    // -------------------------------------------------------------
+    // MMIO for HDMI data signals
+    // -------------------------------------------------------------
+    //
+    reg [9:0] x0_reg;
+    reg [9:0] x1_reg;
+    reg [9:0] y0_reg;
+    reg [9:0] y1_reg;
+    reg color_reg;
+    reg HDMI_RX_VALID_reg;
+    assign x0 = x0_reg;
+    assign x1 = x1_reg;
+    assign y0 = y0_reg;
+    assign y1 = y1_reg;
+    assign color = color_reg;
+    assign HDMI_RX_VALID = HDMI_RX_VALID_reg;
+
+    initial begin
+      x0_reg = 0;
+      x1_reg = 0;
+      y0_reg = 0;
+      y1_reg = 0;
+      color_reg = 0;
+      HDMI_RX_VALID_reg = 0;
+    end
+
+    always @(posedge clk) begin
+      if (rst) begin
+        x0_reg = 0;
+        x1_reg = 0;
+        y0_reg = 0;
+        y1_reg = 0;
+        color_reg = 0;
+        HDMI_RX_VALID_reg = 0;
+      end else if (ex_opcode == `OPC_STORE) begin
+        if (ex_aluout_reg == 32'h80010000) begin //x0
+          x0_reg <= ex_rs2_after_fwd_reg[9:0];
+          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h80010004) begin //x1
+          x1_reg <= ex_rs2_after_fwd_reg[9:0];
+          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h80010008) begin //y0
+          y0_reg <= ex_rs2_after_fwd_reg[9:0];
+          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h8001000c) begin //y1
+          y1_reg <= ex_rs2_after_fwd_reg[9:0];
+          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h80010010) begin //color
+          color_reg <= ex_rs2_after_fwd_reg[0];
+          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h80010014 && HDMI_RX_READY) begin //fire
+          HDMI_RX_VALID_reg <= 1;
+        end else HDMI_RX_VALID_reg <= 0;
+      end else HDMI_RX_VALID_reg <= 0;
     end
     
     //--------------------------------------------------------------
