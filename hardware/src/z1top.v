@@ -314,6 +314,9 @@ module z1top # (
   wire vde, hsync, vsync;
   wire framebuffer_data;
   wire [31:0] framebuffer_addr;
+  wire arb_we;
+  wire arb_din;
+  wire [19:0] arb_addr;
 
   rgb2dvi_0 hdmi_out (
     .TMDS_Clk_p(HDMI_TX_CLK_P),
@@ -342,10 +345,10 @@ module z1top # (
   
   frame_buffer_1_786432 frame_buffer (
     //arbiter
-    .arb_we(),
+    .arb_we(arb_we),
     .arb_clk(cpu_clk_g),
-    .arb_din(),
-    .arb_addr(), // 19:0
+    .arb_din(arb_din),
+    .arb_addr(arb_addr), // 19:0
     
     //video
     .vga_clk(pixel_clk_g),
@@ -440,7 +443,12 @@ module z1top # (
     // I2S/ASYNC FIFO hookups?
     .async_fifo_din(async_fifo_din),
     .async_fifo_wr_en(async_fifo_wr_en),
-    .async_fifo_full(async_fifo_full)
+    .async_fifo_full(async_fifo_full),
+    
+    // framebuffer stuff
+    .fb_we(arb_we),
+    .fb_data(arb_din),
+    .fb_addr(arb_addr)
   );
 
 endmodule
