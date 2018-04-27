@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
-| Date         : Wed Apr 25 16:43:33 2018
-| Host         : c125m-21.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
+| Date         : Thu Apr 26 18:50:57 2018
+| Host         : c125m-20.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
 | Command      : report_utilization -file block_mem_1x786432_utilization_synth.rpt -pb block_mem_1x786432_utilization_synth.pb
 | Design       : block_mem_1x786432
 | Device       : 7z020clg400-1

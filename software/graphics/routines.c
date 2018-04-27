@@ -13,12 +13,12 @@ void fill(uint8_t color) {
             store_pixel(color, x, y);
         }
     }
-    //int i;
-    //for (i = 0; i < 7834272; i++) {
+    // int i;
+    // for (i = 0; i < 7834272; i++) {
     //    (*((volatile uint8_t*)(FRAMEBUFFER_BASE + i))) = color & 0x1;
-    //}
+    // }
 }
-/*
+
 void hwline(uint32_t color, uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
 {
   while (!(LE_CTRL & FILLER_CTRL)) ;
@@ -28,7 +28,7 @@ void hwline(uint32_t color, uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
   LE_X1 = x1;
   LE_Y1TRIG = y1;
 }
-*/
+
 
 
 void swap(int* a, int* b) 

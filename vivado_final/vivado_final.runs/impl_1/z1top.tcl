@@ -69,16 +69,19 @@ set rc [catch {
   create_project -in_memory -part xc7z020clg400-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0
-  set_property webtalk.parent_dir /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.cache/wt [current_project]
-  set_property parent.project_path /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.xpr [current_project]
-  set_property ip_output_repo /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.cache/ip [current_project]
+  set_property webtalk.parent_dir /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.cache/wt [current_project]
+  set_property parent.project_path /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.xpr [current_project]
+  set_property ip_repo_paths /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/rgb2dvi [current_project]
+  set_property ip_output_repo /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.cache/ip [current_project]
   set_property ip_cache_permissions {read write} [current_project]
   set_property XPM_LIBRARIES XPM_MEMORY [current_project]
-  add_files -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/z1top.dcp
-  read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/bios_mem/bios_mem.xci
-  read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/dmem_blk_ram/dmem_blk_ram.xci
-  read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram.xci
-  read_xdc /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc
+  add_files -quiet /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/z1top.dcp
+  read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/memories/bios_mem/bios_mem.xci
+  read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/memories/dmem_blk_ram/dmem_blk_ram.xci
+  read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/memories/imem_blk_ram/imem_blk_ram.xci
+  read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.srcs/sources_1/ip/rgb2dvi_0/rgb2dvi_0.xci
+  read_ip -quiet /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/framebuffer_ram_1x786432/framebuffer_ram_1x786432/block_mem_1x786432.xci
+  read_xdc /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/PYNQ-Z1_C.xdc
   link_design -top z1top -part xc7z020clg400-1
   close_msg_db -file init_design.pb
 } RESULT]

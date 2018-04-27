@@ -142,6 +142,14 @@ int main(void) {
             uint16_t y1 = ascii_dec_to_uint16(read_token(buffer, BUFFER_LEN, " \x0d"));
             swline(color, x0, y0, x1, y1);
         }
+        else if (strcmp(input, "hwline") == 0) {
+            uint32_t color = ascii_hex_to_uint32(read_token(buffer, BUFFER_LEN, " \x0d"));
+            uint16_t x0 = ascii_dec_to_uint16(read_token(buffer, BUFFER_LEN, " \x0d"));
+            uint16_t y0 = ascii_dec_to_uint16(read_token(buffer, BUFFER_LEN, " \x0d"));
+            uint16_t x1 = ascii_dec_to_uint16(read_token(buffer, BUFFER_LEN, " \x0d"));
+            uint16_t y1 = ascii_dec_to_uint16(read_token(buffer, BUFFER_LEN, " \x0d"));
+            hwline(color, x0, y0, x1, y1);
+        }
         else if (strcmp(input, "pixel") == 0) {
             uint8_t color = ascii_hex_to_uint8(read_token(buffer, BUFFER_LEN, " \x0d"));
             uint32_t x = ascii_dec_to_uint32(read_token(buffer, BUFFER_LEN, " \x0d"));

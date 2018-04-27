@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
-// Date        : Wed Apr 25 14:52:07 2018
-// Host        : c125m-21.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
+// Date        : Thu Apr 26 18:44:03 2018
+// Host        : c125m-20.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
 // Command     : write_verilog -force -mode funcsim
-//               /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.srcs/sources_1/ip/rgb2dvi_0/rgb2dvi_0_sim_netlist.v
+//               /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.srcs/sources_1/ip/rgb2dvi_0/rgb2dvi_0_sim_netlist.v
 // Design      : rgb2dvi_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.

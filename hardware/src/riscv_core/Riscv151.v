@@ -425,7 +425,7 @@ module Riscv151 #(
             fb_data_reg <= ex_rs2_after_fwd_reg[0];
         end else begin
             fb_we_reg <= 1'b0;
-            fb_addr_reg <= 19'b0;
+            fb_addr_reg <= 20'b0;
             fb_data_reg <= 1'b0;
         end
     end

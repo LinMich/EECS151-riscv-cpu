@@ -1,7 +1,6 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  --include "../../../../../hardware/src" --include "../../../../../hardware/src/riscv_core" \
-"../../../../../hardware/src/memories/dmem_blk_ram/dmem_blk_ram_sim_netlist.v" \
-"../../../../../hardware/src/memories/bios_mem/sim/bios_mem.v" \
+"../../../../vivado_final.ip_user_files/ip/framebuffer_ram_1x786432/sim/block_mem_1x786432.v" \
 "../../../../../hardware/src/io_circuits/button_parser.v" \
 "../../../../../hardware/src/io_circuits/edge_detector.v" \
 "../../../../../hardware/src/io_circuits/uart.v" \
@@ -24,6 +23,12 @@ verilog xil_defaultlib  --include "../../../../../hardware/src" --include "../..
 "../../../../../hardware/src/io_circuits/debouncer.v" \
 "../../../../../hardware/src/riscv_core/UART_controller.v" \
 "../../../../../hardware/src/audio/i2s_controller.v" \
+"../../../../../hardware/src/memories/bios_mem/sim/bios_mem.v" \
+"../../../../../hardware/src/video/video_controller.v" \
+"../../../../../hardware/src/video/arbiter.v" \
+"../../../../../hardware/src/video/accelerator.v" \
+"../../../../../hardware/src/video/frame_buffer_1_786432.v" \
+"../../../../../hardware/src/memories/dmem_blk_ram/sim/dmem_blk_ram.v" \
 "../../../../../hardware/src/memories/imem_blk_ram/sim/imem_blk_ram.v" \
 "../../../../../hardware/src/testbenches/control_testbench.v" \
 "../../../../../hardware/src/testbenches/echo_testbench.v" \
@@ -34,6 +39,8 @@ verilog xil_defaultlib  --include "../../../../../hardware/src" --include "../..
 "../../../../../hardware/src/testbenches/fifo_testbench.v" \
 "../../../../../hardware/src/testbenches/i2s_controller_testbench.v" \
 "../../../../../hardware/src/testbenches/reg_file_testbench.v" \
+"../../../../../hardware/src/testbenches/i2s_integration_testbench.v" \
+"../../../../../hardware/src/video/video_controller_testbench.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

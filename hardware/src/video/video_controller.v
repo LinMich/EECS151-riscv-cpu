@@ -90,55 +90,61 @@ module video_controller # (
   // You CAN ONLY use the 'clk' input to drive synchronous logic.
   always @(posedge clk) begin
     if (rst) begin
-        v_counter <= 0;
-        h_counter <= 0;
+        v_counter <= -1;
+        h_counter <= -1;
         framebuffer_addr_reg <= 32'h90000000;
-        hdmi_v_reg <= 0;
-        hdmi_h_reg <= 0;
+        hdmi_v_reg <= 1;
+        hdmi_h_reg <= 1;
         hdmi_de_reg <= 0;
         hdmi_data_reg <= 0;
     end else begin
-        if (v_counter < V_SYNC_PULSE) hdmi_v_reg <= 1;
-        else if (v_counter < V_SYNC_PULSE + V_BACK_PORCH) begin
-            hdmi_v_reg <= 0;
-            hdmi_data_reg <= 0;
-            hdmi_de_reg <= 0;
-            hdmi_h_reg <= 0;
-        end else if (v_counter < V_SYNC_PULSE + V_BACK_PORCH + V_VISIBLE_AREA) begin // horizontal part
-            if (h_counter < H_SYNC_PULSE) hdmi_h_reg <= 1;
-            else if (h_counter < H_SYNC_PULSE + H_BACK_PORCH) begin
-                hdmi_v_reg <= 0;
-                hdmi_data_reg <= 0;
-                hdmi_de_reg <= 0;
-                hdmi_h_reg <= 0;
-            end else if (h_counter < H_SYNC_PULSE + H_BACK_PORCH + H_VISIBLE_AREA) begin // actual data part
-                hdmi_de_reg <= 1;
-                framebuffer_addr_reg <= (32'h90000000 + ((v_counter - V_SYNC_PULSE - V_BACK_PORCH) << 10) + (h_counter - H_SYNC_PULSE - H_BACK_PORCH)); // addr calc according to spec
-                hdmi_data_reg <= framebuffer_data;
-            end else if (h_counter < H_SYNC_PULSE + H_BACK_PORCH + H_VISIBLE_AREA + H_FRONT_PORCH) begin
-                hdmi_h_reg <= 0;
-                hdmi_de_reg <= 0;
-                hdmi_v_reg <= 0;
-                hdmi_data_reg <= 0;
-            end
-        end else if (v_counter < V_SYNC_PULSE + V_BACK_PORCH + V_VISIBLE_AREA + V_FRONT_PORCH) begin
-            hdmi_v_reg <= 0;
-            hdmi_data_reg <= 0;
-            hdmi_de_reg <= 0;
-            hdmi_h_reg <= 0;
-        end
     
         // incrementing logic
         if (h_counter >= H_WHOLE_LINE - 1) begin
             if (v_counter >= V_WHOLE_FRAME - 1) begin
-                v_counter <= 0;
-                h_counter <= 0;
-                framebuffer_addr_reg <= 32'h90000000;
+                v_counter = 0;
+                h_counter = 0;
+                framebuffer_addr_reg = 32'h90000000;
             end else begin
-                v_counter <= v_counter + 1;
-                h_counter <= 0;
+                v_counter = v_counter + 1;
+                h_counter = 0;
             end
-        end else h_counter <= h_counter + 1;
+        end else h_counter = h_counter + 1;
+        
+        if ($signed(v_counter) < V_SYNC_PULSE) hdmi_v_reg <= 0;
+        else if (v_counter < V_SYNC_PULSE + V_BACK_PORCH) begin
+            hdmi_v_reg <= 1;
+            hdmi_data_reg <= 0;
+            hdmi_de_reg <= 0;
+            hdmi_h_reg <= 1;
+            framebuffer_addr_reg <= 32'h90000000;
+        end else if (v_counter < V_SYNC_PULSE + V_BACK_PORCH + V_VISIBLE_AREA) begin // horizontal part
+            if (h_counter < H_SYNC_PULSE) hdmi_h_reg <= 0;
+            else if (h_counter < H_SYNC_PULSE + H_BACK_PORCH) begin
+                hdmi_v_reg <= 1;
+                hdmi_data_reg <= 0;
+                hdmi_de_reg <= 0;
+                hdmi_h_reg <= 1;
+                framebuffer_addr_reg <= 32'h90000000;
+            end else if (h_counter < H_SYNC_PULSE + H_BACK_PORCH + H_VISIBLE_AREA) begin // actual data part
+                hdmi_de_reg <= 1;
+                framebuffer_addr_reg = (32'h90000000 + ((v_counter - (V_SYNC_PULSE + V_BACK_PORCH)) << 10) + ((h_counter) - (H_SYNC_PULSE + H_BACK_PORCH))); // addr calc according to spec
+//                hdmi_data_reg <= 24'hffffff;
+                hdmi_data_reg <= framebuffer_data;
+            end else if (h_counter < H_SYNC_PULSE + H_BACK_PORCH + H_VISIBLE_AREA + H_FRONT_PORCH) begin
+                hdmi_h_reg <= 1;
+                hdmi_de_reg <= 0;
+                hdmi_v_reg <= 1;
+                hdmi_data_reg <= 0;
+                framebuffer_addr_reg <= 32'h90000000;
+            end
+        end else if (v_counter < V_SYNC_PULSE + V_BACK_PORCH + V_VISIBLE_AREA + V_FRONT_PORCH) begin
+            hdmi_v_reg <= 1;
+            hdmi_data_reg <= 0;
+            hdmi_de_reg <= 0;
+            hdmi_h_reg <= 1;
+            framebuffer_addr_reg <= 32'h90000000;
+        end
     end
   end
   

@@ -1,0 +1,13 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../vivado_final.ip_user_files/ipstatic/src/ClockGen.vhd" \
+"../../../../vivado_final.ip_user_files/ipstatic/src/SyncAsync.vhd" \
+"../../../../vivado_final.ip_user_files/ipstatic/src/SyncAsyncReset.vhd" \
+"../../../../vivado_final.ip_user_files/ipstatic/src/DVI_Constants.vhd" \
+"../../../../vivado_final.ip_user_files/ipstatic/src/OutputSERDES.vhd" \
+"../../../../vivado_final.ip_user_files/ipstatic/src/TMDS_Encoder.vhd" \
+"../../../../vivado_final.ip_user_files/ipstatic/src/rgb2dvi.vhd" \
+"../../../../vivado_final.srcs/sources_1/ip/rgb2dvi_0/sim/rgb2dvi_0.vhd" \
+
+# Do not sort compile order
+nosort

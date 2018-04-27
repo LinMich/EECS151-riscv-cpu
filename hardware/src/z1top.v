@@ -50,10 +50,10 @@ module z1top # (
   output [2:0] HDMI_TX_D_P,
   input HDMI_TX_HPDN,
   inout HDMI_TX_SCL,          // You can ignore this.
-  inout HDMI_TX_SDA,           // You can ignore this.
+  inout HDMI_TX_SDA           // You can ignore this.
 
   // For debugging
-  output [7:0] PMOD_LEDS
+//  output [7:0] PMOD_LEDS
 );
 
     // Remove these lines when implementing checkpoint 3.
@@ -353,7 +353,7 @@ module z1top # (
     .clk(pixel_clk_g),
     .rst(video_reset),
     .framebuffer_addr(framebuffer_addr),
-    .framebuffer_data({31'b0, framebuffer_data}),
+    .framebuffer_data({32{framebuffer_data}}),
     .hdmi_data(rgb),
     .hdmi_v(vsync),
     .hdmi_h(hsync),
@@ -395,10 +395,10 @@ module z1top # (
 
   frame_buffer_1_786432 frame_buffer (
     //arbiter (for writing to the frame buffer)
-    .arb_we(arb_we), //CPU_wr_en
+    .arb_we(CPU_wr_en), //CPU_wr_en arb_we
     .arb_clk(cpu_clk_g),
-    .arb_din(arb_din), //CPU_wr_data
-    .arb_addr(arb_addr), // 19:0 CPU_wr_addr
+    .arb_din(CPU_wr_data), //CPU_wr_data arb_din
+    .arb_addr(CPU_wr_addr), // 19:0 CPU_wr_addr arb_addr
 
     //video (for reading from the frame buffer)
     .vga_clk(pixel_clk_g),
