@@ -312,6 +312,28 @@ module z1top # (
   wire video_reset = reset || HDMI_TX_HPDN;
   wire [23:0] rgb;
   wire vde, hsync, vsync;
+  wire framebuffer_data;
+  wire [31:0] framebuffer_addr;
+  // arbiter to framebuffer
+  wire arb_we;
+  wire arb_din;
+  wire [19:0] arb_addr;
+  // accelerator to arbiter
+  wire XL_wr_en;
+  wire [31:0] XL_wr_data;
+  wire [4:0] XL_wr_addr;
+  // cpu to arbiter
+  wire CPU_wr_en;
+  wire CPU_wr_data;
+  wire [19:0] CPU_wr_addr;
+  // hdmi signals
+  wire [9:0] x0;
+  wire [9:0] x1;
+  wire [9:0] y0;
+  wire [9:0] y1;
+  wire color;
+  wire HDMI_RX_READY;
+  wire HDMI_RX_VALID;
 
   rgb2dvi_0 hdmi_out (
     .TMDS_Clk_p(HDMI_TX_CLK_P),
@@ -327,6 +349,62 @@ module z1top # (
   );
 
   // TODO: Your video controller.
+  video_controller vinny (
+    .clk(pixel_clk_g),
+    .rst(video_reset),
+    .framebuffer_addr(framebuffer_addr),
+    .framebuffer_data({31'b0, framebuffer_data}),
+    .hdmi_data(rgb),
+    .hdmi_v(vsync),
+    .hdmi_h(hsync),
+    .hdmi_de(vde)
+  );
+
+  // accelerator
+  accelerator celesta (
+    .clk(cpu_clk_g),
+    //Pixel data
+    .x0(x0), //9:0
+    .y0(y0), //9:0
+    .x1(x1), //9:0
+    .y1(y1), //9:0
+    .color(color),
+    //CPU interface
+    .RX_ready(HDMI_RX_READY), //output
+    .RX_valid(HDMI_RX_VALID),    //fire signal input
+    //Arbiter Interface
+    .XL_wr_en(XL_wr_en), //output
+    .XL_wr_data(XL_wr_data), //output
+    .XL_wr_addr(XL_wr_addr) //19:0 output
+  );
+
+  // arbiter
+  arbiter artie (
+    .CPU_wr_en(CPU_wr_en),
+    .CPU_wr_data(CPU_wr_data),
+    .CPU_wr_addr(CPU_wr_addr), //19:0
+
+    .XL_wr_en(XL_wr_en),
+    .XL_wr_data(XL_wr_data),
+    .XL_wr_addr(XL_wr_addr), //19:0
+
+    .frame_wr_en(arb_we), //output
+    .frame_wr_data(arb_din), //output
+    .frame_wr_addr(arb_addr) //19:0 output
+  );
+
+  frame_buffer_1_786432 frame_buffer (
+    //arbiter (for writing to the frame buffer)
+    .arb_we(arb_we), //CPU_wr_en
+    .arb_clk(cpu_clk_g),
+    .arb_din(arb_din), //CPU_wr_data
+    .arb_addr(arb_addr), // 19:0 CPU_wr_addr
+
+    //video (for reading from the frame buffer)
+    .vga_clk(pixel_clk_g),
+    .vga_addr(framebuffer_addr[19:0]), // 19:0
+    .vga_dout(framebuffer_data) // output
+  );
 
   // Insert the rest of your code here: I/O, audio, CPU...
 
@@ -415,7 +493,21 @@ module z1top # (
     // I2S/ASYNC FIFO hookups?
     .async_fifo_din(async_fifo_din),
     .async_fifo_wr_en(async_fifo_wr_en),
-    .async_fifo_full(async_fifo_full)
+    .async_fifo_full(async_fifo_full),
+    
+    // framebuffer stuff
+    .fb_we(CPU_wr_en),
+    .fb_data(CPU_wr_data),
+    .fb_addr(CPU_wr_addr),
+
+    // hdmi signal stuff
+    .x0(x0),
+    .x1(x1),
+    .y0(y0),
+    .y1(y1),
+    .color(color),
+    .HDMI_RX_READY(HDMI_RX_READY),
+    .HDMI_RX_VALID(HDMI_RX_VALID)
   );
 
 endmodule

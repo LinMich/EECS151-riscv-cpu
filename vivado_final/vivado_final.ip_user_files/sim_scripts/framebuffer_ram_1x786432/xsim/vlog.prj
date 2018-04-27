@@ -1,0 +1,6 @@
+verilog xil_defaultlib  \
+"../../../ip/framebuffer_ram_1x786432/sim/block_mem_1x786432.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

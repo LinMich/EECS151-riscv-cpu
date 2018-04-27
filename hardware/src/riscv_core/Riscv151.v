@@ -21,7 +21,21 @@ module Riscv151 #(
     
     output [BIT_DEPTH-1:0] async_fifo_din,
     output async_fifo_wr_en,
-    input async_fifo_full
+    input async_fifo_full,
+    
+    // framebuffer stuff
+    output fb_we,
+    output [19:0] fb_addr,
+    output fb_data,
+
+    // MMIO for HDMI stuff
+    output [9:0] x0,
+    output [9:0] x1,
+    output [9:0] y0,
+    output [9:0] y1,
+    output color,
+    output HDMI_RX_VALID,
+    input HDMI_RX_READY
 );
 
     /* REGISTERS AND WIRES */
@@ -164,11 +178,11 @@ module Riscv151 #(
         ex_use_cycle_counter_reg_data = 1'b0;
         ex_use_instr_counter_reg_data = 1'b0;
         
-        if (ex_opcode == `OPC_STORE) begin   
+        if (ex_opcode == `OPC_STORE) begin
             if (ex_aluout_reg == 32'h80000018) begin
                 ex_reset_counters = 1'b1;
             end
-                
+
         end
         else if (ex_opcode == `OPC_LOAD) begin
             if (ex_aluout_reg == 32'h80000010) begin
@@ -179,7 +193,6 @@ module Riscv151 #(
             end
         end
     end
-    
     
     
     wire ex_uart_data_out_valid;
@@ -199,7 +212,6 @@ module Riscv151 #(
     
     wire [31:0] mwb_data_out_bios;
     reg [31:0] mwb_data_out_mem;
-    
 
     wire [31:0] fd_imem_read_reg;
     reg[31:0] fd_use_instr_or_bios_mem;
@@ -395,8 +407,84 @@ module Riscv151 #(
         end
     end
     
+    // -------------------------------------------------------------
+    // Framebuffer control
+    // -------------------------------------------------------------
+    //
+    reg fb_we_reg;
+    reg [19:0] fb_addr_reg;
+    reg fb_data_reg;
+    assign fb_we = fb_we_reg;
+    assign fb_addr = fb_addr_reg;
+    assign fb_data = fb_data_reg;
       
-    
+    always @(posedge clk) begin
+        if (ex_opcode == `OPC_STORE && ex_aluout_reg[31:24] == 8'h90) begin
+            fb_we_reg <= 1'b1;
+            fb_addr_reg <= ex_aluout_reg[19:0];
+            fb_data_reg <= ex_rs2_after_fwd_reg[0];
+        end else begin
+            fb_we_reg <= 1'b0;
+            fb_addr_reg <= 19'b0;
+            fb_data_reg <= 1'b0;
+        end
+    end
+
+    // -------------------------------------------------------------
+    // MMIO for HDMI data signals
+    // -------------------------------------------------------------
+    //
+    reg [9:0] x0_reg;
+    reg [9:0] x1_reg;
+    reg [9:0] y0_reg;
+    reg [9:0] y1_reg;
+    reg color_reg;
+    reg HDMI_RX_VALID_reg;
+    assign x0 = x0_reg;
+    assign x1 = x1_reg;
+    assign y0 = y0_reg;
+    assign y1 = y1_reg;
+    assign color = color_reg;
+    assign HDMI_RX_VALID = HDMI_RX_VALID_reg;
+
+    initial begin
+      x0_reg = 0;
+      x1_reg = 0;
+      y0_reg = 0;
+      y1_reg = 0;
+      color_reg = 0;
+      HDMI_RX_VALID_reg = 0;
+    end
+
+    always @(posedge clk) begin
+      if (rst) begin
+        x0_reg = 0;
+        x1_reg = 0;
+        y0_reg = 0;
+        y1_reg = 0;
+        color_reg = 0;
+        HDMI_RX_VALID_reg = 0;
+      end else if (ex_opcode == `OPC_STORE) begin
+        if (ex_aluout_reg == 32'h80010000) begin //x0
+          x0_reg <= ex_rs2_after_fwd_reg[9:0];
+          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h80010004) begin //x1
+          x1_reg <= ex_rs2_after_fwd_reg[9:0];
+          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h80010008) begin //y0
+          y0_reg <= ex_rs2_after_fwd_reg[9:0];
+          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h8001000c) begin //y1
+          y1_reg <= ex_rs2_after_fwd_reg[9:0];
+          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h80010010) begin //color
+          color_reg <= ex_rs2_after_fwd_reg[0];
+          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h80010014 && HDMI_RX_READY) begin //fire
+          HDMI_RX_VALID_reg <= 1;
+        end else HDMI_RX_VALID_reg <= 0;
+      end else HDMI_RX_VALID_reg <= 0;
+    end
     
     //--------------------------------------------------------------
 
