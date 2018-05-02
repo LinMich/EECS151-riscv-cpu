@@ -4,6 +4,7 @@
 #include "types.h"
 
 #define FRAMEBUFFER_BASE 0x90000000
+#define BUFFER_LEN 128
 
 void fill(uint8_t color) {
     int x;
@@ -62,6 +63,7 @@ void store_pixel(uint8_t color, int x, int y)
 /* Based on wikipedia implementation */
 void swline(uint32_t color, int x0, int y0, int x1, int y1)
 {
+  int8_t buffer[BUFFER_LEN];
   char steep = (abs(y1-y0) > abs(x1-x0)) ? 1 : 0; 
   if(steep) {
     swap(&x0, &y0);
@@ -78,11 +80,16 @@ void swline(uint32_t color, int x0, int y0, int x1, int y1)
   int y = y0;
   int x;
   ystep = (y0 < y1) ? 1 : -1;
+
   for( x = x0; x <= x1; x++ ) {
-    if(steep)
+    if(steep) {
       store_pixel(color, y, x);
-    else
+      // uwrite_int8s(uint32_to_ascii_hex(x, buffer, BUFFER_LEN));
+      // uwrite_int8s("\r\n");
+    } else
       store_pixel(color, x, y);
+      // uwrite_int8s(uint32_to_ascii_hex(y, buffer, BUFFER_LEN));
+      // uwrite_int8s("\r\n"); }
     error = error - deltay;
     if( error < 0 ) {
       y += ystep;

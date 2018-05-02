@@ -128,7 +128,7 @@ module video_controller # (
                 framebuffer_addr_reg <= 32'h90000000;
             end else if (h_counter < H_SYNC_PULSE + H_BACK_PORCH + H_VISIBLE_AREA) begin // actual data part
                 hdmi_de_reg <= 1;
-                framebuffer_addr_reg = (32'h90000000 + ((v_counter - (V_SYNC_PULSE + V_BACK_PORCH)) << 10) + ((h_counter) - (H_SYNC_PULSE + H_BACK_PORCH))); // addr calc according to spec
+                framebuffer_addr_reg <= (32'h90000000 + ((v_counter - (V_SYNC_PULSE + V_BACK_PORCH)) << 10) + ((h_counter) - (H_SYNC_PULSE + H_BACK_PORCH))); // addr calc according to spec
 //                hdmi_data_reg <= 24'hffffff;
                 hdmi_data_reg <= framebuffer_data;
             end else if (h_counter < H_SYNC_PULSE + H_BACK_PORCH + H_VISIBLE_AREA + H_FRONT_PORCH) begin

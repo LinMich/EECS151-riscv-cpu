@@ -419,7 +419,7 @@ module Riscv151 #(
     assign fb_data = fb_data_reg;
       
     always @(posedge clk) begin
-        if (ex_opcode == `OPC_STORE && ex_aluout_reg[31:24] == 8'h90) begin
+        if (ex_opcode == `OPC_STORE && ex_aluout_reg[31:28] == 4'h9) begin
             fb_we_reg <= 1'b1;
             fb_addr_reg <= ex_aluout_reg[19:0];
             fb_data_reg <= ex_rs2_after_fwd_reg[0];
