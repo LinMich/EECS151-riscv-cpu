@@ -117,7 +117,7 @@ module video_controller # (
             hdmi_data_reg <= 0;
             hdmi_de_reg <= 0;
             hdmi_h_reg <= 1;
-            framebuffer_addr_reg <= 32'h90000000;
+//            framebuffer_addr_reg <= 32'h90000000;
         end else if (v_counter < V_SYNC_PULSE + V_BACK_PORCH + V_VISIBLE_AREA) begin // horizontal part
             if (h_counter < H_SYNC_PULSE) hdmi_h_reg <= 0;
             else if (h_counter < H_SYNC_PULSE + H_BACK_PORCH) begin
@@ -125,10 +125,10 @@ module video_controller # (
                 hdmi_data_reg <= 0;
                 hdmi_de_reg <= 0;
                 hdmi_h_reg <= 1;
-                framebuffer_addr_reg <= 32'h90000000;
+//                framebuffer_addr_reg <= 32'h90000000;
             end else if (h_counter < H_SYNC_PULSE + H_BACK_PORCH + H_VISIBLE_AREA) begin // actual data part
                 hdmi_de_reg <= 1;
-                framebuffer_addr_reg <= (32'h90000000 + ((v_counter - (V_SYNC_PULSE + V_BACK_PORCH)) << 10) + ((h_counter) - (H_SYNC_PULSE + H_BACK_PORCH))); // addr calc according to spec
+                framebuffer_addr_reg <= (32'h90000000 + ((v_counter - (V_SYNC_PULSE + V_BACK_PORCH)) << 10) + ((h_counter + 1) - (H_SYNC_PULSE + H_BACK_PORCH))); // addr calc according to spec
 //                hdmi_data_reg <= 24'hffffff;
                 hdmi_data_reg <= framebuffer_data;
             end else if (h_counter < H_SYNC_PULSE + H_BACK_PORCH + H_VISIBLE_AREA + H_FRONT_PORCH) begin
@@ -136,14 +136,14 @@ module video_controller # (
                 hdmi_de_reg <= 0;
                 hdmi_v_reg <= 1;
                 hdmi_data_reg <= 0;
-                framebuffer_addr_reg <= 32'h90000000;
+//                framebuffer_addr_reg <= 32'h90000000;
             end
         end else if (v_counter < V_SYNC_PULSE + V_BACK_PORCH + V_VISIBLE_AREA + V_FRONT_PORCH) begin
             hdmi_v_reg <= 1;
             hdmi_data_reg <= 0;
             hdmi_de_reg <= 0;
             hdmi_h_reg <= 1;
-            framebuffer_addr_reg <= 32'h90000000;
+//            framebuffer_addr_reg <= 32'h90000000;
         end
     end
   end
