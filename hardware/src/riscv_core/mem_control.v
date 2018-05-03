@@ -21,7 +21,7 @@ module mem_control (
     assign we_inst = we_inst_reg;
     
     always @(*) begin
-        if (addr[31:28] != 4'h9 || addr[31:28] != 4'h8) begin
+        if (addr[31:28] != 4'h9) begin
             case (opcode)
     //        `OPC_LUI: begin
     //            we_data_reg = (addr[28] == 1) ? 4'b1111 : 4'b0000;

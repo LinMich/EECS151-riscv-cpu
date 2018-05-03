@@ -128,7 +128,6 @@ module Riscv151 #(
     reg [31:0] cycle_counter;
     reg [31:0] instr_counter;
     
-    
     reg ex_reset_counters;
     reg ex_use_cycle_counter_reg_data;
     reg ex_use_instr_counter_reg_data;
@@ -137,8 +136,6 @@ module Riscv151 #(
     reg ex_UART_transmitter_write;
     reg ex_UART_control_read;
     reg ex_UART_receiver_data;
-    wire ex_MemtoReg;
-    assign ex_MemtoReg = ex_opcode == `OPC_LOAD;
 
     reg mwb_use_cycle_counter_reg_data;
     reg mwb_use_instr_counter_reg_data;
@@ -234,47 +231,36 @@ module Riscv151 #(
         .serial_out(FPGA_SERIAL_TX)
     );
     
-    
     //--------------------------------------------------------------
     // FIFO, LEDS, Tone generator, and async_FIFO + I2S Controller
-    wire ex_fifo_empty;
     
+    wire ex_fifo_empty;
     reg ex_GPIO_FIFO_empty;
     reg ex_GPIO_FIFO_read_data;
     reg ex_switches_read;
     reg ex_LEDS_read;
-    reg ex_I2S_async_FIFO_full;
-    
+    reg ex_I2S_async_FIFO_full;  
     reg mwb_GPIO_FIFO_empty;
     reg mwb_GPIO_FIFO_read_data;
     reg mwb_switches_read;
-    reg mwb_I2S_async_FIFO_full;
-    
+    reg mwb_I2S_async_FIFO_full;   
     reg [7:0] fifo_write_data;
-    reg fifo_wr_en;
-    
+    reg fifo_wr_en;    
     wire fifo_full;
-    wire [7:0] fifo_dout;
-    
-    
+    wire [7:0] fifo_dout;    
     reg [5:0] LEDS_reg;
     reg [7:0] PMOD_LEDS_reg;
+    reg tone_output_enable_reg;
+    reg [23:0] tone_switch_period_reg;
+    reg [BIT_DEPTH-1:0] async_fifo_din_reg;
+    reg async_fifo_wr_en_reg;  
     
     assign LEDS = LEDS_reg;
     assign PMOD_LEDS = PMOD_LEDS_reg;
-    
-    reg tone_output_enable_reg;
-    reg [23:0] tone_switch_period_reg;
-    
     assign tone_output_enable = tone_output_enable_reg;
     assign tone_switch_period = tone_switch_period_reg;
-    
-    reg [BIT_DEPTH-1:0] async_fifo_din_reg;
-    reg async_fifo_wr_en_reg;
-    
     assign async_fifo_din = async_fifo_din_reg;
     assign async_fifo_wr_en = async_fifo_wr_en_reg;
-
     
     initial begin
         PMOD_LEDS_reg = 0;
@@ -306,10 +292,7 @@ module Riscv151 #(
         if (|BUTTONS && !fifo_full) begin
             fifo_write_data <= {4'b0, BUTTONS};
             fifo_wr_en <= 1;
-        end 
-        else begin
-            fifo_wr_en <= 0;
-        end
+        end else fifo_wr_en <= 0;
         
         // store to LEDS
         if (ex_opcode == `OPC_STORE && ex_aluout_reg == 32'h80000030) begin   
@@ -341,11 +324,7 @@ module Riscv151 #(
         if (ex_opcode == `OPC_STORE && (ex_aluout_reg == 32'h80000044)) begin
             async_fifo_din_reg <= ex_rs2_after_fwd_reg[BIT_DEPTH-1:0];
             async_fifo_wr_en_reg <= 1'b1;
-        end
-        else begin
-            async_fifo_wr_en_reg <= 1'b0;
-        end
-        
+        end else async_fifo_wr_en_reg <= 1'b0; 
     end
     
     always @(*) begin        
@@ -355,26 +334,22 @@ module Riscv151 #(
                 ex_GPIO_FIFO_read_data = 1'b0;
                 ex_switches_read = 1'b0;
                 ex_I2S_async_FIFO_full = 1'b0;
-            end
-            else if (ex_aluout_reg == 32'h80000024) begin
+            end else if (ex_aluout_reg == 32'h80000024) begin
                 ex_GPIO_FIFO_read_data = 1'b1;
                 ex_GPIO_FIFO_empty = 1'b0;
                 ex_switches_read = 1'b0;
                 ex_I2S_async_FIFO_full = 1'b0;
-            end
-            else if (ex_aluout_reg == 32'h80000028) begin
+            end else if (ex_aluout_reg == 32'h80000028) begin
                 ex_switches_read = 1'b1;
                 ex_GPIO_FIFO_empty = 1'b0;
                 ex_GPIO_FIFO_read_data = 1'b0;
                 ex_I2S_async_FIFO_full = 1'b0;
-            end
-            else if (ex_aluout_reg == 32'h80000040) begin
+            end else if (ex_aluout_reg == 32'h80000040) begin
                 ex_I2S_async_FIFO_full = 1'b1;
                 ex_GPIO_FIFO_empty = 1'b0;
                 ex_GPIO_FIFO_read_data = 1'b0;
                 ex_switches_read = 1'b0;
-            end
-            else begin
+            end else begin
                 ex_GPIO_FIFO_empty = 1'b0;
                 ex_GPIO_FIFO_read_data = 1'b0;
                 ex_switches_read = 1'b0;
@@ -629,8 +604,6 @@ module Riscv151 #(
             mwb_GPIO_FIFO_read_data <= 0;
             mwb_switches_read <= 0;
             mwb_I2S_async_FIFO_full <= 0;
-            
-            mwb_MemtoReg <= 0;
         end else begin
             // PC logic section
             pc_reg <= fwd_pc;
@@ -677,7 +650,6 @@ module Riscv151 #(
             // flags for I2S async FIFO
             mwb_I2S_async_FIFO_full <= ex_I2S_async_FIFO_full;
             
-            mwb_MemtoReg <= ex_MemtoReg;
         end
     end
     
@@ -707,28 +679,25 @@ module Riscv151 #(
         default: mwb_data_out_mem = 32'b0;
         endcase
         
-        if(mwb_MemtoReg) begin
-            if (mwb_use_cycle_counter_reg_data) begin
-                mwb_regfile_input_data_mux_out = cycle_counter;
-            end else if (mwb_use_instr_counter_reg_data) begin
-                mwb_regfile_input_data_mux_out = instr_counter;
-            end else if (mwb_data_write_ctrl_sig) begin//
-                mwb_regfile_input_data_mux_out = mwb_uart_write_data;
-            end else if (mwb_uart_data_out_ready) begin//
-                mwb_regfile_input_data_mux_out = {24'd0, mwb_uart_read_data};
-            end else if (mwb_GPIO_FIFO_empty) begin
-                mwb_regfile_input_data_mux_out = {31'b0, ex_fifo_empty};
-            end else if (mwb_GPIO_FIFO_read_data) begin//
-                mwb_regfile_input_data_mux_out = {28'b0, fifo_dout[3:0]};
-            end else if (mwb_switches_read) begin//
-                mwb_regfile_input_data_mux_out = {30'd0, SWITCHES}; 
-            end else if (mwb_I2S_async_FIFO_full) begin
-                mwb_regfile_input_data_mux_out = {31'b0, async_fifo_full};  
-            end else begin
-                mwb_regfile_input_data_mux_out = mwb_data_mem_reader_out;
-            end
+        // the really gross, poorly formatted "mux" for David's work
+        if (mwb_use_cycle_counter_reg_data) begin
+            mwb_regfile_input_data_mux_out = cycle_counter;
+        end else if (mwb_use_instr_counter_reg_data) begin
+            mwb_regfile_input_data_mux_out = instr_counter;
+        end else if (mwb_data_write_ctrl_sig) begin//
+            mwb_regfile_input_data_mux_out = mwb_uart_write_data;
+        end else if (mwb_uart_data_out_ready) begin//
+            mwb_regfile_input_data_mux_out = {24'd0, mwb_uart_read_data};
+        end else if (mwb_GPIO_FIFO_empty) begin
+            mwb_regfile_input_data_mux_out = {31'b0, ex_fifo_empty};
+        end else if (mwb_GPIO_FIFO_read_data) begin//
+            mwb_regfile_input_data_mux_out = {28'b0, fifo_dout[3:0]};
+        end else if (mwb_switches_read) begin//
+            mwb_regfile_input_data_mux_out = {30'd0, SWITCHES}; 
+        end else if (mwb_I2S_async_FIFO_full) begin
+            mwb_regfile_input_data_mux_out = {31'b0, async_fifo_full};  
         end else begin
-            mwb_regfile_input_data_mux_out = 32'b0;
+            mwb_regfile_input_data_mux_out = mwb_data_mem_reader_out;
         end
     
         // input to regfile write data
