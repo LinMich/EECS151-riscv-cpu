@@ -353,7 +353,7 @@ module z1top # (
     .clk(pixel_clk_g),
     .rst(video_reset),
     .framebuffer_addr(framebuffer_addr),
-    .framebuffer_data({32{framebuffer_data}}),
+    .framebuffer_data({24{framebuffer_data}}),
     .hdmi_data(rgb),
     .hdmi_v(vsync),
     .hdmi_h(hsync),

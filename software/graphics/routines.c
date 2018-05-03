@@ -9,11 +9,20 @@
 void fill(uint8_t color) {
     int x;
     int y;
+    int8_t buffer[BUFFER_LEN];
     for (x = 0; x < 1024; x++) {
         for (y = 0; y < 768; y++) {
             store_pixel(color, x, y);
+            // uwrite_int8s(uint8_to_ascii_hex(color, buffer, BUFFER_LEN));
+            // uwrite_int8s("\r\n");
+            // uwrite_int8s(uint32_to_ascii_hex(x, buffer, BUFFER_LEN));
+            // uwrite_int8s("\r\n");
         }
+        uwrite_int8s(uint32_to_ascii_hex(x, buffer, BUFFER_LEN));
+        uwrite_int8s("\r\n");
     }
+    uwrite_int8s(uint16_to_ascii_hex(y, buffer, BUFFER_LEN));
+    uwrite_int8s("\r\n");
     // int i;
     // for (i = 0; i < 7834272; i++) {
     //    (*((volatile uint8_t*)(FRAMEBUFFER_BASE + i))) = color & 0x1;

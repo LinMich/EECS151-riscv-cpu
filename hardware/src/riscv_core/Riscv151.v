@@ -139,18 +139,11 @@ module Riscv151 #(
     reg ex_UART_receiver_data;
     wire ex_MemtoReg;
     assign ex_MemtoReg = ex_opcode == `OPC_LOAD;
-    
-    
-//    reg mwb_reset_counters;
+
     reg mwb_use_cycle_counter_reg_data;
     reg mwb_use_instr_counter_reg_data;
     reg mwb_MemtoReg;
     reg[31:0] mwb_regfile_input_data_mux_out;
-    
-    
-    
-    wire stall;
-    assign stall = ex_take_or_inc;
 
     // UART 
     wire UART_data_out;
@@ -160,17 +153,12 @@ module Riscv151 #(
 
     // logic for resetting the counter
     always @ (posedge clk) begin
-        if (rst || ex_reset_counters) begin
-            instr_counter <= 0;
-        end else if (!stall) begin
-            instr_counter <= instr_counter + 1;
-        end  
+        if (rst || ex_reset_counters) instr_counter <= 0;
+        else if (!ex_take_or_inc) instr_counter <= instr_counter + 1; // increment if not stalling
+        else instr_counter <= instr_counter;
 
-        if (rst || ex_reset_counters) begin
-            cycle_counter <= 0;
-        end else begin
-            cycle_counter <= cycle_counter + 1;
-        end
+        if (rst || ex_reset_counters) cycle_counter <= 0;
+        else cycle_counter <= cycle_counter + 1;
     end 
     
     always @(*) begin
@@ -178,19 +166,12 @@ module Riscv151 #(
         ex_use_cycle_counter_reg_data = 1'b0;
         ex_use_instr_counter_reg_data = 1'b0;
         
-        if (ex_opcode == `OPC_STORE) begin
-            if (ex_aluout_reg == 32'h80000018) begin
-                ex_reset_counters = 1'b1;
-            end
-
-        end
-        else if (ex_opcode == `OPC_LOAD) begin
-            if (ex_aluout_reg == 32'h80000010) begin
-                ex_use_cycle_counter_reg_data = 1'b1;
-            end
-            else if (ex_aluout_reg == 32'h80000014) begin
-                ex_use_instr_counter_reg_data = 1'b1;
-            end
+        if (ex_inst_reg[6:0] == `OPC_STORE) begin
+            if (ex_aluout_reg == 32'h80000018) ex_reset_counters = 1'b1;
+            else ex_reset_counters = 1'b0;
+        end else if (ex_inst_reg[6:0] == `OPC_LOAD) begin
+            if (ex_aluout_reg == 32'h80000010) ex_use_cycle_counter_reg_data = 1'b1;
+            else if (ex_aluout_reg == 32'h80000014) ex_use_instr_counter_reg_data = 1'b1;
         end
     end
     
@@ -527,6 +508,8 @@ module Riscv151 #(
     ALU alu (
         .ina(ex_alu_mux_1), //SOMETHINGS WRONG HERE
         .inb(ex_alu_mux_2), //SOMETHINGS WRONG HERE
+        .shamt(ex_inst_reg[24:20]),
+        .opc(ex_inst_reg[6:0]),
         .fnc3(ex_fnc3_reg),
         .fnc1(ex_fnc1),
         .result(ex_aluout_reg) //output
@@ -624,10 +607,7 @@ module Riscv151 #(
             ex_rd_reg <= 0;
             ex_pc_reg <= 0;
             
-
-            
             mwb_aluout_reg <= 0;
-
             mwb_wbsel_reg <= 0;
             mwb_regwe_reg <= 0;
             mwb_rd_reg <= 0;
@@ -636,24 +616,18 @@ module Riscv151 #(
             mwb_load_funct <= 0;
             mwb_pc_reg <= 0;
             
-
-            
             older_regfile_in_data <= 0;
             older_mwb_rd <= 0;
             older_regwe <= 0;
             
             mwb_uart_write_data <= 0;
-            
-
             mwb_use_cycle_counter_reg_data <= 0;
             mwb_use_instr_counter_reg_data <= 0;
             mwb_data_write_ctrl_sig <= 0;
             mwb_uart_data_out_ready <= 0;
-            
             mwb_GPIO_FIFO_empty <= 0;
             mwb_GPIO_FIFO_read_data <= 0;
             mwb_switches_read <= 0;
-            
             mwb_I2S_async_FIFO_full <= 0;
             
             mwb_MemtoReg <= 0;
@@ -725,6 +699,14 @@ module Riscv151 #(
 
         /* MUXES */
         
+        // select which memory to use (either bios or dmem) for the data decoder READING IN MWB
+        case (mwb_aluout_reg[31:28])
+        4'b0001: mwb_data_out_mem = mwb_data_out_dmem;
+        4'b0011: mwb_data_out_mem = mwb_data_out_dmem;
+        4'b0100: mwb_data_out_mem = mwb_data_out_bios;
+        default: mwb_data_out_mem = 32'b0;
+        endcase
+        
         if(mwb_MemtoReg) begin
             if (mwb_use_cycle_counter_reg_data) begin
                 mwb_regfile_input_data_mux_out = cycle_counter;
@@ -756,16 +738,6 @@ module Riscv151 #(
         2'b10: mwb_regfile_input_data = mwb_regfile_input_data_mux_out;
         2'b11: mwb_regfile_input_data = mwb_u_reg;
         default: mwb_regfile_input_data = 32'b0;
-        endcase
-        
-   
-
-        // select which memory to use (either bios or dmem) for the data decoder READING IN MWB
-        case (mwb_aluout_reg[31:28])
-        4'b0001: mwb_data_out_mem = mwb_data_out_dmem;
-        4'b0011: mwb_data_out_mem = mwb_data_out_dmem;
-        4'b0100: mwb_data_out_mem = mwb_data_out_bios;
-        default: mwb_data_out_mem = 32'b0;
         endcase
         
         // handles data forwarding to input a of ALU

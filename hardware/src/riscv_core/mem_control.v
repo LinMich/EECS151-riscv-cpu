@@ -21,74 +21,82 @@ module mem_control (
     assign we_inst = we_inst_reg;
     
     always @(*) begin
-        case (opcode)
-//        `OPC_LUI: begin
-//            we_data_reg = (addr[28] == 1) ? 4'b1111 : 4'b0000;
-//            we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1111 : 4'b0000;
-//            fmt_wr_data_reg = write_data;
-//        end
-        `OPC_STORE: begin
-            case (fnc)
-            `FNC_SW: begin // handle store word
-                we_data_reg = (addr[28] == 1) ? 4'b1111 : 4'b0000;
-                we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1111 : 4'b0000;
-                fmt_wr_data_reg = write_data;
-            end
-            `FNC_SH: begin // handle store half
-                case (addr[1:0])
-                2'b00: begin
-                    we_data_reg = (addr[28] == 1) ? 4'b0001 : 4'b0000;
-                    we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0001 : 4'b0000;
-                    fmt_wr_data_reg = {{24{1'b0}}, write_data[7:0]};
+        if (addr[31:28] != 4'h9 || addr[31:28] != 4'h8) begin
+            case (opcode)
+    //        `OPC_LUI: begin
+    //            we_data_reg = (addr[28] == 1) ? 4'b1111 : 4'b0000;
+    //            we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1111 : 4'b0000;
+    //            fmt_wr_data_reg = write_data;
+    //        end
+            `OPC_STORE: begin
+                case (fnc)
+                `FNC_SW: begin // handle store word
+                    we_data_reg = (addr[28] == 1) ? 4'b1111 : 4'b0000;
+                    we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1111 : 4'b0000;
+                    fmt_wr_data_reg = write_data;
                 end
-                2'b01: begin
-                    we_data_reg = (addr[28] == 1) ? 4'b0011 : 4'b0000;
-                    we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0011 : 4'b0000;
-                    fmt_wr_data_reg = {{16{1'b0}}, write_data[15:0]};
+                `FNC_SH: begin // handle store half
+                    case (addr[1:0])
+    //                2'b00: begin
+    //                    we_data_reg = (addr[28] == 1) ? 4'b0001 : 4'b0000;
+    //                    we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0001 : 4'b0000;
+    //                    fmt_wr_data_reg = {{24{1'b0}}, write_data[7:0]};
+    //                end
+                    2'b00: begin
+                        we_data_reg = (addr[28] == 1) ? 4'b0011 : 4'b0000;
+                        we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0011 : 4'b0000;
+                        fmt_wr_data_reg = {{16{1'b0}}, write_data[15:0]};
+                    end
+                    2'b01: begin
+                        we_data_reg = (addr[28] == 1) ? 4'b0110 : 4'b0000;
+                        we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0110 : 4'b0000;
+                        fmt_wr_data_reg = {{8{1'b0}}, write_data[15:0], {8{1'b0}}};
+                    end
+                    2'b10: begin
+                        we_data_reg = (addr[28] == 1) ? 4'b1100 : 4'b0000;
+                        we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1100 : 4'b0000;
+                        fmt_wr_data_reg = {write_data[15:0], {16{1'b0}}};
+                    end
+                    default: begin
+                        we_data_reg = 4'b0000;
+                        we_inst_reg = 4'b0000;
+                        fmt_wr_data_reg = 32'b0;
+                    end
+                    endcase
                 end
-                2'b10: begin
-                    we_data_reg = (addr[28] == 1) ? 4'b0110 : 4'b0000;
-                    we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0110 : 4'b0000;
-                    fmt_wr_data_reg = {{8{1'b0}}, write_data[15:0], {8{1'b0}}};
-                end
-                2'b11: begin
-                    we_data_reg = (addr[28] == 1) ? 4'b1100 : 4'b0000;
-                    we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1100 : 4'b0000;
-                    fmt_wr_data_reg = {write_data[15:0], {16{1'b0}}};
+                `FNC_SB: begin // handle store byte
+                    case (addr[1:0])
+                    2'b00: begin
+                        we_data_reg = (addr[28] == 1) ? 4'b0001 : 4'b0000;
+                        we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0001 : 4'b0000;
+                        fmt_wr_data_reg = {{24{1'b0}}, write_data[7:0]};
+                    end
+                    2'b01: begin
+                        we_data_reg = (addr[28] == 1) ? 4'b0010 : 4'b0000;
+                        we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0010 : 4'b0000;
+                        fmt_wr_data_reg = {{16{1'b0}}, write_data[7:0], {8{1'b0}}};
+                    end
+                    2'b10: begin
+                        we_data_reg = (addr[28] == 1) ? 4'b0100 : 4'b0000;
+                        we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0100 : 4'b0000;
+                        fmt_wr_data_reg = {{8{1'b0}}, write_data[7:0], {16{1'b0}}};
+                    end
+                    2'b11: begin
+                        we_data_reg = (addr[28] == 1) ? 4'b1000 : 4'b0000;
+                        we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1000 : 4'b0000;
+                        fmt_wr_data_reg = {write_data[7:0], {24{1'b0}}};
+                    end
+                    default: begin
+                        we_data_reg = 4'b0000;
+                        we_inst_reg = 4'b0000;
+                        fmt_wr_data_reg = 32'b0; 
+                    end
+                    endcase
                 end
                 default: begin
                     we_data_reg = 4'b0000;
                     we_inst_reg = 4'b0000;
                     fmt_wr_data_reg = 32'b0;
-                end
-                endcase
-            end
-            `FNC_SB: begin // handle store byte
-                case (addr[1:0])
-                2'b00: begin
-                    we_data_reg = (addr[28] == 1) ? 4'b0001 : 4'b0000;
-                    we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0001 : 4'b0000;
-                    fmt_wr_data_reg = {{24{1'b0}}, write_data[7:0]};
-                end
-                2'b01: begin
-                    we_data_reg = (addr[28] == 1) ? 4'b0010 : 4'b0000;
-                    we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0010 : 4'b0000;
-                    fmt_wr_data_reg = {{16{1'b0}}, write_data[7:0], {8{1'b0}}};
-                end
-                2'b10: begin
-                    we_data_reg = (addr[28] == 1) ? 4'b0100 : 4'b0000;
-                    we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b0100 : 4'b0000;
-                    fmt_wr_data_reg = {{8{1'b0}}, write_data[7:0], {16{1'b0}}};
-                end
-                2'b11: begin
-                    we_data_reg = (addr[28] == 1) ? 4'b1000 : 4'b0000;
-                    we_inst_reg = (addr[29] == 1 && pc[30] == 1) ? 4'b1000 : 4'b0000;
-                    fmt_wr_data_reg = {write_data[7:0], {24{1'b0}}};
-                end
-                default: begin
-                    we_data_reg = 4'b0000;
-                    we_inst_reg = 4'b0000;
-                    fmt_wr_data_reg = 32'b0; 
                 end
                 endcase
             end
@@ -98,13 +106,11 @@ module mem_control (
                 fmt_wr_data_reg = 32'b0;
             end
             endcase
-        end
-        default: begin
+        end else begin
             we_data_reg = 4'b0000;
             we_inst_reg = 4'b0000;
             fmt_wr_data_reg = 32'b0;
         end
-        endcase
     end
 
 endmodule

@@ -90,6 +90,9 @@ int main(void)
             uint32_t word = ascii_hex_to_uint32(read_token(buffer, BUFFER_LEN, " \x0d"));
             uint32_t address = ascii_hex_to_uint32(read_token(buffer, BUFFER_LEN, " \x0d"));
 
+            uwrite_int8s(uint32_to_ascii_hex(address, buffer, BUFFER_LEN));
+            uwrite_int8s("\r\n");
+
             volatile uint32_t* p = (volatile uint32_t*)(address);
             *p = word;
         } else if (strcmp(input, "sh") == 0) {

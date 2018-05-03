@@ -125,6 +125,13 @@ int main(void) {
             i2c_setup();
             uwrite_int8s("\tDone with I2C Setup\r\n");
         }
+        else if (strcmp(input, "test") == 0) {
+        	int8_t* word = read_token(buffer, BUFFER_LEN, " \x0d");
+        	uwrite_int8s(word);
+            uwrite_int8s("\r\n");
+        	// uwrite_int8(read_token(buffer, BUFFER_LEN, " \x0d"));
+        	// uwrite_int8s("\r\n");
+        }
         else if (strcmp(input, "test_pattern") == 0) {
             uwrite_int8s("\tEnabling test pattern generhelpme\r\n");
             i2c_set_colorbars();
@@ -140,15 +147,6 @@ int main(void) {
             uint16_t y0 = ascii_dec_to_uint16(read_token(buffer, BUFFER_LEN, " \x0d"));
             uint16_t x1 = ascii_dec_to_uint16(read_token(buffer, BUFFER_LEN, " \x0d"));
             uint16_t y1 = ascii_dec_to_uint16(read_token(buffer, BUFFER_LEN, " \x0d"));
-            uint16_t z1 = ascii_dec_to_uint16(read_token(buffer, BUFFER_LEN, " \x0d"));
-            uwrite_int8s(uint32_to_ascii_hex(x0, buffer, BUFFER_LEN));
-  			uwrite_int8s("\r\n");
-  			uwrite_int8s(uint32_to_ascii_hex(x1, buffer, BUFFER_LEN));
-  			uwrite_int8s("\r\n");
-  			uwrite_int8s(uint32_to_ascii_hex(y0, buffer, BUFFER_LEN));
-  			uwrite_int8s("\r\n");
-  			uwrite_int8s(uint32_to_ascii_hex(y1, buffer, BUFFER_LEN));
-  			uwrite_int8s("\r\n");
             swline(color, x0, y0, x1, y1);
         }
         // else if (strcmp(input, "hwline") == 0) {
