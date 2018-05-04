@@ -320,8 +320,8 @@ module z1top # (
   wire [19:0] arb_addr;
   // accelerator to arbiter
   wire XL_wr_en;
-  wire [31:0] XL_wr_data;
-  wire [4:0] XL_wr_addr;
+  wire XL_wr_data;
+  wire [19:0] XL_wr_addr;
   // cpu to arbiter
   wire CPU_wr_en;
   wire CPU_wr_data;
@@ -360,6 +360,9 @@ module z1top # (
     .hdmi_de(vde)
   );
 
+  assign LEDS[0] = XL_wr_en;
+  assign LEDS[4:1] = x1[3:0];
+  
   // accelerator
   accelerator celesta (
     .clk(cpu_clk_g),
@@ -395,10 +398,10 @@ module z1top # (
 
   frame_buffer_1_786432 frame_buffer (
     //arbiter (for writing to the frame buffer)
-    .arb_we(CPU_wr_en), //CPU_wr_en arb_we
+    .arb_we(arb_we), //CPU_wr_en arb_we
     .arb_clk(cpu_clk_g),
-    .arb_din(CPU_wr_data), //CPU_wr_data arb_din
-    .arb_addr(CPU_wr_addr), // 19:0 CPU_wr_addr arb_addr
+    .arb_din(arb_din), //CPU_wr_data arb_din
+    .arb_addr(arb_addr), // 19:0 CPU_wr_addr arb_addr
 
     //video (for reading from the frame buffer)
     .vga_clk(pixel_clk_g),
@@ -465,7 +468,6 @@ module z1top # (
    .empty(async_fifo_empty)
   );   
 
-    
   // For the clock, use user_clk_g.
     
   // Your RISC-V 151 CPU
@@ -484,7 +486,7 @@ module z1top # (
     // GPIO switches?
     .SWITCHES(SWITCHES),
     // GPIO LEDS?
-    .LEDS(LEDS),          // Board LEDs.
+    .LEDS(),          // LEDS
     .PMOD_LEDS(),
     
     // Tone generator hookups?

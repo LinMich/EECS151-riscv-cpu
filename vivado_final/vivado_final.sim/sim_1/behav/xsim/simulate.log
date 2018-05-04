@@ -1,26 +1,11 @@
 Vivado Simulator 2017.4
 Time resolution is 1 ps
-Block Memory Generator module i2s_integration_testbench.top.frame_buffer.mem_g.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
  Block Memory Generator module loading initial data...
  Block Memory Generator data initialization complete.
-Block Memory Generator module i2s_integration_testbench.top.CPU.BIOS.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module echo_testbench.CPU.BIOS.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
  Block Memory Generator module loading initial data...
  Block Memory Generator data initialization complete.
-Block Memory Generator module i2s_integration_testbench.top.CPU.d_mem.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
+Block Memory Generator module echo_testbench.CPU.d_mem.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
  Block Memory Generator module loading initial data...
  Block Memory Generator data initialization complete.
-Block Memory Generator module i2s_integration_testbench.top.CPU.IMEM.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.
-Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-Time: 100 ns  Iteration: 4  Process: /i2s_integration_testbench/top/hdmi_out/U0/\DataEncoders(0)\/DataEncoder/line__154  File: /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.ip_user_files/ipstatic/src/TMDS_Encoder.vhd
-Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-Time: 100 ns  Iteration: 4  Process: /i2s_integration_testbench/top/hdmi_out/U0/\DataEncoders(1)\/DataEncoder/line__154  File: /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.ip_user_files/ipstatic/src/TMDS_Encoder.vhd
-Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-Time: 100 ns  Iteration: 4  Process: /i2s_integration_testbench/top/hdmi_out/U0/\DataEncoders(2)\/DataEncoder/line__154  File: /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.ip_user_files/ipstatic/src/TMDS_Encoder.vhd
-Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-Time: 1867398 ps  Iteration: 4  Process: /i2s_integration_testbench/top/hdmi_out/U0/\DataEncoders(0)\/DataEncoder/line__154  File: /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.ip_user_files/ipstatic/src/TMDS_Encoder.vhd
-Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-Time: 1867398 ps  Iteration: 4  Process: /i2s_integration_testbench/top/hdmi_out/U0/\DataEncoders(1)\/DataEncoder/line__154  File: /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.ip_user_files/ipstatic/src/TMDS_Encoder.vhd
-Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
-Time: 1867398 ps  Iteration: 4  Process: /i2s_integration_testbench/top/hdmi_out/U0/\DataEncoders(2)\/DataEncoder/line__154  File: /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.ip_user_files/ipstatic/src/TMDS_Encoder.vhd
-Warning: Warning : input CLKIN1 period and attribute CLKIN1_PERIOD are not same.
-Time: 5082795 ps  Iteration: 6  Process: /i2s_integration_testbench/top/hdmi_out/U0/clockgeninternal/ClockGenX/genpll/DVI_ClkGenerator/pchk_p  File: /opt/Xilinx/Vivado/2017.4/data/vhdl/src/unisims/primitive/PLLE2_ADV.vhd
+Block Memory Generator module echo_testbench.CPU.IMEM.inst.native_mem_module.blk_mem_gen_v8_4_1_inst is using a behavioral model for simulation which will not precisely model memory collision behavior.

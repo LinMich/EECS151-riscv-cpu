@@ -2,12 +2,12 @@
 # Vivado v2017.4 (64-bit)
 # SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
 # IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
-# Start of session at: Thu Apr 26 22:20:38 2018
-# Process ID: 32221
-# Current directory: /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1
+# Start of session at: Thu May  3 21:38:36 2018
+# Process ID: 21686
+# Current directory: /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1
 # Command line: vivado -log z1top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source z1top.tcl
-# Log file: /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/z1top.vds
-# Journal file: /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/vivado.jou
+# Log file: /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/z1top.vds
+# Journal file: /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
 source z1top.tcl -notrace
 Command: synth_design -top z1top -part xc7z020clg400-1
@@ -15,11 +15,11 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 32497 
+INFO: Helper process launched with PID 21767 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1372.410 ; gain = 88.875 ; free physical = 9545 ; free virtual = 16314
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1372.410 ; gain = 88.875 ; free physical = 10076 ; free virtual = 17187
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'z1top' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/z1top.v:1]
+INFO: [Synth 8-638] synthesizing module 'z1top' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/z1top.v:1]
 	Parameter SYSTEM_CLOCK_FREQ bound to: 125000000 - type: integer 
 	Parameter CPU_CLOCK_FREQ bound to: 50000000 - type: integer 
 	Parameter B_SAMPLE_COUNT_MAX bound to: 25000 - type: integer 
@@ -27,15 +27,15 @@ INFO: [Synth 8-638] synthesizing module 'z1top' [/home/cc/eecs151/sp18/class/eec
 	Parameter LRCK_FREQ_HZ bound to: 22050 - type: integer 
 	Parameter MCLK_TO_LRCK_RATIO bound to: 128 - type: integer 
 	Parameter BIT_DEPTH bound to: 24 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'IBUFG' [/opt/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:19892]
+INFO: [Synth 8-638] synthesizing module 'IBUFG' [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:19892]
 	Parameter CAPACITANCE bound to: DONT_CARE - type: string 
 	Parameter IBUF_DELAY_VALUE bound to: 0 - type: string 
 	Parameter IBUF_LOW_PWR bound to: TRUE - type: string 
 	Parameter IOSTANDARD bound to: DEFAULT - type: string 
-INFO: [Synth 8-256] done synthesizing module 'IBUFG' (1#1) [/opt/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:19892]
-INFO: [Synth 8-638] synthesizing module 'BUFG' [/opt/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:607]
-INFO: [Synth 8-256] done synthesizing module 'BUFG' (2#1) [/opt/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:607]
-INFO: [Synth 8-638] synthesizing module 'PLLE2_ADV' [/opt/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:40051]
+INFO: [Synth 8-256] done synthesizing module 'IBUFG' (1#1) [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:19892]
+INFO: [Synth 8-638] synthesizing module 'BUFG' [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-256] done synthesizing module 'BUFG' (2#1) [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:607]
+INFO: [Synth 8-638] synthesizing module 'PLLE2_ADV' [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:40051]
 	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
 	Parameter CLKFBOUT_MULT bound to: 34 - type: integer 
 	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: float 
@@ -67,9 +67,9 @@ INFO: [Synth 8-638] synthesizing module 'PLLE2_ADV' [/opt/Xilinx/Vivado/2017.4/s
 	Parameter REF_JITTER1 bound to: 0.010000 - type: float 
 	Parameter REF_JITTER2 bound to: 0.010000 - type: float 
 	Parameter STARTUP_WAIT bound to: FALSE - type: string 
-INFO: [Synth 8-256] done synthesizing module 'PLLE2_ADV' (3#1) [/opt/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:40051]
-WARNING: [Synth 8-350] instance 'plle2_cpu_inst' of module 'PLLE2_ADV' requires 21 connections, but only 9 given [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/z1top.v:115]
-INFO: [Synth 8-638] synthesizing module 'PLLE2_ADV__parameterized0' [/opt/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:40051]
+INFO: [Synth 8-256] done synthesizing module 'PLLE2_ADV' (3#1) [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:40051]
+WARNING: [Synth 8-350] instance 'plle2_cpu_inst' of module 'PLLE2_ADV' requires 21 connections, but only 9 given [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/z1top.v:115]
+INFO: [Synth 8-638] synthesizing module 'PLLE2_ADV__parameterized0' [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:40051]
 	Parameter BANDWIDTH bound to: OPTIMIZED - type: string 
 	Parameter CLKFBOUT_MULT bound to: 39 - type: integer 
 	Parameter CLKFBOUT_PHASE bound to: 0.000000 - type: float 
@@ -101,29 +101,29 @@ INFO: [Synth 8-638] synthesizing module 'PLLE2_ADV__parameterized0' [/opt/Xilinx
 	Parameter REF_JITTER1 bound to: 0.010000 - type: float 
 	Parameter REF_JITTER2 bound to: 0.010000 - type: float 
 	Parameter STARTUP_WAIT bound to: FALSE - type: string 
-INFO: [Synth 8-256] done synthesizing module 'PLLE2_ADV__parameterized0' (3#1) [/opt/Xilinx/Vivado/2017.4/scripts/rt/data/unisim_comp.v:40051]
-WARNING: [Synth 8-350] instance 'plle2_pixel_inst' of module 'PLLE2_ADV' requires 21 connections, but only 9 given [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/z1top.v:150]
-INFO: [Synth 8-638] synthesizing module 'button_parser' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/button_parser.v:4]
+INFO: [Synth 8-256] done synthesizing module 'PLLE2_ADV__parameterized0' (3#1) [/opt/Xilinx/Vivado/current/scripts/rt/data/unisim_comp.v:40051]
+WARNING: [Synth 8-350] instance 'plle2_pixel_inst' of module 'PLLE2_ADV' requires 21 connections, but only 9 given [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/z1top.v:150]
+INFO: [Synth 8-638] synthesizing module 'button_parser' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/button_parser.v:4]
 	Parameter width bound to: 4 - type: integer 
 	Parameter sample_count_max bound to: 25000 - type: integer 
 	Parameter pulse_count_max bound to: 150 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'synchronizer' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/synchronizer.v:1]
+INFO: [Synth 8-638] synthesizing module 'synchronizer' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/synchronizer.v:1]
 	Parameter width bound to: 4 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'synchronizer' (4#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/synchronizer.v:1]
-INFO: [Synth 8-638] synthesizing module 'debouncer' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/debouncer.v:3]
+INFO: [Synth 8-256] done synthesizing module 'synchronizer' (4#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/synchronizer.v:1]
+INFO: [Synth 8-638] synthesizing module 'debouncer' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:3]
 	Parameter width bound to: 4 - type: integer 
 	Parameter sample_count_max bound to: 25000 - type: integer 
 	Parameter pulse_count_max bound to: 150 - type: integer 
 	Parameter wrapping_counter_width bound to: 15 - type: integer 
 	Parameter saturating_counter_width bound to: 8 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'debouncer' (5#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/debouncer.v:3]
-INFO: [Synth 8-638] synthesizing module 'edge_detector' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/edge_detector.v:1]
+INFO: [Synth 8-256] done synthesizing module 'debouncer' (5#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:3]
+INFO: [Synth 8-638] synthesizing module 'edge_detector' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/edge_detector.v:1]
 	Parameter width bound to: 4 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'edge_detector' (6#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/edge_detector.v:1]
-INFO: [Synth 8-256] done synthesizing module 'button_parser' (7#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/button_parser.v:4]
-INFO: [Synth 8-638] synthesizing module 'rgb2dvi_0' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/realtime/rgb2dvi_0_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'rgb2dvi_0' (8#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/realtime/rgb2dvi_0_stub.v:6]
-INFO: [Synth 8-638] synthesizing module 'video_controller' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/video_controller.v:31]
+INFO: [Synth 8-256] done synthesizing module 'edge_detector' (6#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/edge_detector.v:1]
+INFO: [Synth 8-256] done synthesizing module 'button_parser' (7#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/button_parser.v:4]
+INFO: [Synth 8-638] synthesizing module 'rgb2dvi_0' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/realtime/rgb2dvi_0_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'rgb2dvi_0' (8#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/realtime/rgb2dvi_0_stub.v:6]
+INFO: [Synth 8-638] synthesizing module 'video_controller' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/video_controller.v:31]
 	Parameter H_FRONT_PORCH bound to: 24 - type: integer 
 	Parameter H_SYNC_PULSE bound to: 136 - type: integer 
 	Parameter H_BACK_PORCH bound to: 160 - type: integer 
@@ -137,12 +137,11 @@ INFO: [Synth 8-638] synthesizing module 'video_controller' [/home/cc/eecs151/sp1
 	Parameter RAM_WIDTH bound to: 24 - type: integer 
 	Parameter RAM_DEPTH bound to: 786432 - type: integer 
 	Parameter RAM_ADDR_BITS bound to: 32 - type: integer 
-WARNING: [Synth 8-3848] Net framebuffer_addr_valid in module/entity video_controller does not have driver. [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/video_controller.v:58]
-WARNING: [Synth 8-3848] Net framebuffer_data_rdy in module/entity video_controller does not have driver. [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/video_controller.v:62]
-INFO: [Synth 8-256] done synthesizing module 'video_controller' (9#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/video_controller.v:31]
-WARNING: [Synth 8-689] width (32) of port connection 'framebuffer_data' does not match port width (24) of module 'video_controller' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/z1top.v:356]
-WARNING: [Synth 8-350] instance 'vinny' of module 'video_controller' requires 12 connections, but only 8 given [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/z1top.v:352]
-INFO: [Synth 8-638] synthesizing module 'accelerator' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:14]
+WARNING: [Synth 8-3848] Net framebuffer_addr_valid in module/entity video_controller does not have driver. [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/video_controller.v:58]
+WARNING: [Synth 8-3848] Net framebuffer_data_rdy in module/entity video_controller does not have driver. [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/video_controller.v:62]
+INFO: [Synth 8-256] done synthesizing module 'video_controller' (9#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/video_controller.v:31]
+WARNING: [Synth 8-350] instance 'vinny' of module 'video_controller' requires 12 connections, but only 8 given [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/z1top.v:352]
+INFO: [Synth 8-638] synthesizing module 'accelerator' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:14]
 	Parameter pixel_width bound to: 1024 - type: integer 
 	Parameter pixel_height bound to: 768 - type: integer 
 	Parameter pixel_width_bits bound to: 10 - type: integer 
@@ -150,26 +149,22 @@ INFO: [Synth 8-638] synthesizing module 'accelerator' [/home/cc/eecs151/sp18/cla
 	Parameter mem_width bound to: 1 - type: integer 
 	Parameter mem_depth bound to: 786432 - type: integer 
 	Parameter mem_addr_width bound to: 20 - type: integer 
-WARNING: [Synth 8-6014] Unused sequential element px_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:74]
-WARNING: [Synth 8-6014] Unused sequential element pk_step_L_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:97]
-WARNING: [Synth 8-6014] Unused sequential element pk_step_U_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:82]
-INFO: [Synth 8-256] done synthesizing module 'accelerator' (10#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:14]
-WARNING: [Synth 8-689] width (32) of port connection 'XL_wr_data' does not match port width (1) of module 'accelerator' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/z1top.v:377]
-WARNING: [Synth 8-689] width (5) of port connection 'XL_wr_addr' does not match port width (20) of module 'accelerator' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/z1top.v:378]
-INFO: [Synth 8-638] synthesizing module 'arbiter' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/arbiter.v:12]
+WARNING: [Synth 8-6014] Unused sequential element px_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:74]
+WARNING: [Synth 8-6014] Unused sequential element pk_step_L_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:97]
+WARNING: [Synth 8-6014] Unused sequential element pk_step_U_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:82]
+INFO: [Synth 8-256] done synthesizing module 'accelerator' (10#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:14]
+INFO: [Synth 8-638] synthesizing module 'arbiter' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/arbiter.v:12]
 	Parameter mem_width bound to: 1 - type: integer 
 	Parameter mem_depth bound to: 786432 - type: integer 
 	Parameter mem_addr_width bound to: 20 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'arbiter' (11#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/arbiter.v:12]
-WARNING: [Synth 8-689] width (32) of port connection 'XL_wr_data' does not match port width (1) of module 'arbiter' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/z1top.v:388]
-WARNING: [Synth 8-689] width (5) of port connection 'XL_wr_addr' does not match port width (20) of module 'arbiter' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/z1top.v:389]
-INFO: [Synth 8-638] synthesizing module 'frame_buffer_1_786432' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/frame_buffer_1_786432.v:1]
-INFO: [Synth 8-638] synthesizing module 'block_mem_1x786432' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/realtime/block_mem_1x786432_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'block_mem_1x786432' (12#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/realtime/block_mem_1x786432_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'frame_buffer_1_786432' (13#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/frame_buffer_1_786432.v:1]
-INFO: [Synth 8-638] synthesizing module 'tone_generator' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/tone_generator.v:1]
-INFO: [Synth 8-256] done synthesizing module 'tone_generator' (14#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/tone_generator.v:1]
-INFO: [Synth 8-638] synthesizing module 'i2s_controller' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/i2s_controller.v:3]
+INFO: [Synth 8-256] done synthesizing module 'arbiter' (11#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/arbiter.v:12]
+INFO: [Synth 8-638] synthesizing module 'frame_buffer_1_786432' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/frame_buffer_1_786432.v:1]
+INFO: [Synth 8-638] synthesizing module 'block_mem_1x786432' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/realtime/block_mem_1x786432_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'block_mem_1x786432' (12#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/realtime/block_mem_1x786432_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'frame_buffer_1_786432' (13#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/frame_buffer_1_786432.v:1]
+INFO: [Synth 8-638] synthesizing module 'tone_generator' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/tone_generator.v:1]
+INFO: [Synth 8-256] done synthesizing module 'tone_generator' (14#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/tone_generator.v:1]
+INFO: [Synth 8-638] synthesizing module 'i2s_controller' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v:3]
 	Parameter SYS_CLOCK_FREQ bound to: 125000000 - type: integer 
 	Parameter LRCK_FREQ_HZ bound to: 88200 - type: integer 
 	Parameter MCLK_TO_LRCK_RATIO bound to: 128 - type: integer 
@@ -185,22 +180,22 @@ INFO: [Synth 8-638] synthesizing module 'i2s_controller' [/home/cc/eecs151/sp18/
 	Parameter SCLK_CYCLES bound to: 32 - type: integer 
 	Parameter SCLK_CYCLES_HALF bound to: 16 - type: integer 
 	Parameter SCLK_COUNTER_WIDTH bound to: 5 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'i2s_controller' (15#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/i2s_controller.v:3]
-INFO: [Synth 8-638] synthesizing module 'async_fifo' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/async_fifo.v:3]
+INFO: [Synth 8-256] done synthesizing module 'i2s_controller' (15#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v:3]
+INFO: [Synth 8-638] synthesizing module 'async_fifo' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/async_fifo.v:3]
 	Parameter data_width bound to: 24 - type: integer 
 	Parameter fifo_depth bound to: 32 - type: integer 
 	Parameter addr_width bound to: 5 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'async_fifo' (16#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/async_fifo.v:3]
-INFO: [Synth 8-638] synthesizing module 'Riscv151' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/Riscv151.v:1]
+INFO: [Synth 8-256] done synthesizing module 'async_fifo' (16#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/async_fifo.v:3]
+INFO: [Synth 8-638] synthesizing module 'Riscv151' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:1]
 	Parameter CPU_CLOCK_FREQ bound to: 50000000 - type: integer 
 	Parameter BIT_DEPTH bound to: 24 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'UART_controller' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/UART_controller.v:5]
-INFO: [Synth 8-256] done synthesizing module 'UART_controller' (17#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/UART_controller.v:5]
-INFO: [Synth 8-638] synthesizing module 'uart' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/uart.v:1]
+INFO: [Synth 8-638] synthesizing module 'UART_controller' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/UART_controller.v:5]
+INFO: [Synth 8-256] done synthesizing module 'UART_controller' (17#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/UART_controller.v:5]
+INFO: [Synth 8-638] synthesizing module 'uart' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart.v:1]
 	Parameter CLOCK_FREQ bound to: 50000000 - type: integer 
 	Parameter BAUD_RATE bound to: 115200 - type: integer 
-INFO: [Synth 8-5534] Detected attribute (* iob = "true" *) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/uart.v:26]
-INFO: [Synth 8-638] synthesizing module 'uart_transmitter' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:3]
+INFO: [Synth 8-5534] Detected attribute (* iob = "true" *) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart.v:26]
+INFO: [Synth 8-638] synthesizing module 'uart_transmitter' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:3]
 	Parameter CLOCK_FREQ bound to: 50000000 - type: integer 
 	Parameter BAUD_RATE bound to: 115200 - type: integer 
 	Parameter SYMBOL_EDGE_TIME bound to: 434 - type: integer 
@@ -208,54 +203,51 @@ INFO: [Synth 8-638] synthesizing module 'uart_transmitter' [/home/cc/eecs151/sp1
 	Parameter IDLE bound to: 0 - type: integer 
 	Parameter START bound to: 1 - type: integer 
 	Parameter STOP bound to: 10 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'uart_transmitter' (18#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:3]
-INFO: [Synth 8-638] synthesizing module 'uart_receiver' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/uart_receiver.v:3]
+INFO: [Synth 8-256] done synthesizing module 'uart_transmitter' (18#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:3]
+INFO: [Synth 8-638] synthesizing module 'uart_receiver' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_receiver.v:3]
 	Parameter CLOCK_FREQ bound to: 50000000 - type: integer 
 	Parameter BAUD_RATE bound to: 115200 - type: integer 
 	Parameter SYMBOL_EDGE_TIME bound to: 434 - type: integer 
 	Parameter SAMPLE_TIME bound to: 217 - type: integer 
 	Parameter CLOCK_COUNTER_WIDTH bound to: 9 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'uart_receiver' (19#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/uart_receiver.v:3]
-INFO: [Synth 8-256] done synthesizing module 'uart' (20#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/uart.v:1]
-INFO: [Synth 8-638] synthesizing module 'fifo' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/fifo.v:3]
+INFO: [Synth 8-256] done synthesizing module 'uart_receiver' (19#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_receiver.v:3]
+INFO: [Synth 8-256] done synthesizing module 'uart' (20#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart.v:1]
+INFO: [Synth 8-638] synthesizing module 'fifo' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/fifo.v:3]
 	Parameter data_width bound to: 8 - type: integer 
 	Parameter fifo_depth bound to: 32 - type: integer 
 	Parameter addr_width bound to: 5 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'fifo' (21#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/fifo.v:3]
-INFO: [Synth 8-638] synthesizing module 'bios_mem' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/realtime/bios_mem_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'bios_mem' (22#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/realtime/bios_mem_stub.v:6]
-INFO: [Synth 8-638] synthesizing module 'dmem_blk_ram' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/realtime/dmem_blk_ram_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'dmem_blk_ram' (23#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/realtime/dmem_blk_ram_stub.v:6]
-INFO: [Synth 8-638] synthesizing module 'imem_blk_ram' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/realtime/imem_blk_ram_stub.v:6]
-INFO: [Synth 8-256] done synthesizing module 'imem_blk_ram' (24#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/realtime/imem_blk_ram_stub.v:6]
-INFO: [Synth 8-638] synthesizing module 'ALU' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/ALU.v:3]
-INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/ALU.v:17]
-INFO: [Synth 8-256] done synthesizing module 'ALU' (25#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/ALU.v:3]
-INFO: [Synth 8-638] synthesizing module 'branch_control' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/branch_control.v:3]
-INFO: [Synth 8-256] done synthesizing module 'branch_control' (26#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/branch_control.v:3]
-INFO: [Synth 8-638] synthesizing module 'control_unit' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/control_unit.v:3]
-INFO: [Synth 8-256] done synthesizing module 'control_unit' (27#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/control_unit.v:3]
-INFO: [Synth 8-638] synthesizing module 'instruction_decoder' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/instruction_decoder.v:1]
-INFO: [Synth 8-256] done synthesizing module 'instruction_decoder' (28#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/instruction_decoder.v:1]
-INFO: [Synth 8-638] synthesizing module 'reg_file' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/reg_file.v:1]
-INFO: [Synth 8-5534] Detected attribute (* ram_style = "distributed" *) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/reg_file.v:8]
-INFO: [Synth 8-256] done synthesizing module 'reg_file' (29#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/reg_file.v:1]
-INFO: [Synth 8-638] synthesizing module 'mem_control' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/mem_control.v:3]
-INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/mem_control.v:38]
-INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/mem_control.v:67]
-INFO: [Synth 8-256] done synthesizing module 'mem_control' (30#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/mem_control.v:3]
-INFO: [Synth 8-638] synthesizing module 'mem_read_decoder' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:3]
-INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:18]
-INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:27]
-INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:36]
-INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:45]
-INFO: [Synth 8-256] done synthesizing module 'mem_read_decoder' (31#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:3]
-INFO: [Synth 8-638] synthesizing module 'haz_unit' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/hazard_unit.v:3]
-INFO: [Synth 8-256] done synthesizing module 'haz_unit' (32#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/hazard_unit.v:3]
-INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/Riscv151.v:753]
-INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/Riscv151.v:799]
-INFO: [Synth 8-256] done synthesizing module 'Riscv151' (33#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/Riscv151.v:1]
-INFO: [Synth 8-256] done synthesizing module 'z1top' (34#1) [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/z1top.v:1]
+INFO: [Synth 8-256] done synthesizing module 'fifo' (21#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/fifo.v:3]
+INFO: [Synth 8-638] synthesizing module 'bios_mem' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/realtime/bios_mem_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'bios_mem' (22#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/realtime/bios_mem_stub.v:6]
+INFO: [Synth 8-638] synthesizing module 'dmem_blk_ram' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/realtime/dmem_blk_ram_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'dmem_blk_ram' (23#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/realtime/dmem_blk_ram_stub.v:6]
+INFO: [Synth 8-638] synthesizing module 'imem_blk_ram' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/realtime/imem_blk_ram_stub.v:6]
+INFO: [Synth 8-256] done synthesizing module 'imem_blk_ram' (24#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/realtime/imem_blk_ram_stub.v:6]
+INFO: [Synth 8-638] synthesizing module 'ALU' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/ALU.v:3]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/ALU.v:19]
+INFO: [Synth 8-256] done synthesizing module 'ALU' (25#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/ALU.v:3]
+INFO: [Synth 8-638] synthesizing module 'branch_control' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/branch_control.v:3]
+INFO: [Synth 8-256] done synthesizing module 'branch_control' (26#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/branch_control.v:3]
+INFO: [Synth 8-638] synthesizing module 'control_unit' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/control_unit.v:3]
+INFO: [Synth 8-256] done synthesizing module 'control_unit' (27#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/control_unit.v:3]
+INFO: [Synth 8-638] synthesizing module 'instruction_decoder' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/instruction_decoder.v:1]
+INFO: [Synth 8-256] done synthesizing module 'instruction_decoder' (28#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/instruction_decoder.v:1]
+INFO: [Synth 8-638] synthesizing module 'reg_file' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/reg_file.v:1]
+INFO: [Synth 8-5534] Detected attribute (* ram_style = "distributed" *) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/reg_file.v:8]
+INFO: [Synth 8-256] done synthesizing module 'reg_file' (29#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/reg_file.v:1]
+INFO: [Synth 8-638] synthesizing module 'mem_control' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_control.v:3]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_control.v:68]
+INFO: [Synth 8-256] done synthesizing module 'mem_control' (30#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_control.v:3]
+INFO: [Synth 8-638] synthesizing module 'mem_read_decoder' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:3]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:27]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:45]
+INFO: [Synth 8-256] done synthesizing module 'mem_read_decoder' (31#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/mem_read_decoder.v:3]
+INFO: [Synth 8-638] synthesizing module 'haz_unit' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/hazard_unit.v:3]
+INFO: [Synth 8-256] done synthesizing module 'haz_unit' (32#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/hazard_unit.v:3]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:704]
+INFO: [Synth 8-226] default block is never used [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:740]
+INFO: [Synth 8-256] done synthesizing module 'Riscv151' (33#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:1]
+INFO: [Synth 8-256] done synthesizing module 'z1top' (34#1) [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/z1top.v:1]
 WARNING: [Synth 8-3917] design z1top has port aud_sd driven by constant 1
 WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[6]
 WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[5]
@@ -264,8 +256,6 @@ WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[3]
 WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[2]
 WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[1]
 WARNING: [Synth 8-3331] design haz_unit has unconnected port curr_opcode[0]
-WARNING: [Synth 8-3331] design mem_control has unconnected port addr[31]
-WARNING: [Synth 8-3331] design mem_control has unconnected port addr[30]
 WARNING: [Synth 8-3331] design mem_control has unconnected port addr[27]
 WARNING: [Synth 8-3331] design mem_control has unconnected port addr[26]
 WARNING: [Synth 8-3331] design mem_control has unconnected port addr[25]
@@ -351,15 +341,17 @@ WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[10]
 WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[9]
 WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[8]
 WARNING: [Synth 8-3331] design control_unit has unconnected port instruction[7]
+WARNING: [Synth 8-3331] design ALU has unconnected port opc[6]
+WARNING: [Synth 8-3331] design ALU has unconnected port opc[4]
+WARNING: [Synth 8-3331] design ALU has unconnected port opc[3]
+WARNING: [Synth 8-3331] design ALU has unconnected port opc[2]
+WARNING: [Synth 8-3331] design ALU has unconnected port opc[1]
+WARNING: [Synth 8-3331] design ALU has unconnected port opc[0]
 WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[31]
 WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[30]
-WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[29]
-WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[28]
-WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[27]
-WARNING: [Synth 8-3331] design UART_controller has unconnected port instruction[26]
 INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1418.066 ; gain = 134.531 ; free physical = 9551 ; free virtual = 16321
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1417.066 ; gain = 133.531 ; free physical = 10081 ; free virtual = 17193
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -369,7 +361,7 @@ Report Check Netlist:
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1418.066 ; gain = 134.531 ; free physical = 9552 ; free virtual = 16323
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1417.066 ; gain = 133.531 ; free physical = 10083 ; free virtual = 17195
 ---------------------------------------------------------------------------------
 INFO: [Netlist 29-17] Analyzing 3 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -378,98 +370,97 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp5/bios_mem_in_context.xdc] for cell 'CPU/BIOS'
-Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp5/bios_mem_in_context.xdc] for cell 'CPU/BIOS'
-Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp6/dmem_blk_ram_in_context.xdc] for cell 'CPU/d_mem'
-Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp6/dmem_blk_ram_in_context.xdc] for cell 'CPU/d_mem'
-Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp7/imem_blk_ram_in_context.xdc] for cell 'CPU/IMEM'
-Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp7/imem_blk_ram_in_context.xdc] for cell 'CPU/IMEM'
-Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc] for cell 'hdmi_out'
-Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc] for cell 'hdmi_out'
-Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp9/block_mem_1x786432_in_context.xdc] for cell 'frame_buffer/mem_g'
-Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp9/block_mem_1x786432_in_context.xdc] for cell 'frame_buffer/mem_g'
-Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/PYNQ-Z1_C.xdc]
-Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/PYNQ-Z1_C.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/PYNQ-Z1_C.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/z1top_propImpl.xdc].
+Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc] for cell 'hdmi_out'
+Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc] for cell 'hdmi_out'
+Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp6/block_mem_1x786432_in_context.xdc] for cell 'frame_buffer/mem_g'
+Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp6/block_mem_1x786432_in_context.xdc] for cell 'frame_buffer/mem_g'
+Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp7/bios_mem_in_context.xdc] for cell 'CPU/BIOS'
+Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp7/bios_mem_in_context.xdc] for cell 'CPU/BIOS'
+Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp8/dmem_blk_ram_in_context.xdc] for cell 'CPU/d_mem'
+Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp8/dmem_blk_ram_in_context.xdc] for cell 'CPU/d_mem'
+Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp9/imem_blk_ram_in_context.xdc] for cell 'CPU/IMEM'
+Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp9/imem_blk_ram_in_context.xdc] for cell 'CPU/IMEM'
+Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc]
+Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/PYNQ-Z1_C.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/z1top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/z1top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/dont_touch.xdc]
-Finished Parsing XDC File [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1 instances were transformed.
   IBUFG => IBUF: 1 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1779.492 ; gain = 0.004 ; free physical = 9257 ; free virtual = 16037
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1778.906 ; gain = 0.004 ; free physical = 9788 ; free virtual = 16900
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:35 ; elapsed = 00:01:21 . Memory (MB): peak = 1779.492 ; gain = 495.957 ; free physical = 9355 ; free virtual = 16136
+Finished Constraint Validation : Time (s): cpu = 00:00:30 ; elapsed = 00:01:09 . Memory (MB): peak = 1778.906 ; gain = 495.371 ; free physical = 9884 ; free virtual = 16996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:35 ; elapsed = 00:01:21 . Memory (MB): peak = 1779.492 ; gain = 495.957 ; free physical = 9355 ; free virtual = 16136
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:30 ; elapsed = 00:01:09 . Memory (MB): peak = 1778.906 ; gain = 495.371 ; free physical = 9884 ; free virtual = 16996
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
-Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_CLK_N. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 1).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_CLK_N. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 2).
-Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_CLK_P. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 3).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_CLK_P. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 4).
-Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_N[0]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 5).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_N[0]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 6).
-Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_N[1]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 7).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_N[1]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 8).
-Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_N[2]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 9).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_N[2]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 10).
-Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_P[0]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 11).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_P[0]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 12).
-Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_P[1]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 13).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_P[1]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 14).
-Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_P[2]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 15).
-Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_P[2]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-32221-c125m-20.EECS.Berkeley.EDU/dcp8/rgb2dvi_0_in_context.xdc, line 16).
+Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_CLK_N. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 1).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_CLK_N. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 2).
+Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_CLK_P. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 3).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_CLK_P. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 4).
+Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_N[0]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 5).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_N[0]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 6).
+Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_N[1]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 7).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_N[1]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 8).
+Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_N[2]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 9).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_N[2]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 10).
+Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_P[0]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 11).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_P[0]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 12).
+Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_P[1]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 13).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_P[1]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 14).
+Applied set_property IO_BUFFER_TYPE = NONE for HDMI_TX_D_P[2]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 15).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for HDMI_TX_D_P[2]. (constraint file  /home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/.Xil/Vivado-21686-c125m-22.EECS.Berkeley.EDU/dcp5/rgb2dvi_0_in_context.xdc, line 16).
 Applied set_property DONT_TOUCH = true for CPU/BIOS. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for CPU/IMEM. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for CPU/d_mem. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for frame_buffer/mem_g. (constraint file  auto generated constraint, line ).
 Applied set_property DONT_TOUCH = true for hdmi_out. (constraint file  auto generated constraint, line ).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:01:21 . Memory (MB): peak = 1779.492 ; gain = 495.957 ; free physical = 9357 ; free virtual = 16138
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:30 ; elapsed = 00:01:09 . Memory (MB): peak = 1778.906 ; gain = 495.371 ; free physical = 9886 ; free virtual = 16998
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "pulse" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-6014] Unused sequential element SATURATOR_LOOP[0].pulse_counter_reg[0] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
-WARNING: [Synth 8-6014] Unused sequential element SATURATOR_LOOP[1].pulse_counter_reg[1] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
-WARNING: [Synth 8-6014] Unused sequential element SATURATOR_LOOP[2].pulse_counter_reg[2] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
-WARNING: [Synth 8-6014] Unused sequential element SATURATOR_LOOP[3].pulse_counter_reg[3] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
-WARNING: [Synth 8-6014] Unused sequential element y_curr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:58]
-WARNING: [Synth 8-6014] Unused sequential element clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/tone_generator.v:15]
+WARNING: [Synth 8-6014] Unused sequential element SATURATOR_LOOP[0].pulse_counter_reg[0] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
+WARNING: [Synth 8-6014] Unused sequential element SATURATOR_LOOP[1].pulse_counter_reg[1] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
+WARNING: [Synth 8-6014] Unused sequential element SATURATOR_LOOP[2].pulse_counter_reg[2] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
+WARNING: [Synth 8-6014] Unused sequential element SATURATOR_LOOP[3].pulse_counter_reg[3] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
+WARNING: [Synth 8-6014] Unused sequential element y_curr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:58]
+WARNING: [Synth 8-6014] Unused sequential element clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/tone_generator.v:15]
 INFO: [Synth 8-5546] ROM "bit_counter" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-6014] Unused sequential element mclk_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/i2s_controller.v:81]
-WARNING: [Synth 8-6014] Unused sequential element lrck_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/i2s_controller.v:92]
-WARNING: [Synth 8-6014] Unused sequential element sclk_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/i2s_controller.v:105]
-WARNING: [Synth 8-6014] Unused sequential element bit_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/i2s_controller.v:114]
+WARNING: [Synth 8-6014] Unused sequential element mclk_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v:81]
+WARNING: [Synth 8-6014] Unused sequential element lrck_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v:92]
+WARNING: [Synth 8-6014] Unused sequential element sclk_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v:105]
+WARNING: [Synth 8-6014] Unused sequential element bit_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v:114]
 INFO: [Synth 8-5546] ROM "write_pointer_wrap" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "read_pointer_wrap" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "state0" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-6014] Unused sequential element clock_ctr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:52]
-WARNING: [Synth 8-6014] Unused sequential element clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/uart_receiver.v:34]
+WARNING: [Synth 8-6014] Unused sequential element clock_ctr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:52]
+WARNING: [Synth 8-6014] Unused sequential element clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_receiver.v:34]
 INFO: [Synth 8-5546] ROM "write_pointer_wrap" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "read_pointer_wrap" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/ALU.v:14]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/ALU.v:16]
 INFO: [Synth 8-5587] ROM size for "op1_sel_reg" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "op2_sel_reg" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5546] ROM "b_jmp_target_reg" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5587] ROM size for "wb_select_reg" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5546] ROM "brjmp_jalr_reg" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5587] ROM size for "reg_we_reg" is below threshold of ROM address width. It will be mapped to LUTs
-INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/Riscv151.v:722]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:668]
 INFO: [Synth 8-5545] ROM "ex_GPIO_FIFO_read_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ex_GPIO_FIFO_read_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ex_reset_counters" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "tone_output_enable_reg" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "x0_reg" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "HDMI_RX_VALID_reg" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "ex_use_cycle_counter_reg_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5546] ROM "ex_use_cycle_counter_reg_data" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "ex_use_instr_counter_reg_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
@@ -477,11 +468,11 @@ INFO: [Synth 8-5545] ROM "ex_GPIO_FIFO_empty" won't be mapped to RAM because add
 INFO: [Synth 8-5545] ROM "ex_switches_read" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ex_switches_read" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ex_I2S_async_FIFO_full" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-WARNING: [Synth 8-6014] Unused sequential element instr_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/Riscv151.v:164]
-WARNING: [Synth 8-6014] Unused sequential element cycle_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/Riscv151.v:170]
-WARNING: [Synth 8-327] inferring latch for variable 'frame_wr_data' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/arbiter.v:32]
+WARNING: [Synth 8-6014] Unused sequential element instr_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:153]
+WARNING: [Synth 8-6014] Unused sequential element cycle_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:157]
+WARNING: [Synth 8-327] inferring latch for variable 'frame_wr_data' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/arbiter.v:35]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:37 ; elapsed = 00:01:22 . Memory (MB): peak = 1779.492 ; gain = 495.957 ; free physical = 9347 ; free virtual = 16129
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:31 ; elapsed = 00:01:10 . Memory (MB): peak = 1778.906 ; gain = 495.371 ; free physical = 9877 ; free virtual = 16989
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -525,13 +516,13 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 5     
 	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 43    
+	                1 Bit    Registers := 42    
 +---RAMs : 
 	              768 Bit         RAMs := 1     
 	              256 Bit         RAMs := 1     
 +---Muxes : 
-	   4 Input     32 Bit        Muxes := 9     
-	   2 Input     32 Bit        Muxes := 28    
+	   2 Input     32 Bit        Muxes := 32    
+	   4 Input     32 Bit        Muxes := 8     
 	   3 Input     32 Bit        Muxes := 1     
 	   2 Input     24 Bit        Muxes := 2     
 	   2 Input     20 Bit        Muxes := 2     
@@ -539,30 +530,26 @@ Detailed RTL Component Info :
 	   2 Input     15 Bit        Muxes := 1     
 	   2 Input     12 Bit        Muxes := 1     
 	   2 Input     11 Bit        Muxes := 12    
-	   2 Input     10 Bit        Muxes := 15    
-	   3 Input     10 Bit        Muxes := 1     
-	   4 Input     10 Bit        Muxes := 1     
-	   5 Input     10 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 3     
 	   2 Input      8 Bit        Muxes := 1     
 	   4 Input      8 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 6     
 	   3 Input      4 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 6     
-	   5 Input      4 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 8     
 	   4 Input      4 Bit        Muxes := 2     
+	   5 Input      4 Bit        Muxes := 4     
 	   2 Input      3 Bit        Muxes := 5     
 	  10 Input      3 Bit        Muxes := 2     
 	   3 Input      3 Bit        Muxes := 2     
 	  10 Input      2 Bit        Muxes := 2     
 	   2 Input      2 Bit        Muxes := 5     
 	   3 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 81    
+	   2 Input      1 Bit        Muxes := 77    
 	  10 Input      1 Bit        Muxes := 6     
 	   3 Input      1 Bit        Muxes := 7     
-	   4 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 1     
 	   5 Input      1 Bit        Muxes := 1     
 	   6 Input      1 Bit        Muxes := 2     
-	   8 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -604,12 +591,11 @@ Detailed RTL Component Info :
 	               11 Bit    Registers := 1     
 	                1 Bit    Registers := 3     
 +---Muxes : 
-	   4 Input     32 Bit        Muxes := 1     
-	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     32 Bit        Muxes := 5     
 	   2 Input     24 Bit        Muxes := 2     
 	   2 Input     12 Bit        Muxes := 1     
 	   2 Input     11 Bit        Muxes := 12    
-	   2 Input      1 Bit        Muxes := 26    
+	   2 Input      1 Bit        Muxes := 24    
 Module accelerator 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -713,7 +699,7 @@ Detailed RTL Component Info :
 +---XORs : 
 	   2 Input     32 Bit         XORs := 1     
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 5     
 Module control_unit 
 Detailed RTL Component Info : 
 +---Muxes : 
@@ -729,13 +715,13 @@ Module mem_control
 Detailed RTL Component Info : 
 +---Muxes : 
 	   4 Input     32 Bit        Muxes := 3     
-	   2 Input     32 Bit        Muxes := 2     
-	   5 Input      4 Bit        Muxes := 4     
+	   2 Input     32 Bit        Muxes := 3     
 	   4 Input      4 Bit        Muxes := 2     
-	   2 Input      4 Bit        Muxes := 4     
+	   5 Input      4 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 6     
 	   2 Input      3 Bit        Muxes := 4     
 	   2 Input      2 Bit        Muxes := 4     
-	   2 Input      1 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 2     
 Module mem_read_decoder 
 Detailed RTL Component Info : 
 +---Muxes : 
@@ -764,22 +750,17 @@ Detailed RTL Component Info :
 	                4 Bit    Registers := 1     
 	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
-	                1 Bit    Registers := 18    
+	                1 Bit    Registers := 17    
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 16    
+	   2 Input     32 Bit        Muxes := 15    
 	   3 Input     32 Bit        Muxes := 1     
 	   4 Input     32 Bit        Muxes := 3     
 	   2 Input     20 Bit        Muxes := 1     
-	   2 Input     10 Bit        Muxes := 12    
-	   3 Input     10 Bit        Muxes := 1     
-	   4 Input     10 Bit        Muxes := 1     
-	   5 Input     10 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 34    
+	   2 Input      1 Bit        Muxes := 33    
 	   3 Input      1 Bit        Muxes := 7     
-	   4 Input      1 Bit        Muxes := 2     
+	   4 Input      1 Bit        Muxes := 1     
 	   5 Input      1 Bit        Muxes := 1     
 	   6 Input      1 Bit        Muxes := 2     
-	   8 Input      1 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -796,8 +777,8 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "uatransmit/state0" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-6014] Unused sequential element uatransmit/clock_ctr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:52]
-WARNING: [Synth 8-6014] Unused sequential element uareceive/clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/uart_receiver.v:34]
+WARNING: [Synth 8-6014] Unused sequential element uatransmit/clock_ctr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_transmitter.v:52]
+WARNING: [Synth 8-6014] Unused sequential element uareceive/clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/uart_receiver.v:34]
 INFO: [Synth 8-5587] ROM size for "controller/op1_sel_reg" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5587] ROM size for "controller/op2_sel_reg" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5546] ROM "controller/b_jmp_target_reg" won't be mapped to RAM because it is too sparse
@@ -806,26 +787,30 @@ INFO: [Synth 8-5546] ROM "controller/brjmp_jalr_reg" won't be mapped to RAM beca
 INFO: [Synth 8-5587] ROM size for "controller/reg_we_reg" is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5545] ROM "ex_switches_read" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "ex_GPIO_FIFO_read_data" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-WARNING: [Synth 8-6014] Unused sequential element instr_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/Riscv151.v:164]
-WARNING: [Synth 8-6014] Unused sequential element cycle_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/riscv_core/Riscv151.v:170]
-INFO: [Synth 8-4471] merging register 'celesta/x_curr_reg[9:0]' into 'celesta/x_curr_reg[9:0]' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:58]
-INFO: [Synth 8-4471] merging register 'celesta/y_curr_reg[9:0]' into 'celesta/y_curr_reg[9:0]' [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:58]
-WARNING: [Synth 8-6014] Unused sequential element celesta/color_reg_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:63]
-WARNING: [Synth 8-6014] Unused sequential element celesta/x_curr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:58]
-WARNING: [Synth 8-6014] Unused sequential element celesta/y_curr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:58]
+INFO: [Synth 8-5545] ROM "ex_reset_counters" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "tone_output_enable_reg" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5545] ROM "x0_reg" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "HDMI_RX_VALID_reg" won't be mapped to RAM because it is too sparse
+WARNING: [Synth 8-6014] Unused sequential element instr_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:153]
+WARNING: [Synth 8-6014] Unused sequential element cycle_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/riscv_core/Riscv151.v:157]
+INFO: [Synth 8-4471] merging register 'celesta/x_curr_reg[9:0]' into 'celesta/x_curr_reg[9:0]' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:58]
+INFO: [Synth 8-4471] merging register 'celesta/y_curr_reg[9:0]' into 'celesta/y_curr_reg[9:0]' [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:58]
+WARNING: [Synth 8-6014] Unused sequential element celesta/color_reg_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:63]
+WARNING: [Synth 8-6014] Unused sequential element celesta/x_curr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:58]
+WARNING: [Synth 8-6014] Unused sequential element celesta/y_curr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:58]
 INFO: [Synth 8-5546] ROM "b_parser/button_debouncer/pulse" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "connor/bit_counter" won't be mapped to RAM because it is too sparse
-WARNING: [Synth 8-6014] Unused sequential element vinny/h_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/video_controller.v:94]
-WARNING: [Synth 8-6014] Unused sequential element connor/bit_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/i2s_controller.v:114]
-WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/SATURATOR_LOOP[0].pulse_counter_reg[0] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
-WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/SATURATOR_LOOP[1].pulse_counter_reg[1] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
-WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/SATURATOR_LOOP[2].pulse_counter_reg[2] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
-WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/SATURATOR_LOOP[3].pulse_counter_reg[3] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
-WARNING: [Synth 8-6014] Unused sequential element celesta/y_curr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/video/accelerator.v:58]
-WARNING: [Synth 8-6014] Unused sequential element tony/clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/tone_generator.v:15]
-WARNING: [Synth 8-6014] Unused sequential element connor/mclk_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/i2s_controller.v:81]
-WARNING: [Synth 8-6014] Unused sequential element connor/sclk_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/i2s_controller.v:105]
-WARNING: [Synth 8-6014] Unused sequential element connor/lrck_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/hardware/src/audio/i2s_controller.v:92]
+WARNING: [Synth 8-6014] Unused sequential element vinny/h_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/video_controller.v:94]
+WARNING: [Synth 8-6014] Unused sequential element connor/bit_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v:114]
+WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/SATURATOR_LOOP[0].pulse_counter_reg[0] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
+WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/SATURATOR_LOOP[1].pulse_counter_reg[1] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
+WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/SATURATOR_LOOP[2].pulse_counter_reg[2] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
+WARNING: [Synth 8-6014] Unused sequential element b_parser/button_debouncer/SATURATOR_LOOP[3].pulse_counter_reg[3] was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/io_circuits/debouncer.v:53]
+WARNING: [Synth 8-6014] Unused sequential element celesta/y_curr_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/video/accelerator.v:58]
+WARNING: [Synth 8-6014] Unused sequential element tony/clock_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/tone_generator.v:15]
+WARNING: [Synth 8-6014] Unused sequential element connor/mclk_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v:81]
+WARNING: [Synth 8-6014] Unused sequential element connor/sclk_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v:105]
+WARNING: [Synth 8-6014] Unused sequential element connor/lrck_counter_reg was removed.  [/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/hardware/src/audio/i2s_controller.v:92]
 WARNING: [Synth 8-3917] design z1top has port aud_sd driven by constant 1
 INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[14]' (FDR) to 'CPU/ex_inst_reg_reg[14]'
 INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[14]' (FDR) to 'CPU/ex_s_reg_reg[11]'
@@ -864,8 +849,8 @@ INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[30]' (FDR) to 'CPU/ex_s_
 INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[30]' (FDR) to 'CPU/ex_s_reg_reg[11]'
 INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[31]' (FDR) to 'CPU/ex_s_reg_reg[11]'
 INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[31]' (FDR) to 'CPU/ex_s_reg_reg[11]'
-INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[0]' (FDR) to 'CPU/mwb_uart_write_data_reg[2]'
-INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[0]' (FDR) to 'CPU/mwb_uart_write_data_reg[2]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[0]' (FDR) to 'CPU/ex_b_reg_reg[0]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[0]' (FDR) to 'CPU/mwb_uart_write_data_reg[31]'
 INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[1]' (FDR) to 'CPU/ex_inst_reg_reg[21]'
 INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[1]' (FDR) to 'CPU/ex_rd_reg_reg[1]'
 INFO: [Synth 8-3886] merging instance 'CPU/ex_inst_reg_reg[8]' (FDR) to 'CPU/ex_rd_reg_reg[1]'
@@ -902,11 +887,11 @@ INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[12]' (FDR) to 'CPU/ex_in
 INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[12]' (FDR) to 'CPU/ex_s_reg_reg[11]'
 INFO: [Synth 8-3886] merging instance 'CPU/ex_j_reg_reg[13]' (FDR) to 'CPU/ex_inst_reg_reg[13]'
 INFO: [Synth 8-3886] merging instance 'CPU/ex_b_reg_reg[13]' (FDR) to 'CPU/ex_s_reg_reg[11]'
-INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[3]' (FDR) to 'CPU/ex_s_reg_reg[3]'
-INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[4]' (FDR) to 'CPU/ex_s_reg_reg[4]'
 INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[0]' (FDR) to 'CPU/ex_s_reg_reg[0]'
 INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[1]' (FDR) to 'CPU/ex_s_reg_reg[1]'
 INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[2]' (FDR) to 'CPU/ex_s_reg_reg[2]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[4]' (FDR) to 'CPU/ex_s_reg_reg[4]'
+INFO: [Synth 8-3886] merging instance 'CPU/ex_rd_reg_reg[3]' (FDR) to 'CPU/ex_s_reg_reg[3]'
 INFO: [Synth 8-3886] merging instance 'vinny/hdmi_data_reg_reg[0]' (FDRE) to 'vinny/hdmi_data_reg_reg[23]'
 INFO: [Synth 8-3886] merging instance 'vinny/hdmi_data_reg_reg[1]' (FDRE) to 'vinny/hdmi_data_reg_reg[23]'
 INFO: [Synth 8-3886] merging instance 'vinny/hdmi_data_reg_reg[2]' (FDRE) to 'vinny/hdmi_data_reg_reg[23]'
@@ -929,24 +914,20 @@ INFO: [Synth 8-3886] merging instance 'vinny/hdmi_data_reg_reg[18]' (FDRE) to 'v
 INFO: [Synth 8-3886] merging instance 'vinny/hdmi_data_reg_reg[19]' (FDRE) to 'vinny/hdmi_data_reg_reg[23]'
 INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/on_chip_uart/\uatransmit/to_send_reg[0] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/\ex_u_reg_reg[5] )
-WARNING: [Synth 8-3332] Sequential element (artie/frame_wr_data[0]) is unused and will be removed from module z1top.
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/\ex_u_reg_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (CPU/\ex_u_reg_reg[0] )
 WARNING: [Synth 8-3332] Sequential element (uatransmit/to_send_reg[0]) is unused and will be removed from module uart.
 WARNING: [Synth 8-3332] Sequential element (uareceive/rx_shift_reg[0]) is unused and will be removed from module uart.
 WARNING: [Synth 8-3332] Sequential element (dout_reg_reg[7]) is unused and will be removed from module fifo.
 WARNING: [Synth 8-3332] Sequential element (dout_reg_reg[6]) is unused and will be removed from module fifo.
 WARNING: [Synth 8-3332] Sequential element (dout_reg_reg[5]) is unused and will be removed from module fifo.
 WARNING: [Synth 8-3332] Sequential element (dout_reg_reg[4]) is unused and will be removed from module fifo.
-WARNING: [Synth 8-3332] Sequential element (mwb_u_reg_reg[11]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (mwb_u_reg_reg[10]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (mwb_u_reg_reg[9]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (mwb_u_reg_reg[8]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (mwb_u_reg_reg[7]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (mwb_u_reg_reg[6]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (mwb_u_reg_reg[4]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (mwb_u_reg_reg[3]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (mwb_u_reg_reg[2]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (mwb_u_reg_reg[1]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (LEDS_reg_reg[5]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (LEDS_reg_reg[4]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (LEDS_reg_reg[3]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (LEDS_reg_reg[2]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (LEDS_reg_reg[1]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (LEDS_reg_reg[0]) is unused and will be removed from module Riscv151.
 WARNING: [Synth 8-3332] Sequential element (PMOD_LEDS_reg_reg[7]) is unused and will be removed from module Riscv151.
 WARNING: [Synth 8-3332] Sequential element (PMOD_LEDS_reg_reg[6]) is unused and will be removed from module Riscv151.
 WARNING: [Synth 8-3332] Sequential element (PMOD_LEDS_reg_reg[5]) is unused and will be removed from module Riscv151.
@@ -955,49 +936,8 @@ WARNING: [Synth 8-3332] Sequential element (PMOD_LEDS_reg_reg[3]) is unused and 
 WARNING: [Synth 8-3332] Sequential element (PMOD_LEDS_reg_reg[2]) is unused and will be removed from module Riscv151.
 WARNING: [Synth 8-3332] Sequential element (PMOD_LEDS_reg_reg[1]) is unused and will be removed from module Riscv151.
 WARNING: [Synth 8-3332] Sequential element (PMOD_LEDS_reg_reg[0]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x0_reg_reg[9]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x0_reg_reg[8]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x0_reg_reg[7]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x0_reg_reg[6]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x0_reg_reg[5]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x0_reg_reg[4]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x0_reg_reg[3]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x0_reg_reg[2]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x0_reg_reg[1]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x0_reg_reg[0]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x1_reg_reg[9]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x1_reg_reg[8]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x1_reg_reg[7]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x1_reg_reg[6]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x1_reg_reg[5]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x1_reg_reg[4]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x1_reg_reg[3]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x1_reg_reg[2]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x1_reg_reg[1]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (x1_reg_reg[0]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y0_reg_reg[9]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y0_reg_reg[8]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y0_reg_reg[7]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y0_reg_reg[6]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y0_reg_reg[5]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y0_reg_reg[4]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y0_reg_reg[3]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y0_reg_reg[2]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y0_reg_reg[1]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y0_reg_reg[0]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y1_reg_reg[9]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y1_reg_reg[8]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y1_reg_reg[7]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y1_reg_reg[6]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y1_reg_reg[5]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y1_reg_reg[4]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y1_reg_reg[3]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y1_reg_reg[2]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y1_reg_reg[1]) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (y1_reg_reg[0]) is unused and will be removed from module Riscv151.
 WARNING: [Synth 8-3332] Sequential element (color_reg_reg) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (HDMI_RX_VALID_reg_reg) is unused and will be removed from module Riscv151.
-WARNING: [Synth 8-3332] Sequential element (ex_u_reg_reg[5]) is unused and will be removed from module Riscv151.
+WARNING: [Synth 8-3332] Sequential element (ex_u_reg_reg[0]) is unused and will be removed from module Riscv151.
 WARNING: [Synth 8-3332] Sequential element (vinny/framebuffer_addr_reg_reg[31]) is unused and will be removed from module z1top.
 WARNING: [Synth 8-3332] Sequential element (vinny/framebuffer_addr_reg_reg[30]) is unused and will be removed from module z1top.
 WARNING: [Synth 8-3332] Sequential element (vinny/framebuffer_addr_reg_reg[29]) is unused and will be removed from module z1top.
@@ -1010,29 +950,8 @@ WARNING: [Synth 8-3332] Sequential element (vinny/framebuffer_addr_reg_reg[23]) 
 WARNING: [Synth 8-3332] Sequential element (vinny/framebuffer_addr_reg_reg[22]) is unused and will be removed from module z1top.
 WARNING: [Synth 8-3332] Sequential element (vinny/framebuffer_addr_reg_reg[21]) is unused and will be removed from module z1top.
 WARNING: [Synth 8-3332] Sequential element (vinny/framebuffer_addr_reg_reg[20]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/TX_running_reg) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_target_reg[9]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_target_reg[8]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_target_reg[7]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_target_reg[6]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_target_reg[5]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_target_reg[4]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_target_reg[3]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_target_reg[2]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_target_reg[1]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_target_reg[0]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_curr_reg[9]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_curr_reg[8]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_curr_reg[7]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_curr_reg[6]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_curr_reg[5]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_curr_reg[4]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_curr_reg[3]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_curr_reg[2]) is unused and will be removed from module z1top.
-WARNING: [Synth 8-3332] Sequential element (celesta/y_curr_reg[1]) is unused and will be removed from module z1top.
-INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:04 ; elapsed = 00:01:50 . Memory (MB): peak = 1779.492 ; gain = 495.957 ; free physical = 9300 ; free virtual = 16084
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:53 ; elapsed = 00:01:33 . Memory (MB): peak = 1778.906 ; gain = 495.371 ; free physical = 9824 ; free virtual = 16937
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -1061,13 +980,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:13 ; elapsed = 00:02:09 . Memory (MB): peak = 1779.492 ; gain = 495.957 ; free physical = 9164 ; free virtual = 15960
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:01 ; elapsed = 00:01:47 . Memory (MB): peak = 1779.902 ; gain = 496.367 ; free physical = 9698 ; free virtual = 16810
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:15 ; elapsed = 00:02:11 . Memory (MB): peak = 1779.492 ; gain = 495.957 ; free physical = 9162 ; free virtual = 15959
+Finished Timing Optimization : Time (s): cpu = 00:01:02 ; elapsed = 00:01:49 . Memory (MB): peak = 1780.898 ; gain = 497.363 ; free physical = 9697 ; free virtual = 16809
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP and Shift Register Reporting
@@ -1094,8 +1013,13 @@ Report RTL Partitions:
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (CPU/pc_reg_reg[0]) is unused and will be removed from module z1top.
+WARNING: [Synth 8-3332] Sequential element (CPU/ex_pc_reg_reg[0]) is unused and will be removed from module z1top.
+WARNING: [Synth 8-3332] Sequential element (CPU/mwb_pc_reg_reg[0]) is unused and will be removed from module z1top.
+WARNING: [Synth 8-3332] Sequential element (connor/mclk_counter_reg[4]) is unused and will be removed from module z1top.
+WARNING: [Synth 8-3332] Sequential element (connor/sclk_counter_reg[5]) is unused and will be removed from module z1top.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:18 ; elapsed = 00:02:14 . Memory (MB): peak = 1848.078 ; gain = 564.543 ; free physical = 9155 ; free virtual = 15952
+Finished Technology Mapping : Time (s): cpu = 00:01:05 ; elapsed = 00:01:51 . Memory (MB): peak = 1856.180 ; gain = 572.645 ; free physical = 9690 ; free virtual = 16802
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1120,7 +1044,7 @@ INFO: [Synth 8-4163] Replicating register \CPU/on_chip_uart/serial_in_reg_reg  t
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:19 ; elapsed = 00:02:15 . Memory (MB): peak = 1848.082 ; gain = 564.547 ; free physical = 9155 ; free virtual = 15952
+Finished IO Insertion : Time (s): cpu = 00:01:05 ; elapsed = 00:01:52 . Memory (MB): peak = 1856.184 ; gain = 572.648 ; free physical = 9690 ; free virtual = 16802
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -1133,7 +1057,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:19 ; elapsed = 00:02:15 . Memory (MB): peak = 1848.082 ; gain = 564.547 ; free physical = 9155 ; free virtual = 15952
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:05 ; elapsed = 00:01:52 . Memory (MB): peak = 1856.184 ; gain = 572.648 ; free physical = 9690 ; free virtual = 16802
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -1145,25 +1069,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:19 ; elapsed = 00:02:15 . Memory (MB): peak = 1848.082 ; gain = 564.547 ; free physical = 9155 ; free virtual = 15952
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:06 ; elapsed = 00:01:52 . Memory (MB): peak = 1856.184 ; gain = 572.648 ; free physical = 9690 ; free virtual = 16802
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:19 ; elapsed = 00:02:15 . Memory (MB): peak = 1848.082 ; gain = 564.547 ; free physical = 9155 ; free virtual = 15952
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:06 ; elapsed = 00:01:52 . Memory (MB): peak = 1856.184 ; gain = 572.648 ; free physical = 9690 ; free virtual = 16802
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:19 ; elapsed = 00:02:15 . Memory (MB): peak = 1848.082 ; gain = 564.547 ; free physical = 9155 ; free virtual = 15952
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:06 ; elapsed = 00:01:52 . Memory (MB): peak = 1856.184 ; gain = 572.648 ; free physical = 9684 ; free virtual = 16796
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:19 ; elapsed = 00:02:15 . Memory (MB): peak = 1848.082 ; gain = 564.547 ; free physical = 9155 ; free virtual = 15952
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:06 ; elapsed = 00:01:52 . Memory (MB): peak = 1856.184 ; gain = 572.648 ; free physical = 9682 ; free virtual = 16794
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1190,66 +1114,72 @@ Report Cell Usage:
 |4     |imem_blk_ram       |     1|
 |5     |rgb2dvi_0          |     1|
 |6     |BUFG               |     4|
-|7     |CARRY4             |   105|
-|8     |LUT1               |    29|
-|9     |LUT2               |   153|
-|10    |LUT3               |   218|
-|11    |LUT4               |   336|
-|12    |LUT5               |   288|
-|13    |LUT6               |   714|
-|14    |MUXF7              |    28|
-|15    |PLLE2_ADV          |     1|
-|16    |PLLE2_ADV_1        |     1|
-|17    |RAM32M             |    17|
-|18    |FDRE               |   691|
-|19    |FDSE               |    53|
-|20    |IBUF               |     8|
-|21    |IBUFG              |     1|
-|22    |OBUF               |    13|
+|7     |CARRY4             |   107|
+|8     |LUT1               |    27|
+|9     |LUT2               |   126|
+|10    |LUT3               |   183|
+|11    |LUT4               |   491|
+|12    |LUT5               |   451|
+|13    |LUT6               |   895|
+|14    |MUXF7              |    56|
+|15    |MUXF8              |     6|
+|16    |PLLE2_ADV          |     1|
+|17    |PLLE2_ADV_1        |     1|
+|18    |RAM32M             |    17|
+|19    |FDRE               |   766|
+|20    |FDSE               |    53|
+|21    |LD                 |     1|
+|22    |IBUF               |     8|
+|23    |IBUFG              |     1|
+|24    |OBUF               |    12|
+|25    |OBUFT              |     1|
 +------+-------------------+------+
 
 Report Instance Areas: 
 +------+-------------------------+----------------------+------+
 |      |Instance                 |Module                |Cells |
 +------+-------------------------+----------------------+------+
-|1     |top                      |                      |  2798|
-|2     |  CPU                    |Riscv151              |  2219|
-|3     |    on_chip_uart         |uart                  |   809|
-|4     |      uareceive          |uart_receiver         |   747|
-|5     |      uatransmit         |uart_transmitter      |    60|
-|6     |    reggie               |reg_file              |   496|
-|7     |    sync_FIFO            |fifo                  |   212|
-|8     |  async_FIFO             |async_fifo            |   102|
-|9     |  b_parser               |button_parser         |   138|
-|10    |    button_debouncer     |debouncer             |   109|
-|11    |    button_edge_detector |edge_detector         |    17|
-|12    |    button_synchronizer  |synchronizer          |    12|
-|13    |  connor                 |i2s_controller        |    67|
-|14    |  frame_buffer           |frame_buffer_1_786432 |     2|
-|15    |  tony                   |tone_generator        |    49|
-|16    |  vinny                  |video_controller      |   185|
+|1     |top                      |                      |  3345|
+|2     |  CPU                    |Riscv151              |  2703|
+|3     |    on_chip_uart         |uart                  |  1135|
+|4     |      uareceive          |uart_receiver         |  1056|
+|5     |      uatransmit         |uart_transmitter      |    77|
+|6     |    reggie               |reg_file              |   485|
+|7     |    sync_FIFO            |fifo                  |   307|
+|8     |  artie                  |arbiter               |     1|
+|9     |  async_FIFO             |async_fifo            |   100|
+|10    |  b_parser               |button_parser         |   137|
+|11    |    button_debouncer     |debouncer             |   109|
+|12    |    button_edge_detector |edge_detector         |    16|
+|13    |    button_synchronizer  |synchronizer          |    12|
+|14    |  celesta                |accelerator           |    68|
+|15    |  connor                 |i2s_controller        |    67|
+|16    |  frame_buffer           |frame_buffer_1_786432 |     2|
+|17    |  tony                   |tone_generator        |    49|
+|18    |  vinny                  |video_controller      |   182|
 +------+-------------------------+----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:19 ; elapsed = 00:02:15 . Memory (MB): peak = 1848.082 ; gain = 564.547 ; free physical = 9155 ; free virtual = 15952
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:06 ; elapsed = 00:01:52 . Memory (MB): peak = 1856.184 ; gain = 572.648 ; free physical = 9681 ; free virtual = 16794
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 252 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:04 ; elapsed = 00:01:18 . Memory (MB): peak = 1848.082 ; gain = 203.121 ; free physical = 9213 ; free virtual = 16010
-Synthesis Optimization Complete : Time (s): cpu = 00:01:20 ; elapsed = 00:02:15 . Memory (MB): peak = 1848.086 ; gain = 564.547 ; free physical = 9221 ; free virtual = 16018
+Synthesis finished with 0 errors, 0 critical warnings and 170 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:53 ; elapsed = 00:01:04 . Memory (MB): peak = 1856.184 ; gain = 210.809 ; free physical = 9746 ; free virtual = 16858
+Synthesis Optimization Complete : Time (s): cpu = 00:01:06 ; elapsed = 00:01:53 . Memory (MB): peak = 1856.188 ; gain = 572.648 ; free physical = 9754 ; free virtual = 16866
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 161 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 198 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
-  A total of 18 instances were transformed.
+  A total of 19 instances were transformed.
   IBUFG => IBUF: 1 instances
+  LD => LDCE: 1 instances
   RAM32M => RAM32M (RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMD32, RAMS32, RAMS32): 17 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-241 Infos, 248 Warnings, 0 Critical Warnings and 0 Errors encountered.
+243 Infos, 182 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:23 ; elapsed = 00:02:19 . Memory (MB): peak = 1858.086 ; gain = 599.438 ; free physical = 9222 ; free virtual = 16019
-INFO: [Common 17-1381] The checkpoint '/home/cc/eecs151/sp18/class/eecs151-aaq/sp18_team69/vivado_final/vivado_final.runs/synth_1/z1top.dcp' has been generated.
+synth_design: Time (s): cpu = 00:01:09 ; elapsed = 00:01:56 . Memory (MB): peak = 1866.188 ; gain = 607.539 ; free physical = 9761 ; free virtual = 16873
+INFO: [Common 17-1381] The checkpoint '/home/cc/eecs151/sp18/class/eecs151-aar/sp18_team69/vivado_final/vivado_final.runs/synth_1/z1top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file z1top_utilization_synth.rpt -pb z1top_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.12 . Memory (MB): peak = 1888.160 ; gain = 0.000 ; free physical = 9223 ; free virtual = 16020
-INFO: [Common 17-206] Exiting Vivado at Thu Apr 26 22:23:13 2018...
+report_utilization: Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.14 . Memory (MB): peak = 1896.262 ; gain = 0.000 ; free physical = 9760 ; free virtual = 16873
+INFO: [Common 17-206] Exiting Vivado at Thu May  3 21:40:48 2018...

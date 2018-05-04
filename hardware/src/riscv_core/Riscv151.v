@@ -413,30 +413,30 @@ module Riscv151 #(
     end
 
     always @(posedge clk) begin
-      if (rst) begin
-        x0_reg = 0;
-        x1_reg = 0;
-        y0_reg = 0;
-        y1_reg = 0;
-        color_reg = 0;
-        HDMI_RX_VALID_reg = 0;
-      end else if (ex_opcode == `OPC_STORE) begin
-        if (ex_aluout_reg == 32'h80010000) begin //x0
+      /*if (rst) begin
+        x0_reg <= 0;
+        x1_reg <= 0;
+        y0_reg <= 0;
+        y1_reg <= 0;
+        color_reg <= 0;
+        HDMI_RX_VALID_reg <= 0;
+      end else*/ if (ex_opcode == `OPC_STORE) begin
+        if (ex_aluout_reg == 32'h90010000) begin //x0
           x0_reg <= ex_rs2_after_fwd_reg[9:0];
-          HDMI_RX_VALID_reg <= 0;
-        end else if (ex_aluout_reg == 32'h80010004) begin //x1
+//          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h90010004) begin //x1
           x1_reg <= ex_rs2_after_fwd_reg[9:0];
-          HDMI_RX_VALID_reg <= 0;
-        end else if (ex_aluout_reg == 32'h80010008) begin //y0
+//          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h90010008) begin //y0
           y0_reg <= ex_rs2_after_fwd_reg[9:0];
-          HDMI_RX_VALID_reg <= 0;
-        end else if (ex_aluout_reg == 32'h8001000c) begin //y1
+//          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h9001000c) begin //y1
           y1_reg <= ex_rs2_after_fwd_reg[9:0];
-          HDMI_RX_VALID_reg <= 0;
-        end else if (ex_aluout_reg == 32'h80010010) begin //color
+//          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h90010010) begin //color
           color_reg <= ex_rs2_after_fwd_reg[0];
-          HDMI_RX_VALID_reg <= 0;
-        end else if (ex_aluout_reg == 32'h80010014 && HDMI_RX_READY) begin //fire
+//          HDMI_RX_VALID_reg <= 0;
+        end else if (ex_aluout_reg == 32'h90010014 && HDMI_RX_READY) begin //fire
           HDMI_RX_VALID_reg <= 1;
         end else HDMI_RX_VALID_reg <= 0;
       end else HDMI_RX_VALID_reg <= 0;
