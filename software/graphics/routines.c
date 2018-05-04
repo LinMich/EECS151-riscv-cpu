@@ -39,7 +39,6 @@ void hwline(uint32_t color, uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1)
   LE_X1 = x1;
   LE_Y1 = y1; //LE_Y1TRIG
   LE_FIRE = 1;
-  LE_FIRE = 0;
   uwrite_int8s(uint16_to_ascii_hex(x0, buffer, BUFFER_LEN));
   uwrite_int8s("\r\n");
   uwrite_int8s(uint16_to_ascii_hex(x1, buffer, BUFFER_LEN));

@@ -27,10 +27,10 @@
 #define I2C_CONTROLLER_FIRE (*((volatile uint32_t*)0x80000114))
 
 // HDMI Signals
-#define LE_X0 (*((volatile uint32_t*)0x90010000))
-#define LE_X1 (*((volatile uint32_t*)0x90010004))
-#define LE_Y0 (*((volatile uint32_t*)0x90010008))
-#define LE_Y1 (*((volatile uint32_t*)0x9001000c))
-#define LE_COLOR (*((volatile uint32_t*)0x90010010))
-#define LE_FIRE (*((volatile uint32_t*)0x90010014))
+// #define LE_X0 (*((volatile uint32_t*)0x90010000))
+// #define LE_X1 (*((volatile uint32_t*)0x90010004))
+// #define LE_Y0 (*((volatile uint32_t*)0x90010008))
+// #define LE_Y1 (*((volatile uint32_t*)0x9001000c))
+// #define LE_COLOR (*((volatile uint32_t*)0x90010010))
+// #define LE_FIRE (*((volatile uint32_t*)0x90010014))
 

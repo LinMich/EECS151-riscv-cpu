@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------
 | Tool Version              : Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
-| Date                      : Thu May  3 21:43:11 2018
-| Host                      : c125m-22.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
+| Date                      : Fri May  4 14:52:55 2018
+| Host                      : c125m-20.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
 | Command                   : report_io -file z1top_io_placed.rpt
 | Design                    : z1top
 | Device                    : xc7z020
@@ -269,7 +269,7 @@ Table of Contents
 | M12        |                |            | VCCINT                  | VCCINT      |             |         |            |      |                     |                      |         |            |           |          |      |                  |              |                   |              |
 | M13        |                |            | GND                     | GND         |             |         |            |      |                     |                      |     0.0 |            |           |          |      |                  |              |                   |              |
 | M14        | LEDS[3]        | High Range | IO_L23P_T3_35           | OUTPUT      | LVCMOS33    |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
-| M15        | LEDS[5]        | High Range | IO_L23N_T3_35           | TRISTATE    | LVCMOS33    |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
+| M15        | LEDS[5]        | High Range | IO_L23N_T3_35           | OUTPUT      | LVCMOS33    |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | M16        |                | High Range | VCCO_35                 | VCCO        |             |      35 |            |      |                     |                      |    3.30 |            |           |          |      |                  |              |                   |              |
 | M17        | HDMI_TX_SCL    | High Range | IO_L8P_T1_AD10P_35      | BIDIR       | LVCMOS33    |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |
 | M18        | HDMI_TX_SDA    | High Range | IO_L8N_T1_AD10N_35      | BIDIR       | LVCMOS33    |      35 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |          |      | NONE             |              |                   |              |

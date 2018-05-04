@@ -377,7 +377,7 @@ module Riscv151 #(
     assign fb_data = fb_data_reg;
 
     always @(posedge clk) begin
-        if (ex_opcode == `OPC_STORE && ex_aluout_reg[31:28] == 4'h9 && ex_aluout_reg[19:16] != 4'h1) begin
+        if (ex_opcode == `OPC_STORE && ex_aluout_reg[31:28] == 4'h9) begin
             fb_we_reg <= 1'b1;
             fb_addr_reg <= ex_aluout_reg[19:0];
             fb_data_reg <= ex_rs2_after_fwd_reg[0];
@@ -415,30 +415,30 @@ module Riscv151 #(
     end
 
     always @(posedge clk) begin
-      if (rst) begin
+      /*if (rst) begin
         x0_reg <= 0;
         x1_reg <= 0;
         y0_reg <= 0;
         y1_reg <= 0;
         color_reg <= 0;
         HDMI_RX_VALID_reg <= 0;
-      end else if (ex_opcode == `OPC_STORE) begin
-        if (ex_aluout_reg == 32'h90010000) begin //x0
+      end else */if (ex_opcode == `OPC_STORE) begin
+        if (ex_aluout_reg == 32'ha0010000) begin //x0
           x0_reg <= ex_rs2_after_fwd_reg[9:0];
          HDMI_RX_VALID_reg <= 0;
-        end else if (ex_aluout_reg == 32'h90010004) begin //x1
+        end else if (ex_aluout_reg == 32'ha0010004) begin //x1
           x1_reg <= ex_rs2_after_fwd_reg[9:0];
          HDMI_RX_VALID_reg <= 0;
-        end else if (ex_aluout_reg == 32'h90010008) begin //y0
+        end else if (ex_aluout_reg == 32'ha0010008) begin //y0
           y0_reg <= ex_rs2_after_fwd_reg[9:0];
          HDMI_RX_VALID_reg <= 0;
-        end else if (ex_aluout_reg == 32'h9001000c) begin //y1
+        end else if (ex_aluout_reg == 32'ha001000c) begin //y1
           y1_reg <= ex_rs2_after_fwd_reg[9:0];
          HDMI_RX_VALID_reg <= 0;
-        end else if (ex_aluout_reg == 32'h90010010) begin //color
+        end else if (ex_aluout_reg == 32'ha0010010) begin //color
           color_reg <= ex_rs2_after_fwd_reg[0];
          HDMI_RX_VALID_reg <= 0;
-        end else if (ex_aluout_reg == 32'h90010014 && HDMI_RX_READY) begin //fire
+        end else if (ex_aluout_reg == 32'ha0010014 && HDMI_RX_READY) begin //fire
           HDMI_RX_VALID_reg <= 1;
         end else HDMI_RX_VALID_reg <= 0;
       end else HDMI_RX_VALID_reg <= 0;

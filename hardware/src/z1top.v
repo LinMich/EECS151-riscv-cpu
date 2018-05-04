@@ -360,8 +360,9 @@ module z1top # (
     .hdmi_de(vde)
   );
 
-  assign LEDS[0] = XL_wr_en;
+  assign LEDS[0] = HDMI_RX_READY;
   assign LEDS[4:1] = x1[3:0];
+  assign LEDS[5] = 1'b1;
   
   // accelerator
   accelerator celesta (

@@ -61,7 +61,7 @@ module accelerator #(
 
     assign XL_wr_en = TX_running;
     assign XL_wr_data = color_reg;
-    assign XL_wr_addr = x_curr * pixel_width + y_curr; 
+    assign XL_wr_addr = 32'h90000000 + (y_curr << 10) + (x_curr);
     
     //2-phase operation
     //Phase 1: determine pixel

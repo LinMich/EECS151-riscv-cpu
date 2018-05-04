@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
-| Date         : Thu May  3 21:40:48 2018
-| Host         : c125m-22.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
+| Date         : Fri May  4 14:50:25 2018
+| Host         : c125m-20.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
 | Command      : report_utilization -file z1top_utilization_synth.rpt -pb z1top_utilization_synth.pb
 | Design       : z1top
 | Device       : 7z020clg400-1
@@ -30,15 +30,15 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                | 1920 |     0 |     53200 |  3.61 |
-|   LUT as Logic             | 1852 |     0 |     53200 |  3.48 |
+| Slice LUTs*                | 1913 |     0 |     53200 |  3.60 |
+|   LUT as Logic             | 1845 |     0 |     53200 |  3.47 |
 |   LUT as Memory            |   68 |     0 |     17400 |  0.39 |
 |     LUT as Distributed RAM |   68 |     0 |           |       |
 |     LUT as Shift Register  |    0 |     0 |           |       |
-| Slice Registers            |  820 |     2 |    106400 |  0.77 |
-|   Register as Flip Flop    |  819 |     2 |    106400 |  0.77 |
-|   Register as Latch        |    1 |     0 |    106400 | <0.01 |
-| F7 Muxes                   |   56 |     0 |     26600 |  0.21 |
+| Slice Registers            |  821 |     2 |    106400 |  0.77 |
+|   Register as Flip Flop    |  821 |     2 |    106400 |  0.77 |
+|   Register as Latch        |    0 |     0 |    106400 |  0.00 |
+| F7 Muxes                   |   62 |     0 |     26600 |  0.23 |
 | F8 Muxes                   |    6 |     0 |     13300 |  0.05 |
 +----------------------------+------+-------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -57,9 +57,9 @@ Table of Contents
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
-| 1     |          Yes |           - |        Reset |
+| 0     |          Yes |           - |        Reset |
 | 53    |          Yes |         Set |            - |
-| 766   |          Yes |       Reset |            - |
+| 768   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -148,25 +148,23 @@ Table of Contents
 +-----------+------+---------------------+
 |  Ref Name | Used | Functional Category |
 +-----------+------+---------------------+
-| LUT6      |  895 |                 LUT |
-| FDRE      |  766 |        Flop & Latch |
-| LUT4      |  491 |                 LUT |
-| LUT5      |  451 |                 LUT |
-| LUT3      |  183 |                 LUT |
-| LUT2      |  126 |                 LUT |
+| LUT6      |  863 |                 LUT |
+| FDRE      |  768 |        Flop & Latch |
+| LUT4      |  471 |                 LUT |
+| LUT5      |  470 |                 LUT |
+| LUT3      |  186 |                 LUT |
+| LUT2      |  138 |                 LUT |
 | CARRY4    |  107 |          CarryLogic |
 | RAMD32    |  102 |  Distributed Memory |
-| MUXF7     |   56 |               MuxFx |
+| MUXF7     |   62 |               MuxFx |
 | FDSE      |   53 |        Flop & Latch |
 | RAMS32    |   34 |  Distributed Memory |
-| LUT1      |   27 |                 LUT |
-| OBUF      |   12 |                  IO |
+| LUT1      |   28 |                 LUT |
+| OBUF      |   13 |                  IO |
 | IBUF      |    9 |                  IO |
 | MUXF8     |    6 |               MuxFx |
 | BUFG      |    4 |               Clock |
 | PLLE2_ADV |    2 |               Clock |
-| OBUFT     |    1 |                  IO |
-| LDCE      |    1 |        Flop & Latch |
 +-----------+------+---------------------+
 
 
