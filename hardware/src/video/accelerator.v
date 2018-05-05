@@ -18,7 +18,7 @@ module accelerator #(
     parameter pixel_height_bits = `log2(pixel_height), //10-bit
 
     parameter mem_width = 1,
-    parameter mem_depth = 786432, 
+    parameter mem_depth = 786432,
     parameter mem_addr_width = `log2(mem_depth)
 )(
     input   clk,
@@ -30,7 +30,7 @@ module accelerator #(
     input [pixel_width_bits - 1 : 0] x1,
     input [pixel_height_bits - 1 : 0] y1,
     input color,
-    
+
     //CPU interface
     output RX_ready,
     input  RX_valid,    //fire signal
@@ -38,67 +38,98 @@ module accelerator #(
     //Arbiter Interface
     output   XL_wr_en,
     output   [mem_width-1:0] XL_wr_data,
-    output   [mem_addr_width-1:0] XL_wr_addr  
+    output   [mem_addr_width-1:0] XL_wr_addr
 );
 
-    reg [pixel_width_bits - 1 : 0] x_curr;
-    reg [pixel_height_bits - 1 : 0] y_curr;
-    reg [pixel_width_bits - 1 : 0] x_target;
-    reg [pixel_height_bits - 1 : 0] y_target;
-       
-    reg [pixel_width_bits : 0] pk_step_L = 0;
-    reg [pixel_height_bits : 0] pk_step_U = 0;
-    
+    reg [pixel_width_bits - 1 : 0] x; // x_curr
+    reg [pixel_height_bits - 1 : 0] y; // y_curr
+    // reg [pixel_width_bits - 1 : 0] x_target;
+    // reg [pixel_height_bits - 1 : 0] y_target;
 
-    reg [pixel_width_bits : 0] px = 0;
+    // reg [pixel_width_bits : 0] pk_step_L = 0;
+    // reg [pixel_height_bits : 0] pk_step_U = 0;
+
+
+    reg [pixel_width_bits : 0] dx = 0;
+    reg [pixel_width_bits : 0] dy = 0;
+    reg [pixel_width_bits : 0] err = 0;
+    reg [pixel_width_bits : 0] e2 = 0;
+    reg down;
+    reg right;
 
     reg color_reg;
     reg TX_running;
 
-    wire complete = (x_curr == x_target && y_curr == y_target);
+    // wire complete = (x_curr == x_target && y_curr == y_target);
 
     assign RX_ready = ~TX_running;
 
     assign XL_wr_en = TX_running;
     assign XL_wr_data = color_reg;
-    assign XL_wr_addr = {y_curr, x_curr};
-    
+    assign XL_wr_addr = {y, x};
+
     //2-phase operation
     //Phase 1: determine pixel
     //Phase 2: write pixel
     //On a clock edge, pixel K is written to the memory, and pixel K+1 is calculated and registered
     always @(posedge clk) begin
         if (TX_running) begin
-            if (complete) begin
-                TX_running <= 1'b0;
-            end else if (x_curr == x_target && px < 0) begin    //I don't think this can happen but...
-                TX_running <= 1'b0;
-            end else begin //set up phase 2
-                if (px < 0) begin
-                    px <= px + pk_step_L;
-                    x_curr <= x_curr + 1;
-                    y_curr <= y_curr;
-                end else begin
-                    px <= px + pk_step_U;
-                    x_curr <= x_curr;
-                    y_curr <= y_curr + 1;
+            // if (complete) begin
+            //     TX_running <= 1'b0;
+            // end else if (x_curr == x_target && px < 0) begin    //I don't think this can happen but...
+            //     TX_running <= 1'b0;
+            // end else begin //set up phase 2
+            //     if (px < 0) begin
+            //         px <= px + pk_step_L;
+            //         x_curr <= x_curr + 1;
+            //         y_curr <= y_curr;
+            //     end else begin
+            //         px <= px + pk_step_U;
+            //         x_curr <= x_curr;
+            //         y_curr <= y_curr + 1;
+            //     end
+            // end
+            //end state
+            if (x == x1 && y == y1) TX_running <= 1'b0;
+            else begin
+                e2 = err << 1;
+                if (e2 > dy) begin
+                  err = err + dy;
+                  if (right) x = x + 1;
+                  else x = x - 1;
+                end
+                if (e2 < dx) begin
+                  err = err + dx;
+                  if (down) y = y + 1;
+                  else y = y - 1;
                 end
             end
-            //end state
         end else if (RX_valid) begin
             TX_running <= 1'b1;
 
-            x_curr <= x0;
-            y_curr <= y0;
+            dx = x1 - x0;
+            right = dx >= 0;
+            if (~right) dx = -dx;
 
-            x_target <= x1;
-            y_target <= y1;
+            dy = y1 - y0;
+            down = dy >= 0;
+            if (down) dy = -dy;
 
-            pk_step_L <= (2 * (y1 - y0));
+            err = dx + dy;
+            x <= x0;
+            y <= y0;
 
-            pk_step_U <= (2 * (y1 - y0)) - (2 * (x1 - x0));
-
-            px <= (2 * (y1 - y0)) - (x1 - x0); //initial
+            // x_curr <= x0;
+            // y_curr <= y0;
+            //
+            // x_target <= x1;
+            // y_target <= y1;
+            //
+            // pk_step_L <= (2 * (y1 - y0));
+            //
+            // pk_step_U <= (2 * (y1 - y0)) - (2 * (x1 - x0));
+            //
+            // px <= (2 * (y1 - y0)) - (x1 - x0); //initial
 
             color_reg <= color;
         end else begin
