@@ -54,12 +54,7 @@ module video_controller # (
 
   // Framebuffer interface.
   output wire [RAM_ADDR_BITS-1:0] framebuffer_addr,
-  input  wire                     framebuffer_addr_rdy,
-  output reg                      framebuffer_addr_valid,
-
   input  wire [RAM_WIDTH-1:0]     framebuffer_data,
-  input  wire                     framebuffer_data_valid,
-  output reg                      framebuffer_data_rdy,
 
   output [RAM_WIDTH-1:0]          hdmi_data,  // RGB data output.
   output                          hdmi_de,    // High when video data is active.

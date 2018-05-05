@@ -61,7 +61,7 @@ module accelerator #(
 
     assign XL_wr_en = TX_running;
     assign XL_wr_data = color_reg;
-    assign XL_wr_addr = 32'h90000000 + (y_curr << 10) + (x_curr);
+    assign XL_wr_addr = {y_curr, x_curr};
     
     //2-phase operation
     //Phase 1: determine pixel
@@ -94,10 +94,11 @@ module accelerator #(
             x_target <= x1;
             y_target <= y1;
 
-            pk_step_L <= 2 * (y1 - y0);
-            pk_step_U <= 2 * (y1 - y0) - 2 * (x1 - x0);
+            pk_step_L <= (2 * (y1 - y0));
 
-            px <= 2 * (y1 - y0) - (x1 - x0); //initial
+            pk_step_U <= (2 * (y1 - y0)) - (2 * (x1 - x0));
+
+            px <= (2 * (y1 - y0)) - (x1 - x0); //initial
 
             color_reg <= color;
         end else begin

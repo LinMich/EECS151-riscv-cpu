@@ -430,7 +430,7 @@ module z1top # (
   wire async_fifo_empty;
     
   i2s_controller #(.BIT_DEPTH(BIT_DEPTH)
-  ) connor (
+  ) i2s_cont (
     .sys_reset(reset),
     .sys_clk(cpu_clk_g),            // Source clock, from which others are derived
     

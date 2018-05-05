@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
-| Date         : Fri May  4 14:52:56 2018
+| Date         : Fri May  4 17:14:57 2018
 | Host         : c125m-20.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
 | Command      : report_control_sets -verbose -file z1top_control_sets_placed.rpt
 | Design       : z1top
@@ -23,7 +23,7 @@ Table of Contents
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
 | Number of unique control sets                            |    43 |
-| Unused register locations in slices containing registers |   128 |
+| Unused register locations in slices containing registers |   136 |
 +----------------------------------------------------------+-------+
 
 
@@ -33,65 +33,65 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |             167 |           67 |
+| No           | No                    | No                     |             166 |           63 |
 | No           | No                    | Yes                    |               8 |            3 |
-| No           | Yes                   | No                     |             514 |          202 |
-| Yes          | No                    | No                     |             181 |           50 |
+| No           | Yes                   | No                     |             515 |          199 |
+| Yes          | No                    | No                     |             137 |           37 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             106 |           36 |
+| Yes          | Yes                   | No                     |             150 |           43 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 3. Detailed Control Set Information
 -----------------------------------
 
-+-------------------+-------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+
-|    Clock Signal   |                        Enable Signal                        |                                Set/Reset Signal                                | Slice Load Count | Bel Load Count |
-+-------------------+-------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+
-| ~connor/SCLK_OBUF | async_FIFO/read_pointer1                                    |                                                                                |                1 |              1 |
-| ~connor/SCLK_OBUF |                                                             |                                                                                |                1 |              2 |
-|  pixel_clk_g      |                                                             | hdmi_out/U0/ClockGenInternal.ClockGenX/in0                                     |                1 |              2 |
-|  cpu_clk_g        |                                                             | connor/mclk_counter[3]_i_1_n_0                                                 |                1 |              4 |
-|  cpu_clk_g        | b_parser/button_edge_detector/fifo_write_data_reg[0][0]     |                                                                                |                2 |              4 |
-|  pixel_clk_g      |                                                             | hdmi_out/U0/ClockGenInternal.ClockGenX/LockLostReset/SyncAsyncx/oSyncStages[1] |                1 |              4 |
-|  cpu_clk_g        |                                                             | connor/sclk_counter[4]_i_1_n_0                                                 |                1 |              5 |
-|  cpu_clk_g        | CPU/sync_FIFO/write_pointer0                                | b_parser/button_edge_detector/mclk_passer_reg                                  |                2 |              5 |
-| ~connor/SCLK_OBUF |                                                             | connor/bit_counter                                                             |                2 |              6 |
-|  cpu_clk_g        | b_parser/button_debouncer/p_9_out                           | b_parser/button_synchronizer/SR[0]                                             |                3 |              8 |
-|  cpu_clk_g        | b_parser/button_debouncer/p_7_out                           | b_parser/button_synchronizer/SATURATOR_LOOP[1].pulse_counter_reg[1][7][0]      |                3 |              8 |
-|  cpu_clk_g        | b_parser/button_debouncer/p_4_out                           | b_parser/button_synchronizer/SATURATOR_LOOP[2].pulse_counter_reg[2][7][0]      |                4 |              8 |
-|  cpu_clk_g        | b_parser/button_debouncer/p_1_out                           | b_parser/button_synchronizer/SATURATOR_LOOP[3].pulse_counter_reg[3][7][0]      |                3 |              8 |
-|  cpu_clk_g        | CPU/on_chip_uart/uareceive/to_send_reg[8]_0                 | b_parser/button_edge_detector/mclk_passer_reg                                  |                2 |              8 |
-|  cpu_clk_g        | CPU/sync_FIFO/p_0_in                                        |                                                                                |                1 |              8 |
-|  cpu_clk_g        |                                                             | CPU/on_chip_uart/uareceive/clock_counter[8]_i_1_n_0                            |                3 |              9 |
-|  cpu_clk_g        | CPU/on_chip_uart/uareceive/rx_shift0                        |                                                                                |                5 |              9 |
-|  cpu_clk_g        | CPU/on_chip_uart/uareceive/read_pointer_reg[4][0]           | b_parser/button_edge_detector/mclk_passer_reg                                  |                2 |              9 |
-|  pixel_clk_g      |                                                             | hdmi_out/U0/DataEncoders[0].DataEncoder/pDataOutRaw[9]_i_1__1_n_0              |                3 |             10 |
-|  cpu_clk_g        | CPU/on_chip_uart/uareceive/y0_reg_reg[0][0]                 |                                                                                |                3 |             10 |
-|  cpu_clk_g        | celesta/y_curr[9]_i_1_n_0                                   |                                                                                |                3 |             10 |
-|  cpu_clk_g        | CPU/on_chip_uart/uareceive/y1_reg_reg[0][0]                 |                                                                                |                2 |             10 |
-|  cpu_clk_g        | CPU/on_chip_uart/uareceive/x0_reg_reg[0][0]                 |                                                                                |                2 |             10 |
-|  cpu_clk_g        |                                                             | CPU/on_chip_uart/uareceive/SR[0]                                               |                3 |             10 |
-|  cpu_clk_g        |                                                             | b_parser/button_edge_detector/lrck_counter_reg[11]                             |                3 |             12 |
-|  cpu_clk_g        | CPU/on_chip_uart/uareceive/E[0]                             |                                                                                |                6 |             14 |
-|  cpu_clk_g        |                                                             | b_parser/button_debouncer/sample_counter[14]_i_1_n_0                           |                4 |             14 |
-|  pixel_clk_g      | vinny/framebuffer_addr_reg[19]_i_1_n_0                      | b_parser/button_edge_detector/video_reset                                      |                9 |             20 |
-|  cpu_clk_g        |                                                             | CPU/on_chip_uart/uareceive/fb_data_reg_reg_0                                   |                7 |             21 |
-|  cpu_clk_g        |                                                             | tony/clock_counter[0]_i_1__0_n_0                                               |                6 |             24 |
-|  cpu_clk_g        | CPU/on_chip_uart/uareceive/tone_switch_period_reg_reg[0][0] |                                                                                |                6 |             24 |
-|  cpu_clk_g        | CPU/on_chip_uart/uareceive/async_fifo_wr_en_reg_reg[0]      |                                                                                |                6 |             24 |
-|  pixel_clk_g      |                                                             | b_parser/button_edge_detector/video_reset                                      |               11 |             25 |
-|  cpu_clk_g        | connor/E[0]                                                 |                                                                                |                6 |             29 |
-|  cpu_clk_g        | CPU/E[0]                                                    |                                                                                |                7 |             31 |
-|  cpu_clk_g        | CPU/on_chip_uart/uareceive/instr_counter_reg[0]             | CPU/on_chip_uart/uareceive/cycle_counter_reg[0]                                |                8 |             32 |
-|  cpu_clk_g        |                                                             | CPU/on_chip_uart/uareceive/cycle_counter_reg[0]                                |                8 |             32 |
-|  pixel_clk_g      |                                                             | hdmi_out/U0/DataEncoders[0].DataEncoder/SR[0]                                  |               14 |             32 |
-|  cpu_clk_g        | CPU/p_0_in4_out                                             |                                                                                |                5 |             37 |
-|  cpu_clk_g        |                                                             |                                                                                |               27 |             62 |
-|  cpu_clk_g        | CPU/reggie/p_0_in__0                                        |                                                                                |               12 |             96 |
-|  pixel_clk_g      |                                                             |                                                                                |               39 |            103 |
-|  cpu_clk_g        |                                                             | b_parser/button_edge_detector/mclk_passer_reg                                  |              137 |            312 |
-+-------------------+-------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+
++---------------------+-------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+
+|     Clock Signal    |                        Enable Signal                        |                                Set/Reset Signal                                | Slice Load Count | Bel Load Count |
++---------------------+-------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+
+| ~i2s_cont/SCLK_OBUF | async_FIFO/read_pointer1                                    |                                                                                |                1 |              1 |
+| ~i2s_cont/SCLK_OBUF |                                                             |                                                                                |                1 |              2 |
+|  pixel_clk_g        |                                                             | hdmi_out/U0/ClockGenInternal.ClockGenX/in0                                     |                1 |              2 |
+|  cpu_clk_g          | b_parser/button_edge_detector/fifo_write_data_reg[0][0]     |                                                                                |                1 |              4 |
+|  cpu_clk_g          |                                                             | i2s_cont/mclk_counter[3]_i_1_n_0                                               |                1 |              4 |
+|  pixel_clk_g        |                                                             | hdmi_out/U0/ClockGenInternal.ClockGenX/LockLostReset/SyncAsyncx/oSyncStages[1] |                1 |              4 |
+|  cpu_clk_g          | CPU/sync_FIFO/write_pointer0                                | b_parser/button_edge_detector/mclk_passer_reg                                  |                2 |              5 |
+|  cpu_clk_g          |                                                             | i2s_cont/sclk_counter[4]_i_1_n_0                                               |                1 |              5 |
+| ~i2s_cont/SCLK_OBUF |                                                             | i2s_cont/bit_counter                                                           |                2 |              6 |
+|  cpu_clk_g          | b_parser/button_debouncer/p_7_out                           | b_parser/button_synchronizer/SATURATOR_LOOP[1].pulse_counter_reg[1][7][0]      |                2 |              8 |
+|  cpu_clk_g          | b_parser/button_debouncer/p_9_out                           | b_parser/button_synchronizer/SR[0]                                             |                3 |              8 |
+|  cpu_clk_g          | CPU/on_chip_uart/uareceive/to_send_reg[8]_0                 | b_parser/button_edge_detector/mclk_passer_reg                                  |                2 |              8 |
+|  cpu_clk_g          | CPU/sync_FIFO/p_0_in                                        |                                                                                |                1 |              8 |
+|  cpu_clk_g          | b_parser/button_debouncer/p_4_out                           | b_parser/button_synchronizer/SATURATOR_LOOP[2].pulse_counter_reg[2][7][0]      |                3 |              8 |
+|  cpu_clk_g          | b_parser/button_debouncer/p_1_out                           | b_parser/button_synchronizer/SATURATOR_LOOP[3].pulse_counter_reg[3][7][0]      |                3 |              8 |
+|  cpu_clk_g          | CPU/on_chip_uart/uareceive/E[0]                             | b_parser/button_edge_detector/mclk_passer_reg                                  |                2 |              9 |
+|  cpu_clk_g          | CPU/on_chip_uart/uareceive/rx_shift0                        |                                                                                |                4 |              9 |
+|  cpu_clk_g          |                                                             | CPU/on_chip_uart/uareceive/clock_counter[8]_i_1_n_0                            |                3 |              9 |
+|  pixel_clk_g        |                                                             | hdmi_out/U0/DataEncoders[0].DataEncoder/pDataOutRaw[9]_i_1__1_n_0              |                3 |             10 |
+|  cpu_clk_g          |                                                             | CPU/on_chip_uart/uareceive/SR[0]                                               |                3 |             10 |
+|  cpu_clk_g          | CPU/on_chip_uart/uareceive/x0_reg_reg[0][0]                 | b_parser/button_edge_detector/mclk_passer_reg                                  |                2 |             10 |
+|  cpu_clk_g          | CPU/on_chip_uart/uareceive/y0_reg_reg[0][0]                 | b_parser/button_edge_detector/mclk_passer_reg                                  |                3 |             10 |
+|  cpu_clk_g          | CPU/on_chip_uart/uareceive/y1_reg_reg[0][0]                 | b_parser/button_edge_detector/mclk_passer_reg                                  |                2 |             10 |
+|  cpu_clk_g          | celesta/y_curr[9]_i_1_n_0                                   |                                                                                |                3 |             10 |
+|  cpu_clk_g          |                                                             | b_parser/button_edge_detector/lrck_counter_reg[11]                             |                3 |             12 |
+|  cpu_clk_g          |                                                             | b_parser/button_debouncer/sample_counter[14]_i_1_n_0                           |                4 |             14 |
+|  cpu_clk_g          | CPU/on_chip_uart/uareceive/x1_reg_reg[0][0]                 | b_parser/button_edge_detector/mclk_passer_reg                                  |                3 |             14 |
+|  pixel_clk_g        | vinny/framebuffer_addr_reg[19]_i_1_n_0                      | b_parser/button_edge_detector/video_reset                                      |                8 |             20 |
+|  cpu_clk_g          |                                                             | CPU/on_chip_uart/uareceive/fb_data_reg_reg_0                                   |                5 |             21 |
+|  cpu_clk_g          | CPU/on_chip_uart/uareceive/tone_switch_period_reg_reg[0][0] |                                                                                |                7 |             24 |
+|  cpu_clk_g          | CPU/on_chip_uart/uareceive/async_fifo_wr_en_reg_reg[0]      |                                                                                |                5 |             24 |
+|  cpu_clk_g          |                                                             | tony/clock_counter[0]_i_1__0_n_0                                               |                6 |             24 |
+|  pixel_clk_g        |                                                             | b_parser/button_edge_detector/video_reset                                      |               11 |             25 |
+|  cpu_clk_g          | i2s_cont/E[0]                                               |                                                                                |                7 |             29 |
+|  cpu_clk_g          | CPU/E[0]                                                    |                                                                                |                8 |             31 |
+|  cpu_clk_g          | CPU/on_chip_uart/uareceive/instr_counter_reg[0]             | CPU/on_chip_uart/uareceive/cycle_counter_reg[0]                                |                8 |             32 |
+|  pixel_clk_g        |                                                             | hdmi_out/U0/DataEncoders[0].DataEncoder/SR[0]                                  |               12 |             32 |
+|  cpu_clk_g          |                                                             | CPU/on_chip_uart/uareceive/cycle_counter_reg[0]                                |                8 |             32 |
+|  cpu_clk_g          | CPU/p_0_in4_out                                             |                                                                                |                5 |             37 |
+|  cpu_clk_g          |                                                             |                                                                                |               27 |             61 |
+|  cpu_clk_g          | CPU/reggie/p_0_in__0                                        |                                                                                |               12 |             96 |
+|  pixel_clk_g        |                                                             |                                                                                |               35 |            103 |
+|  cpu_clk_g          |                                                             | b_parser/button_edge_detector/mclk_passer_reg                                  |              138 |            313 |
++---------------------+-------------------------------------------------------------+--------------------------------------------------------------------------------+------------------+----------------+
 
 
 +--------+-----------------------+
