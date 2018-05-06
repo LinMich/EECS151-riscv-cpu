@@ -1,8 +1,8 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.4 (lin64) Build 2086221 Fri Dec 15 20:54:30 MST 2017
-| Date         : Fri May  4 17:15:40 2018
-| Host         : c125m-20.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
+| Date         : Sat May  5 17:49:52 2018
+| Host         : c125m-23.EECS.Berkeley.EDU running 64-bit CentOS release 6.9 (Final)
 | Command      : report_timing_summary -max_paths 10 -file z1top_timing_summary_routed.rpt -rpx z1top_timing_summary_routed.rpx -warn_on_violation
 | Design       : z1top
 | Device       : 7z020-clg400
@@ -52,7 +52,7 @@ Table of Contents
 
 1. checking no_clock
 --------------------
- There are 1221 register/latch pins with no clock driven by root clock pin: USER_CLK (HIGH)
+ There are 1246 register/latch pins with no clock driven by root clock pin: USER_CLK (HIGH)
 
  There are 9 register/latch pins with no clock driven by root clock pin: i2s_cont/sclk_passer_reg/Q (HIGH)
 
@@ -69,7 +69,7 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 4756 pins that are not constrained for maximum delay. (HIGH)
+ There are 4804 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
