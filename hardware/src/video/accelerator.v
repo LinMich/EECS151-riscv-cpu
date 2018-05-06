@@ -55,8 +55,6 @@ module accelerator #(
     reg color_reg;
     reg TX_running;
 
-     wire complete = (x_curr == x_target && y_curr == y_target);
-
     assign RX_ready = ~TX_running;
 
     assign XL_wr_en = TX_running;
